@@ -258,6 +258,27 @@ for addr in ('1cbb4','1cbb8','1cbbc','1cd0c','1cd10','1cd14','1ce3c'):
         print(f"  {i+1}: {l}")
 PY
   echo
+  echo
+  echo "## Packed config extraction of legacy Hires bit 41"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+patterns=[
+    re.compile(r'\bubfx\s+[wx]\d+,\s*x11,\s*#41,\s*#1\b',re.I),
+    re.compile(r'\bubfx\s+[wx]\d+,\s*x\d+,\s*#41,\s*#1\b',re.I),
+    re.compile(r'\b(?:tbnz|tbz)\s+[wx]\d+,\s*#9\b',re.I),
+]
+hits=[]
+for i,l in enumerate(lines):
+    if any(p.search(l) for p in patterns):
+        hits.append(i)
+print(f"Found {len(hits)} possible legacy-HiRes decode sites.")
+for n,i in enumerate(hits[:80],1):
+    print(f"\n--- legacy HiRes hit {n}, line {i+1} ---")
+    for l in lines[max(0,i-25):min(len(lines),i+35)]:
+        print(l)
+PY
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
