@@ -1,0 +1,29 @@
+name: Dump FX render paths
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-fx-render-paths.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install binutils
+        run: sudo apt-get update && sudo apt-get install -y binutils-aarch64-linux-gnu
+      - name: Dump JNI FX wrappers and nearby functions
+        run: |
+          {
+            echo '===== JNI FX wrappers 0x18e80-0x19070 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x18e80 --stop-address=0x19070 universal/lib/arm64-v8a/libdrastic_arm64.so
+            echo '===== Internal FX/video region 0x1c600-0x1d740 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1c600 --stop-address=0x1d740 universal/lib/arm64-v8a/libdrastic_arm64.so
+          } | tee /tmp/fx-render-paths.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fx-render-paths
+          path: /tmp/fx-render-paths.txt
