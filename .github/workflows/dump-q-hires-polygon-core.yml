@@ -1,0 +1,65 @@
+name: Dump Q HiRes polygon core
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-q-hires-polygon-core.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Dump HiRes polygon core and normal reference
+        run: |
+          SO=universal/lib/arm64-v8a/libdrastic_arm64.so
+          FULL=/tmp/q-full.txt
+          OUT=/tmp/q-hires-polygon-core.txt
+          aarch64-linux-gnu-objdump -d "$SO" > "$FULL"
+
+          {
+            echo '===== SHA ====='
+            sha256sum "$SO"
+
+            echo
+            echo '===== NORMAL polygon core 0x551e0-0x55a20 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x551e0 --stop-address=0x55a20 "$SO"
+
+            echo
+            echo '===== HIRES polygon core 0x5a960-0x5b180 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5a960 --stop-address=0x5b180 "$SO"
+
+            echo
+            echo '===== direct calls made by HIRES polygon core ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5a9a8 --stop-address=0x5b144 "$SO" |
+              grep -E '^[[:space:]]*[0-9a-f]+:.*(bl| b)[[:space:]]+[0-9a-f]+' || true
+
+            echo
+            echo '===== xrefs to HIRES polygon core 0x5a9a8 ====='
+            grep -nE 'bl[[:space:]]+5a9a8|b[[:space:]]+5a9a8' "$FULL" -B 24 -A 32 || true
+
+            echo
+            echo '===== fixed 2x-ish constants in HIRES polygon core ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5a9a8 --stop-address=0x5b144 "$SO" |
+              grep -nE '#0x2([[:space:]]|$)|#0x4([[:space:]]|$)|#0x10([[:space:]]|$)|#0x20([[:space:]]|$)|#0x40([[:space:]]|$)|#0x80([[:space:]]|$)|#0x100([[:space:]]|$)|#0x180([[:space:]]|$)|#0x200([[:space:]]|$)|#0x400([[:space:]]|$)|#0x800([[:space:]]|$)|#0x1000([[:space:]]|$)' || true
+
+            echo
+            echo '===== nearby helper bodies 0x58d00-0x5a980 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x58d00 --stop-address=0x5a980 "$SO"
+          } | tee "$OUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q-hires-polygon-core
+          path: /tmp/q-hires-polygon-core.txt
