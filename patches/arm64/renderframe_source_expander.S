@@ -22,6 +22,7 @@ mov x0, x8
 mov w1, w24
 bl common_expand
 mov x8, x0
+mov w0, #0xde1
 mov x30, x18
 ret
 
