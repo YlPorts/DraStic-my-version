@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install AArch64 binutils
         run: |
@@ -40,5 +42,5 @@ jobs:
           else
             git commit -m "Analyze DraStic ARM64 HiRes3D path"
             git pull --rebase origin feature/internal-resolution-scaling
-            git push
+            git push origin HEAD:feature/internal-resolution-scaling
           fi
