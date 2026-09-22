@@ -185,6 +185,10 @@ PY
   echo "## Packed-config decoder 0x17c58"
   "$OBJDUMP" -d --start-address=0x17c58 --stop-address=0x17df4 "$BIN" || true
   echo
+  echo
+  echo "## HiRes caller function context 0x3c800-0x3cb00"
+  "$OBJDUMP" -d --start-address=0x3c800 --stop-address=0x3cb00 "$BIN" || true
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
