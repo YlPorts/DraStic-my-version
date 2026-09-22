@@ -1,0 +1,78 @@
+name: Prototype ARM64 multi-scale HiRes
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/prototype-hires-multiscale.yml'
+      - 'tools/patch_hires_scale_arm64.py'
+      - 'universal/lib/arm64-v8a/libdrastic_arm64.so'
+  workflow_dispatch:
+
+jobs:
+  patch-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Assemble scale math patch
+        run: |
+          cat > /tmp/hires_scale_patch.S <<'ASM'
+          .text
+          .global patch_start
+          patch_start:
+              add w13, w1, #1
+              lsl w11, w13, #8
+              add w12, w13, w13, lsl #1
+              lsl w12, w12, #6
+              nop
+              add x9, x9, #0x968
+              mov w15, #1
+              nop
+          ASM
+          aarch64-linux-gnu-as /tmp/hires_scale_patch.S -o /tmp/hires_scale_patch.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/hires_scale_patch.o /tmp/hires_scale_patch.bin
+          test "$(stat -c%s /tmp/hires_scale_patch.bin)" = "32"
+
+      - name: Patch a copy of libdrastic_arm64.so
+        run: |
+          mkdir -p prototype analysis
+          python3 tools/patch_hires_scale_arm64.py \
+            universal/lib/arm64-v8a/libdrastic_arm64.so \
+            /tmp/hires_scale_patch.bin \
+            prototype/libdrastic_arm64_multiscale.so \
+            | tee analysis/multiscale_patch.txt
+
+      - name: Verify original and patched disassembly
+        run: |
+          {
+            echo
+            echo "## Original"
+            aarch64-linux-gnu-objdump -d \
+              --start-address=0x1cde4 --stop-address=0x1ce3c \
+              universal/lib/arm64-v8a/libdrastic_arm64.so
+            echo
+            echo "## Patched"
+            aarch64-linux-gnu-objdump -d \
+              --start-address=0x1cde4 --stop-address=0x1ce3c \
+              prototype/libdrastic_arm64_multiscale.so
+          } | tee -a analysis/multiscale_patch.txt
+
+          grep -q "add.*w13, w1, #0x1" analysis/multiscale_patch.txt
+          grep -q "lsl.*w11, w13, #8" analysis/multiscale_patch.txt
+          grep -q "lsl.*w12, w12, #6" analysis/multiscale_patch.txt
+
+      - name: Upload prototype native library and verification report
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-arm64-multiscale-native-prototype
+          path: |
+            prototype/libdrastic_arm64_multiscale.so
+            analysis/multiscale_patch.txt
