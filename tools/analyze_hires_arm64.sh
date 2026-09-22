@@ -204,6 +204,34 @@ for off in (1124,1188,1200):
             print(l)
 PY
   echo
+  echo
+  echo "## References to renderer config base 0x8aaf0"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+hits=[]
+for i,l in enumerate(lines):
+    if '#0xaaf0' in l.lower() or '#0xaaf8' in l.lower():
+        hits.append(i)
+print(f"Found {len(hits)} low-immediate references.")
+for n,i in enumerate(hits[:120],1):
+    print(f"\n--- renderer-config ref {n}, line {i+1} ---")
+    for l in lines[max(0,i-18):min(len(lines),i+30)]:
+        print(l)
+PY
+  echo
+  echo "## References to subsystem pointer offset 0xfba68"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+hits=[i for i,l in enumerate(lines) if '#0xba68' in l.lower()]
+print(f"Found {len(hits)} low-immediate references.")
+for n,i in enumerate(hits[:120],1):
+    print(f"\n--- subsystem ref {n}, line {i+1} ---")
+    for l in lines[max(0,i-16):min(len(lines),i+26)]:
+        print(l)
+PY
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
