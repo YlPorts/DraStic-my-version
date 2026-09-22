@@ -1,10 +1,6 @@
 .text
 // renderFrame source expander.
-// Top entry expects:
-//   x9  = source framebuffer
-//   w26 = scale index (0..3)
-//   x27 = renderer globals
-// Returns x9 as upload source and w5 as upload height.
+// Top entry expects x9=source, w26=scale index, x27=renderer globals.
 top_entry:
 mov x18, x30
 mov x0, x9
@@ -14,84 +10,36 @@ mov x9, x0
 mov x30, x18
 ret
 
-// Bottom entry expects x8/w24 and returns x8/w5.
 .word 0xfeed3001
+// Bottom entry expects x8=source, w24=scale index, x27=renderer globals.
 bottom_entry:
 mov x18, x30
 mov x0, x8
 mov w1, w24
 bl common_expand
 mov x8, x0
-mov w0, #0xde1
 mov x30, x18
-ret
-
-// fxRender top upload. x25 is source, w23 is width.
-// Rebuild renderer globals for the common expander and restore GL args.
-.word 0xfeed3002
-fx_top_entry:
-stp x27, x30, [sp, #-32]!
-stp x6, x7, [sp, #16]
-.word 0xfeed3101
-add x27, x27, #0x1f8
-mov x0, x25
-lsr w1, w23, #8
-sub w1, w1, #1
-bl common_expand
-mov x9, x0
-ldp x6, x7, [sp, #16]
-ldp x27, x30, [sp], #32
-mov w0, #0xde1
-mov w1, wzr
-mov w2, wzr
-mov w3, wzr
-str x9, [sp]
-ret
-
-// fxRender second upload. x20 is source, w23 is width.
-.word 0xfeed3003
-fx_bottom_entry:
-stp x27, x30, [sp, #-32]!
-stp x6, x7, [sp, #16]
-.word 0xfeed3102
-add x27, x27, #0x1f8
-mov x0, x20
-lsr w1, w23, #8
-sub w1, w1, #1
-bl common_expand
-mov x9, x0
-ldp x6, x7, [sp, #16]
-ldp x27, x30, [sp], #32
-mov w0, #0xde1
-mov w1, wzr
-mov w2, wzr
-mov w3, wzr
-str x9, [sp]
 ret
 
 common_expand:
 add w2, w1, #1
-lsl w4, w2, #8          // width = 256 * scale
 add w5, w2, w2, lsl #1
-lsl w5, w5, #6          // height = 192 * scale
+lsl w5, w5, #6
 cmp w2, #3
 b.lo passthrough
 
-// Scratch buffer lives after the normal 12 MiB renderer allocation.
 ldr x4, [x27]
 mov x5, #0xc00000
 add x4, x4, x5
-mov x15, x4
 
 ldr w3, [x27, #0x95c]
 cmp w3, #0x10
 b.eq pixels16
 
-// ---------------- RGBA8888 / 32-bit ----------------
 cmp w2, #3
 b.eq s3_32
 
-// 4x: legacy 512x384 -> 1024x768.
+// 4x RGBA8888: 512x384 -> 1024x768.
 mov x10, x0
 mov x11, x4
 mov w12, wzr
@@ -127,6 +75,7 @@ mov x1, #0xc00000
 add x0, x0, x1
 ret
 
+// 3x RGBA8888: 512x384 -> 768x576.
 s3_32:
 mov x10, x0
 mov x11, x4
@@ -165,12 +114,11 @@ mov x1, #0xc00000
 add x0, x0, x1
 ret
 
-// ---------------- RGB565 / 16-bit ----------------
 pixels16:
 cmp w2, #3
 b.eq s3_16
 
-// 4x: 512x384 -> 1024x768, 2 bytes/pixel.
+// 4x RGB565.
 mov x10, x0
 mov x11, x4
 mov w12, wzr
@@ -180,8 +128,8 @@ add x14, x10, #0x400
 mov x15, x11
 add x16, x11, #0x800
 add x17, x11, #0x1, lsl #12
-add x3,  x11, #0x1, lsl #12
-add x3,  x3, #0x800
+add x3, x11, #0x1, lsl #12
+add x3, x3, #0x800
 mov w8, wzr
 s4_16_pixel:
 ldrh w1, [x13], #2
@@ -207,6 +155,7 @@ mov x1, #0xc00000
 add x0, x0, x1
 ret
 
+// 3x RGB565.
 s3_16:
 mov x10, x0
 mov x11, x4
