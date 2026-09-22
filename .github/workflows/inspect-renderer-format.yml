@@ -1,0 +1,28 @@
+name: Inspect renderer pixel format constants
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/inspect-renderer-format.yml'
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Dump pristine renderer format constants
+        run: |
+          git fetch origin main
+          git show origin/main:universal/lib/arm64-v8a/libdrastic_arm64.so > /tmp/original.so
+          python3 - <<'PY'
+          import struct
+          data=open('/tmp/original.so','rb').read()
+          for off in (0x107278,0x107280):
+              b=data[off:off+16]
+              print(hex(off), b.hex(), [hex(x) for x in struct.unpack('<4I',b)])
+          PY
