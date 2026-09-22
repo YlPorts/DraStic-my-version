@@ -12,7 +12,7 @@ HELPER=0xf0600
 TOP=HELPER
 BOTTOM=None
 TOP_CALL=0x1cf54
-BOTTOM_CALL=0x1cfb4
+BOTTOM_CALL=0x1cfbc
 
 def u32(off):
     return struct.unpack_from("<I", data, off)[0]
@@ -40,7 +40,7 @@ BOTTOM=HELPER+hits[0]+4
 
 if u32(TOP_CALL) != 0x531a6545:
     raise SystemExit(f"unexpected top instruction 0x{u32(TOP_CALL):08x}")
-if u32(BOTTOM_CALL) != 0x531a6525:
+if u32(BOTTOM_CALL) != 0x5281bc20:
     raise SystemExit(f"unexpected bottom instruction 0x{u32(BOTTOM_CALL):08x}")
 if any(data[HELPER:HELPER+len(helper)]):
     raise SystemExit("renderFrame helper cave is not empty")
