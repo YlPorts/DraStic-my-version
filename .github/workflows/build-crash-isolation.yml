@@ -1,0 +1,59 @@
+name: Build crash-isolation APKs
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-crash-isolation.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Prepare pristine main worktree
+        run: |
+          git fetch origin main
+          git worktree add /tmp/drastic-main origin/main
+
+      - name: Build A - pristine main with test signature
+        run: |
+          cd /tmp/drastic-main
+          java -jar apktool.jar b universal -o /tmp/DraStic_A_MAIN_TEST.apk
+          java -jar uber-apk-signer.jar --apks /tmp/DraStic_A_MAIN_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks /tmp/DraStic_A_MAIN_TEST.apk --onlyVerify --verbose
+
+      - name: Build B - new UI/preferences with original native library
+        run: |
+          mkdir -p /tmp/ui-original-so
+          cp -a . /tmp/ui-original-so/repo
+          git show origin/main:universal/lib/arm64-v8a/libdrastic_arm64.so > /tmp/ui-original-so/repo/universal/lib/arm64-v8a/libdrastic_arm64.so
+          cd /tmp/ui-original-so/repo
+          java -jar apktool.jar b universal -o /tmp/DraStic_B_UI_ORIGINAL_SO_TEST.apk
+          java -jar uber-apk-signer.jar --apks /tmp/DraStic_B_UI_ORIGINAL_SO_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks /tmp/DraStic_B_UI_ORIGINAL_SO_TEST.apk --onlyVerify --verbose
+
+      - name: Hash APKs
+        run: |
+          sha256sum /tmp/DraStic_A_MAIN_TEST.apk /tmp/DraStic_B_UI_ORIGINAL_SO_TEST.apk | tee /tmp/crash-isolation.sha256
+
+      - name: Upload crash-isolation APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-crash-isolation-A-B
+          path: |
+            /tmp/DraStic_A_MAIN_TEST.apk
+            /tmp/DraStic_B_UI_ORIGINAL_SO_TEST.apk
+            /tmp/crash-isolation.sha256
