@@ -50,9 +50,10 @@ add x10, x9, x10
 ret
 
 scale3:
-mov x17, x30
+sub sp, sp, #0x20
+str x30, [sp, #0x18]
 bl scratch
-mov x30, x17
+str x10, [sp, #0x10]
 // x8=src, x10=dst scratch
 mov w11, #0x1401
 cmp w7, w11
@@ -60,9 +61,10 @@ b.eq scale3_32
 b scale3_16
 
 scale4:
-mov x17, x30
+sub sp, sp, #0x20
+str x30, [sp, #0x18]
 bl scratch
-mov x30, x17
+str x10, [sp, #0x10]
 mov w11, #0x1401
 cmp w7, w11
 b.eq scale4_32
@@ -240,5 +242,8 @@ cmp w16, #0xc0
 b.ne s4_16_rows
 
 upload_scratch:
+ldr x10, [sp, #0x10]
+ldr x30, [sp, #0x18]
+add sp, sp, #0x20
 str x10, [sp]
 ret
