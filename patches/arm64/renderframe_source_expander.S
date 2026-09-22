@@ -26,8 +26,52 @@ mov w0, #0xde1
 mov x30, x18
 ret
 
+// fxRender top upload. x25 is source, w23 is width.
+// Rebuild renderer globals for the common expander and restore GL args.
+.word 0xfeed3002
+fx_top_entry:
+stp x27, x30, [sp, #-32]!
+stp x6, x7, [sp, #16]
+.word 0xfeed3101
+add x27, x27, #0x1f8
+mov x0, x25
+lsr w1, w23, #8
+sub w1, w1, #1
+bl common_expand
+mov x9, x0
+ldp x6, x7, [sp, #16]
+ldp x27, x30, [sp], #32
+mov w0, #0xde1
+mov w1, wzr
+mov w2, wzr
+mov w3, wzr
+str x9, [sp]
+ret
+
+// fxRender second upload. x20 is source, w23 is width.
+.word 0xfeed3003
+fx_bottom_entry:
+stp x27, x30, [sp, #-32]!
+stp x6, x7, [sp, #16]
+.word 0xfeed3102
+add x27, x27, #0x1f8
+mov x0, x20
+lsr w1, w23, #8
+sub w1, w1, #1
+bl common_expand
+mov x9, x0
+ldp x6, x7, [sp, #16]
+ldp x27, x30, [sp], #32
+mov w0, #0xde1
+mov w1, wzr
+mov w2, wzr
+mov w3, wzr
+str x9, [sp]
+ret
+
 common_expand:
 add w2, w1, #1
+lsl w4, w2, #8          // width = 256 * scale
 add w5, w2, w2, lsl #1
 lsl w5, w5, #6          // height = 192 * scale
 cmp w2, #3
