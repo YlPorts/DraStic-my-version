@@ -6,6 +6,8 @@ on:
       - feature/internal-resolution-scaling
     paths:
       - '.github/workflows/build-m-clean-framebuffer-expansion.yml'
+      - 'patches/arm64/final_framebuffer_expander.S'
+      - 'tools/patch_final_framebuffer_expander.py'
   workflow_dispatch:
 
 jobs:
