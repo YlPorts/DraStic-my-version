@@ -1,0 +1,44 @@
+name: Build signed ARM64 1x-4x test APK
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-signed-hires-test.yml'
+  workflow_dispatch:
+
+jobs:
+  build-sign-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Rebuild APK
+        run: |
+          java -jar apktool.jar b universal -o DraStic_internal_resolution_1x4x_ARM64_TEST.apk
+
+      - name: Sign with embedded debug key using v1/v2/v3
+        run: |
+          java -jar uber-apk-signer.jar             --apks DraStic_internal_resolution_1x4x_ARM64_TEST.apk             --overwrite             --verbose
+
+      - name: Verify signed APK
+        run: |
+          java -jar uber-apk-signer.jar             --apks DraStic_internal_resolution_1x4x_ARM64_TEST.apk             --onlyVerify             --verbose
+
+          sha256sum DraStic_internal_resolution_1x4x_ARM64_TEST.apk             | tee DraStic_internal_resolution_1x4x_ARM64_TEST.sha256
+
+      - name: Upload signed test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-internal-resolution-1x4x-ARM64-signed-test
+          path: |
+            DraStic_internal_resolution_1x4x_ARM64_TEST.apk
+            DraStic_internal_resolution_1x4x_ARM64_TEST.sha256
