@@ -5,8 +5,8 @@ import struct
 from pathlib import Path
 
 EXPECTED_SHA256 = "3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902"
-PATCH_VADDR = 0x1CE04
-PATCH_SIZE = 8 * 4  # 8 AArch64 instructions
+PATCH_VADDR = 0x1CDF4
+PATCH_SIZE = 18 * 4  # 18 AArch64 instructions; replaces the complete scale-selection tail
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
@@ -39,7 +39,7 @@ def vaddr_to_offset(data: bytes, vaddr: int) -> int:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("input")
-    ap.add_argument("patch_blob", help="32-byte AArch64 patch assembled for VA 0x1ce04")
+    ap.add_argument("patch_blob", help="72-byte AArch64 patch linked for VA 0x1cdf4")
     ap.add_argument("output")
     args = ap.parse_args()
 
@@ -61,7 +61,7 @@ def main():
     data = bytearray(src.read_bytes())
     file_off = vaddr_to_offset(data, PATCH_VADDR)
 
-    # The original block contains the 1x/2x conditional width/height selection.
+    # The original block compares/stores the old boolean HiRes mode and selects 256x192 or 512x384.
     original = bytes(data[file_off:file_off + PATCH_SIZE])
     if len(original) != PATCH_SIZE:
         raise SystemExit("Patch range falls outside file")
