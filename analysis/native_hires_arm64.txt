@@ -2,7 +2,7 @@
 
 Binary: universal/lib/arm64-v8a/libdrastic_arm64.so
 SHA-256: 3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902
-Generated (UTC): 2026-09-22T03:20:49Z
+Generated (UTC): 2026-09-22T03:23:57Z
 
 ## ELF header
 ELF Header:
@@ -2313,6 +2313,4275 @@ Found 1727 matching instructions.
    26638:	53107d2e 	lsr	w14, w9, #16
    2663c:	1ace21af 	lsl	w15, w13, w14
    26640:	2a0f018c 	orr	w12, w12, w15
+
+
+## Config high-word bit 9 tests (Hires3D bit 41)
+Found 22 bit-9 tests.
+
+--- bit9 hit 1, disassembly line 30692 ---
+   32fb8:	72bc3808 	movk	w8, #0xe1c0, lsl #16
+   32fbc:	140000ad 	b	33270 <JNI_OnUnload@@Base+0x1870c>
+   32fc0:	f00006ca 	adrp	x10, 10d000 <JNI_OnUnload@@Base+0xf249c>
+   32fc4:	530a3008 	ubfx	w8, w0, #10, #3
+   32fc8:	912de14a 	add	x10, x10, #0xb78
+   32fcc:	1000008b 	adr	x11, 32fdc <JNI_OnUnload@@Base+0x18478>
+   32fd0:	3868694c 	ldrb	w12, [x10, x8]
+   32fd4:	8b0c096b 	add	x11, x11, x12, lsl #2
+   32fd8:	d61f0160 	br	x11
+   32fdc:	1200080b 	and	w11, w0, #0x7
+   32fe0:	53031408 	ubfx	w8, w0, #3, #3
+   32fe4:	5306200a 	ubfx	w10, w0, #6, #3
+   32fe8:	374810a0 	tbnz	w0, #9, 331fc <JNI_OnUnload@@Base+0x18698>
+   32fec:	5317580d 	lsl	w13, w0, #9
+   32ff0:	120c01ad 	and	w13, w13, #0x100000
+   32ff4:	3314096d 	bfi	w13, w11, #12, #3
+   32ff8:	2a0a01aa 	orr	w10, w13, w10
+   32ffc:	530a7c0c 	lsr	w12, w0, #10
+   33000:	3310090a 	bfi	w10, w8, #16, #3
+   33004:	330a018a 	bfi	w10, w12, #22, #1
+   33008:	52bcf008 	mov	w8, #0xe7800000            	// #-411041792
+   3300c:	14000099 	b	33270 <JNI_OnUnload@@Base+0x1870c>
+   33010:	5313480d 	lsl	w13, w0, #13
+   33014:	121009ad 	and	w13, w13, #0x70000
+   33018:	530b7c08 	lsr	w8, w0, #11
+   3301c:	5306280b 	ubfx	w11, w0, #6, #5
+   33020:	5280002c 	mov	w12, #0x1                   	// #1
+   33024:	3314080d 	bfi	w13, w0, #12, #3
+   33028:	530c300a 	ubfx	w10, w0, #12, #1
+
+--- bit9 hit 2, disassembly line 48151 ---
+   44084:	91001063 	add	x3, x3, #0x4
+   44088:	54001800 	b.eq	44388 <JNI_OnUnload@@Base+0x29824>  // b.none
+   4408c:	b940006b 	ldr	w11, [x3]
+   44090:	3700040b 	tbnz	w11, #0, 44110 <JNI_OnUnload@@Base+0x295ac>
+   44094:	3708048b 	tbnz	w11, #1, 44124 <JNI_OnUnload@@Base+0x295c0>
+   44098:	3710050b 	tbnz	w11, #2, 44138 <JNI_OnUnload@@Base+0x295d4>
+   4409c:	3718058b 	tbnz	w11, #3, 4414c <JNI_OnUnload@@Base+0x295e8>
+   440a0:	3720060b 	tbnz	w11, #4, 44160 <JNI_OnUnload@@Base+0x295fc>
+   440a4:	3728068b 	tbnz	w11, #5, 44174 <JNI_OnUnload@@Base+0x29610>
+   440a8:	3730070b 	tbnz	w11, #6, 44188 <JNI_OnUnload@@Base+0x29624>
+   440ac:	3738078b 	tbnz	w11, #7, 4419c <JNI_OnUnload@@Base+0x29638>
+   440b0:	3740080b 	tbnz	w11, #8, 441b0 <JNI_OnUnload@@Base+0x2964c>
+   440b4:	3748088b 	tbnz	w11, #9, 441c4 <JNI_OnUnload@@Base+0x29660>
+   440b8:	3750090b 	tbnz	w11, #10, 441d8 <JNI_OnUnload@@Base+0x29674>
+   440bc:	3758098b 	tbnz	w11, #11, 441ec <JNI_OnUnload@@Base+0x29688>
+   440c0:	37600a0b 	tbnz	w11, #12, 44200 <JNI_OnUnload@@Base+0x2969c>
+   440c4:	37680a8b 	tbnz	w11, #13, 44214 <JNI_OnUnload@@Base+0x296b0>
+   440c8:	37700b0b 	tbnz	w11, #14, 44228 <JNI_OnUnload@@Base+0x296c4>
+   440cc:	37780b8b 	tbnz	w11, #15, 4423c <JNI_OnUnload@@Base+0x296d8>
+   440d0:	37800c0b 	tbnz	w11, #16, 44250 <JNI_OnUnload@@Base+0x296ec>
+   440d4:	37880c6b 	tbnz	w11, #17, 44260 <JNI_OnUnload@@Base+0x296fc>
+   440d8:	37900ceb 	tbnz	w11, #18, 44274 <JNI_OnUnload@@Base+0x29710>
+   440dc:	37980d6b 	tbnz	w11, #19, 44288 <JNI_OnUnload@@Base+0x29724>
+   440e0:	37a00deb 	tbnz	w11, #20, 4429c <JNI_OnUnload@@Base+0x29738>
+   440e4:	37a80e6b 	tbnz	w11, #21, 442b0 <JNI_OnUnload@@Base+0x2974c>
+   440e8:	37b00eeb 	tbnz	w11, #22, 442c4 <JNI_OnUnload@@Base+0x29760>
+   440ec:	37b80f6b 	tbnz	w11, #23, 442d8 <JNI_OnUnload@@Base+0x29774>
+   440f0:	37c00feb 	tbnz	w11, #24, 442ec <JNI_OnUnload@@Base+0x29788>
+   440f4:	37c8106b 	tbnz	w11, #25, 44300 <JNI_OnUnload@@Base+0x2979c>
+
+--- bit9 hit 3, disassembly line 48218 ---
+   44190:	8b08014d 	add	x13, x10, x8
+   44194:	781ec1ac 	sturh	w12, [x13, #-20]
+   44198:	363ff8cb 	tbz	w11, #7, 440b0 <JNI_OnUnload@@Base+0x2954c>
+   4419c:	8b08012c 	add	x12, x9, x8
+   441a0:	785d018c 	ldurh	w12, [x12, #-48]
+   441a4:	8b08014d 	add	x13, x10, x8
+   441a8:	781ee1ac 	sturh	w12, [x13, #-18]
+   441ac:	3647f84b 	tbz	w11, #8, 440b4 <JNI_OnUnload@@Base+0x29550>
+   441b0:	8b08012c 	add	x12, x9, x8
+   441b4:	785d218c 	ldurh	w12, [x12, #-46]
+   441b8:	8b08014d 	add	x13, x10, x8
+   441bc:	781f01ac 	sturh	w12, [x13, #-16]
+   441c0:	364ff7cb 	tbz	w11, #9, 440b8 <JNI_OnUnload@@Base+0x29554>
+   441c4:	8b08012c 	add	x12, x9, x8
+   441c8:	785d418c 	ldurh	w12, [x12, #-44]
+   441cc:	8b08014d 	add	x13, x10, x8
+   441d0:	781f21ac 	sturh	w12, [x13, #-14]
+   441d4:	3657f74b 	tbz	w11, #10, 440bc <JNI_OnUnload@@Base+0x29558>
+   441d8:	8b08012c 	add	x12, x9, x8
+   441dc:	785d618c 	ldurh	w12, [x12, #-42]
+   441e0:	8b08014d 	add	x13, x10, x8
+   441e4:	781f41ac 	sturh	w12, [x13, #-12]
+   441e8:	365ff6cb 	tbz	w11, #11, 440c0 <JNI_OnUnload@@Base+0x2955c>
+   441ec:	8b08012c 	add	x12, x9, x8
+   441f0:	785d818c 	ldurh	w12, [x12, #-40]
+   441f4:	8b08014d 	add	x13, x10, x8
+   441f8:	781f61ac 	sturh	w12, [x13, #-10]
+   441fc:	3667f64b 	tbz	w11, #12, 440c4 <JNI_OnUnload@@Base+0x29560>
+   44200:	8b08012c 	add	x12, x9, x8
+
+--- bit9 hit 4, disassembly line 48671 ---
+   448a4:	36280d2b 	tbz	w11, #5, 44a48 <JNI_OnUnload@@Base+0x29ee4>
+   448a8:	7900154c 	strh	w12, [x10, #10]
+   448ac:	2a0203ec 	mov	w12, w2
+   448b0:	36300d6b 	tbz	w11, #6, 44a5c <JNI_OnUnload@@Base+0x29ef8>
+   448b4:	7900194c 	strh	w12, [x10, #12]
+   448b8:	2a0203ec 	mov	w12, w2
+   448bc:	36380dab 	tbz	w11, #7, 44a70 <JNI_OnUnload@@Base+0x29f0c>
+   448c0:	79001d4c 	strh	w12, [x10, #14]
+   448c4:	2a0203ec 	mov	w12, w2
+   448c8:	36400deb 	tbz	w11, #8, 44a84 <JNI_OnUnload@@Base+0x29f20>
+   448cc:	7900214c 	strh	w12, [x10, #16]
+   448d0:	2a0203ec 	mov	w12, w2
+   448d4:	36480e2b 	tbz	w11, #9, 44a98 <JNI_OnUnload@@Base+0x29f34>
+   448d8:	7900254c 	strh	w12, [x10, #18]
+   448dc:	2a0203ec 	mov	w12, w2
+   448e0:	36500e6b 	tbz	w11, #10, 44aac <JNI_OnUnload@@Base+0x29f48>
+   448e4:	7900294c 	strh	w12, [x10, #20]
+   448e8:	2a0203ec 	mov	w12, w2
+   448ec:	36580eab 	tbz	w11, #11, 44ac0 <JNI_OnUnload@@Base+0x29f5c>
+   448f0:	79002d4c 	strh	w12, [x10, #22]
+   448f4:	2a0203ec 	mov	w12, w2
+   448f8:	36600eeb 	tbz	w11, #12, 44ad4 <JNI_OnUnload@@Base+0x29f70>
+   448fc:	7900314c 	strh	w12, [x10, #24]
+   44900:	2a0203ec 	mov	w12, w2
+   44904:	36680f2b 	tbz	w11, #13, 44ae8 <JNI_OnUnload@@Base+0x29f84>
+   44908:	7900354c 	strh	w12, [x10, #26]
+   4490c:	2a0203ec 	mov	w12, w2
+   44910:	36700f6b 	tbz	w11, #14, 44afc <JNI_OnUnload@@Base+0x29f98>
+   44914:	7900394c 	strh	w12, [x10, #28]
+
+--- bit9 hit 5, disassembly line 48783 ---
+   44a64:	7900194c 	strh	w12, [x10, #12]
+   44a68:	2a0203ec 	mov	w12, w2
+   44a6c:	373ff2ab 	tbnz	w11, #7, 448c0 <JNI_OnUnload@@Base+0x29d5c>
+   44a70:	8b08012c 	add	x12, x9, x8
+   44a74:	785ee18c 	ldurh	w12, [x12, #-18]
+   44a78:	79001d4c 	strh	w12, [x10, #14]
+   44a7c:	2a0203ec 	mov	w12, w2
+   44a80:	3747f26b 	tbnz	w11, #8, 448cc <JNI_OnUnload@@Base+0x29d68>
+   44a84:	8b08012c 	add	x12, x9, x8
+   44a88:	785f018c 	ldurh	w12, [x12, #-16]
+   44a8c:	7900214c 	strh	w12, [x10, #16]
+   44a90:	2a0203ec 	mov	w12, w2
+   44a94:	374ff22b 	tbnz	w11, #9, 448d8 <JNI_OnUnload@@Base+0x29d74>
+   44a98:	8b08012c 	add	x12, x9, x8
+   44a9c:	785f218c 	ldurh	w12, [x12, #-14]
+   44aa0:	7900254c 	strh	w12, [x10, #18]
+   44aa4:	2a0203ec 	mov	w12, w2
+   44aa8:	3757f1eb 	tbnz	w11, #10, 448e4 <JNI_OnUnload@@Base+0x29d80>
+   44aac:	8b08012c 	add	x12, x9, x8
+   44ab0:	785f418c 	ldurh	w12, [x12, #-12]
+   44ab4:	7900294c 	strh	w12, [x10, #20]
+   44ab8:	2a0203ec 	mov	w12, w2
+   44abc:	375ff1ab 	tbnz	w11, #11, 448f0 <JNI_OnUnload@@Base+0x29d8c>
+   44ac0:	8b08012c 	add	x12, x9, x8
+   44ac4:	785f618c 	ldurh	w12, [x12, #-10]
+   44ac8:	79002d4c 	strh	w12, [x10, #22]
+   44acc:	2a0203ec 	mov	w12, w2
+   44ad0:	3767f16b 	tbnz	w11, #12, 448fc <JNI_OnUnload@@Base+0x29d98>
+   44ad4:	8b08012c 	add	x12, x9, x8
+
+--- bit9 hit 6, disassembly line 50141 ---
+   45f9c:	91001063 	add	x3, x3, #0x4
+   45fa0:	54001860 	b.eq	462ac <JNI_OnUnload@@Base+0x2b748>  // b.none
+   45fa4:	b940006d 	ldr	w13, [x3]
+   45fa8:	3700040d 	tbnz	w13, #0, 46028 <JNI_OnUnload@@Base+0x2b4c4>
+   45fac:	3708048d 	tbnz	w13, #1, 4603c <JNI_OnUnload@@Base+0x2b4d8>
+   45fb0:	3710050d 	tbnz	w13, #2, 46050 <JNI_OnUnload@@Base+0x2b4ec>
+   45fb4:	3718058d 	tbnz	w13, #3, 46064 <JNI_OnUnload@@Base+0x2b500>
+   45fb8:	3720060d 	tbnz	w13, #4, 46078 <JNI_OnUnload@@Base+0x2b514>
+   45fbc:	3728068d 	tbnz	w13, #5, 4608c <JNI_OnUnload@@Base+0x2b528>
+   45fc0:	3730070d 	tbnz	w13, #6, 460a0 <JNI_OnUnload@@Base+0x2b53c>
+   45fc4:	3738078d 	tbnz	w13, #7, 460b4 <JNI_OnUnload@@Base+0x2b550>
+   45fc8:	3740080d 	tbnz	w13, #8, 460c8 <JNI_OnUnload@@Base+0x2b564>
+   45fcc:	3748088d 	tbnz	w13, #9, 460dc <JNI_OnUnload@@Base+0x2b578>
+   45fd0:	3750090d 	tbnz	w13, #10, 460f0 <JNI_OnUnload@@Base+0x2b58c>
+   45fd4:	3758098d 	tbnz	w13, #11, 46104 <JNI_OnUnload@@Base+0x2b5a0>
+   45fd8:	37600a0d 	tbnz	w13, #12, 46118 <JNI_OnUnload@@Base+0x2b5b4>
+   45fdc:	37680a8d 	tbnz	w13, #13, 4612c <JNI_OnUnload@@Base+0x2b5c8>
+   45fe0:	37700b0d 	tbnz	w13, #14, 46140 <JNI_OnUnload@@Base+0x2b5dc>
+   45fe4:	37780b8d 	tbnz	w13, #15, 46154 <JNI_OnUnload@@Base+0x2b5f0>
+   45fe8:	37800bed 	tbnz	w13, #16, 46164 <JNI_OnUnload@@Base+0x2b600>
+   45fec:	37880c6d 	tbnz	w13, #17, 46178 <JNI_OnUnload@@Base+0x2b614>
+   45ff0:	37900ced 	tbnz	w13, #18, 4618c <JNI_OnUnload@@Base+0x2b628>
+   45ff4:	37980d6d 	tbnz	w13, #19, 461a0 <JNI_OnUnload@@Base+0x2b63c>
+   45ff8:	37a00ded 	tbnz	w13, #20, 461b4 <JNI_OnUnload@@Base+0x2b650>
+   45ffc:	37a80e6d 	tbnz	w13, #21, 461c8 <JNI_OnUnload@@Base+0x2b664>
+   46000:	37b00eed 	tbnz	w13, #22, 461dc <JNI_OnUnload@@Base+0x2b678>
+   46004:	37b80f6d 	tbnz	w13, #23, 461f0 <JNI_OnUnload@@Base+0x2b68c>
+   46008:	37c00fed 	tbnz	w13, #24, 46204 <JNI_OnUnload@@Base+0x2b6a0>
+   4600c:	37c8106d 	tbnz	w13, #25, 46218 <JNI_OnUnload@@Base+0x2b6b4>
+
+--- bit9 hit 7, disassembly line 50208 ---
+   460a8:	381f71ea 	sturb	w10, [x15, #-9]
+   460ac:	381e71cb 	sturb	w11, [x14, #-25]
+   460b0:	363ff8cd 	tbz	w13, #7, 45fc8 <JNI_OnUnload@@Base+0x2b464>
+   460b4:	8b08012e 	add	x14, x9, x8
+   460b8:	8b08018f 	add	x15, x12, x8
+   460bc:	381f81ea 	sturb	w10, [x15, #-8]
+   460c0:	381e81cb 	sturb	w11, [x14, #-24]
+   460c4:	3647f84d 	tbz	w13, #8, 45fcc <JNI_OnUnload@@Base+0x2b468>
+   460c8:	8b08012e 	add	x14, x9, x8
+   460cc:	8b08018f 	add	x15, x12, x8
+   460d0:	381f91ea 	sturb	w10, [x15, #-7]
+   460d4:	381e91cb 	sturb	w11, [x14, #-23]
+   460d8:	364ff7cd 	tbz	w13, #9, 45fd0 <JNI_OnUnload@@Base+0x2b46c>
+   460dc:	8b08012e 	add	x14, x9, x8
+   460e0:	8b08018f 	add	x15, x12, x8
+   460e4:	381fa1ea 	sturb	w10, [x15, #-6]
+   460e8:	381ea1cb 	sturb	w11, [x14, #-22]
+   460ec:	3657f74d 	tbz	w13, #10, 45fd4 <JNI_OnUnload@@Base+0x2b470>
+   460f0:	8b08012e 	add	x14, x9, x8
+   460f4:	8b08018f 	add	x15, x12, x8
+   460f8:	381fb1ea 	sturb	w10, [x15, #-5]
+   460fc:	381eb1cb 	sturb	w11, [x14, #-21]
+   46100:	365ff6cd 	tbz	w13, #11, 45fd8 <JNI_OnUnload@@Base+0x2b474>
+   46104:	8b08012e 	add	x14, x9, x8
+   46108:	8b08018f 	add	x15, x12, x8
+   4610c:	381fc1ea 	sturb	w10, [x15, #-4]
+   46110:	381ec1cb 	sturb	w11, [x14, #-20]
+   46114:	3667f64d 	tbz	w13, #12, 45fdc <JNI_OnUnload@@Base+0x2b478>
+   46118:	8b08012e 	add	x14, x9, x8
+
+--- bit9 hit 8, disassembly line 58468 ---
+   4e1b8:	f90000ca 	str	x10, [x6]
+   4e1bc:	f90000a9 	str	x9, [x5]
+   4e1c0:	d65f03c0 	ret
+   4e1c4:	d100c3ff 	sub	sp, sp, #0x30
+   4e1c8:	a9027bfd 	stp	x29, x30, [sp, #32]
+   4e1cc:	910083fd 	add	x29, sp, #0x20
+   4e1d0:	d53bd048 	mrs	x8, tpidr_el0
+   4e1d4:	f9401509 	ldr	x9, [x8, #40]
+   4e1d8:	f81f83a9 	stur	x9, [x29, #-8]
+   4e1dc:	b9409009 	ldr	w9, [x0, #144]
+   4e1e0:	b90007ff 	str	wzr, [sp, #4]
+   4e1e4:	374001c9 	tbnz	w9, #8, 4e21c <JNI_OnUnload@@Base+0x336b8>
+   4e1e8:	37480309 	tbnz	w9, #9, 4e248 <JNI_OnUnload@@Base+0x336e4>
+   4e1ec:	37500469 	tbnz	w9, #10, 4e278 <JNI_OnUnload@@Base+0x33714>
+   4e1f0:	375805c9 	tbnz	w9, #11, 4e2a8 <JNI_OnUnload@@Base+0x33744>
+   4e1f4:	37600729 	tbnz	w9, #12, 4e2d8 <JNI_OnUnload@@Base+0x33774>
+   4e1f8:	394013ec 	ldrb	w12, [sp, #4]
+   4e1fc:	b40008ec 	cbz	x12, 4e318 <JNI_OnUnload@@Base+0x337b4>
+   4e200:	37180b09 	tbnz	w9, #3, 4e360 <JNI_OnUnload@@Base+0x337fc>
+   4e204:	7100219f 	cmp	w12, #0x8
+   4e208:	54002102 	b.cs	4e628 <JNI_OnUnload@@Base+0x33ac4>  // b.hs, b.nlast
+   4e20c:	aa1f03ed 	mov	x13, xzr
+   4e210:	2a1f03eb 	mov	w11, wzr
+   4e214:	2a1f03ea 	mov	w10, wzr
+   4e218:	14000113 	b	4e664 <JNI_OnUnload@@Base+0x33b00>
+   4e21c:	7942b00a 	ldrh	w10, [x0, #344]
+   4e220:	910013eb 	add	x11, sp, #0x4
+   4e224:	910023ed 	add	x13, sp, #0x8
+   4e228:	b340054b 	bfxil	x11, x10, #0, #2
+
+--- bit9 hit 9, disassembly line 58491 ---
+   4e214:	2a1f03ea 	mov	w10, wzr
+   4e218:	14000113 	b	4e664 <JNI_OnUnload@@Base+0x33b00>
+   4e21c:	7942b00a 	ldrh	w10, [x0, #344]
+   4e220:	910013eb 	add	x11, sp, #0x4
+   4e224:	910023ed 	add	x13, sp, #0x8
+   4e228:	b340054b 	bfxil	x11, x10, #0, #2
+   4e22c:	3940016c 	ldrb	w12, [x11]
+   4e230:	9240054a 	and	x10, x10, #0x3
+   4e234:	8b0a09aa 	add	x10, x13, x10, lsl #2
+   4e238:	382c695f 	strb	wzr, [x10, x12]
+   4e23c:	1100058a 	add	w10, w12, #0x1
+   4e240:	3900016a 	strb	w10, [x11]
+   4e244:	364ffd49 	tbz	w9, #9, 4e1ec <JNI_OnUnload@@Base+0x33688>
+   4e248:	7944100a 	ldrh	w10, [x0, #520]
+   4e24c:	910013eb 	add	x11, sp, #0x4
+   4e250:	910023ec 	add	x12, sp, #0x8
+   4e254:	5280002e 	mov	w14, #0x1                   	// #1
+   4e258:	b340054b 	bfxil	x11, x10, #0, #2
+   4e25c:	3940016d 	ldrb	w13, [x11]
+   4e260:	9240054a 	and	x10, x10, #0x3
+   4e264:	8b0a098a 	add	x10, x12, x10, lsl #2
+   4e268:	382d694e 	strb	w14, [x10, x13]
+   4e26c:	110005aa 	add	w10, w13, #0x1
+   4e270:	3900016a 	strb	w10, [x11]
+   4e274:	3657fbe9 	tbz	w9, #10, 4e1f0 <JNI_OnUnload@@Base+0x3368c>
+   4e278:	7945700a 	ldrh	w10, [x0, #696]
+   4e27c:	910013eb 	add	x11, sp, #0x4
+   4e280:	910023ec 	add	x12, sp, #0x8
+   4e284:	5280004e 	mov	w14, #0x2                   	// #2
+
+--- bit9 hit 10, disassembly line 66424 ---
+   55e08:	d344fce7 	lsr	x7, x7, #4
+   55e0c:	1ac72167 	lsl	w7, w11, w7
+   55e10:	0a0500e7 	and	w7, w7, w5
+   55e14:	370001c7 	tbnz	w7, #0, 55e4c <JNI_OnUnload@@Base+0x3b2e8>
+   55e18:	37080247 	tbnz	w7, #1, 55e60 <JNI_OnUnload@@Base+0x3b2fc>
+   55e1c:	371002e7 	tbnz	w7, #2, 55e78 <JNI_OnUnload@@Base+0x3b314>
+   55e20:	37180387 	tbnz	w7, #3, 55e90 <JNI_OnUnload@@Base+0x3b32c>
+   55e24:	37200427 	tbnz	w7, #4, 55ea8 <JNI_OnUnload@@Base+0x3b344>
+   55e28:	372804c7 	tbnz	w7, #5, 55ec0 <JNI_OnUnload@@Base+0x3b35c>
+   55e2c:	37300567 	tbnz	w7, #6, 55ed8 <JNI_OnUnload@@Base+0x3b374>
+   55e30:	37380607 	tbnz	w7, #7, 55ef0 <JNI_OnUnload@@Base+0x3b38c>
+   55e34:	374006a7 	tbnz	w7, #8, 55f08 <JNI_OnUnload@@Base+0x3b3a4>
+   55e38:	37480747 	tbnz	w7, #9, 55f20 <JNI_OnUnload@@Base+0x3b3bc>
+   55e3c:	375007e7 	tbnz	w7, #10, 55f38 <JNI_OnUnload@@Base+0x3b3d4>
+   55e40:	d1000484 	sub	x4, x4, #0x1
+   55e44:	365ffce7 	tbz	w7, #11, 55de0 <JNI_OnUnload@@Base+0x3b27c>
+   55e48:	14000043 	b	55f54 <JNI_OnUnload@@Base+0x3b3f0>
+   55e4c:	b95002b3 	ldr	w19, [x21, #4096]
+   55e50:	78337aa6 	strh	w6, [x21, x19, lsl #1]
+   55e54:	11000673 	add	w19, w19, #0x1
+   55e58:	b91002b3 	str	w19, [x21, #4096]
+   55e5c:	360ffe07 	tbz	w7, #1, 55e1c <JNI_OnUnload@@Base+0x3b2b8>
+   55e60:	b96006b3 	ldr	w19, [x21, #8196]
+   55e64:	8b1306b8 	add	x24, x21, x19, lsl #1
+   55e68:	11000673 	add	w19, w19, #0x1
+   55e6c:	79200b06 	strh	w6, [x24, #4100]
+   55e70:	b92006b3 	str	w19, [x21, #8196]
+   55e74:	3617fd67 	tbz	w7, #2, 55e20 <JNI_OnUnload@@Base+0x3b2bc>
+   55e78:	b9700ab3 	ldr	w19, [x21, #12296]
+
+--- bit9 hit 11, disassembly line 66481 ---
+   55eec:	363ffa47 	tbz	w7, #7, 55e34 <JNI_OnUnload@@Base+0x3b2d0>
+   55ef0:	b94002f3 	ldr	w19, [x23]
+   55ef4:	8b1306b8 	add	x24, x21, x19, lsl #1
+   55ef8:	11000673 	add	w19, w19, #0x1
+   55efc:	78306b06 	strh	w6, [x24, x16]
+   55f00:	b90002f3 	str	w19, [x23]
+   55f04:	3647f9a7 	tbz	w7, #8, 55e38 <JNI_OnUnload@@Base+0x3b2d4>
+   55f08:	b95006f3 	ldr	w19, [x23, #4100]
+   55f0c:	8b1306b8 	add	x24, x21, x19, lsl #1
+   55f10:	11000673 	add	w19, w19, #0x1
+   55f14:	782f6b06 	strh	w6, [x24, x15]
+   55f18:	b91006f3 	str	w19, [x23, #4100]
+   55f1c:	364ff907 	tbz	w7, #9, 55e3c <JNI_OnUnload@@Base+0x3b2d8>
+   55f20:	b9600af3 	ldr	w19, [x23, #8200]
+   55f24:	8b1306b8 	add	x24, x21, x19, lsl #1
+   55f28:	11000673 	add	w19, w19, #0x1
+   55f2c:	782e6b06 	strh	w6, [x24, x14]
+   55f30:	b9200af3 	str	w19, [x23, #8200]
+   55f34:	3657f867 	tbz	w7, #10, 55e40 <JNI_OnUnload@@Base+0x3b2dc>
+   55f38:	b9700ef3 	ldr	w19, [x23, #12300]
+   55f3c:	8b1306b8 	add	x24, x21, x19, lsl #1
+   55f40:	11000673 	add	w19, w19, #0x1
+   55f44:	782d6b06 	strh	w6, [x24, x13]
+   55f48:	b9300ef3 	str	w19, [x23, #12300]
+   55f4c:	d1000484 	sub	x4, x4, #0x1
+   55f50:	365ff487 	tbz	w7, #11, 55de0 <JNI_OnUnload@@Base+0x3b27c>
+   55f54:	b9400387 	ldr	w7, [x28]
+   55f58:	8b0706b3 	add	x19, x21, x7, lsl #1
+   55f5c:	110004e7 	add	w7, w7, #0x1
+
+--- bit9 hit 12, disassembly line 66639 ---
+   56164:	11000610 	add	w16, w16, #0x1
+   56168:	6b10023f 	cmp	w17, w16
+   5616c:	54000040 	b.eq	56174 <JNI_OnUnload@@Base+0x3b610>  // b.none
+   56170:	d65f03c0 	ret
+   56174:	4b0a01ea 	sub	w10, w15, w10
+   56178:	4b0b01ce 	sub	w14, w14, w11
+   5617c:	531c6d4f 	lsl	w15, w10, #4
+   56180:	110005d0 	add	w16, w14, #0x1
+   56184:	6b0e01ff 	cmp	w15, w14
+   56188:	1a9f07ee 	cset	w14, ne	// ne = any
+   5618c:	6b1001ff 	cmp	w15, w16
+   56190:	1a9f07ef 	cset	w15, ne	// ne = any
+   56194:	364ffee8 	tbz	w8, #9, 56170 <JNI_OnUnload@@Base+0x3b60c>
+   56198:	0a0f01ce 	and	w14, w14, w15
+   5619c:	3707feae 	tbnz	w14, #0, 56170 <JNI_OnUnload@@Base+0x3b60c>
+   561a0:	2a0c016e 	orr	w14, w11, w12
+   561a4:	37fffe6e 	tbnz	w14, #31, 56170 <JNI_OnUnload@@Base+0x3b60c>
+   561a8:	1214050e 	and	w14, w8, #0x3000
+   561ac:	71400ddf 	cmp	w14, #0x3, lsl #12
+   561b0:	54fffe01 	b.ne	56170 <JNI_OnUnload@@Base+0x3b60c>  // b.any
+   561b4:	b940040e 	ldr	w14, [x0, #4]
+   561b8:	121c05ce 	and	w14, w14, #0x30
+   561bc:	35fffdae 	cbnz	w14, 56170 <JNI_OnUnload@@Base+0x3b60c>
+   561c0:	7940812e 	ldrh	w14, [x9, #64]
+   561c4:	0b8c11ac 	add	w12, w13, w12, asr #4
+   561c8:	6b0e019f 	cmp	w12, w14
+   561cc:	54fffd28 	b.hi	56170 <JNI_OnUnload@@Base+0x3b60c>  // b.pmore
+   561d0:	79408529 	ldrh	w9, [x9, #66]
+   561d4:	0b8b114a 	add	w10, w10, w11, asr #4
+
+--- bit9 hit 13, disassembly line 66873 ---
+   5650c:	1ac82548 	lsr	w8, w10, w8
+   56510:	0a090108 	and	w8, w8, w9
+   56514:	370001c8 	tbnz	w8, #0, 5654c <JNI_OnUnload@@Base+0x3b9e8>
+   56518:	f94033fb 	ldr	x27, [sp, #96]
+   5651c:	37080248 	tbnz	w8, #1, 56564 <JNI_OnUnload@@Base+0x3ba00>
+   56520:	371002e8 	tbnz	w8, #2, 5657c <JNI_OnUnload@@Base+0x3ba18>
+   56524:	371803a8 	tbnz	w8, #3, 56598 <JNI_OnUnload@@Base+0x3ba34>
+   56528:	37200468 	tbnz	w8, #4, 565b4 <JNI_OnUnload@@Base+0x3ba50>
+   5652c:	37280528 	tbnz	w8, #5, 565d0 <JNI_OnUnload@@Base+0x3ba6c>
+   56530:	373005e8 	tbnz	w8, #6, 565ec <JNI_OnUnload@@Base+0x3ba88>
+   56534:	373806a8 	tbnz	w8, #7, 56608 <JNI_OnUnload@@Base+0x3baa4>
+   56538:	37400768 	tbnz	w8, #8, 56624 <JNI_OnUnload@@Base+0x3bac0>
+   5653c:	37480828 	tbnz	w8, #9, 56640 <JNI_OnUnload@@Base+0x3badc>
+   56540:	375008e8 	tbnz	w8, #10, 5665c <JNI_OnUnload@@Base+0x3baf8>
+   56544:	365feca8 	tbz	w8, #11, 562d8 <JNI_OnUnload@@Base+0x3b774>
+   56548:	1400004c 	b	56678 <JNI_OnUnload@@Base+0x3bb14>
+   5654c:	b9500029 	ldr	w9, [x1, #4096]
+   56550:	78297835 	strh	w21, [x1, x9, lsl #1]
+   56554:	11000529 	add	w9, w9, #0x1
+   56558:	b9100029 	str	w9, [x1, #4096]
+   5655c:	f94033fb 	ldr	x27, [sp, #96]
+   56560:	360ffe08 	tbz	w8, #1, 56520 <JNI_OnUnload@@Base+0x3b9bc>
+   56564:	b9600429 	ldr	w9, [x1, #8196]
+   56568:	8b09042a 	add	x10, x1, x9, lsl #1
+   5656c:	11000529 	add	w9, w9, #0x1
+   56570:	79200955 	strh	w21, [x10, #4100]
+   56574:	b9200429 	str	w9, [x1, #8196]
+   56578:	3617fd68 	tbz	w8, #2, 56524 <JNI_OnUnload@@Base+0x3b9c0>
+   5657c:	b9700829 	ldr	w9, [x1, #12296]
+
+--- bit9 hit 14, disassembly line 66937 ---
+   5660c:	528e038b 	mov	w11, #0x701c                	// #28700
+   56610:	8b09042a 	add	x10, x1, x9, lsl #1
+   56614:	11000529 	add	w9, w9, #0x1
+   56618:	782b6955 	strh	w21, [x10, x11]
+   5661c:	b9000349 	str	w9, [x26]
+   56620:	3647f8e8 	tbz	w8, #8, 5653c <JNI_OnUnload@@Base+0x3b9d8>
+   56624:	b9500749 	ldr	w9, [x26, #4100]
+   56628:	5290040b 	mov	w11, #0x8020                	// #32800
+   5662c:	8b09042a 	add	x10, x1, x9, lsl #1
+   56630:	11000529 	add	w9, w9, #0x1
+   56634:	782b6955 	strh	w21, [x10, x11]
+   56638:	b9100749 	str	w9, [x26, #4100]
+   5663c:	364ff828 	tbz	w8, #9, 56540 <JNI_OnUnload@@Base+0x3b9dc>
+   56640:	b9600b49 	ldr	w9, [x26, #8200]
+   56644:	5292048b 	mov	w11, #0x9024                	// #36900
+   56648:	8b09042a 	add	x10, x1, x9, lsl #1
+   5664c:	11000529 	add	w9, w9, #0x1
+   56650:	782b6955 	strh	w21, [x10, x11]
+   56654:	b9200b49 	str	w9, [x26, #8200]
+   56658:	3657f768 	tbz	w8, #10, 56544 <JNI_OnUnload@@Base+0x3b9e0>
+   5665c:	b9700f49 	ldr	w9, [x26, #12300]
+   56660:	5294050b 	mov	w11, #0xa028                	// #41000
+   56664:	8b09042a 	add	x10, x1, x9, lsl #1
+   56668:	11000529 	add	w9, w9, #0x1
+   5666c:	782b6955 	strh	w21, [x10, x11]
+   56670:	b9300f49 	str	w9, [x26, #12300]
+   56674:	365fe328 	tbz	w8, #11, 562d8 <JNI_OnUnload@@Base+0x3b774>
+   56678:	f9400fea 	ldr	x10, [sp, #24]
+   5667c:	5296058b 	mov	w11, #0xb02c                	// #45100
+
+--- bit9 hit 15, disassembly line 72026 ---
+   5b590:	d345fce7 	lsr	x7, x7, #5
+   5b594:	1ac72167 	lsl	w7, w11, w7
+   5b598:	0a0500e7 	and	w7, w7, w5
+   5b59c:	370001c7 	tbnz	w7, #0, 5b5d4 <JNI_OnUnload@@Base+0x40a70>
+   5b5a0:	37080247 	tbnz	w7, #1, 5b5e8 <JNI_OnUnload@@Base+0x40a84>
+   5b5a4:	371002e7 	tbnz	w7, #2, 5b600 <JNI_OnUnload@@Base+0x40a9c>
+   5b5a8:	37180387 	tbnz	w7, #3, 5b618 <JNI_OnUnload@@Base+0x40ab4>
+   5b5ac:	37200427 	tbnz	w7, #4, 5b630 <JNI_OnUnload@@Base+0x40acc>
+   5b5b0:	372804c7 	tbnz	w7, #5, 5b648 <JNI_OnUnload@@Base+0x40ae4>
+   5b5b4:	37300567 	tbnz	w7, #6, 5b660 <JNI_OnUnload@@Base+0x40afc>
+   5b5b8:	37380607 	tbnz	w7, #7, 5b678 <JNI_OnUnload@@Base+0x40b14>
+   5b5bc:	374006a7 	tbnz	w7, #8, 5b690 <JNI_OnUnload@@Base+0x40b2c>
+   5b5c0:	37480747 	tbnz	w7, #9, 5b6a8 <JNI_OnUnload@@Base+0x40b44>
+   5b5c4:	375007e7 	tbnz	w7, #10, 5b6c0 <JNI_OnUnload@@Base+0x40b5c>
+   5b5c8:	d1000484 	sub	x4, x4, #0x1
+   5b5cc:	365ffce7 	tbz	w7, #11, 5b568 <JNI_OnUnload@@Base+0x40a04>
+   5b5d0:	14000043 	b	5b6dc <JNI_OnUnload@@Base+0x40b78>
+   5b5d4:	b95002b3 	ldr	w19, [x21, #4096]
+   5b5d8:	78337aa6 	strh	w6, [x21, x19, lsl #1]
+   5b5dc:	11000673 	add	w19, w19, #0x1
+   5b5e0:	b91002b3 	str	w19, [x21, #4096]
+   5b5e4:	360ffe07 	tbz	w7, #1, 5b5a4 <JNI_OnUnload@@Base+0x40a40>
+   5b5e8:	b96006b3 	ldr	w19, [x21, #8196]
+   5b5ec:	8b1306b8 	add	x24, x21, x19, lsl #1
+   5b5f0:	11000673 	add	w19, w19, #0x1
+   5b5f4:	79200b06 	strh	w6, [x24, #4100]
+   5b5f8:	b92006b3 	str	w19, [x21, #8196]
+   5b5fc:	3617fd67 	tbz	w7, #2, 5b5a8 <JNI_OnUnload@@Base+0x40a44>
+   5b600:	b9700ab3 	ldr	w19, [x21, #12296]
+
+--- bit9 hit 16, disassembly line 72083 ---
+   5b674:	363ffa47 	tbz	w7, #7, 5b5bc <JNI_OnUnload@@Base+0x40a58>
+   5b678:	b94002f3 	ldr	w19, [x23]
+   5b67c:	8b1306b8 	add	x24, x21, x19, lsl #1
+   5b680:	11000673 	add	w19, w19, #0x1
+   5b684:	78306b06 	strh	w6, [x24, x16]
+   5b688:	b90002f3 	str	w19, [x23]
+   5b68c:	3647f9a7 	tbz	w7, #8, 5b5c0 <JNI_OnUnload@@Base+0x40a5c>
+   5b690:	b95006f3 	ldr	w19, [x23, #4100]
+   5b694:	8b1306b8 	add	x24, x21, x19, lsl #1
+   5b698:	11000673 	add	w19, w19, #0x1
+   5b69c:	782f6b06 	strh	w6, [x24, x15]
+   5b6a0:	b91006f3 	str	w19, [x23, #4100]
+   5b6a4:	364ff907 	tbz	w7, #9, 5b5c4 <JNI_OnUnload@@Base+0x40a60>
+   5b6a8:	b9600af3 	ldr	w19, [x23, #8200]
+   5b6ac:	8b1306b8 	add	x24, x21, x19, lsl #1
+   5b6b0:	11000673 	add	w19, w19, #0x1
+   5b6b4:	782e6b06 	strh	w6, [x24, x14]
+   5b6b8:	b9200af3 	str	w19, [x23, #8200]
+   5b6bc:	3657f867 	tbz	w7, #10, 5b5c8 <JNI_OnUnload@@Base+0x40a64>
+   5b6c0:	b9700ef3 	ldr	w19, [x23, #12300]
+   5b6c4:	8b1306b8 	add	x24, x21, x19, lsl #1
+   5b6c8:	11000673 	add	w19, w19, #0x1
+   5b6cc:	782d6b06 	strh	w6, [x24, x13]
+   5b6d0:	b9300ef3 	str	w19, [x23, #12300]
+   5b6d4:	d1000484 	sub	x4, x4, #0x1
+   5b6d8:	365ff487 	tbz	w7, #11, 5b568 <JNI_OnUnload@@Base+0x40a04>
+   5b6dc:	b9400387 	ldr	w7, [x28]
+   5b6e0:	8b0706b3 	add	x19, x21, x7, lsl #1
+   5b6e4:	110004e7 	add	w7, w7, #0x1
+
+--- bit9 hit 17, disassembly line 72325 ---
+   5ba3c:	1ac82548 	lsr	w8, w10, w8
+   5ba40:	0a090108 	and	w8, w8, w9
+   5ba44:	370001c8 	tbnz	w8, #0, 5ba7c <JNI_OnUnload@@Base+0x40f18>
+   5ba48:	f94033fb 	ldr	x27, [sp, #96]
+   5ba4c:	37080248 	tbnz	w8, #1, 5ba94 <JNI_OnUnload@@Base+0x40f30>
+   5ba50:	371002e8 	tbnz	w8, #2, 5baac <JNI_OnUnload@@Base+0x40f48>
+   5ba54:	371803a8 	tbnz	w8, #3, 5bac8 <JNI_OnUnload@@Base+0x40f64>
+   5ba58:	37200468 	tbnz	w8, #4, 5bae4 <JNI_OnUnload@@Base+0x40f80>
+   5ba5c:	37280528 	tbnz	w8, #5, 5bb00 <JNI_OnUnload@@Base+0x40f9c>
+   5ba60:	373005e8 	tbnz	w8, #6, 5bb1c <JNI_OnUnload@@Base+0x40fb8>
+   5ba64:	373806a8 	tbnz	w8, #7, 5bb38 <JNI_OnUnload@@Base+0x40fd4>
+   5ba68:	37400768 	tbnz	w8, #8, 5bb54 <JNI_OnUnload@@Base+0x40ff0>
+   5ba6c:	37480828 	tbnz	w8, #9, 5bb70 <JNI_OnUnload@@Base+0x4100c>
+   5ba70:	375008e8 	tbnz	w8, #10, 5bb8c <JNI_OnUnload@@Base+0x41028>
+   5ba74:	365feca8 	tbz	w8, #11, 5b808 <JNI_OnUnload@@Base+0x40ca4>
+   5ba78:	1400004c 	b	5bba8 <JNI_OnUnload@@Base+0x41044>
+   5ba7c:	b9500029 	ldr	w9, [x1, #4096]
+   5ba80:	78297835 	strh	w21, [x1, x9, lsl #1]
+   5ba84:	11000529 	add	w9, w9, #0x1
+   5ba88:	b9100029 	str	w9, [x1, #4096]
+   5ba8c:	f94033fb 	ldr	x27, [sp, #96]
+   5ba90:	360ffe08 	tbz	w8, #1, 5ba50 <JNI_OnUnload@@Base+0x40eec>
+   5ba94:	b9600429 	ldr	w9, [x1, #8196]
+   5ba98:	8b09042a 	add	x10, x1, x9, lsl #1
+   5ba9c:	11000529 	add	w9, w9, #0x1
+   5baa0:	79200955 	strh	w21, [x10, #4100]
+   5baa4:	b9200429 	str	w9, [x1, #8196]
+   5baa8:	3617fd68 	tbz	w8, #2, 5ba54 <JNI_OnUnload@@Base+0x40ef0>
+   5baac:	b9700829 	ldr	w9, [x1, #12296]
+
+--- bit9 hit 18, disassembly line 72389 ---
+   5bb3c:	528e038b 	mov	w11, #0x701c                	// #28700
+   5bb40:	8b09042a 	add	x10, x1, x9, lsl #1
+   5bb44:	11000529 	add	w9, w9, #0x1
+   5bb48:	782b6955 	strh	w21, [x10, x11]
+   5bb4c:	b9000349 	str	w9, [x26]
+   5bb50:	3647f8e8 	tbz	w8, #8, 5ba6c <JNI_OnUnload@@Base+0x40f08>
+   5bb54:	b9500749 	ldr	w9, [x26, #4100]
+   5bb58:	5290040b 	mov	w11, #0x8020                	// #32800
+   5bb5c:	8b09042a 	add	x10, x1, x9, lsl #1
+   5bb60:	11000529 	add	w9, w9, #0x1
+   5bb64:	782b6955 	strh	w21, [x10, x11]
+   5bb68:	b9100749 	str	w9, [x26, #4100]
+   5bb6c:	364ff828 	tbz	w8, #9, 5ba70 <JNI_OnUnload@@Base+0x40f0c>
+   5bb70:	b9600b49 	ldr	w9, [x26, #8200]
+   5bb74:	5292048b 	mov	w11, #0x9024                	// #36900
+   5bb78:	8b09042a 	add	x10, x1, x9, lsl #1
+   5bb7c:	11000529 	add	w9, w9, #0x1
+   5bb80:	782b6955 	strh	w21, [x10, x11]
+   5bb84:	b9200b49 	str	w9, [x26, #8200]
+   5bb88:	3657f768 	tbz	w8, #10, 5ba74 <JNI_OnUnload@@Base+0x40f10>
+   5bb8c:	b9700f49 	ldr	w9, [x26, #12300]
+   5bb90:	5294050b 	mov	w11, #0xa028                	// #41000
+   5bb94:	8b09042a 	add	x10, x1, x9, lsl #1
+   5bb98:	11000529 	add	w9, w9, #0x1
+   5bb9c:	782b6955 	strh	w21, [x10, x11]
+   5bba0:	b9300f49 	str	w9, [x26, #12300]
+   5bba4:	365fe328 	tbz	w8, #11, 5b808 <JNI_OnUnload@@Base+0x40ca4>
+   5bba8:	f9400fea 	ldr	x10, [sp, #24]
+   5bbac:	5296058b 	mov	w11, #0xb02c                	// #45100
+
+--- bit9 hit 19, disassembly line 108528 ---
+   7efe8:	b0000482 	adrp	x2, 10f000 <JNI_OnUnload@@Base+0xf449c>
+   7efec:	121f1106 	and	w6, w8, #0x3e
+   7eff0:	913fd842 	add	x2, x2, #0xff6
+   7eff4:	140000cc 	b	7f324 <JNI_OnUnload@@Base+0x647c0>
+   7eff8:	b0000489 	adrp	x9, 10f000 <JNI_OnUnload@@Base+0xf449c>
+   7effc:	530a3288 	ubfx	w8, w20, #10, #3
+   7f000:	91217929 	add	x9, x9, #0x85e
+   7f004:	1000008a 	adr	x10, 7f014 <JNI_OnUnload@@Base+0x644b0>
+   7f008:	3868692b 	ldrb	w11, [x9, x8]
+   7f00c:	8b0b094a 	add	x10, x10, x11, lsl #2
+   7f010:	d61f0140 	br	x10
+   7f014:	530a2e88 	ubfx	w8, w20, #10, #2
+   7f018:	37481334 	tbnz	w20, #9, 7f27c <JNI_OnUnload@@Base+0x64718>
+   7f01c:	b0000629 	adrp	x9, 144000 <JNI_OnUnload@@Base+0x12949c>
+   7f020:	9110c129 	add	x9, x9, #0x430
+   7f024:	14000098 	b	7f284 <JNI_OnUnload@@Base+0x64720>
+   7f028:	b000062a 	adrp	x10, 144000 <JNI_OnUnload@@Base+0x12949c>
+   7f02c:	b000062c 	adrp	x12, 144000 <JNI_OnUnload@@Base+0x12949c>
+   7f030:	530b3289 	ubfx	w9, w20, #11, #2
+   7f034:	9111c14a 	add	x10, x10, #0x470
+   7f038:	12000a8b 	and	w11, w20, #0x7
+   7f03c:	910b818c 	add	x12, x12, #0x2e0
+   7f040:	5303168d 	ubfx	w13, w20, #3, #3
+   7f044:	f8695943 	ldr	x3, [x10, w9, uxtw #3]
+   7f048:	f86b5984 	ldr	x4, [x12, w11, uxtw #3]
+   7f04c:	f86d5985 	ldr	x5, [x12, w13, uxtw #3]
+   7f050:	53062a88 	ubfx	w8, w20, #6, #5
+   7f054:	531e7509 	lsl	w9, w8, #2
+   7f058:	7214029f 	tst	w20, #0x1000
+
+--- bit9 hit 20, disassembly line 131199 ---
+   95228:	36380ab4 	tbz	w20, #7, 9537c <JNI_OnUnload@@Base+0x7a818>
+   9522c:	f00003c1 	adrp	x1, 110000 <JNI_OnUnload@@Base+0xf549c>
+   95230:	912cc021 	add	x1, x1, #0xb30
+   95234:	528000e2 	mov	w2, #0x7                   	// #7
+   95238:	aa1303e0 	mov	x0, x19
+   9523c:	97fe03e5 	bl	161d0 <fprintf@plt>
+   95240:	36400a74 	tbz	w20, #8, 9538c <JNI_OnUnload@@Base+0x7a828>
+   95244:	f00003c1 	adrp	x1, 110000 <JNI_OnUnload@@Base+0xf549c>
+   95248:	912cc021 	add	x1, x1, #0xb30
+   9524c:	52800102 	mov	w2, #0x8                   	// #8
+   95250:	aa1303e0 	mov	x0, x19
+   95254:	97fe03df 	bl	161d0 <fprintf@plt>
+   95258:	36480a34 	tbz	w20, #9, 9539c <JNI_OnUnload@@Base+0x7a838>
+   9525c:	f00003c1 	adrp	x1, 110000 <JNI_OnUnload@@Base+0xf549c>
+   95260:	912cc021 	add	x1, x1, #0xb30
+   95264:	52800122 	mov	w2, #0x9                   	// #9
+   95268:	aa1303e0 	mov	x0, x19
+   9526c:	97fe03d9 	bl	161d0 <fprintf@plt>
+   95270:	365009f4 	tbz	w20, #10, 953ac <JNI_OnUnload@@Base+0x7a848>
+   95274:	f00003c1 	adrp	x1, 110000 <JNI_OnUnload@@Base+0xf549c>
+   95278:	912cc021 	add	x1, x1, #0xb30
+   9527c:	52800142 	mov	w2, #0xa                   	// #10
+   95280:	aa1303e0 	mov	x0, x19
+   95284:	97fe03d3 	bl	161d0 <fprintf@plt>
+   95288:	365809b4 	tbz	w20, #11, 953bc <JNI_OnUnload@@Base+0x7a858>
+   9528c:	f00003c1 	adrp	x1, 110000 <JNI_OnUnload@@Base+0xf549c>
+   95290:	912cc021 	add	x1, x1, #0xb30
+   95294:	52800162 	mov	w2, #0xb                   	// #11
+   95298:	aa1303e0 	mov	x0, x19
+
+--- bit9 hit 21, disassembly line 131279 ---
+   95368:	3737f574 	tbnz	w20, #6, 95214 <JNI_OnUnload@@Base+0x7a6b0>
+   9536c:	528005a0 	mov	w0, #0x2d                  	// #45
+   95370:	aa1303e1 	mov	x1, x19
+   95374:	97fe03ab 	bl	16220 <fputc@plt>
+   95378:	373ff5b4 	tbnz	w20, #7, 9522c <JNI_OnUnload@@Base+0x7a6c8>
+   9537c:	528005a0 	mov	w0, #0x2d                  	// #45
+   95380:	aa1303e1 	mov	x1, x19
+   95384:	97fe03a7 	bl	16220 <fputc@plt>
+   95388:	3747f5f4 	tbnz	w20, #8, 95244 <JNI_OnUnload@@Base+0x7a6e0>
+   9538c:	528005a0 	mov	w0, #0x2d                  	// #45
+   95390:	aa1303e1 	mov	x1, x19
+   95394:	97fe03a3 	bl	16220 <fputc@plt>
+   95398:	374ff634 	tbnz	w20, #9, 9525c <JNI_OnUnload@@Base+0x7a6f8>
+   9539c:	528005a0 	mov	w0, #0x2d                  	// #45
+   953a0:	aa1303e1 	mov	x1, x19
+   953a4:	97fe039f 	bl	16220 <fputc@plt>
+   953a8:	3757f674 	tbnz	w20, #10, 95274 <JNI_OnUnload@@Base+0x7a710>
+   953ac:	528005a0 	mov	w0, #0x2d                  	// #45
+   953b0:	aa1303e1 	mov	x1, x19
+   953b4:	97fe039b 	bl	16220 <fputc@plt>
+   953b8:	375ff6b4 	tbnz	w20, #11, 9528c <JNI_OnUnload@@Base+0x7a728>
+   953bc:	528005a0 	mov	w0, #0x2d                  	// #45
+   953c0:	aa1303e1 	mov	x1, x19
+   953c4:	97fe0397 	bl	16220 <fputc@plt>
+   953c8:	3767f6f4 	tbnz	w20, #12, 952a4 <JNI_OnUnload@@Base+0x7a740>
+   953cc:	528005a0 	mov	w0, #0x2d                  	// #45
+   953d0:	aa1303e1 	mov	x1, x19
+   953d4:	97fe0393 	bl	16220 <fputc@plt>
+   953d8:	376ff734 	tbnz	w20, #13, 952bc <JNI_OnUnload@@Base+0x7a758>
+
+--- bit9 hit 22, disassembly line 173623 ---
+   be908:	381842c8 	sturb	w8, [x22, #-124]
+   be90c:	f857c2c8 	ldur	x8, [x22, #-132]
+   be910:	b2520fe9 	mov	x9, #0x3c00000000000       	// #1055531162664960
+   be914:	b9001adf 	str	wzr, [x22, #24]
+   be918:	a900a2c9 	stp	x9, x8, [x22, #8]
+   be91c:	36200234 	tbz	w20, #4, be960 <JNI_OnUnload@@Base+0xa3dfc>
+   be920:	aa1303e0 	mov	x0, x19
+   be924:	9400266e 	bl	c82dc <JNI_OnUnload@@Base+0xad778>
+   be928:	2a0003f9 	mov	w25, w0
+   be92c:	528000e1 	mov	w1, #0x7                   	// #7
+   be930:	aa1303e0 	mov	x0, x19
+   be934:	94002664 	bl	c82c4 <JNI_OnUnload@@Base+0xad760>
+   be938:	37481459 	tbnz	w25, #9, bebc0 <JNI_OnUnload@@Base+0xa405c>
+   be93c:	375014b9 	tbnz	w25, #10, bebd0 <JNI_OnUnload@@Base+0xa406c>
+   be940:	37581519 	tbnz	w25, #11, bebe0 <JNI_OnUnload@@Base+0xa407c>
+   be944:	37601579 	tbnz	w25, #12, bebf0 <JNI_OnUnload@@Base+0xa408c>
+   be948:	376815d9 	tbnz	w25, #13, bec00 <JNI_OnUnload@@Base+0xa409c>
+   be94c:	37701639 	tbnz	w25, #14, bec10 <JNI_OnUnload@@Base+0xa40ac>
+   be950:	36780099 	tbz	w25, #15, be960 <JNI_OnUnload@@Base+0xa3dfc>
+   be954:	aa1303e0 	mov	x0, x19
+   be958:	940025d6 	bl	c80b0 <JNI_OnUnload@@Base+0xad54c>
+   be95c:	b900a2e0 	str	w0, [x23, #160]
+   be960:	eb1c037f 	cmp	x27, x28
+   be964:	54000501 	b.ne	bea04 <JNI_OnUnload@@Base+0xa3ea0>  // b.any
+   be968:	aa1303e0 	mov	x0, x19
+   be96c:	940025d1 	bl	c80b0 <JNI_OnUnload@@Base+0xad54c>
+   be970:	51000408 	sub	w8, w0, #0x1
+   be974:	529fffc9 	mov	w9, #0xfffe                	// #65534
+   be978:	6b09011f 	cmp	w8, w9
+
+## Writes/reads of candidate render size fields +348 / +352
+Found 78 accesses.
+
+--- size-field hit 1, disassembly line 2353 ---
+   17734:	aa1503e1 	mov	x1, x21
+   17738:	97fffaa6 	bl	161d0 <fprintf@plt>
+   1773c:	b9415ae3 	ldr	w3, [x23, #344]
+   17740:	52800042 	mov	w2, #0x2                   	// #2
+   17744:	aa1303e0 	mov	x0, x19
+   17748:	aa1503e1 	mov	x1, x21
+   1774c:	97fffaa1 	bl	161d0 <fprintf@plt>
+   17750:	529e1988 	mov	w8, #0xf0cc                	// #61644
+   17754:	72a02b88 	movk	w8, #0x15c, lsl #16
+   17758:	b8686b63 	ldr	w3, [x27, x8]
+   1775c:	52800062 	mov	w2, #0x3                   	// #3
+   17760:	aa1303e0 	mov	x0, x19
+   17764:	aa1503e1 	mov	x1, x21
+   17768:	97fffa9a 	bl	161d0 <fprintf@plt>
+   1776c:	b94162e3 	ldr	w3, [x23, #352]
+   17770:	52800082 	mov	w2, #0x4                   	// #4
+   17774:	aa1303e0 	mov	x0, x19
+   17778:	aa1503e1 	mov	x1, x21
+   1777c:	97fffa95 	bl	161d0 <fprintf@plt>
+   17780:	529e1a88 	mov	w8, #0xf0d4                	// #61652
+   17784:	72a02b88 	movk	w8, #0x15c, lsl #16
+   17788:	b8686b63 	ldr	w3, [x27, x8]
+   1778c:	528000a2 	mov	w2, #0x5                   	// #5
+   17790:	aa1303e0 	mov	x0, x19
+   17794:	aa1503e1 	mov	x1, x21
+   17798:	97fffa8e 	bl	161d0 <fprintf@plt>
+   1779c:	b9416ae3 	ldr	w3, [x23, #360]
+   177a0:	528000c2 	mov	w2, #0x6                   	// #6
+   177a4:	aa1303e0 	mov	x0, x19
+   177a8:	aa1503e1 	mov	x1, x21
+   177ac:	97fffa89 	bl	161d0 <fprintf@plt>
+   177b0:	529e1b88 	mov	w8, #0xf0dc                	// #61660
+   177b4:	72a02b88 	movk	w8, #0x15c, lsl #16
+
+--- size-field hit 2, disassembly line 2470 ---
+   17908:	aa1503e1 	mov	x1, x21
+   1790c:	97fffa31 	bl	161d0 <fprintf@plt>
+   17910:	b9415b43 	ldr	w3, [x26, #344]
+   17914:	52800042 	mov	w2, #0x2                   	// #2
+   17918:	aa1303e0 	mov	x0, x19
+   1791c:	aa1503e1 	mov	x1, x21
+   17920:	97fffa2c 	bl	161d0 <fprintf@plt>
+   17924:	528ad788 	mov	w8, #0x56bc                	// #22204
+   17928:	72a04ba8 	movk	w8, #0x25d, lsl #16
+   1792c:	b8686b63 	ldr	w3, [x27, x8]
+   17930:	52800062 	mov	w2, #0x3                   	// #3
+   17934:	aa1303e0 	mov	x0, x19
+   17938:	aa1503e1 	mov	x1, x21
+   1793c:	97fffa25 	bl	161d0 <fprintf@plt>
+   17940:	b9416343 	ldr	w3, [x26, #352]
+   17944:	52800082 	mov	w2, #0x4                   	// #4
+   17948:	aa1303e0 	mov	x0, x19
+   1794c:	aa1503e1 	mov	x1, x21
+   17950:	97fffa20 	bl	161d0 <fprintf@plt>
+   17954:	528ad888 	mov	w8, #0x56c4                	// #22212
+   17958:	72a04ba8 	movk	w8, #0x25d, lsl #16
+   1795c:	b8686b63 	ldr	w3, [x27, x8]
+   17960:	528000a2 	mov	w2, #0x5                   	// #5
+   17964:	aa1303e0 	mov	x0, x19
+   17968:	aa1503e1 	mov	x1, x21
+   1796c:	97fffa19 	bl	161d0 <fprintf@plt>
+   17970:	b9416b43 	ldr	w3, [x26, #360]
+   17974:	528000c2 	mov	w2, #0x6                   	// #6
+   17978:	aa1303e0 	mov	x0, x19
+   1797c:	aa1503e1 	mov	x1, x21
+   17980:	97fffa14 	bl	161d0 <fprintf@plt>
+   17984:	528ad988 	mov	w8, #0x56cc                	// #22220
+   17988:	72a04ba8 	movk	w8, #0x25d, lsl #16
+
+--- size-field hit 3, disassembly line 3635 ---
+   18a44:	aa0003fb 	mov	x27, x0
+   18a48:	aa1303e0 	mov	x0, x19
+   18a4c:	aa1803e1 	mov	x1, x24
+   18a50:	f9437908 	ldr	x8, [x8, #1776]
+   18a54:	aa1f03e2 	mov	x2, xzr
+   18a58:	d63f0100 	blr	x8
+   18a5c:	aa0003e2 	mov	x2, x0
+   18a60:	34000455 	cbz	w21, 18ae8 <Java_com_dsemu_drastic_DraSticJNI_getRomIconData@@Base+0x14c>
+   18a64:	6f00e400 	movi	v0.2d, #0x0
+   18a68:	ad000320 	stp	q0, q0, [x25]
+   18a6c:	ad0f0360 	stp	q0, q0, [x27, #480]
+   18a70:	ad0e0360 	stp	q0, q0, [x27, #448]
+   18a74:	ad0d0360 	stp	q0, q0, [x27, #416]
+   18a78:	ad0c0360 	stp	q0, q0, [x27, #384]
+   18a7c:	ad0b0360 	stp	q0, q0, [x27, #352]
+   18a80:	ad0a0360 	stp	q0, q0, [x27, #320]
+   18a84:	ad090360 	stp	q0, q0, [x27, #288]
+   18a88:	ad080360 	stp	q0, q0, [x27, #256]
+   18a8c:	ad070360 	stp	q0, q0, [x27, #224]
+   18a90:	ad060360 	stp	q0, q0, [x27, #192]
+   18a94:	ad050360 	stp	q0, q0, [x27, #160]
+   18a98:	ad040360 	stp	q0, q0, [x27, #128]
+   18a9c:	ad030360 	stp	q0, q0, [x27, #96]
+   18aa0:	ad020360 	stp	q0, q0, [x27, #64]
+   18aa4:	ad010360 	stp	q0, q0, [x27, #32]
+   18aa8:	ad000360 	stp	q0, q0, [x27]
+   18aac:	ad070040 	stp	q0, q0, [x2, #224]
+   18ab0:	ad060040 	stp	q0, q0, [x2, #192]
+   18ab4:	ad050040 	stp	q0, q0, [x2, #160]
+   18ab8:	ad040040 	stp	q0, q0, [x2, #128]
+   18abc:	ad030040 	stp	q0, q0, [x2, #96]
+   18ac0:	ad020040 	stp	q0, q0, [x2, #64]
+   18ac4:	ad010040 	stp	q0, q0, [x2, #32]
+
+--- size-field hit 4, disassembly line 7341 ---
+   1c2d4:	aa1603e0 	mov	x0, x22
+   1c2d8:	9401641c 	bl	75348 <JNI_OnUnload@@Base+0x5a7e4>
+   1c2dc:	aa1403e0 	mov	x0, x20
+   1c2e0:	94000045 	bl	1c3f4 <JNI_OnUnload@@Base+0x1890>
+   1c2e4:	529f2608 	mov	w8, #0xf930                	// #63792
+   1c2e8:	72a07648 	movk	w8, #0x3b2, lsl #16
+   1c2ec:	38686a88 	ldrb	w8, [x20, x8]
+   1c2f0:	34000468 	cbz	w8, 1c37c <JNI_OnUnload@@Base+0x1818>
+   1c2f4:	f9400368 	ldr	x8, [x27]
+   1c2f8:	aa1503e0 	mov	x0, x21
+   1c2fc:	b9401114 	ldr	w20, [x8, #16]
+   1c300:	900008e8 	adrp	x8, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1c304:	f9476108 	ldr	x8, [x8, #3776]
+   1c308:	11002281 	add	w1, w20, #0x8
+   1c30c:	f900b368 	str	x8, [x27, #352]
+   1c310:	900008e8 	adrp	x8, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1c314:	f946e108 	ldr	x8, [x8, #3520]
+   1c318:	f9009b48 	str	x8, [x26, #304]
+   1c31c:	94006733 	bl	35fe8 <JNI_OnUnload@@Base+0x1b484>
+   1c320:	f9001f60 	str	x0, [x27, #56]
+   1c324:	11006281 	add	w1, w20, #0x18
+   1c328:	aa1503e0 	mov	x0, x21
+   1c32c:	9400672f 	bl	35fe8 <JNI_OnUnload@@Base+0x1b484>
+   1c330:	f9001b60 	str	x0, [x27, #48]
+   1c334:	52800101 	mov	w1, #0x8                   	// #8
+   1c338:	aa1303e0 	mov	x0, x19
+   1c33c:	9400672b 	bl	35fe8 <JNI_OnUnload@@Base+0x1b484>
+   1c340:	f9000740 	str	x0, [x26, #8]
+   1c344:	52800301 	mov	w1, #0x18                  	// #24
+   1c348:	aa1303e0 	mov	x0, x19
+   1c34c:	94006727 	bl	35fe8 <JNI_OnUnload@@Base+0x1b484>
+   1c350:	f9000340 	str	x0, [x26]
+   1c354:	b9416f61 	ldr	w1, [x27, #364]
+
+--- size-field hit 5, disassembly line 7375 ---
+   1c35c:	94006723 	bl	35fe8 <JNI_OnUnload@@Base+0x1b484>
+   1c360:	91002008 	add	x8, x0, #0x8
+   1c364:	f9002768 	str	x8, [x27, #72]
+   1c368:	b9413f41 	ldr	w1, [x26, #316]
+   1c36c:	aa1303e0 	mov	x0, x19
+   1c370:	9400671e 	bl	35fe8 <JNI_OnUnload@@Base+0x1b484>
+   1c374:	91002008 	add	x8, x0, #0x8
+   1c378:	14000009 	b	1c39c <JNI_OnUnload@@Base+0x1838>
+   1c37c:	f900277f 	str	xzr, [x27, #72]
+   1c380:	900008e9 	adrp	x9, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1c384:	900008ea 	adrp	x10, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1c388:	f946ed29 	ldr	x9, [x9, #3544]
+   1c38c:	f946a94a 	ldr	x10, [x10, #3408]
+   1c390:	aa1f03e8 	mov	x8, xzr
+   1c394:	f900b369 	str	x9, [x27, #352]
+   1c398:	f9009b4a 	str	x10, [x26, #304]
+   1c39c:	f9000f48 	str	x8, [x26, #24]
+   1c3a0:	940001dc 	bl	1cb10 <JNI_OnUnload@@Base+0x1fac>
+   1c3a4:	910023e0 	add	x0, sp, #0x8
+   1c3a8:	97fffbb1 	bl	1b26c <JNI_OnUnload@@Base+0x708>
+   1c3ac:	f94007e8 	ldr	x8, [sp, #8]
+   1c3b0:	3900a73f 	strb	wzr, [x25, #41]
+   1c3b4:	b9002f3f 	str	wzr, [x25, #44]
+   1c3b8:	8b080508 	add	x8, x8, x8, lsl #1
+   1c3bc:	a9007f28 	stp	x8, xzr, [x25]
+   1c3c0:	f9401708 	ldr	x8, [x24, #40]
+   1c3c4:	f85a03a9 	ldur	x9, [x29, #-96]
+   1c3c8:	eb09011f 	cmp	x8, x9
+   1c3cc:	54000121 	b.ne	1c3f0 <JNI_OnUnload@@Base+0x188c>  // b.any
+   1c3d0:	911083ff 	add	sp, sp, #0x420
+   1c3d4:	a9457bfd 	ldp	x29, x30, [sp, #80]
+   1c3d8:	a9444ff4 	ldp	x20, x19, [sp, #64]
+   1c3dc:	a94357f6 	ldp	x22, x21, [sp, #48]
+
+--- size-field hit 6, disassembly line 10700 ---
+   1f750:	d11543ff 	sub	sp, sp, #0x550
+   1f754:	d53bd048 	mrs	x8, tpidr_el0
+   1f758:	f9000be8 	str	x8, [sp, #16]
+   1f75c:	f9401508 	ldr	x8, [x8, #40]
+   1f760:	aa0003f6 	mov	x22, x0
+   1f764:	52802f00 	mov	w0, #0x178                 	// #376
+   1f768:	aa0303f3 	mov	x19, x3
+   1f76c:	aa0203f4 	mov	x20, x2
+   1f770:	aa0103f5 	mov	x21, x1
+   1f774:	f81a03a8 	stur	x8, [x29, #-96]
+   1f778:	97ffd9ca 	bl	15ea0 <malloc@plt>
+   1f77c:	6f00e400 	movi	v0.2d, #0x0
+   1f780:	52800028 	mov	w8, #0x1                   	// #1
+   1f784:	9110e2c9 	add	x9, x22, #0x438
+   1f788:	3d805800 	str	q0, [x0, #352]
+   1f78c:	b9016808 	str	w8, [x0, #360]
+   1f790:	911122c8 	add	x8, x22, #0x448
+   1f794:	f90013e9 	str	x9, [sp, #32]
+   1f798:	911162c9 	add	x9, x22, #0x458
+   1f79c:	f900b81f 	str	xzr, [x0, #368]
+   1f7a0:	ad000000 	stp	q0, q0, [x0]
+   1f7a4:	ad010000 	stp	q0, q0, [x0, #32]
+   1f7a8:	ad020000 	stp	q0, q0, [x0, #64]
+   1f7ac:	ad030000 	stp	q0, q0, [x0, #96]
+   1f7b0:	ad040000 	stp	q0, q0, [x0, #128]
+   1f7b4:	ad050000 	stp	q0, q0, [x0, #160]
+   1f7b8:	ad060000 	stp	q0, q0, [x0, #192]
+   1f7bc:	ad070000 	stp	q0, q0, [x0, #224]
+   1f7c0:	ad080000 	stp	q0, q0, [x0, #256]
+   1f7c4:	ad090000 	stp	q0, q0, [x0, #288]
+   1f7c8:	ad0a0000 	stp	q0, q0, [x0, #320]
+   1f7cc:	a902a7e8 	stp	x8, x9, [sp, #40]
+   1f7d0:	f94002c8 	ldr	x8, [x22]
+
+--- size-field hit 7, disassembly line 11551 ---
+   2049c:	f940bb88 	ldr	x8, [x28, #368]
+   204a0:	b4000dc8 	cbz	x8, 20658 <JNI_OnUnload@@Base+0x5af4>
+   204a4:	aa0803fc 	mov	x28, x8
+   204a8:	34ffffba 	cbz	w26, 2049c <JNI_OnUnload@@Base+0x5938>
+   204ac:	f940bb88 	ldr	x8, [x28, #368]
+   204b0:	b4000b88 	cbz	x8, 20620 <JNI_OnUnload@@Base+0x5abc>
+   204b4:	f94006f3 	ldr	x19, [x23, #8]
+   204b8:	b9416794 	ldr	w20, [x28, #356]
+   204bc:	b9416b88 	ldr	w8, [x28, #360]
+   204c0:	d503201f 	nop
+   204c4:	9b1b4e98 	madd	x24, x20, x27, x19
+   204c8:	1b167d0a 	mul	w10, w8, w22
+   204cc:	1b157d08 	mul	w8, w8, w21
+   204d0:	2943a70b 	ldp	w11, w9, [x24, #28]
+   204d4:	b9015f8a 	str	w10, [x28, #348]
+   204d8:	b9016388 	str	w8, [x28, #352]
+   204dc:	b940030c 	ldr	w12, [x24]
+   204e0:	2903a30a 	stp	w10, w8, [x24, #28]
+   204e4:	3400018c 	cbz	w12, 20514 <JNI_OnUnload@@Base+0x59b0>
+   204e8:	9b1b4e8c 	madd	x12, x20, x27, x19
+   204ec:	b940198c 	ldr	w12, [x12, #24]
+   204f0:	3400012c 	cbz	w12, 20514 <JNI_OnUnload@@Base+0x59b0>
+   204f4:	6b0b015f 	cmp	w10, w11
+   204f8:	540000e1 	b.ne	20514 <JNI_OnUnload@@Base+0x59b0>  // b.any
+   204fc:	6b09011f 	cmp	w8, w9
+   20500:	540000a1 	b.ne	20514 <JNI_OnUnload@@Base+0x59b0>  // b.any
+   20504:	b9015b8c 	str	w12, [x28, #344]
+   20508:	b9400f88 	ldr	w8, [x28, #12]
+   2050c:	36f808e8 	tbz	w8, #31, 20628 <JNI_OnUnload@@Base+0x5ac4>
+   20510:	17ffffe3 	b	2049c <JNI_OnUnload@@Base+0x5938>
+   20514:	b9415b88 	ldr	w8, [x28, #344]
+   20518:	91056399 	add	x25, x28, #0x158
+   2051c:	34000088 	cbz	w8, 2052c <JNI_OnUnload@@Base+0x59c8>
+
+--- size-field hit 8, disassembly line 11552 ---
+   204a0:	b4000dc8 	cbz	x8, 20658 <JNI_OnUnload@@Base+0x5af4>
+   204a4:	aa0803fc 	mov	x28, x8
+   204a8:	34ffffba 	cbz	w26, 2049c <JNI_OnUnload@@Base+0x5938>
+   204ac:	f940bb88 	ldr	x8, [x28, #368]
+   204b0:	b4000b88 	cbz	x8, 20620 <JNI_OnUnload@@Base+0x5abc>
+   204b4:	f94006f3 	ldr	x19, [x23, #8]
+   204b8:	b9416794 	ldr	w20, [x28, #356]
+   204bc:	b9416b88 	ldr	w8, [x28, #360]
+   204c0:	d503201f 	nop
+   204c4:	9b1b4e98 	madd	x24, x20, x27, x19
+   204c8:	1b167d0a 	mul	w10, w8, w22
+   204cc:	1b157d08 	mul	w8, w8, w21
+   204d0:	2943a70b 	ldp	w11, w9, [x24, #28]
+   204d4:	b9015f8a 	str	w10, [x28, #348]
+   204d8:	b9016388 	str	w8, [x28, #352]
+   204dc:	b940030c 	ldr	w12, [x24]
+   204e0:	2903a30a 	stp	w10, w8, [x24, #28]
+   204e4:	3400018c 	cbz	w12, 20514 <JNI_OnUnload@@Base+0x59b0>
+   204e8:	9b1b4e8c 	madd	x12, x20, x27, x19
+   204ec:	b940198c 	ldr	w12, [x12, #24]
+   204f0:	3400012c 	cbz	w12, 20514 <JNI_OnUnload@@Base+0x59b0>
+   204f4:	6b0b015f 	cmp	w10, w11
+   204f8:	540000e1 	b.ne	20514 <JNI_OnUnload@@Base+0x59b0>  // b.any
+   204fc:	6b09011f 	cmp	w8, w9
+   20500:	540000a1 	b.ne	20514 <JNI_OnUnload@@Base+0x59b0>  // b.any
+   20504:	b9015b8c 	str	w12, [x28, #344]
+   20508:	b9400f88 	ldr	w8, [x28, #12]
+   2050c:	36f808e8 	tbz	w8, #31, 20628 <JNI_OnUnload@@Base+0x5ac4>
+   20510:	17ffffe3 	b	2049c <JNI_OnUnload@@Base+0x5938>
+   20514:	b9415b88 	ldr	w8, [x28, #344]
+   20518:	91056399 	add	x25, x28, #0x158
+   2051c:	34000088 	cbz	w8, 2052c <JNI_OnUnload@@Base+0x59c8>
+   20520:	52800020 	mov	w0, #0x1                   	// #1
+
+--- size-field hit 9, disassembly line 11591 ---
+   2053c:	b9400308 	ldr	w8, [x24]
+   20540:	34000088 	cbz	w8, 20550 <JNI_OnUnload@@Base+0x59ec>
+   20544:	52800020 	mov	w0, #0x1                   	// #1
+   20548:	aa1803e1 	mov	x1, x24
+   2054c:	97ffd8ad 	bl	16800 <glDeleteTextures@plt>
+   20550:	9b1b4e93 	madd	x19, x20, x27, x19
+   20554:	52800020 	mov	w0, #0x1                   	// #1
+   20558:	aa1803e1 	mov	x1, x24
+   2055c:	b9001a7f 	str	wzr, [x19, #24]
+   20560:	97ffd874 	bl	16730 <glGenTextures@plt>
+   20564:	b9400301 	ldr	w1, [x24]
+   20568:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2056c:	97ffd8b9 	bl	16850 <glBindTexture@plt>
+   20570:	29408a66 	ldp	w6, w2, [x19, #4]
+   20574:	b9415f83 	ldr	w3, [x28, #348]
+   20578:	b9416384 	ldr	w4, [x28, #352]
+   2057c:	b9400e67 	ldr	w7, [x19, #12]
+   20580:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   20584:	2a1f03e1 	mov	w1, wzr
+   20588:	2a1f03e5 	mov	w5, wzr
+   2058c:	f90003ff 	str	xzr, [sp]
+   20590:	97ffd690 	bl	15fd0 <glTexImage2D@plt>
+   20594:	b9401662 	ldr	w2, [x19, #20]
+   20598:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2059c:	52850021 	mov	w1, #0x2801                	// #10241
+   205a0:	97ffd668 	bl	15f40 <glTexParameteri@plt>
+   205a4:	b9401262 	ldr	w2, [x19, #16]
+   205a8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205ac:	52850001 	mov	w1, #0x2800                	// #10240
+   205b0:	97ffd664 	bl	15f40 <glTexParameteri@plt>
+   205b4:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205b8:	52850041 	mov	w1, #0x2802                	// #10242
+   205bc:	529025e2 	mov	w2, #0x812f                	// #33071
+
+--- size-field hit 10, disassembly line 11592 ---
+   20540:	34000088 	cbz	w8, 20550 <JNI_OnUnload@@Base+0x59ec>
+   20544:	52800020 	mov	w0, #0x1                   	// #1
+   20548:	aa1803e1 	mov	x1, x24
+   2054c:	97ffd8ad 	bl	16800 <glDeleteTextures@plt>
+   20550:	9b1b4e93 	madd	x19, x20, x27, x19
+   20554:	52800020 	mov	w0, #0x1                   	// #1
+   20558:	aa1803e1 	mov	x1, x24
+   2055c:	b9001a7f 	str	wzr, [x19, #24]
+   20560:	97ffd874 	bl	16730 <glGenTextures@plt>
+   20564:	b9400301 	ldr	w1, [x24]
+   20568:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2056c:	97ffd8b9 	bl	16850 <glBindTexture@plt>
+   20570:	29408a66 	ldp	w6, w2, [x19, #4]
+   20574:	b9415f83 	ldr	w3, [x28, #348]
+   20578:	b9416384 	ldr	w4, [x28, #352]
+   2057c:	b9400e67 	ldr	w7, [x19, #12]
+   20580:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   20584:	2a1f03e1 	mov	w1, wzr
+   20588:	2a1f03e5 	mov	w5, wzr
+   2058c:	f90003ff 	str	xzr, [sp]
+   20590:	97ffd690 	bl	15fd0 <glTexImage2D@plt>
+   20594:	b9401662 	ldr	w2, [x19, #20]
+   20598:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2059c:	52850021 	mov	w1, #0x2801                	// #10241
+   205a0:	97ffd668 	bl	15f40 <glTexParameteri@plt>
+   205a4:	b9401262 	ldr	w2, [x19, #16]
+   205a8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205ac:	52850001 	mov	w1, #0x2800                	// #10240
+   205b0:	97ffd664 	bl	15f40 <glTexParameteri@plt>
+   205b4:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205b8:	52850041 	mov	w1, #0x2802                	// #10242
+   205bc:	529025e2 	mov	w2, #0x812f                	// #33071
+   205c0:	97ffd660 	bl	15f40 <glTexParameteri@plt>
+
+--- size-field hit 11, disassembly line 11649 ---
+   20624:	37fff3c8 	tbnz	w8, #31, 2049c <JNI_OnUnload@@Base+0x5938>
+   20628:	b9400380 	ldr	w0, [x28]
+   2062c:	97ffd6a1 	bl	160b0 <glUseProgram@plt>
+   20630:	b9400f80 	ldr	w0, [x28, #12]
+   20634:	4eaa1d40 	mov	v0.16b, v10.16b
+   20638:	4eab1d61 	mov	v1.16b, v11.16b
+   2063c:	4ea81d02 	mov	v2.16b, v8.16b
+   20640:	4ea91d23 	mov	v3.16b, v9.16b
+   20644:	97ffd81b 	bl	166b0 <glUniform4f@plt>
+   20648:	2a1f03e0 	mov	w0, wzr
+   2064c:	97ffd699 	bl	160b0 <glUseProgram@plt>
+   20650:	f940bb88 	ldr	x8, [x28, #368]
+   20654:	b5fff288 	cbnz	x8, 204a4 <JNI_OnUnload@@Base+0x5940>
+   20658:	b9400be8 	ldr	w8, [sp, #8]
+   2065c:	b9015f88 	str	w8, [x28, #348]
+   20660:	b9400fe8 	ldr	w8, [sp, #12]
+   20664:	b9016388 	str	w8, [x28, #352]
+   20668:	a9487bfd 	ldp	x29, x30, [sp, #128]
+   2066c:	a9474ff4 	ldp	x20, x19, [sp, #112]
+   20670:	a94657f6 	ldp	x22, x21, [sp, #96]
+   20674:	a9455ff8 	ldp	x24, x23, [sp, #80]
+   20678:	a94467fa 	ldp	x26, x25, [sp, #64]
+   2067c:	a9436ffc 	ldp	x28, x27, [sp, #48]
+   20680:	6d4223e9 	ldp	d9, d8, [sp, #32]
+   20684:	6d412beb 	ldp	d11, d10, [sp, #16]
+   20688:	910243ff 	add	sp, sp, #0x90
+   2068c:	d65f03c0 	ret
+   20690:	d10243ff 	sub	sp, sp, #0x90
+   20694:	fd000bea 	str	d10, [sp, #16]
+   20698:	6d0223e9 	stp	d9, d8, [sp, #32]
+   2069c:	a9036ffc 	stp	x28, x27, [sp, #48]
+   206a0:	a90467fa 	stp	x26, x25, [sp, #64]
+   206a4:	a9055ff8 	stp	x24, x23, [sp, #80]
+
+--- size-field hit 12, disassembly line 11651 ---
+   2062c:	97ffd6a1 	bl	160b0 <glUseProgram@plt>
+   20630:	b9400f80 	ldr	w0, [x28, #12]
+   20634:	4eaa1d40 	mov	v0.16b, v10.16b
+   20638:	4eab1d61 	mov	v1.16b, v11.16b
+   2063c:	4ea81d02 	mov	v2.16b, v8.16b
+   20640:	4ea91d23 	mov	v3.16b, v9.16b
+   20644:	97ffd81b 	bl	166b0 <glUniform4f@plt>
+   20648:	2a1f03e0 	mov	w0, wzr
+   2064c:	97ffd699 	bl	160b0 <glUseProgram@plt>
+   20650:	f940bb88 	ldr	x8, [x28, #368]
+   20654:	b5fff288 	cbnz	x8, 204a4 <JNI_OnUnload@@Base+0x5940>
+   20658:	b9400be8 	ldr	w8, [sp, #8]
+   2065c:	b9015f88 	str	w8, [x28, #348]
+   20660:	b9400fe8 	ldr	w8, [sp, #12]
+   20664:	b9016388 	str	w8, [x28, #352]
+   20668:	a9487bfd 	ldp	x29, x30, [sp, #128]
+   2066c:	a9474ff4 	ldp	x20, x19, [sp, #112]
+   20670:	a94657f6 	ldp	x22, x21, [sp, #96]
+   20674:	a9455ff8 	ldp	x24, x23, [sp, #80]
+   20678:	a94467fa 	ldp	x26, x25, [sp, #64]
+   2067c:	a9436ffc 	ldp	x28, x27, [sp, #48]
+   20680:	6d4223e9 	ldp	d9, d8, [sp, #32]
+   20684:	6d412beb 	ldp	d11, d10, [sp, #16]
+   20688:	910243ff 	add	sp, sp, #0x90
+   2068c:	d65f03c0 	ret
+   20690:	d10243ff 	sub	sp, sp, #0x90
+   20694:	fd000bea 	str	d10, [sp, #16]
+   20698:	6d0223e9 	stp	d9, d8, [sp, #32]
+   2069c:	a9036ffc 	stp	x28, x27, [sp, #48]
+   206a0:	a90467fa 	stp	x26, x25, [sp, #64]
+   206a4:	a9055ff8 	stp	x24, x23, [sp, #80]
+   206a8:	a90657f6 	stp	x22, x21, [sp, #96]
+   206ac:	a9074ff4 	stp	x20, x19, [sp, #112]
+
+--- size-field hit 13, disassembly line 11799 ---
+   2087c:	f100011f 	cmp	x8, #0x0
+   20880:	1a940261 	csel	w1, w19, w20, eq	// eq = none
+   20884:	97ffd4ef 	bl	15c40 <glDrawArrays@plt>
+   20888:	f940bb5a 	ldr	x26, [x26, #368]
+   2088c:	b400093a 	cbz	x26, 209b0 <JNI_OnUnload@@Base+0x5e4c>
+   20890:	b9400340 	ldr	w0, [x26]
+   20894:	97ffd607 	bl	160b0 <glUseProgram@plt>
+   20898:	b9415b41 	ldr	w1, [x26, #344]
+   2089c:	5291a800 	mov	w0, #0x8d40                	// #36160
+   208a0:	97ffd5bc 	bl	15f90 <glBindFramebuffer@plt>
+   208a4:	f940bb48 	ldr	x8, [x26, #368]
+   208a8:	b4000228 	cbz	x8, 208ec <JNI_OnUnload@@Base+0x5d88>
+   208ac:	52880000 	mov	w0, #0x4000                	// #16384
+   208b0:	97ffd52c 	bl	15d60 <glClear@plt>
+   208b4:	b9415f56 	ldr	w22, [x26, #348]
+   208b8:	b9416357 	ldr	w23, [x26, #352]
+   208bc:	6b1b02df 	cmp	w22, w27
+   208c0:	54000061 	b.ne	208cc <JNI_OnUnload@@Base+0x5d68>  // b.any
+   208c4:	6b1c02ff 	cmp	w23, w28
+   208c8:	540001c0 	b.eq	20900 <JNI_OnUnload@@Base+0x5d9c>  // b.none
+   208cc:	2a1f03e0 	mov	w0, wzr
+   208d0:	2a1f03e1 	mov	w1, wzr
+   208d4:	2a1603e2 	mov	w2, w22
+   208d8:	2a1703e3 	mov	w3, w23
+   208dc:	97ffd855 	bl	16a30 <glViewport@plt>
+   208e0:	2a1603fb 	mov	w27, w22
+   208e4:	2a1703fc 	mov	w28, w23
+   208e8:	14000006 	b	20900 <JNI_OnUnload@@Base+0x5d9c>
+   208ec:	b94486a0 	ldr	w0, [x21, #1156]
+   208f0:	b9448aa1 	ldr	w1, [x21, #1160]
+   208f4:	b9448ea2 	ldr	w2, [x21, #1164]
+   208f8:	b94492a3 	ldr	w3, [x21, #1168]
+   208fc:	97ffd84d 	bl	16a30 <glViewport@plt>
+
+--- size-field hit 14, disassembly line 11800 ---
+   20880:	1a940261 	csel	w1, w19, w20, eq	// eq = none
+   20884:	97ffd4ef 	bl	15c40 <glDrawArrays@plt>
+   20888:	f940bb5a 	ldr	x26, [x26, #368]
+   2088c:	b400093a 	cbz	x26, 209b0 <JNI_OnUnload@@Base+0x5e4c>
+   20890:	b9400340 	ldr	w0, [x26]
+   20894:	97ffd607 	bl	160b0 <glUseProgram@plt>
+   20898:	b9415b41 	ldr	w1, [x26, #344]
+   2089c:	5291a800 	mov	w0, #0x8d40                	// #36160
+   208a0:	97ffd5bc 	bl	15f90 <glBindFramebuffer@plt>
+   208a4:	f940bb48 	ldr	x8, [x26, #368]
+   208a8:	b4000228 	cbz	x8, 208ec <JNI_OnUnload@@Base+0x5d88>
+   208ac:	52880000 	mov	w0, #0x4000                	// #16384
+   208b0:	97ffd52c 	bl	15d60 <glClear@plt>
+   208b4:	b9415f56 	ldr	w22, [x26, #348]
+   208b8:	b9416357 	ldr	w23, [x26, #352]
+   208bc:	6b1b02df 	cmp	w22, w27
+   208c0:	54000061 	b.ne	208cc <JNI_OnUnload@@Base+0x5d68>  // b.any
+   208c4:	6b1c02ff 	cmp	w23, w28
+   208c8:	540001c0 	b.eq	20900 <JNI_OnUnload@@Base+0x5d9c>  // b.none
+   208cc:	2a1f03e0 	mov	w0, wzr
+   208d0:	2a1f03e1 	mov	w1, wzr
+   208d4:	2a1603e2 	mov	w2, w22
+   208d8:	2a1703e3 	mov	w3, w23
+   208dc:	97ffd855 	bl	16a30 <glViewport@plt>
+   208e0:	2a1603fb 	mov	w27, w22
+   208e4:	2a1703fc 	mov	w28, w23
+   208e8:	14000006 	b	20900 <JNI_OnUnload@@Base+0x5d9c>
+   208ec:	b94486a0 	ldr	w0, [x21, #1156]
+   208f0:	b9448aa1 	ldr	w1, [x21, #1160]
+   208f4:	b9448ea2 	ldr	w2, [x21, #1164]
+   208f8:	b94492a3 	ldr	w3, [x21, #1168]
+   208fc:	97ffd84d 	bl	16a30 <glViewport@plt>
+   20900:	b9400740 	ldr	w0, [x26, #4]
+
+--- size-field hit 15, disassembly line 15474 ---
+   241e8:	72a02009 	movk	w9, #0x100, lsl #16
+   241ec:	f8696908 	ldr	x8, [x8, x9]
+   241f0:	7900f114 	strh	w20, [x8, #120]
+   241f4:	17ffffa3 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   241f8:	f94012c8 	ldr	x8, [x22, #32]
+   241fc:	5280020a 	mov	w10, #0x10                  	// #16
+   24200:	72a0200a 	movk	w10, #0x100, lsl #16
+   24204:	f86a6908 	ldr	x8, [x8, x10]
+   24208:	36000074 	tbz	w20, #0, 24214 <JNI_OnUnload@@Base+0x96b0>
+   2420c:	b941512a 	ldr	w10, [x9, #336]
+   24210:	34002e0a 	cbz	w10, 247d0 <JNI_OnUnload@@Base+0x9c6c>
+   24214:	12000294 	and	w20, w20, #0x1
+   24218:	b921091f 	str	wzr, [x8, #8456]
+   2421c:	17ffff99 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24220:	b9415d28 	ldr	w8, [x9, #348]
+   24224:	2a3403ea 	mvn	w10, w20
+   24228:	32103d4a 	orr	w10, w10, #0xffff0000
+   2422c:	14000004 	b	2423c <JNI_OnUnload@@Base+0x96d8>
+   24230:	b9415d28 	ldr	w8, [x9, #348]
+   24234:	12bffbea 	mov	w10, #0x20ffff              	// #2162687
+   24238:	2a34414a 	orn	w10, w10, w20, lsl #16
+   2423c:	0a0a0108 	and	w8, w8, w10
+   24240:	b9015d28 	str	w8, [x9, #348]
+   24244:	f94012c8 	ldr	x8, [x22, #32]
+   24248:	52800209 	mov	w9, #0x10                  	// #16
+   2424c:	72a02009 	movk	w9, #0x100, lsl #16
+   24250:	f8696908 	ldr	x8, [x8, x9]
+   24254:	b9610909 	ldr	w9, [x8, #8456]
+   24258:	0a0a0129 	and	w9, w9, w10
+   2425c:	b9210909 	str	w9, [x8, #8456]
+   24260:	f94016e8 	ldr	x8, [x23, #40]
+   24264:	f9400fe9 	ldr	x9, [sp, #24]
+   24268:	eb09011f 	cmp	x8, x9
+
+--- size-field hit 16, disassembly line 15478 ---
+   241f8:	f94012c8 	ldr	x8, [x22, #32]
+   241fc:	5280020a 	mov	w10, #0x10                  	// #16
+   24200:	72a0200a 	movk	w10, #0x100, lsl #16
+   24204:	f86a6908 	ldr	x8, [x8, x10]
+   24208:	36000074 	tbz	w20, #0, 24214 <JNI_OnUnload@@Base+0x96b0>
+   2420c:	b941512a 	ldr	w10, [x9, #336]
+   24210:	34002e0a 	cbz	w10, 247d0 <JNI_OnUnload@@Base+0x9c6c>
+   24214:	12000294 	and	w20, w20, #0x1
+   24218:	b921091f 	str	wzr, [x8, #8456]
+   2421c:	17ffff99 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24220:	b9415d28 	ldr	w8, [x9, #348]
+   24224:	2a3403ea 	mvn	w10, w20
+   24228:	32103d4a 	orr	w10, w10, #0xffff0000
+   2422c:	14000004 	b	2423c <JNI_OnUnload@@Base+0x96d8>
+   24230:	b9415d28 	ldr	w8, [x9, #348]
+   24234:	12bffbea 	mov	w10, #0x20ffff              	// #2162687
+   24238:	2a34414a 	orn	w10, w10, w20, lsl #16
+   2423c:	0a0a0108 	and	w8, w8, w10
+   24240:	b9015d28 	str	w8, [x9, #348]
+   24244:	f94012c8 	ldr	x8, [x22, #32]
+   24248:	52800209 	mov	w9, #0x10                  	// #16
+   2424c:	72a02009 	movk	w9, #0x100, lsl #16
+   24250:	f8696908 	ldr	x8, [x8, x9]
+   24254:	b9610909 	ldr	w9, [x8, #8456]
+   24258:	0a0a0129 	and	w9, w9, w10
+   2425c:	b9210909 	str	w9, [x8, #8456]
+   24260:	f94016e8 	ldr	x8, [x23, #40]
+   24264:	f9400fe9 	ldr	x9, [sp, #24]
+   24268:	eb09011f 	cmp	x8, x9
+   2426c:	54fff1c0 	b.eq	240a4 <JNI_OnUnload@@Base+0x9540>  // b.none
+   24270:	17ffff7c 	b	24060 <JNI_OnUnload@@Base+0x94fc>
+   24274:	3909111f 	strb	wzr, [x8, #580]
+   24278:	12003a94 	and	w20, w20, #0x7fff
+
+--- size-field hit 17, disassembly line 15482 ---
+   24208:	36000074 	tbz	w20, #0, 24214 <JNI_OnUnload@@Base+0x96b0>
+   2420c:	b941512a 	ldr	w10, [x9, #336]
+   24210:	34002e0a 	cbz	w10, 247d0 <JNI_OnUnload@@Base+0x9c6c>
+   24214:	12000294 	and	w20, w20, #0x1
+   24218:	b921091f 	str	wzr, [x8, #8456]
+   2421c:	17ffff99 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24220:	b9415d28 	ldr	w8, [x9, #348]
+   24224:	2a3403ea 	mvn	w10, w20
+   24228:	32103d4a 	orr	w10, w10, #0xffff0000
+   2422c:	14000004 	b	2423c <JNI_OnUnload@@Base+0x96d8>
+   24230:	b9415d28 	ldr	w8, [x9, #348]
+   24234:	12bffbea 	mov	w10, #0x20ffff              	// #2162687
+   24238:	2a34414a 	orn	w10, w10, w20, lsl #16
+   2423c:	0a0a0108 	and	w8, w8, w10
+   24240:	b9015d28 	str	w8, [x9, #348]
+   24244:	f94012c8 	ldr	x8, [x22, #32]
+   24248:	52800209 	mov	w9, #0x10                  	// #16
+   2424c:	72a02009 	movk	w9, #0x100, lsl #16
+   24250:	f8696908 	ldr	x8, [x8, x9]
+   24254:	b9610909 	ldr	w9, [x8, #8456]
+   24258:	0a0a0129 	and	w9, w9, w10
+   2425c:	b9210909 	str	w9, [x8, #8456]
+   24260:	f94016e8 	ldr	x8, [x23, #40]
+   24264:	f9400fe9 	ldr	x9, [sp, #24]
+   24268:	eb09011f 	cmp	x8, x9
+   2426c:	54fff1c0 	b.eq	240a4 <JNI_OnUnload@@Base+0x9540>  // b.none
+   24270:	17ffff7c 	b	24060 <JNI_OnUnload@@Base+0x94fc>
+   24274:	3909111f 	strb	wzr, [x8, #580]
+   24278:	12003a94 	and	w20, w20, #0x7fff
+   2427c:	17ffff81 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24280:	f9400ac8 	ldr	x8, [x22, #16]
+   24284:	52935189 	mov	w9, #0x9a8c                	// #39564
+   24288:	78296914 	strh	w20, [x8, x9]
+
+--- size-field hit 18, disassembly line 15635 ---
+   2446c:	34001228 	cbz	w8, 246b0 <JNI_OnUnload@@Base+0x9b4c>
+   24470:	f94002c8 	ldr	x8, [x22]
+   24474:	52800101 	mov	w1, #0x8                   	// #8
+   24478:	91006100 	add	x0, x8, #0x18
+   2447c:	940020ef 	bl	2c838 <JNI_OnUnload@@Base+0x11cd4>
+   24480:	3900fb1f 	strb	wzr, [x24, #62]
+   24484:	1400008b 	b	246b0 <JNI_OnUnload@@Base+0x9b4c>
+   24488:	b941592a 	ldr	w10, [x9, #344]
+   2448c:	53103e88 	lsl	w8, w20, #16
+   24490:	6a2a011f 	bics	wzr, w8, w10
+   24494:	33003d48 	bfxil	w8, w10, #0, #16
+   24498:	b9015928 	str	w8, [x9, #344]
+   2449c:	54ffdfc0 	b.eq	24094 <JNI_OnUnload@@Base+0x9530>  // b.none
+   244a0:	f94012ca 	ldr	x10, [x22, #32]
+   244a4:	b9415d2b 	ldr	w11, [x9, #348]
+   244a8:	b941512c 	ldr	w12, [x9, #336]
+   244ac:	52800209 	mov	w9, #0x10                  	// #16
+   244b0:	72a02009 	movk	w9, #0x100, lsl #16
+   244b4:	f8696949 	ldr	x9, [x10, x9]
+   244b8:	0a080168 	and	w8, w11, w8
+   244bc:	4b0c03ea 	neg	w10, w12
+   244c0:	6a0a0108 	ands	w8, w8, w10
+   244c4:	b9210928 	str	w8, [x9, #8456]
+   244c8:	54ffde60 	b.eq	24094 <JNI_OnUnload@@Base+0x9530>  // b.none
+   244cc:	b962a928 	ldr	w8, [x9, #8872]
+   244d0:	321f0108 	orr	w8, w8, #0x2
+   244d4:	b922a928 	str	w8, [x9, #8872]
+   244d8:	f94016e8 	ldr	x8, [x23, #40]
+   244dc:	f9400fe9 	ldr	x9, [sp, #24]
+   244e0:	eb09011f 	cmp	x8, x9
+   244e4:	54ffde00 	b.eq	240a4 <JNI_OnUnload@@Base+0x9540>  // b.none
+   244e8:	17fffede 	b	24060 <JNI_OnUnload@@Base+0x94fc>
+   244ec:	3909151f 	strb	wzr, [x8, #581]
+
+--- size-field hit 19, disassembly line 15838 ---
+   24798:	54000040 	b.eq	247a0 <JNI_OnUnload@@Base+0x9c3c>  // b.none
+   2479c:	35ffc7c9 	cbnz	w9, 24094 <JNI_OnUnload@@Base+0x9530>
+   247a0:	529a5308 	mov	w8, #0xd298                	// #53912
+   247a4:	529a5a09 	mov	w9, #0xd2d0                	// #53968
+   247a8:	72a001e8 	movk	w8, #0xf, lsl #16
+   247ac:	72a001e9 	movk	w9, #0xf, lsl #16
+   247b0:	8b080260 	add	x0, x19, x8
+   247b4:	8b090261 	add	x1, x19, x9
+   247b8:	94002491 	bl	2d9fc <JNI_OnUnload@@Base+0x12e98>
+   247bc:	f94016e8 	ldr	x8, [x23, #40]
+   247c0:	f9400fe9 	ldr	x9, [sp, #24]
+   247c4:	eb09011f 	cmp	x8, x9
+   247c8:	54ffc6e0 	b.eq	240a4 <JNI_OnUnload@@Base+0x9540>  // b.none
+   247cc:	17fffe25 	b	24060 <JNI_OnUnload@@Base+0x94fc>
+   247d0:	b9415d2a 	ldr	w10, [x9, #348]
+   247d4:	b9415929 	ldr	w9, [x9, #344]
+   247d8:	6a0a0129 	ands	w9, w9, w10
+   247dc:	b9210909 	str	w9, [x8, #8456]
+   247e0:	540000c0 	b.eq	247f8 <JNI_OnUnload@@Base+0x9c94>  // b.none
+   247e4:	b962a909 	ldr	w9, [x8, #8872]
+   247e8:	52800034 	mov	w20, #0x1                   	// #1
+   247ec:	321f0129 	orr	w9, w9, #0x2
+   247f0:	b922a909 	str	w9, [x8, #8872]
+   247f4:	17fffe23 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   247f8:	52800034 	mov	w20, #0x1                   	// #1
+   247fc:	17fffe21 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24800:	d101c3ff 	sub	sp, sp, #0x70
+   24804:	f90013f9 	str	x25, [sp, #32]
+   24808:	a9035ff8 	stp	x24, x23, [sp, #48]
+   2480c:	a90457f6 	stp	x22, x21, [sp, #64]
+   24810:	a9054ff4 	stp	x20, x19, [sp, #80]
+   24814:	a9067bfd 	stp	x29, x30, [sp, #96]
+   24818:	910183fd 	add	x29, sp, #0x60
+
+--- size-field hit 20, disassembly line 16054 ---
+   24af8:	17ffff6e 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24afc:	b9000f34 	str	w20, [x25, #12]
+   24b00:	37f81514 	tbnz	w20, #31, 24da0 <JNI_OnUnload@@Base+0xa23c>
+   24b04:	b90026d4 	str	w20, [x22, #36]
+   24b08:	f94016e8 	ldr	x8, [x23, #40]
+   24b0c:	f9400fe9 	ldr	x9, [sp, #24]
+   24b10:	eb09011f 	cmp	x8, x9
+   24b14:	54fff180 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24b18:	17ffff66 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24b1c:	b9415b28 	ldr	w8, [x25, #344]
+   24b20:	b9015b34 	str	w20, [x25, #344]
+   24b24:	6a28029f 	bics	wzr, w20, w8
+   24b28:	54fff060 	b.eq	24934 <JNI_OnUnload@@Base+0x9dd0>  // b.none
+   24b2c:	f9401308 	ldr	x8, [x24, #32]
+   24b30:	b9415f29 	ldr	w9, [x25, #348]
+   24b34:	b941532a 	ldr	w10, [x25, #336]
+   24b38:	5280020b 	mov	w11, #0x10                  	// #16
+   24b3c:	72a0200b 	movk	w11, #0x100, lsl #16
+   24b40:	f86b6908 	ldr	x8, [x8, x11]
+   24b44:	0a140129 	and	w9, w9, w20
+   24b48:	4b0a03ea 	neg	w10, w10
+   24b4c:	6a0a0129 	ands	w9, w9, w10
+   24b50:	b9210909 	str	w9, [x8, #8456]
+   24b54:	54ffef00 	b.eq	24934 <JNI_OnUnload@@Base+0x9dd0>  // b.none
+   24b58:	b962a909 	ldr	w9, [x8, #8872]
+   24b5c:	321f0129 	orr	w9, w9, #0x2
+   24b60:	b922a909 	str	w9, [x8, #8872]
+   24b64:	f94016e8 	ldr	x8, [x23, #40]
+   24b68:	f9400fe9 	ldr	x9, [sp, #24]
+   24b6c:	eb09011f 	cmp	x8, x9
+   24b70:	54ffeea0 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24b74:	17ffff4f 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24b78:	b9001b34 	str	w20, [x25, #24]
+
+--- size-field hit 21, disassembly line 16160 ---
+   24ca0:	eb09011f 	cmp	x8, x9
+   24ca4:	54ffe500 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24ca8:	17ffff02 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24cac:	36ffe3b4 	tbz	w20, #31, 24920 <JNI_OnUnload@@Base+0x9dbc>
+   24cb0:	529a9708 	mov	w8, #0xd4b8                	// #54456
+   24cb4:	72a001e8 	movk	w8, #0xf, lsl #16
+   24cb8:	f8686a60 	ldr	x0, [x19, x8]
+   24cbc:	2a1403e1 	mov	w1, w20
+   24cc0:	940144ac 	bl	75f70 <JNI_OnUnload@@Base+0x5b40c>
+   24cc4:	f94016e8 	ldr	x8, [x23, #40]
+   24cc8:	f9400fe9 	ldr	x9, [sp, #24]
+   24ccc:	eb09011f 	cmp	x8, x9
+   24cd0:	54ffe3a0 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24cd4:	17fffef7 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24cd8:	b9415f28 	ldr	w8, [x25, #348]
+   24cdc:	2a3403e9 	mvn	w9, w20
+   24ce0:	320b0129 	orr	w9, w9, #0x200000
+   24ce4:	5280020a 	mov	w10, #0x10                  	// #16
+   24ce8:	0a090108 	and	w8, w8, w9
+   24cec:	b9015f28 	str	w8, [x25, #348]
+   24cf0:	f9401308 	ldr	x8, [x24, #32]
+   24cf4:	72a0200a 	movk	w10, #0x100, lsl #16
+   24cf8:	f86a6908 	ldr	x8, [x8, x10]
+   24cfc:	b961090a 	ldr	w10, [x8, #8456]
+   24d00:	0a090149 	and	w9, w10, w9
+   24d04:	b9210909 	str	w9, [x8, #8456]
+   24d08:	f94016e8 	ldr	x8, [x23, #40]
+   24d0c:	f9400fe9 	ldr	x9, [sp, #24]
+   24d10:	eb09011f 	cmp	x8, x9
+   24d14:	54ffe180 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24d18:	17fffee6 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24d1c:	12107a94 	and	w20, w20, #0xffff7fff
+   24d20:	390912df 	strb	wzr, [x22, #580]
+
+--- size-field hit 22, disassembly line 16165 ---
+   24cb4:	72a001e8 	movk	w8, #0xf, lsl #16
+   24cb8:	f8686a60 	ldr	x0, [x19, x8]
+   24cbc:	2a1403e1 	mov	w1, w20
+   24cc0:	940144ac 	bl	75f70 <JNI_OnUnload@@Base+0x5b40c>
+   24cc4:	f94016e8 	ldr	x8, [x23, #40]
+   24cc8:	f9400fe9 	ldr	x9, [sp, #24]
+   24ccc:	eb09011f 	cmp	x8, x9
+   24cd0:	54ffe3a0 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24cd4:	17fffef7 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24cd8:	b9415f28 	ldr	w8, [x25, #348]
+   24cdc:	2a3403e9 	mvn	w9, w20
+   24ce0:	320b0129 	orr	w9, w9, #0x200000
+   24ce4:	5280020a 	mov	w10, #0x10                  	// #16
+   24ce8:	0a090108 	and	w8, w8, w9
+   24cec:	b9015f28 	str	w8, [x25, #348]
+   24cf0:	f9401308 	ldr	x8, [x24, #32]
+   24cf4:	72a0200a 	movk	w10, #0x100, lsl #16
+   24cf8:	f86a6908 	ldr	x8, [x8, x10]
+   24cfc:	b961090a 	ldr	w10, [x8, #8456]
+   24d00:	0a090149 	and	w9, w10, w9
+   24d04:	b9210909 	str	w9, [x8, #8456]
+   24d08:	f94016e8 	ldr	x8, [x23, #40]
+   24d0c:	f9400fe9 	ldr	x9, [sp, #24]
+   24d10:	eb09011f 	cmp	x8, x9
+   24d14:	54ffe180 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24d18:	17fffee6 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24d1c:	12107a94 	and	w20, w20, #0xffff7fff
+   24d20:	390912df 	strb	wzr, [x22, #580]
+   24d24:	17fffeff 	b	24920 <JNI_OnUnload@@Base+0x9dbc>
+   24d28:	12107a94 	and	w20, w20, #0xffff7fff
+   24d2c:	390916df 	strb	wzr, [x22, #581]
+   24d30:	17fffefc 	b	24920 <JNI_OnUnload@@Base+0x9dbc>
+   24d34:	f9400b08 	ldr	x8, [x24, #16]
+
+--- size-field hit 23, disassembly line 16264 ---
+   24e40:	54000040 	b.eq	24e48 <JNI_OnUnload@@Base+0xa2e4>  // b.none
+   24e44:	35ffd788 	cbnz	w8, 24934 <JNI_OnUnload@@Base+0x9dd0>
+   24e48:	529a5308 	mov	w8, #0xd298                	// #53912
+   24e4c:	529a6409 	mov	w9, #0xd320                	// #54048
+   24e50:	72a001e8 	movk	w8, #0xf, lsl #16
+   24e54:	72a001e9 	movk	w9, #0xf, lsl #16
+   24e58:	8b080260 	add	x0, x19, x8
+   24e5c:	8b090261 	add	x1, x19, x9
+   24e60:	940022e7 	bl	2d9fc <JNI_OnUnload@@Base+0x12e98>
+   24e64:	f94016e8 	ldr	x8, [x23, #40]
+   24e68:	f9400fe9 	ldr	x9, [sp, #24]
+   24e6c:	eb09011f 	cmp	x8, x9
+   24e70:	54ffd6a0 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24e74:	17fffe8f 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24e78:	b9415f29 	ldr	w9, [x25, #348]
+   24e7c:	b9415b2a 	ldr	w10, [x25, #344]
+   24e80:	6a090149 	ands	w9, w10, w9
+   24e84:	b9210909 	str	w9, [x8, #8456]
+   24e88:	54000080 	b.eq	24e98 <JNI_OnUnload@@Base+0xa334>  // b.none
+   24e8c:	b962a909 	ldr	w9, [x8, #8872]
+   24e90:	321f0129 	orr	w9, w9, #0x2
+   24e94:	b922a909 	str	w9, [x8, #8872]
+   24e98:	52800034 	mov	w20, #0x1                   	// #1
+   24e9c:	17fffea1 	b	24920 <JNI_OnUnload@@Base+0x9dbc>
+   24ea0:	321a0108 	orr	w8, w8, #0x40
+   24ea4:	39033728 	strb	w8, [x25, #205]
+   24ea8:	f94016e8 	ldr	x8, [x23, #40]
+   24eac:	f9400fe9 	ldr	x9, [sp, #24]
+   24eb0:	eb09011f 	cmp	x8, x9
+   24eb4:	54ffd480 	b.eq	24944 <JNI_OnUnload@@Base+0x9de0>  // b.none
+   24eb8:	17fffe7e 	b	248b0 <JNI_OnUnload@@Base+0x9d4c>
+   24ebc:	d65f03c0 	ret
+   24ec0:	12120428 	and	w8, w1, #0xc000
+
+--- size-field hit 24, disassembly line 16985 ---
+   25984:	b9415949 	ldr	w9, [x10, #344]
+   25988:	12003e8b 	and	w11, w20, #0xffff
+   2598c:	6a29017f 	bics	wzr, w11, w9
+   25990:	33003e89 	bfxil	w9, w20, #0, #16
+   25994:	b9015949 	str	w9, [x10, #344]
+   25998:	54000101 	b.ne	259b8 <JNI_OnUnload@@Base+0xae54>  // b.any
+   2599c:	17ffff42 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   259a0:	b941594b 	ldr	w11, [x10, #344]
+   259a4:	53103e89 	lsl	w9, w20, #16
+   259a8:	6a2b013f 	bics	wzr, w9, w11
+   259ac:	33003d69 	bfxil	w9, w11, #0, #16
+   259b0:	b9015949 	str	w9, [x10, #344]
+   259b4:	54ffe780 	b.eq	256a4 <JNI_OnUnload@@Base+0xab40>  // b.none
+   259b8:	f9401508 	ldr	x8, [x8, #40]
+   259bc:	b9415d4b 	ldr	w11, [x10, #348]
+   259c0:	b941514a 	ldr	w10, [x10, #336]
+   259c4:	5280020c 	mov	w12, #0x10                  	// #16
+   259c8:	72a0200c 	movk	w12, #0x100, lsl #16
+   259cc:	f86c6908 	ldr	x8, [x8, x12]
+   259d0:	0a090169 	and	w9, w11, w9
+   259d4:	4b0a03ea 	neg	w10, w10
+   259d8:	6a0a0129 	ands	w9, w9, w10
+   259dc:	b9210909 	str	w9, [x8, #8456]
+   259e0:	54ffe620 	b.eq	256a4 <JNI_OnUnload@@Base+0xab40>  // b.none
+   259e4:	b962a909 	ldr	w9, [x8, #8872]
+   259e8:	321f0129 	orr	w9, w9, #0x2
+   259ec:	b922a909 	str	w9, [x8, #8872]
+   259f0:	17ffff2d 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   259f4:	b9415d49 	ldr	w9, [x10, #348]
+   259f8:	2a3403eb 	mvn	w11, w20
+   259fc:	32103d6b 	orr	w11, w11, #0xffff0000
+   25a00:	14000004 	b	25a10 <JNI_OnUnload@@Base+0xaeac>
+   25a04:	b9415d49 	ldr	w9, [x10, #348]
+
+--- size-field hit 25, disassembly line 16999 ---
+   259bc:	b9415d4b 	ldr	w11, [x10, #348]
+   259c0:	b941514a 	ldr	w10, [x10, #336]
+   259c4:	5280020c 	mov	w12, #0x10                  	// #16
+   259c8:	72a0200c 	movk	w12, #0x100, lsl #16
+   259cc:	f86c6908 	ldr	x8, [x8, x12]
+   259d0:	0a090169 	and	w9, w11, w9
+   259d4:	4b0a03ea 	neg	w10, w10
+   259d8:	6a0a0129 	ands	w9, w9, w10
+   259dc:	b9210909 	str	w9, [x8, #8456]
+   259e0:	54ffe620 	b.eq	256a4 <JNI_OnUnload@@Base+0xab40>  // b.none
+   259e4:	b962a909 	ldr	w9, [x8, #8872]
+   259e8:	321f0129 	orr	w9, w9, #0x2
+   259ec:	b922a909 	str	w9, [x8, #8872]
+   259f0:	17ffff2d 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   259f4:	b9415d49 	ldr	w9, [x10, #348]
+   259f8:	2a3403eb 	mvn	w11, w20
+   259fc:	32103d6b 	orr	w11, w11, #0xffff0000
+   25a00:	14000004 	b	25a10 <JNI_OnUnload@@Base+0xaeac>
+   25a04:	b9415d49 	ldr	w9, [x10, #348]
+   25a08:	12bffbeb 	mov	w11, #0x20ffff              	// #2162687
+   25a0c:	2a34416b 	orn	w11, w11, w20, lsl #16
+   25a10:	0a0b0129 	and	w9, w9, w11
+   25a14:	b9015d49 	str	w9, [x10, #348]
+   25a18:	f9401508 	ldr	x8, [x8, #40]
+   25a1c:	52800209 	mov	w9, #0x10                  	// #16
+   25a20:	72a02009 	movk	w9, #0x100, lsl #16
+   25a24:	f8696908 	ldr	x8, [x8, x9]
+   25a28:	b9610909 	ldr	w9, [x8, #8456]
+   25a2c:	0a0b0129 	and	w9, w9, w11
+   25a30:	b9210909 	str	w9, [x8, #8456]
+   25a34:	17ffff1c 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   25a38:	aa1303e0 	mov	x0, x19
+   25a3c:	2a1503e1 	mov	w1, w21
+
+--- size-field hit 26, disassembly line 17003 ---
+   259cc:	f86c6908 	ldr	x8, [x8, x12]
+   259d0:	0a090169 	and	w9, w11, w9
+   259d4:	4b0a03ea 	neg	w10, w10
+   259d8:	6a0a0129 	ands	w9, w9, w10
+   259dc:	b9210909 	str	w9, [x8, #8456]
+   259e0:	54ffe620 	b.eq	256a4 <JNI_OnUnload@@Base+0xab40>  // b.none
+   259e4:	b962a909 	ldr	w9, [x8, #8872]
+   259e8:	321f0129 	orr	w9, w9, #0x2
+   259ec:	b922a909 	str	w9, [x8, #8872]
+   259f0:	17ffff2d 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   259f4:	b9415d49 	ldr	w9, [x10, #348]
+   259f8:	2a3403eb 	mvn	w11, w20
+   259fc:	32103d6b 	orr	w11, w11, #0xffff0000
+   25a00:	14000004 	b	25a10 <JNI_OnUnload@@Base+0xaeac>
+   25a04:	b9415d49 	ldr	w9, [x10, #348]
+   25a08:	12bffbeb 	mov	w11, #0x20ffff              	// #2162687
+   25a0c:	2a34416b 	orn	w11, w11, w20, lsl #16
+   25a10:	0a0b0129 	and	w9, w9, w11
+   25a14:	b9015d49 	str	w9, [x10, #348]
+   25a18:	f9401508 	ldr	x8, [x8, #40]
+   25a1c:	52800209 	mov	w9, #0x10                  	// #16
+   25a20:	72a02009 	movk	w9, #0x100, lsl #16
+   25a24:	f8696908 	ldr	x8, [x8, x9]
+   25a28:	b9610909 	ldr	w9, [x8, #8456]
+   25a2c:	0a0b0129 	and	w9, w9, w11
+   25a30:	b9210909 	str	w9, [x8, #8456]
+   25a34:	17ffff1c 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   25a38:	aa1303e0 	mov	x0, x19
+   25a3c:	2a1503e1 	mov	w1, w21
+   25a40:	2a1403e2 	mov	w2, w20
+   25a44:	97fffd3e 	bl	24f3c <JNI_OnUnload@@Base+0xa3d8>
+   25a48:	110006a1 	add	w1, w21, #0x1
+   25a4c:	53083e82 	ubfx	w2, w20, #8, #8
+
+--- size-field hit 27, disassembly line 17007 ---
+   259dc:	b9210909 	str	w9, [x8, #8456]
+   259e0:	54ffe620 	b.eq	256a4 <JNI_OnUnload@@Base+0xab40>  // b.none
+   259e4:	b962a909 	ldr	w9, [x8, #8872]
+   259e8:	321f0129 	orr	w9, w9, #0x2
+   259ec:	b922a909 	str	w9, [x8, #8872]
+   259f0:	17ffff2d 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   259f4:	b9415d49 	ldr	w9, [x10, #348]
+   259f8:	2a3403eb 	mvn	w11, w20
+   259fc:	32103d6b 	orr	w11, w11, #0xffff0000
+   25a00:	14000004 	b	25a10 <JNI_OnUnload@@Base+0xaeac>
+   25a04:	b9415d49 	ldr	w9, [x10, #348]
+   25a08:	12bffbeb 	mov	w11, #0x20ffff              	// #2162687
+   25a0c:	2a34416b 	orn	w11, w11, w20, lsl #16
+   25a10:	0a0b0129 	and	w9, w9, w11
+   25a14:	b9015d49 	str	w9, [x10, #348]
+   25a18:	f9401508 	ldr	x8, [x8, #40]
+   25a1c:	52800209 	mov	w9, #0x10                  	// #16
+   25a20:	72a02009 	movk	w9, #0x100, lsl #16
+   25a24:	f8696908 	ldr	x8, [x8, x9]
+   25a28:	b9610909 	ldr	w9, [x8, #8456]
+   25a2c:	0a0b0129 	and	w9, w9, w11
+   25a30:	b9210909 	str	w9, [x8, #8456]
+   25a34:	17ffff1c 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   25a38:	aa1303e0 	mov	x0, x19
+   25a3c:	2a1503e1 	mov	w1, w21
+   25a40:	2a1403e2 	mov	w2, w20
+   25a44:	97fffd3e 	bl	24f3c <JNI_OnUnload@@Base+0xa3d8>
+   25a48:	110006a1 	add	w1, w21, #0x1
+   25a4c:	53083e82 	ubfx	w2, w20, #8, #8
+   25a50:	aa1303e0 	mov	x0, x19
+   25a54:	a9437bfd 	ldp	x29, x30, [sp, #48]
+   25a58:	a9424ff4 	ldp	x20, x19, [sp, #32]
+   25a5c:	a94157f6 	ldp	x22, x21, [sp, #16]
+
+--- size-field hit 28, disassembly line 17222 ---
+   25d38:	5296e249 	mov	w9, #0xb712                	// #46866
+   25d3c:	72a001e9 	movk	w9, #0xf, lsl #16
+   25d40:	8b090269 	add	x9, x19, x9
+   25d44:	39400129 	ldrb	w9, [x9]
+   25d48:	12003e8a 	and	w10, w20, #0xffff
+   25d4c:	1200194a 	and	w10, w10, #0x7f
+   25d50:	5297370b 	mov	w11, #0xb9b8                	// #47544
+   25d54:	8b0a026a 	add	x10, x19, x10
+   25d58:	72a001eb 	movk	w11, #0xf, lsl #16
+   25d5c:	382b6949 	strb	w9, [x10, x11]
+   25d60:	5296b709 	mov	w9, #0xb5b8                	// #46520
+   25d64:	8b080268 	add	x8, x19, x8
+   25d68:	72a001e9 	movk	w9, #0xf, lsl #16
+   25d6c:	17fffe42 	b	25674 <JNI_OnUnload@@Base+0xab10>
+   25d70:	b9415d49 	ldr	w9, [x10, #348]
+   25d74:	b941594a 	ldr	w10, [x10, #344]
+   25d78:	6a090149 	ands	w9, w10, w9
+   25d7c:	b9210909 	str	w9, [x8, #8456]
+   25d80:	540000c0 	b.eq	25d98 <JNI_OnUnload@@Base+0xb234>  // b.none
+   25d84:	b962a909 	ldr	w9, [x8, #8872]
+   25d88:	52800034 	mov	w20, #0x1                   	// #1
+   25d8c:	321f0129 	orr	w9, w9, #0x2
+   25d90:	b922a909 	str	w9, [x8, #8872]
+   25d94:	17ffffa4 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   25d98:	52800034 	mov	w20, #0x1                   	// #1
+   25d9c:	17ffffa2 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   25da0:	a9bc5ff8 	stp	x24, x23, [sp, #-64]!
+   25da4:	a90157f6 	stp	x22, x21, [sp, #16]
+   25da8:	a9024ff4 	stp	x20, x19, [sp, #32]
+   25dac:	a9037bfd 	stp	x29, x30, [sp, #48]
+   25db0:	9100c3fd 	add	x29, sp, #0x30
+   25db4:	52975108 	mov	w8, #0xba88                	// #47752
+   25db8:	52862509 	mov	w9, #0x3128                	// #12584
+
+--- size-field hit 29, disassembly line 17286 ---
+   25e38:	f94006c8 	ldr	x8, [x22, #8]
+   25e3c:	52800209 	mov	w9, #0x10                  	// #16
+   25e40:	72a02009 	movk	w9, #0x100, lsl #16
+   25e44:	f8696908 	ldr	x8, [x8, x9]
+   25e48:	36000074 	tbz	w20, #0, 25e54 <JNI_OnUnload@@Base+0xb2f0>
+   25e4c:	b94152e9 	ldr	w9, [x23, #336]
+   25e50:	34001889 	cbz	w9, 26160 <JNI_OnUnload@@Base+0xb5fc>
+   25e54:	12000294 	and	w20, w20, #0x1
+   25e58:	b921091f 	str	wzr, [x8, #8456]
+   25e5c:	140000ca 	b	26184 <JNI_OnUnload@@Base+0xb620>
+   25e60:	710842bf 	cmp	w21, #0x210
+   25e64:	54000de0 	b.eq	26020 <JNI_OnUnload@@Base+0xb4bc>  // b.none
+   25e68:	710852bf 	cmp	w21, #0x214
+   25e6c:	54000921 	b.ne	25f90 <JNI_OnUnload@@Base+0xb42c>  // b.any
+   25e70:	b9415ee8 	ldr	w8, [x23, #348]
+   25e74:	2a3403e9 	mvn	w9, w20
+   25e78:	320b0129 	orr	w9, w9, #0x200000
+   25e7c:	5280020a 	mov	w10, #0x10                  	// #16
+   25e80:	0a090108 	and	w8, w8, w9
+   25e84:	b9015ee8 	str	w8, [x23, #348]
+   25e88:	f94006c8 	ldr	x8, [x22, #8]
+   25e8c:	72a0200a 	movk	w10, #0x100, lsl #16
+   25e90:	f86a6908 	ldr	x8, [x8, x10]
+   25e94:	b961090a 	ldr	w10, [x8, #8456]
+   25e98:	0a090149 	and	w9, w10, w9
+   25e9c:	b9210909 	str	w9, [x8, #8456]
+   25ea0:	140000be 	b	26198 <JNI_OnUnload@@Base+0xb634>
+   25ea4:	710622bf 	cmp	w21, #0x188
+   25ea8:	54000741 	b.ne	25f90 <JNI_OnUnload@@Base+0xb42c>  // b.any
+   25eac:	39c336e8 	ldrsb	w8, [x23, #205]
+   25eb0:	36f81748 	tbz	w8, #31, 26198 <JNI_OnUnload@@Base+0xb634>
+   25eb4:	39435b09 	ldrb	w9, [x24, #214]
+   25eb8:	370817a9 	tbnz	w9, #1, 261ac <JNI_OnUnload@@Base+0xb648>
+
+--- size-field hit 30, disassembly line 17291 ---
+   25e4c:	b94152e9 	ldr	w9, [x23, #336]
+   25e50:	34001889 	cbz	w9, 26160 <JNI_OnUnload@@Base+0xb5fc>
+   25e54:	12000294 	and	w20, w20, #0x1
+   25e58:	b921091f 	str	wzr, [x8, #8456]
+   25e5c:	140000ca 	b	26184 <JNI_OnUnload@@Base+0xb620>
+   25e60:	710842bf 	cmp	w21, #0x210
+   25e64:	54000de0 	b.eq	26020 <JNI_OnUnload@@Base+0xb4bc>  // b.none
+   25e68:	710852bf 	cmp	w21, #0x214
+   25e6c:	54000921 	b.ne	25f90 <JNI_OnUnload@@Base+0xb42c>  // b.any
+   25e70:	b9415ee8 	ldr	w8, [x23, #348]
+   25e74:	2a3403e9 	mvn	w9, w20
+   25e78:	320b0129 	orr	w9, w9, #0x200000
+   25e7c:	5280020a 	mov	w10, #0x10                  	// #16
+   25e80:	0a090108 	and	w8, w8, w9
+   25e84:	b9015ee8 	str	w8, [x23, #348]
+   25e88:	f94006c8 	ldr	x8, [x22, #8]
+   25e8c:	72a0200a 	movk	w10, #0x100, lsl #16
+   25e90:	f86a6908 	ldr	x8, [x8, x10]
+   25e94:	b961090a 	ldr	w10, [x8, #8456]
+   25e98:	0a090149 	and	w9, w10, w9
+   25e9c:	b9210909 	str	w9, [x8, #8456]
+   25ea0:	140000be 	b	26198 <JNI_OnUnload@@Base+0xb634>
+   25ea4:	710622bf 	cmp	w21, #0x188
+   25ea8:	54000741 	b.ne	25f90 <JNI_OnUnload@@Base+0xb42c>  // b.any
+   25eac:	39c336e8 	ldrsb	w8, [x23, #205]
+   25eb0:	36f81748 	tbz	w8, #31, 26198 <JNI_OnUnload@@Base+0xb634>
+   25eb4:	39435b09 	ldrb	w9, [x24, #214]
+   25eb8:	370817a9 	tbnz	w9, #1, 261ac <JNI_OnUnload@@Base+0xb648>
+   25ebc:	529a7f09 	mov	w9, #0xd3f8                	// #54264
+   25ec0:	52963ea8 	mov	w8, #0xb1f5                	// #45557
+   25ec4:	72a001e9 	movk	w9, #0xf, lsl #16
+   25ec8:	72a00028 	movk	w8, #0x1, lsl #16
+   25ecc:	8b090260 	add	x0, x19, x9
+
+--- size-field hit 31, disassembly line 17399 ---
+   25ffc:	529a9708 	mov	w8, #0xd4b8                	// #54456
+   26000:	72a001e8 	movk	w8, #0xf, lsl #16
+   26004:	f8686a60 	ldr	x0, [x19, x8]
+   26008:	2a1403e1 	mov	w1, w20
+   2600c:	a9437bfd 	ldp	x29, x30, [sp, #48]
+   26010:	a9424ff4 	ldp	x20, x19, [sp, #32]
+   26014:	a94157f6 	ldp	x22, x21, [sp, #16]
+   26018:	a8c45ff8 	ldp	x24, x23, [sp], #64
+   2601c:	14013fd5 	b	75f70 <JNI_OnUnload@@Base+0x5b40c>
+   26020:	b9415ae8 	ldr	w8, [x23, #344]
+   26024:	b9015af4 	str	w20, [x23, #344]
+   26028:	6a28029f 	bics	wzr, w20, w8
+   2602c:	54000b60 	b.eq	26198 <JNI_OnUnload@@Base+0xb634>  // b.none
+   26030:	f94006c8 	ldr	x8, [x22, #8]
+   26034:	b9415ee9 	ldr	w9, [x23, #348]
+   26038:	b94152ea 	ldr	w10, [x23, #336]
+   2603c:	5280020b 	mov	w11, #0x10                  	// #16
+   26040:	72a0200b 	movk	w11, #0x100, lsl #16
+   26044:	f86b6908 	ldr	x8, [x8, x11]
+   26048:	0a140129 	and	w9, w9, w20
+   2604c:	4b0a03ea 	neg	w10, w10
+   26050:	6a0a0129 	ands	w9, w9, w10
+   26054:	b9210909 	str	w9, [x8, #8456]
+   26058:	54000a00 	b.eq	26198 <JNI_OnUnload@@Base+0xb634>  // b.none
+   2605c:	b962a909 	ldr	w9, [x8, #8872]
+   26060:	321f0129 	orr	w9, w9, #0x2
+   26064:	b922a909 	str	w9, [x8, #8872]
+   26068:	1400004c 	b	26198 <JNI_OnUnload@@Base+0xb634>
+   2606c:	b958f2c8 	ldr	w8, [x22, #6384]
+   26070:	37ffed48 	tbnz	w8, #31, 25e18 <JNI_OnUnload@@Base+0xb2b4>
+   26074:	531c7688 	ubfx	w8, w20, #28, #2
+   26078:	39000308 	strb	w8, [x24]
+   2607c:	f94c72c9 	ldr	x9, [x22, #6368]
+
+--- size-field hit 32, disassembly line 17474 ---
+   26128:	b9400508 	ldr	w8, [x8, #4]
+   2612c:	290e5308 	stp	w8, w20, [x24, #112]
+   26130:	35000349 	cbnz	w9, 26198 <JNI_OnUnload@@Base+0xb634>
+   26134:	529a6908 	mov	w8, #0xd348                	// #54088
+   26138:	529a7a09 	mov	w9, #0xd3d0                	// #54224
+   2613c:	72a001e8 	movk	w8, #0xf, lsl #16
+   26140:	72a001e9 	movk	w9, #0xf, lsl #16
+   26144:	8b080260 	add	x0, x19, x8
+   26148:	8b090261 	add	x1, x19, x9
+   2614c:	a9437bfd 	ldp	x29, x30, [sp, #48]
+   26150:	a9424ff4 	ldp	x20, x19, [sp, #32]
+   26154:	a94157f6 	ldp	x22, x21, [sp, #16]
+   26158:	a8c45ff8 	ldp	x24, x23, [sp], #64
+   2615c:	14001e28 	b	2d9fc <JNI_OnUnload@@Base+0x12e98>
+   26160:	b9415ee9 	ldr	w9, [x23, #348]
+   26164:	b9415aea 	ldr	w10, [x23, #344]
+   26168:	6a090149 	ands	w9, w10, w9
+   2616c:	b9210909 	str	w9, [x8, #8456]
+   26170:	54000080 	b.eq	26180 <JNI_OnUnload@@Base+0xb61c>  // b.none
+   26174:	b962a909 	ldr	w9, [x8, #8872]
+   26178:	321f0129 	orr	w9, w9, #0x2
+   2617c:	b922a909 	str	w9, [x8, #8872]
+   26180:	52800034 	mov	w20, #0x1                   	// #1
+   26184:	12003aa8 	and	w8, w21, #0x7fff
+   26188:	52860e09 	mov	w9, #0x3070                	// #12400
+   2618c:	8b080268 	add	x8, x19, x8
+   26190:	72a00049 	movk	w9, #0x2, lsl #16
+   26194:	b8296914 	str	w20, [x8, x9]
+   26198:	a9437bfd 	ldp	x29, x30, [sp, #48]
+   2619c:	a9424ff4 	ldp	x20, x19, [sp, #32]
+   261a0:	a94157f6 	ldp	x22, x21, [sp, #16]
+   261a4:	a8c45ff8 	ldp	x24, x23, [sp], #64
+   261a8:	d65f03c0 	ret
+
+--- size-field hit 33, disassembly line 21675 ---
+   2a2cc:	9e670042 	fmov	d2, x2
+   2a2d0:	9105e210 	add	x16, x16, #0x178
+   2a2d4:	91067084 	add	x4, x4, #0x19c
+   2a2d8:	52802022 	mov	w2, #0x101                 	// #257
+   2a2dc:	4e181c22 	mov	v2.d[1], x1
+   2a2e0:	f901c9a3 	str	x3, [x13, #912]
+   2a2e4:	3d80e1a1 	str	q1, [x13, #896]
+   2a2e8:	f901d1bf 	str	xzr, [x13, #928]
+   2a2ec:	f901cdbf 	str	xzr, [x13, #920]
+   2a2f0:	3d8041c0 	str	q0, [x14, #256]
+   2a2f4:	b90119c8 	str	w8, [x14, #280]
+   2a2f8:	7902e1c9 	strh	w9, [x14, #368]
+   2a2fc:	f90201bf 	str	xzr, [x13, #1024]
+   2a300:	f901fdbf 	str	xzr, [x13, #1016]
+   2a304:	3d8059c0 	str	q0, [x14, #352]
+   2a308:	b90179c8 	str	w8, [x14, #376]
+   2a30c:	7903a1c9 	strh	w9, [x14, #464]
+   2a310:	f90231bf 	str	xzr, [x13, #1120]
+   2a314:	f9022dbf 	str	xzr, [x13, #1112]
+   2a318:	3d8071c0 	str	q0, [x14, #448]
+   2a31c:	b901d9cb 	str	w11, [x14, #472]
+   2a320:	3901418f 	strb	w15, [x12, #80]
+   2a324:	f9000190 	str	x16, [x12]
+   2a328:	3901458f 	strb	w15, [x12, #81]
+   2a32c:	f9000d84 	str	x4, [x12, #24]
+   2a330:	a9030191 	stp	x17, x0, [x12, #48]
+   2a334:	3d801182 	str	q2, [x12, #64]
+   2a338:	b900598b 	str	w11, [x12, #88]
+   2a33c:	79016182 	strh	w2, [x12, #176]
+   2a340:	f9003190 	str	x16, [x12, #96]
+   2a344:	f9003d84 	str	x4, [x12, #120]
+   2a348:	a9090191 	stp	x17, x0, [x12, #144]
+   2a34c:	3d802982 	str	q2, [x12, #160]
+
+--- size-field hit 34, disassembly line 21703 ---
+   2a33c:	79016182 	strh	w2, [x12, #176]
+   2a340:	f9003190 	str	x16, [x12, #96]
+   2a344:	f9003d84 	str	x4, [x12, #120]
+   2a348:	a9090191 	stp	x17, x0, [x12, #144]
+   2a34c:	3d802982 	str	q2, [x12, #160]
+   2a350:	b900b988 	str	w8, [x12, #184]
+   2a354:	79022189 	strh	w9, [x12, #272]
+   2a358:	f902bdbf 	str	xzr, [x13, #1400]
+   2a35c:	f902c1bf 	str	xzr, [x13, #1408]
+   2a360:	3d804180 	str	q0, [x12, #256]
+   2a364:	b9011988 	str	w8, [x12, #280]
+   2a368:	7902e189 	strh	w9, [x12, #368]
+   2a36c:	f902f1bf 	str	xzr, [x13, #1504]
+   2a370:	f902edbf 	str	xzr, [x13, #1496]
+   2a374:	3d805980 	str	q0, [x12, #352]
+   2a378:	b903b988 	str	w8, [x12, #952]
+   2a37c:	79082189 	strh	w9, [x12, #1040]
+   2a380:	f90441bf 	str	xzr, [x13, #2176]
+   2a384:	f9043dbf 	str	xzr, [x13, #2168]
+   2a388:	3d810180 	str	q0, [x12, #1024]
+   2a38c:	b9041988 	str	w8, [x12, #1048]
+   2a390:	7908e189 	strh	w9, [x12, #1136]
+   2a394:	f90471bf 	str	xzr, [x13, #2272]
+   2a398:	f9046dbf 	str	xzr, [x13, #2264]
+   2a39c:	3d811980 	str	q0, [x12, #1120]
+   2a3a0:	b9047988 	str	w8, [x12, #1144]
+   2a3a4:	7909a189 	strh	w9, [x12, #1232]
+   2a3a8:	f9049dbf 	str	xzr, [x13, #2360]
+   2a3ac:	f904a1bf 	str	xzr, [x13, #2368]
+   2a3b0:	3d813180 	str	q0, [x12, #1216]
+   2a3b4:	b904d988 	str	w8, [x12, #1240]
+   2a3b8:	790a6189 	strh	w9, [x12, #1328]
+   2a3bc:	f904d1bf 	str	xzr, [x13, #2464]
+
+--- size-field hit 35, disassembly line 22416 ---
+   2ae60:	3d800220 	str	q0, [x17]
+   2ae64:	529fea51 	mov	w17, #0xff52                	// #65362
+   2ae68:	52800320 	mov	w0, #0x19                  	// #25
+   2ae6c:	72a00071 	movk	w17, #0x3, lsl #16
+   2ae70:	7902a2c0 	strh	w0, [x22, #336]
+   2ae74:	b20783e0 	mov	x0, #0x200020002000200     	// #144117387132666368
+   2ae78:	8b110271 	add	x17, x19, x17
+   2ae7c:	f2c40400 	movk	x0, #0x2020, lsl #32
+   2ae80:	79000a3f 	strh	wzr, [x17, #4]
+   2ae84:	b900023f 	str	wzr, [x17]
+   2ae88:	52810011 	mov	w17, #0x800                 	// #2048
+   2ae8c:	f2e1c000 	movk	x0, #0xe00, lsl #48
+   2ae90:	72b01c11 	movk	w17, #0x80e0, lsl #16
+   2ae94:	f900aec0 	str	x0, [x22, #344]
+   2ae98:	b90162d1 	str	w17, [x22, #352]
+   2ae9c:	b9402e91 	ldr	w17, [x20, #44]
+   2aea0:	910402d0 	add	x16, x22, #0x100
+   2aea4:	2f00e600 	movi	d0, #0xff00000000
+   2aea8:	529fffe0 	mov	w0, #0xffff                	// #65535
+   2aeac:	7902cad1 	strh	w17, [x22, #356]
+   2aeb0:	52940031 	mov	w17, #0xa001                	// #40961
+   2aeb4:	fd00b6c0 	str	d0, [x22, #360]
+   2aeb8:	7902e2df 	strh	wzr, [x22, #368]
+   2aebc:	386f6a01 	ldrb	w1, [x16, x15]
+   2aec0:	910005ef 	add	x15, x15, #0x1
+   2aec4:	4a010000 	eor	w0, w0, w1
+   2aec8:	53017c01 	lsr	w1, w0, #1
+   2aecc:	7200001f 	tst	w0, #0x1
+   2aed0:	4a080020 	eor	w0, w1, w8
+   2aed4:	1a800020 	csel	w0, w1, w0, eq	// eq = none
+   2aed8:	53017c01 	lsr	w1, w0, #1
+   2aedc:	7200001f 	tst	w0, #0x1
+   2aee0:	4a090020 	eor	w0, w1, w9
+
+--- size-field hit 36, disassembly line 45757 ---
+   41b14:	b5fffee9 	cbnz	x9, 41af0 <JNI_OnUnload@@Base+0x26f8c>
+   41b18:	9b0d5689 	madd	x9, x20, x13, x21
+   41b1c:	39456129 	ldrb	w9, [x9, #344]
+   41b20:	91030100 	add	x0, x8, #0xc0
+   41b24:	9b0e7288 	madd	x8, x20, x14, x28
+   41b28:	91004118 	add	x24, x8, #0x10
+   41b2c:	8b1416d9 	add	x25, x22, x20, lsl #5
+   41b30:	3637fd09 	tbz	w9, #6, 41ad0 <JNI_OnUnload@@Base+0x26f6c>
+   41b34:	9b0d5696 	madd	x22, x20, x13, x21
+   41b38:	79c2c6c8 	ldrsh	w8, [x22, #354]
+   41b3c:	fd40aac9 	ldr	d9, [x22, #336]
+   41b40:	79c2cac9 	ldrsh	w9, [x22, #356]
+   41b44:	2a1a03fc 	mov	w28, w26
+   41b48:	2a1703fa 	mov	w26, w23
+   41b4c:	7942bad7 	ldrh	w23, [x22, #348]
+   41b50:	b9401feb 	ldr	w11, [sp, #28]
+   41b54:	f9407aca 	ldr	x10, [x22, #240]
+   41b58:	1e270100 	fmov	s0, w8
+   41b5c:	4e0c1d20 	mov	v0.s[1], w9
+   41b60:	4ea91d21 	mov	v1.16b, v9.16b
+   41b64:	4b0b02eb 	sub	w11, w23, w11
+   41b68:	2ea09501 	mls	v1.2s, v8.2s, v0.2s
+   41b6c:	aa1803e1 	mov	x1, x24
+   41b70:	aa1903e2 	mov	x2, x25
+   41b74:	2a1303e3 	mov	w3, w19
+   41b78:	7902bacb 	strh	w11, [x22, #348]
+   41b7c:	fd00aac1 	str	d1, [x22, #336]
+   41b80:	d63f0140 	blr	x10
+   41b84:	7902bad7 	strh	w23, [x22, #348]
+   41b88:	fd00aac9 	str	d9, [x22, #336]
+   41b8c:	2a1a03f7 	mov	w23, w26
+   41b90:	2a1c03fa 	mov	w26, w28
+   41b94:	a940f3f6 	ldp	x22, x28, [sp, #8]
+
+--- size-field hit 37, disassembly line 45768 ---
+   41b40:	79c2cac9 	ldrsh	w9, [x22, #356]
+   41b44:	2a1a03fc 	mov	w28, w26
+   41b48:	2a1703fa 	mov	w26, w23
+   41b4c:	7942bad7 	ldrh	w23, [x22, #348]
+   41b50:	b9401feb 	ldr	w11, [sp, #28]
+   41b54:	f9407aca 	ldr	x10, [x22, #240]
+   41b58:	1e270100 	fmov	s0, w8
+   41b5c:	4e0c1d20 	mov	v0.s[1], w9
+   41b60:	4ea91d21 	mov	v1.16b, v9.16b
+   41b64:	4b0b02eb 	sub	w11, w23, w11
+   41b68:	2ea09501 	mls	v1.2s, v8.2s, v0.2s
+   41b6c:	aa1803e1 	mov	x1, x24
+   41b70:	aa1903e2 	mov	x2, x25
+   41b74:	2a1303e3 	mov	w3, w19
+   41b78:	7902bacb 	strh	w11, [x22, #348]
+   41b7c:	fd00aac1 	str	d1, [x22, #336]
+   41b80:	d63f0140 	blr	x10
+   41b84:	7902bad7 	strh	w23, [x22, #348]
+   41b88:	fd00aac9 	str	d9, [x22, #336]
+   41b8c:	2a1a03f7 	mov	w23, w26
+   41b90:	2a1c03fa 	mov	w26, w28
+   41b94:	a940f3f6 	ldp	x22, x28, [sp, #8]
+   41b98:	aa1903e0 	mov	x0, x25
+   41b9c:	2a1703e1 	mov	w1, w23
+   41ba0:	97fffcea 	bl	40f48 <JNI_OnUnload@@Base+0x263e4>
+   41ba4:	f94003e9 	ldr	x9, [sp]
+   41ba8:	5280440e 	mov	w14, #0x220                 	// #544
+   41bac:	5280160d 	mov	w13, #0xb0                  	// #176
+   41bb0:	2a1f03e8 	mov	w8, wzr
+   41bb4:	9b0e2689 	madd	x9, x20, x14, x9
+   41bb8:	78685b0a 	ldrh	w10, [x24, w8, uxtw #1]
+   41bbc:	b9401bec 	ldr	w12, [sp, #24]
+   41bc0:	1100050b 	add	w11, w8, #0x1
+
+--- size-field hit 38, disassembly line 45771 ---
+   41b4c:	7942bad7 	ldrh	w23, [x22, #348]
+   41b50:	b9401feb 	ldr	w11, [sp, #28]
+   41b54:	f9407aca 	ldr	x10, [x22, #240]
+   41b58:	1e270100 	fmov	s0, w8
+   41b5c:	4e0c1d20 	mov	v0.s[1], w9
+   41b60:	4ea91d21 	mov	v1.16b, v9.16b
+   41b64:	4b0b02eb 	sub	w11, w23, w11
+   41b68:	2ea09501 	mls	v1.2s, v8.2s, v0.2s
+   41b6c:	aa1803e1 	mov	x1, x24
+   41b70:	aa1903e2 	mov	x2, x25
+   41b74:	2a1303e3 	mov	w3, w19
+   41b78:	7902bacb 	strh	w11, [x22, #348]
+   41b7c:	fd00aac1 	str	d1, [x22, #336]
+   41b80:	d63f0140 	blr	x10
+   41b84:	7902bad7 	strh	w23, [x22, #348]
+   41b88:	fd00aac9 	str	d9, [x22, #336]
+   41b8c:	2a1a03f7 	mov	w23, w26
+   41b90:	2a1c03fa 	mov	w26, w28
+   41b94:	a940f3f6 	ldp	x22, x28, [sp, #8]
+   41b98:	aa1903e0 	mov	x0, x25
+   41b9c:	2a1703e1 	mov	w1, w23
+   41ba0:	97fffcea 	bl	40f48 <JNI_OnUnload@@Base+0x263e4>
+   41ba4:	f94003e9 	ldr	x9, [sp]
+   41ba8:	5280440e 	mov	w14, #0x220                 	// #544
+   41bac:	5280160d 	mov	w13, #0xb0                  	// #176
+   41bb0:	2a1f03e8 	mov	w8, wzr
+   41bb4:	9b0e2689 	madd	x9, x20, x14, x9
+   41bb8:	78685b0a 	ldrh	w10, [x24, w8, uxtw #1]
+   41bbc:	b9401bec 	ldr	w12, [sp, #24]
+   41bc0:	1100050b 	add	w11, w8, #0x1
+   41bc4:	0b1a0108 	add	w8, w8, w26
+   41bc8:	f103fd7f 	cmp	x11, #0xff
+   41bcc:	54fff928 	b.hi	41af0 <JNI_OnUnload@@Base+0x26f8c>  // b.pmore
+
+--- size-field hit 39, disassembly line 45833 ---
+   41c44:	9b195509 	madd	x9, x8, x25, x21
+   41c48:	f940712a 	ldr	x10, [x9, #224]
+   41c4c:	b5ffff0a 	cbnz	x10, 41c2c <JNI_OnUnload@@Base+0x270c8>
+   41c50:	9b19550a 	madd	x10, x8, x25, x21
+   41c54:	3945614a 	ldrb	w10, [x10, #344]
+   41c58:	91030120 	add	x0, x9, #0xc0
+   41c5c:	9b1a7109 	madd	x9, x8, x26, x28
+   41c60:	91004121 	add	x1, x9, #0x10
+   41c64:	8b0816c2 	add	x2, x22, x8, lsl #5
+   41c68:	3637fdaa 	tbz	w10, #6, 41c1c <JNI_OnUnload@@Base+0x270b8>
+   41c6c:	9b195514 	madd	x20, x8, x25, x21
+   41c70:	79c2c688 	ldrsh	w8, [x20, #354]
+   41c74:	fd40aa89 	ldr	d9, [x20, #336]
+   41c78:	79c2ca89 	ldrsh	w9, [x20, #356]
+   41c7c:	7942ba9b 	ldrh	w27, [x20, #348]
+   41c80:	b9401feb 	ldr	w11, [sp, #28]
+   41c84:	f9407a8a 	ldr	x10, [x20, #240]
+   41c88:	1e270100 	fmov	s0, w8
+   41c8c:	4e0c1d20 	mov	v0.s[1], w9
+   41c90:	4ea91d21 	mov	v1.16b, v9.16b
+   41c94:	4b0b036b 	sub	w11, w27, w11
+   41c98:	2ea09501 	mls	v1.2s, v8.2s, v0.2s
+   41c9c:	2a1303e3 	mov	w3, w19
+   41ca0:	7902ba8b 	strh	w11, [x20, #348]
+   41ca4:	fd00aa81 	str	d1, [x20, #336]
+   41ca8:	d63f0140 	blr	x10
+   41cac:	7902ba9b 	strh	w27, [x20, #348]
+   41cb0:	fd00aa89 	str	d9, [x20, #336]
+   41cb4:	17ffffde 	b	41c2c <JNI_OnUnload@@Base+0x270c8>
+   41cb8:	a9487bfd 	ldp	x29, x30, [sp, #128]
+   41cbc:	a9474ff4 	ldp	x20, x19, [sp, #112]
+   41cc0:	a94657f6 	ldp	x22, x21, [sp, #96]
+   41cc4:	a9455ff8 	ldp	x24, x23, [sp, #80]
+
+--- size-field hit 40, disassembly line 45842 ---
+   41c68:	3637fdaa 	tbz	w10, #6, 41c1c <JNI_OnUnload@@Base+0x270b8>
+   41c6c:	9b195514 	madd	x20, x8, x25, x21
+   41c70:	79c2c688 	ldrsh	w8, [x20, #354]
+   41c74:	fd40aa89 	ldr	d9, [x20, #336]
+   41c78:	79c2ca89 	ldrsh	w9, [x20, #356]
+   41c7c:	7942ba9b 	ldrh	w27, [x20, #348]
+   41c80:	b9401feb 	ldr	w11, [sp, #28]
+   41c84:	f9407a8a 	ldr	x10, [x20, #240]
+   41c88:	1e270100 	fmov	s0, w8
+   41c8c:	4e0c1d20 	mov	v0.s[1], w9
+   41c90:	4ea91d21 	mov	v1.16b, v9.16b
+   41c94:	4b0b036b 	sub	w11, w27, w11
+   41c98:	2ea09501 	mls	v1.2s, v8.2s, v0.2s
+   41c9c:	2a1303e3 	mov	w3, w19
+   41ca0:	7902ba8b 	strh	w11, [x20, #348]
+   41ca4:	fd00aa81 	str	d1, [x20, #336]
+   41ca8:	d63f0140 	blr	x10
+   41cac:	7902ba9b 	strh	w27, [x20, #348]
+   41cb0:	fd00aa89 	str	d9, [x20, #336]
+   41cb4:	17ffffde 	b	41c2c <JNI_OnUnload@@Base+0x270c8>
+   41cb8:	a9487bfd 	ldp	x29, x30, [sp, #128]
+   41cbc:	a9474ff4 	ldp	x20, x19, [sp, #112]
+   41cc0:	a94657f6 	ldp	x22, x21, [sp, #96]
+   41cc4:	a9455ff8 	ldp	x24, x23, [sp, #80]
+   41cc8:	a94467fa 	ldp	x26, x25, [sp, #64]
+   41ccc:	a9436ffc 	ldp	x28, x27, [sp, #48]
+   41cd0:	6d4223e9 	ldp	d9, d8, [sp, #32]
+   41cd4:	910243ff 	add	sp, sp, #0x90
+   41cd8:	d65f03c0 	ret
+   41cdc:	a9ba6ffc 	stp	x28, x27, [sp, #-96]!
+   41ce0:	a90167fa 	stp	x26, x25, [sp, #16]
+   41ce4:	a9025ff8 	stp	x24, x23, [sp, #32]
+   41ce8:	a90357f6 	stp	x22, x21, [sp, #48]
+
+--- size-field hit 41, disassembly line 45845 ---
+   41c74:	fd40aa89 	ldr	d9, [x20, #336]
+   41c78:	79c2ca89 	ldrsh	w9, [x20, #356]
+   41c7c:	7942ba9b 	ldrh	w27, [x20, #348]
+   41c80:	b9401feb 	ldr	w11, [sp, #28]
+   41c84:	f9407a8a 	ldr	x10, [x20, #240]
+   41c88:	1e270100 	fmov	s0, w8
+   41c8c:	4e0c1d20 	mov	v0.s[1], w9
+   41c90:	4ea91d21 	mov	v1.16b, v9.16b
+   41c94:	4b0b036b 	sub	w11, w27, w11
+   41c98:	2ea09501 	mls	v1.2s, v8.2s, v0.2s
+   41c9c:	2a1303e3 	mov	w3, w19
+   41ca0:	7902ba8b 	strh	w11, [x20, #348]
+   41ca4:	fd00aa81 	str	d1, [x20, #336]
+   41ca8:	d63f0140 	blr	x10
+   41cac:	7902ba9b 	strh	w27, [x20, #348]
+   41cb0:	fd00aa89 	str	d9, [x20, #336]
+   41cb4:	17ffffde 	b	41c2c <JNI_OnUnload@@Base+0x270c8>
+   41cb8:	a9487bfd 	ldp	x29, x30, [sp, #128]
+   41cbc:	a9474ff4 	ldp	x20, x19, [sp, #112]
+   41cc0:	a94657f6 	ldp	x22, x21, [sp, #96]
+   41cc4:	a9455ff8 	ldp	x24, x23, [sp, #80]
+   41cc8:	a94467fa 	ldp	x26, x25, [sp, #64]
+   41ccc:	a9436ffc 	ldp	x28, x27, [sp, #48]
+   41cd0:	6d4223e9 	ldp	d9, d8, [sp, #32]
+   41cd4:	910243ff 	add	sp, sp, #0x90
+   41cd8:	d65f03c0 	ret
+   41cdc:	a9ba6ffc 	stp	x28, x27, [sp, #-96]!
+   41ce0:	a90167fa 	stp	x26, x25, [sp, #16]
+   41ce4:	a9025ff8 	stp	x24, x23, [sp, #32]
+   41ce8:	a90357f6 	stp	x22, x21, [sp, #48]
+   41cec:	a9044ff4 	stp	x20, x19, [sp, #64]
+   41cf0:	a9057bfd 	stp	x29, x30, [sp, #80]
+   41cf4:	910143fd 	add	x29, sp, #0x50
+
+--- size-field hit 42, disassembly line 49062 ---
+   44eb8:	ad040300 	stp	q0, q0, [x24, #128]
+   44ebc:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ec0:	ad050300 	stp	q0, q0, [x24, #160]
+   44ec4:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ec8:	ad060300 	stp	q0, q0, [x24, #192]
+   44ecc:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ed0:	ad070300 	stp	q0, q0, [x24, #224]
+   44ed4:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ed8:	ad080300 	stp	q0, q0, [x24, #256]
+   44edc:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ee0:	ad090300 	stp	q0, q0, [x24, #288]
+   44ee4:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ee8:	ad0a0300 	stp	q0, q0, [x24, #320]
+   44eec:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ef0:	ad0b0300 	stp	q0, q0, [x24, #352]
+   44ef4:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44ef8:	ad0c0300 	stp	q0, q0, [x24, #384]
+   44efc:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44f00:	ad0d0300 	stp	q0, q0, [x24, #416]
+   44f04:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44f08:	ad0e0300 	stp	q0, q0, [x24, #448]
+   44f0c:	4d40c500 	ld1r	{v0.8h}, [x8]
+   44f10:	ad0f0300 	stp	q0, q0, [x24, #480]
+   44f14:	aa1703e0 	mov	x0, x23
+   44f18:	aa1803e1 	mov	x1, x24
+   44f1c:	94011b5f 	bl	8bc98 <JNI_OnUnload@@Base+0x71134>
+   44f20:	b5fff8b4 	cbnz	x20, 44e34 <JNI_OnUnload@@Base+0x2a2d0>
+   44f24:	17ffffca 	b	44e4c <JNI_OnUnload@@Base+0x2a2e8>
+   44f28:	97ff4686 	bl	16940 <__stack_chk_fail@plt>
+   44f2c:	b940002a 	ldr	w10, [x1]
+   44f30:	2940300b 	ldp	w11, w12, [x0]
+   44f34:	4b0303e8 	neg	w8, w3
+   44f38:	12000049 	and	w9, w2, #0x1
+
+--- size-field hit 43, disassembly line 57280 ---
+   4cf20:	9b097d4a 	mul	x10, x10, x9
+   4cf24:	9b097d08 	mul	x8, x8, x9
+   4cf28:	ad070340 	stp	q0, q0, [x26, #224]
+   4cf2c:	ad060340 	stp	q0, q0, [x26, #192]
+   4cf30:	ad050340 	stp	q0, q0, [x26, #160]
+   4cf34:	ad040340 	stp	q0, q0, [x26, #128]
+   4cf38:	ad030340 	stp	q0, q0, [x26, #96]
+   4cf3c:	ad020340 	stp	q0, q0, [x26, #64]
+   4cf40:	ad010340 	stp	q0, q0, [x26, #32]
+   4cf44:	ad000340 	stp	q0, q0, [x26]
+   4cf48:	4e080d40 	dup	v0.2d, x10
+   4cf4c:	ad080340 	stp	q0, q0, [x26, #256]
+   4cf50:	ad090340 	stp	q0, q0, [x26, #288]
+   4cf54:	ad0a0340 	stp	q0, q0, [x26, #320]
+   4cf58:	ad0b0340 	stp	q0, q0, [x26, #352]
+   4cf5c:	ad0c0340 	stp	q0, q0, [x26, #384]
+   4cf60:	ad0d0340 	stp	q0, q0, [x26, #416]
+   4cf64:	ad0e0340 	stp	q0, q0, [x26, #448]
+   4cf68:	ad0f0340 	stp	q0, q0, [x26, #480]
+   4cf6c:	4e080d00 	dup	v0.2d, x8
+   4cf70:	ad170340 	stp	q0, q0, [x26, #736]
+   4cf74:	ad160340 	stp	q0, q0, [x26, #704]
+   4cf78:	ad150340 	stp	q0, q0, [x26, #672]
+   4cf7c:	ad140340 	stp	q0, q0, [x26, #640]
+   4cf80:	ad130340 	stp	q0, q0, [x26, #608]
+   4cf84:	ad120340 	stp	q0, q0, [x26, #576]
+   4cf88:	ad110340 	stp	q0, q0, [x26, #544]
+   4cf8c:	ad100340 	stp	q0, q0, [x26, #512]
+   4cf90:	aa1a03f6 	mov	x22, x26
+   4cf94:	aa1a03f8 	mov	x24, x26
+   4cf98:	aa1a03f7 	mov	x23, x26
+   4cf9c:	f9400fe8 	ldr	x8, [sp, #24]
+   4cfa0:	53185f94 	lsl	w20, w28, #8
+
+--- size-field hit 44, disassembly line 57599 ---
+   4d41c:	17ffff9a 	b	4d284 <JNI_OnUnload@@Base+0x32720>
+   4d420:	531f110a 	ubfiz	w10, w8, #1, #5
+   4d424:	7100815f 	cmp	w10, #0x20
+   4d428:	54002643 	b.cc	4d8f0 <JNI_OnUnload@@Base+0x32d8c>  // b.lo, b.ul, b.last
+   4d42c:	6f07e7e0 	movi	v0.2d, #0xffffffffffffffff
+   4d430:	14000005 	b	4d444 <JNI_OnUnload@@Base+0x328e0>
+   4d434:	531f110a 	ubfiz	w10, w8, #1, #5
+   4d438:	7100815f 	cmp	w10, #0x20
+   4d43c:	54002cc3 	b.cc	4d9d4 <JNI_OnUnload@@Base+0x32e70>  // b.lo, b.ul, b.last
+   4d440:	6f00e400 	movi	v0.2d, #0x0
+   4d444:	ad0f0260 	stp	q0, q0, [x19, #480]
+   4d448:	ad0e0260 	stp	q0, q0, [x19, #448]
+   4d44c:	ad0d0260 	stp	q0, q0, [x19, #416]
+   4d450:	ad0c0260 	stp	q0, q0, [x19, #384]
+   4d454:	ad0b0260 	stp	q0, q0, [x19, #352]
+   4d458:	ad0a0260 	stp	q0, q0, [x19, #320]
+   4d45c:	ad090260 	stp	q0, q0, [x19, #288]
+   4d460:	ad080260 	stp	q0, q0, [x19, #256]
+   4d464:	ad070260 	stp	q0, q0, [x19, #224]
+   4d468:	ad060260 	stp	q0, q0, [x19, #192]
+   4d46c:	ad050260 	stp	q0, q0, [x19, #160]
+   4d470:	ad040260 	stp	q0, q0, [x19, #128]
+   4d474:	ad030260 	stp	q0, q0, [x19, #96]
+   4d478:	ad020260 	stp	q0, q0, [x19, #64]
+   4d47c:	ad010260 	stp	q0, q0, [x19, #32]
+   4d480:	ad000260 	stp	q0, q0, [x19]
+   4d484:	b944b308 	ldr	w8, [x24, #1200]
+   4d488:	35ffdec8 	cbnz	w8, 4d060 <JNI_OnUnload@@Base+0x324fc>
+   4d48c:	17ffff7e 	b	4d284 <JNI_OnUnload@@Base+0x32720>
+   4d490:	531f1108 	ubfiz	w8, w8, #1, #5
+   4d494:	7100811f 	cmp	w8, #0x20
+   4d498:	54003083 	b.cc	4daa8 <JNI_OnUnload@@Base+0x32f44>  // b.lo, b.ul, b.last
+   4d49c:	52801fe1 	mov	w1, #0xff                  	// #255
+
+--- size-field hit 45, disassembly line 59212 ---
+   4ed50:	9b090109 	madd	x9, x8, x9, x0
+   4ed54:	b9414929 	ldr	w9, [x9, #328]
+   4ed58:	35000d89 	cbnz	w9, 4ef08 <JNI_OnUnload@@Base+0x343a4>
+   4ed5c:	52801609 	mov	w9, #0xb0                  	// #176
+   4ed60:	9b090109 	madd	x9, x8, x9, x0
+   4ed64:	b9414d29 	ldr	w9, [x9, #332]
+   4ed68:	35000d09 	cbnz	w9, 4ef08 <JNI_OnUnload@@Base+0x343a4>
+   4ed6c:	52801609 	mov	w9, #0xb0                  	// #176
+   4ed70:	9b090109 	madd	x9, x8, x9, x0
+   4ed74:	7942bd29 	ldrh	w9, [x9, #350]
+   4ed78:	7104013f 	cmp	w9, #0x100
+   4ed7c:	54000c61 	b.ne	4ef08 <JNI_OnUnload@@Base+0x343a4>  // b.any
+   4ed80:	52801609 	mov	w9, #0xb0                  	// #176
+   4ed84:	9b090109 	madd	x9, x8, x9, x0
+   4ed88:	7942c129 	ldrh	w9, [x9, #352]
+   4ed8c:	35000be9 	cbnz	w9, 4ef08 <JNI_OnUnload@@Base+0x343a4>
+   4ed90:	52801609 	mov	w9, #0xb0                  	// #176
+   4ed94:	9b090109 	madd	x9, x8, x9, x0
+   4ed98:	7942c529 	ldrh	w9, [x9, #354]
+   4ed9c:	35000b69 	cbnz	w9, 4ef08 <JNI_OnUnload@@Base+0x343a4>
+   4eda0:	52801609 	mov	w9, #0xb0                  	// #176
+   4eda4:	9b090109 	madd	x9, x8, x9, x0
+   4eda8:	7942c929 	ldrh	w9, [x9, #356]
+   4edac:	7104013f 	cmp	w9, #0x100
+   4edb0:	54000ac1 	b.ne	4ef08 <JNI_OnUnload@@Base+0x343a4>  // b.any
+   4edb4:	f9400009 	ldr	x9, [x0]
+   4edb8:	5280160b 	mov	w11, #0xb0                  	// #176
+   4edbc:	9b0b010b 	madd	x11, x8, x11, x0
+   4edc0:	9104016b 	add	x11, x11, #0x100
+   4edc4:	b940112a 	ldr	w10, [x9, #16]
+   4edc8:	7100195f 	cmp	w10, #0x6
+   4edcc:	52801fea 	mov	w10, #0xff                  	// #255
+   4edd0:	54000160 	b.eq	4edfc <JNI_OnUnload@@Base+0x34298>  // b.none
+
+--- size-field hit 46, disassembly line 59918 ---
+   4f858:	0a2a018a 	bic	w10, w12, w10
+   4f85c:	1ac92289 	lsl	w9, w20, w9
+   4f860:	2a090154 	orr	w20, w10, w9
+   4f864:	71000ebf 	cmp	w21, #0x3
+   4f868:	5280004a 	mov	w10, #0x2                   	// #2
+   4f86c:	12002289 	and	w9, w20, #0x1ff
+   4f870:	1a8a32b5 	csel	w21, w21, w10, cc	// cc = lo, ul, last
+   4f874:	7902b669 	strh	w9, [x19, #346]
+   4f878:	54003c63 	b.cc	50004 <JNI_OnUnload@@Base+0x354a0>  // b.lo, b.ul, b.last
+   4f87c:	53107e94 	lsr	w20, w20, #16
+   4f880:	710006bf 	cmp	w21, #0x1
+   4f884:	54000168 	b.hi	4f8b0 <JNI_OnUnload@@Base+0x34d4c>  // b.pmore
+   4f888:	531d72a9 	lsl	w9, w21, #3
+   4f88c:	1280000a 	mov	w10, #0xffffffff            	// #-1
+   4f890:	7942ba6b 	ldrh	w11, [x19, #348]
+   4f894:	1ac92149 	lsl	w9, w10, w9
+   4f898:	531d0108 	ubfiz	w8, w8, #3, #1
+   4f89c:	2a2903e9 	mvn	w9, w9
+   4f8a0:	1ac82129 	lsl	w9, w9, w8
+   4f8a4:	0a290169 	bic	w9, w11, w9
+   4f8a8:	1ac82288 	lsl	w8, w20, w8
+   4f8ac:	2a080134 	orr	w20, w9, w8
+   4f8b0:	12002288 	and	w8, w20, #0x1ff
+   4f8b4:	7902ba68 	strh	w8, [x19, #348]
+   4f8b8:	a9427bfd 	ldp	x29, x30, [sp, #32]
+   4f8bc:	a9414ff4 	ldp	x20, x19, [sp, #16]
+   4f8c0:	f84307f5 	ldr	x21, [sp], #48
+   4f8c4:	d65f03c0 	ret
+   4f8c8:	710006bf 	cmp	w21, #0x1
+   4f8cc:	54000168 	b.hi	4f8f8 <JNI_OnUnload@@Base+0x34d94>  // b.pmore
+   4f8d0:	531d72aa 	lsl	w10, w21, #3
+   4f8d4:	1280000b 	mov	w11, #0xffffffff            	// #-1
+   4f8d8:	7944166c 	ldrh	w12, [x19, #522]
+
+--- size-field hit 47, disassembly line 59927 ---
+   4f87c:	53107e94 	lsr	w20, w20, #16
+   4f880:	710006bf 	cmp	w21, #0x1
+   4f884:	54000168 	b.hi	4f8b0 <JNI_OnUnload@@Base+0x34d4c>  // b.pmore
+   4f888:	531d72a9 	lsl	w9, w21, #3
+   4f88c:	1280000a 	mov	w10, #0xffffffff            	// #-1
+   4f890:	7942ba6b 	ldrh	w11, [x19, #348]
+   4f894:	1ac92149 	lsl	w9, w10, w9
+   4f898:	531d0108 	ubfiz	w8, w8, #3, #1
+   4f89c:	2a2903e9 	mvn	w9, w9
+   4f8a0:	1ac82129 	lsl	w9, w9, w8
+   4f8a4:	0a290169 	bic	w9, w11, w9
+   4f8a8:	1ac82288 	lsl	w8, w20, w8
+   4f8ac:	2a080134 	orr	w20, w9, w8
+   4f8b0:	12002288 	and	w8, w20, #0x1ff
+   4f8b4:	7902ba68 	strh	w8, [x19, #348]
+   4f8b8:	a9427bfd 	ldp	x29, x30, [sp, #32]
+   4f8bc:	a9414ff4 	ldp	x20, x19, [sp, #16]
+   4f8c0:	f84307f5 	ldr	x21, [sp], #48
+   4f8c4:	d65f03c0 	ret
+   4f8c8:	710006bf 	cmp	w21, #0x1
+   4f8cc:	54000168 	b.hi	4f8f8 <JNI_OnUnload@@Base+0x34d94>  // b.pmore
+   4f8d0:	531d72aa 	lsl	w10, w21, #3
+   4f8d4:	1280000b 	mov	w11, #0xffffffff            	// #-1
+   4f8d8:	7944166c 	ldrh	w12, [x19, #522]
+   4f8dc:	1aca216a 	lsl	w10, w11, w10
+   4f8e0:	531d0109 	ubfiz	w9, w8, #3, #1
+   4f8e4:	2a2a03ea 	mvn	w10, w10
+   4f8e8:	1ac9214a 	lsl	w10, w10, w9
+   4f8ec:	0a2a018a 	bic	w10, w12, w10
+   4f8f0:	1ac92289 	lsl	w9, w20, w9
+   4f8f4:	2a090154 	orr	w20, w10, w9
+   4f8f8:	71000ebf 	cmp	w21, #0x3
+   4f8fc:	5280004a 	mov	w10, #0x2                   	// #2
+
+--- size-field hit 48, disassembly line 60734 ---
+   50518:	f940002a 	ldr	x10, [x1]
+   5051c:	9100114b 	add	x11, x10, #0x4
+   50520:	f900002b 	str	x11, [x1]
+   50524:	b940054a 	ldr	w10, [x10, #4]
+   50528:	b901552a 	str	w10, [x9, #340]
+   5052c:	f940002a 	ldr	x10, [x1]
+   50530:	9100114b 	add	x11, x10, #0x4
+   50534:	f900002b 	str	x11, [x1]
+   50538:	7940094a 	ldrh	w10, [x10, #4]
+   5053c:	7902b52a 	strh	w10, [x9, #346]
+   50540:	f940002a 	ldr	x10, [x1]
+   50544:	9100094b 	add	x11, x10, #0x2
+   50548:	f900002b 	str	x11, [x1]
+   5054c:	7940054a 	ldrh	w10, [x10, #2]
+   50550:	7902b92a 	strh	w10, [x9, #348]
+   50554:	f940002a 	ldr	x10, [x1]
+   50558:	9100094b 	add	x11, x10, #0x2
+   5055c:	f900002b 	str	x11, [x1]
+   50560:	7940054a 	ldrh	w10, [x10, #2]
+   50564:	7902bd2a 	strh	w10, [x9, #350]
+   50568:	f940002a 	ldr	x10, [x1]
+   5056c:	9100094b 	add	x11, x10, #0x2
+   50570:	f900002b 	str	x11, [x1]
+   50574:	7940054a 	ldrh	w10, [x10, #2]
+   50578:	7902c12a 	strh	w10, [x9, #352]
+   5057c:	f940002a 	ldr	x10, [x1]
+   50580:	9100094b 	add	x11, x10, #0x2
+   50584:	f900002b 	str	x11, [x1]
+   50588:	7940054a 	ldrh	w10, [x10, #2]
+   5058c:	7902c52a 	strh	w10, [x9, #354]
+   50590:	f940002a 	ldr	x10, [x1]
+   50594:	9100094b 	add	x11, x10, #0x2
+   50598:	f900002b 	str	x11, [x1]
+
+--- size-field hit 49, disassembly line 60744 ---
+   50540:	f940002a 	ldr	x10, [x1]
+   50544:	9100094b 	add	x11, x10, #0x2
+   50548:	f900002b 	str	x11, [x1]
+   5054c:	7940054a 	ldrh	w10, [x10, #2]
+   50550:	7902b92a 	strh	w10, [x9, #348]
+   50554:	f940002a 	ldr	x10, [x1]
+   50558:	9100094b 	add	x11, x10, #0x2
+   5055c:	f900002b 	str	x11, [x1]
+   50560:	7940054a 	ldrh	w10, [x10, #2]
+   50564:	7902bd2a 	strh	w10, [x9, #350]
+   50568:	f940002a 	ldr	x10, [x1]
+   5056c:	9100094b 	add	x11, x10, #0x2
+   50570:	f900002b 	str	x11, [x1]
+   50574:	7940054a 	ldrh	w10, [x10, #2]
+   50578:	7902c12a 	strh	w10, [x9, #352]
+   5057c:	f940002a 	ldr	x10, [x1]
+   50580:	9100094b 	add	x11, x10, #0x2
+   50584:	f900002b 	str	x11, [x1]
+   50588:	7940054a 	ldrh	w10, [x10, #2]
+   5058c:	7902c52a 	strh	w10, [x9, #354]
+   50590:	f940002a 	ldr	x10, [x1]
+   50594:	9100094b 	add	x11, x10, #0x2
+   50598:	f900002b 	str	x11, [x1]
+   5059c:	7940054a 	ldrh	w10, [x10, #2]
+   505a0:	7902c92a 	strh	w10, [x9, #356]
+   505a4:	f940002a 	ldr	x10, [x1]
+   505a8:	9100094b 	add	x11, x10, #0x2
+   505ac:	f900002b 	str	x11, [x1]
+   505b0:	7940054a 	ldrh	w10, [x10, #2]
+   505b4:	7902cd2a 	strh	w10, [x9, #358]
+   505b8:	f940002a 	ldr	x10, [x1]
+   505bc:	9100094b 	add	x11, x10, #0x2
+   505c0:	f900002b 	str	x11, [x1]
+
+--- size-field hit 50, disassembly line 60949 ---
+   50874:	b900054b 	str	w11, [x10, #4]
+   50878:	f940002a 	ldr	x10, [x1]
+   5087c:	9100114b 	add	x11, x10, #0x4
+   50880:	f900002b 	str	x11, [x1]
+   50884:	b941552b 	ldr	w11, [x9, #340]
+   50888:	b900054b 	str	w11, [x10, #4]
+   5088c:	f940002a 	ldr	x10, [x1]
+   50890:	9100114b 	add	x11, x10, #0x4
+   50894:	f900002b 	str	x11, [x1]
+   50898:	7942b52b 	ldrh	w11, [x9, #346]
+   5089c:	7900094b 	strh	w11, [x10, #4]
+   508a0:	f940002a 	ldr	x10, [x1]
+   508a4:	9100094b 	add	x11, x10, #0x2
+   508a8:	f900002b 	str	x11, [x1]
+   508ac:	7942b92b 	ldrh	w11, [x9, #348]
+   508b0:	7900054b 	strh	w11, [x10, #2]
+   508b4:	f940002a 	ldr	x10, [x1]
+   508b8:	9100094b 	add	x11, x10, #0x2
+   508bc:	f900002b 	str	x11, [x1]
+   508c0:	7942bd2b 	ldrh	w11, [x9, #350]
+   508c4:	7900054b 	strh	w11, [x10, #2]
+   508c8:	f940002a 	ldr	x10, [x1]
+   508cc:	9100094b 	add	x11, x10, #0x2
+   508d0:	f900002b 	str	x11, [x1]
+   508d4:	7942c12b 	ldrh	w11, [x9, #352]
+   508d8:	7900054b 	strh	w11, [x10, #2]
+   508dc:	f940002a 	ldr	x10, [x1]
+   508e0:	9100094b 	add	x11, x10, #0x2
+   508e4:	f900002b 	str	x11, [x1]
+   508e8:	7942c52b 	ldrh	w11, [x9, #354]
+   508ec:	7900054b 	strh	w11, [x10, #2]
+   508f0:	f940002a 	ldr	x10, [x1]
+   508f4:	9100094b 	add	x11, x10, #0x2
+
+--- size-field hit 51, disassembly line 60959 ---
+   5089c:	7900094b 	strh	w11, [x10, #4]
+   508a0:	f940002a 	ldr	x10, [x1]
+   508a4:	9100094b 	add	x11, x10, #0x2
+   508a8:	f900002b 	str	x11, [x1]
+   508ac:	7942b92b 	ldrh	w11, [x9, #348]
+   508b0:	7900054b 	strh	w11, [x10, #2]
+   508b4:	f940002a 	ldr	x10, [x1]
+   508b8:	9100094b 	add	x11, x10, #0x2
+   508bc:	f900002b 	str	x11, [x1]
+   508c0:	7942bd2b 	ldrh	w11, [x9, #350]
+   508c4:	7900054b 	strh	w11, [x10, #2]
+   508c8:	f940002a 	ldr	x10, [x1]
+   508cc:	9100094b 	add	x11, x10, #0x2
+   508d0:	f900002b 	str	x11, [x1]
+   508d4:	7942c12b 	ldrh	w11, [x9, #352]
+   508d8:	7900054b 	strh	w11, [x10, #2]
+   508dc:	f940002a 	ldr	x10, [x1]
+   508e0:	9100094b 	add	x11, x10, #0x2
+   508e4:	f900002b 	str	x11, [x1]
+   508e8:	7942c52b 	ldrh	w11, [x9, #354]
+   508ec:	7900054b 	strh	w11, [x10, #2]
+   508f0:	f940002a 	ldr	x10, [x1]
+   508f4:	9100094b 	add	x11, x10, #0x2
+   508f8:	f900002b 	str	x11, [x1]
+   508fc:	7942c92b 	ldrh	w11, [x9, #356]
+   50900:	7900054b 	strh	w11, [x10, #2]
+   50904:	f940002a 	ldr	x10, [x1]
+   50908:	9100094b 	add	x11, x10, #0x2
+   5090c:	f900002b 	str	x11, [x1]
+   50910:	7942cd2b 	ldrh	w11, [x9, #358]
+   50914:	7900054b 	strh	w11, [x10, #2]
+   50918:	f940002a 	ldr	x10, [x1]
+   5091c:	9100094b 	add	x11, x10, #0x2
+
+--- size-field hit 52, disassembly line 64834 ---
+   54528:	6b0f01bf 	cmp	w13, w15
+   5452c:	1a8db1ed 	csel	w13, w15, w13, lt	// lt = tstop
+   54530:	6b0a003f 	cmp	w1, w10
+   54534:	0b0f0231 	add	w17, w17, w15
+   54538:	1a81c14a 	csel	w10, w10, w1, gt
+   5453c:	6b11015f 	cmp	w10, w17
+   54540:	12003e10 	and	w16, w16, #0xffff
+   54544:	4b0801ad 	sub	w13, w13, w8
+   54548:	1a8ac22a 	csel	w10, w17, w10, gt
+   5454c:	6b1001bf 	cmp	w13, w16
+   54550:	4b0a01ca 	sub	w10, w14, w10
+   54554:	1a8d820d 	csel	w13, w16, w13, hi	// hi = pmore
+   54558:	6b10015f 	cmp	w10, w16
+   5455c:	1a8a820a 	csel	w10, w16, w10, hi	// hi = pmore
+   54560:	7902b96d 	strh	w13, [x11, #348]
+   54564:	7902bd6a 	strh	w10, [x11, #350]
+   54568:	3400012c 	cbz	w12, 5458c <JNI_OnUnload@@Base+0x39a28>
+   5456c:	79416170 	ldrh	w16, [x11, #176]
+   54570:	5100058c 	sub	w12, w12, #0x1
+   54574:	9100116b 	add	x11, x11, #0x4
+   54578:	2a0e03ea 	mov	w10, w14
+   5457c:	2a0803ed 	mov	w13, w8
+   54580:	2a1103ee 	mov	w14, w17
+   54584:	2a0f03e8 	mov	w8, w15
+   54588:	17ffffe2 	b	54510 <JNI_OnUnload@@Base+0x399ac>
+   5458c:	9102c16c 	add	x12, x11, #0xb0
+   54590:	91058168 	add	x8, x11, #0x160
+   54594:	350000a9 	cbnz	w9, 545a8 <JNI_OnUnload@@Base+0x39a44>
+   54598:	79400189 	ldrh	w9, [x12]
+   5459c:	7900051f 	strh	wzr, [x8, #2]
+   545a0:	11000529 	add	w9, w9, #0x1
+   545a4:	79000109 	strh	w9, [x8]
+   545a8:	d65f03c0 	ret
+
+--- size-field hit 53, disassembly line 65576 ---
+   550c0:	6b07011f 	cmp	w8, w7
+   550c4:	8b0900a5 	add	x5, x5, x9
+   550c8:	54fff701 	b.ne	54fa8 <JNI_OnUnload@@Base+0x3a444>  // b.any
+   550cc:	a8c14ff4 	ldp	x20, x19, [sp], #16
+   550d0:	d65f03c0 	ret
+   550d4:	34000a41 	cbz	w1, 5521c <JNI_OnUnload@@Base+0x3a6b8>
+   550d8:	52802008 	mov	w8, #0x100                 	// #256
+   550dc:	794c6009 	ldrh	w9, [x0, #1584]
+   550e0:	794b000a 	ldrh	w10, [x0, #1408]
+   550e4:	6b0a013f 	cmp	w9, w10
+   550e8:	54000522 	b.cs	5518c <JNI_OnUnload@@Base+0x3a628>  // b.hs, b.nlast
+   550ec:	1400002f 	b	551a8 <JNI_OnUnload@@Base+0x3a644>
+   550f0:	b9400009 	ldr	w9, [x0]
+   550f4:	b940b00a 	ldr	w10, [x0, #176]
+   550f8:	b941600b 	ldr	w11, [x0, #352]
+   550fc:	b942100c 	ldr	w12, [x0, #528]
+   55100:	7945800d 	ldrh	w13, [x0, #704]
+   55104:	7946e00e 	ldrh	w14, [x0, #880]
+   55108:	7945840f 	ldrh	w15, [x0, #706]
+   5510c:	7946e410 	ldrh	w16, [x0, #882]
+   55110:	79484011 	ldrh	w17, [x0, #1056]
+   55114:	7949a002 	ldrh	w2, [x0, #1232]
+   55118:	79484403 	ldrh	w3, [x0, #1058]
+   5511c:	7949a404 	ldrh	w4, [x0, #1234]
+   55120:	4b090149 	sub	w9, w10, w9
+   55124:	794b000a 	ldrh	w10, [x0, #1408]
+   55128:	4b0b018b 	sub	w11, w12, w11
+   5512c:	794c600c 	ldrh	w12, [x0, #1584]
+   55130:	4b0d01cd 	sub	w13, w14, w13
+   55134:	794b040e 	ldrh	w14, [x0, #1410]
+   55138:	4b0f020f 	sub	w15, w16, w15
+   5513c:	794c6410 	ldrh	w16, [x0, #1586]
+   55140:	4b110051 	sub	w17, w2, w17
+
+--- size-field hit 54, disassembly line 65622 ---
+   55178:	54000520 	b.eq	5521c <JNI_OnUnload@@Base+0x3a6b8>  // b.none
+   5517c:	794c6009 	ldrh	w9, [x0, #1584]
+   55180:	794b000a 	ldrh	w10, [x0, #1408]
+   55184:	6b0a013f 	cmp	w9, w10
+   55188:	54000103 	b.cc	551a8 <JNI_OnUnload@@Base+0x3a644>  // b.lo, b.ul, b.last
+   5518c:	12003d4a 	and	w10, w10, #0xffff
+   55190:	7104055f 	cmp	w10, #0x101
+   55194:	54000382 	b.cs	55204 <JNI_OnUnload@@Base+0x3a6a0>  // b.hs, b.nlast
+   55198:	12003d29 	and	w9, w9, #0xffff
+   5519c:	7104053f 	cmp	w9, #0x101
+   551a0:	54fffa83 	b.cc	550f0 <JNI_OnUnload@@Base+0x3a58c>  // b.lo, b.ul, b.last
+   551a4:	1400001c 	b	55214 <JNI_OnUnload@@Base+0x3a6b0>
+   551a8:	b940b009 	ldr	w9, [x0, #176]
+   551ac:	b940000a 	ldr	w10, [x0]
+   551b0:	b941600b 	ldr	w11, [x0, #352]
+   551b4:	b942100c 	ldr	w12, [x0, #528]
+   551b8:	b9000009 	str	w9, [x0]
+   551bc:	b942c009 	ldr	w9, [x0, #704]
+   551c0:	b900b00a 	str	w10, [x0, #176]
+   551c4:	b943700a 	ldr	w10, [x0, #880]
+   551c8:	b901600c 	str	w12, [x0, #352]
+   551cc:	b944200c 	ldr	w12, [x0, #1056]
+   551d0:	b902100b 	str	w11, [x0, #528]
+   551d4:	b944d00b 	ldr	w11, [x0, #1232]
+   551d8:	b902c00a 	str	w10, [x0, #704]
+   551dc:	b946300a 	ldr	w10, [x0, #1584]
+   551e0:	b9037009 	str	w9, [x0, #880]
+   551e4:	b9458009 	ldr	w9, [x0, #1408]
+   551e8:	b904200b 	str	w11, [x0, #1056]
+   551ec:	b904d00c 	str	w12, [x0, #1232]
+   551f0:	b905800a 	str	w10, [x0, #1408]
+   551f4:	b9063009 	str	w9, [x0, #1584]
+   551f8:	12003d4a 	and	w10, w10, #0xffff
+
+--- size-field hit 55, disassembly line 65628 ---
+   55190:	7104055f 	cmp	w10, #0x101
+   55194:	54000382 	b.cs	55204 <JNI_OnUnload@@Base+0x3a6a0>  // b.hs, b.nlast
+   55198:	12003d29 	and	w9, w9, #0xffff
+   5519c:	7104053f 	cmp	w9, #0x101
+   551a0:	54fffa83 	b.cc	550f0 <JNI_OnUnload@@Base+0x3a58c>  // b.lo, b.ul, b.last
+   551a4:	1400001c 	b	55214 <JNI_OnUnload@@Base+0x3a6b0>
+   551a8:	b940b009 	ldr	w9, [x0, #176]
+   551ac:	b940000a 	ldr	w10, [x0]
+   551b0:	b941600b 	ldr	w11, [x0, #352]
+   551b4:	b942100c 	ldr	w12, [x0, #528]
+   551b8:	b9000009 	str	w9, [x0]
+   551bc:	b942c009 	ldr	w9, [x0, #704]
+   551c0:	b900b00a 	str	w10, [x0, #176]
+   551c4:	b943700a 	ldr	w10, [x0, #880]
+   551c8:	b901600c 	str	w12, [x0, #352]
+   551cc:	b944200c 	ldr	w12, [x0, #1056]
+   551d0:	b902100b 	str	w11, [x0, #528]
+   551d4:	b944d00b 	ldr	w11, [x0, #1232]
+   551d8:	b902c00a 	str	w10, [x0, #704]
+   551dc:	b946300a 	ldr	w10, [x0, #1584]
+   551e0:	b9037009 	str	w9, [x0, #880]
+   551e4:	b9458009 	ldr	w9, [x0, #1408]
+   551e8:	b904200b 	str	w11, [x0, #1056]
+   551ec:	b904d00c 	str	w12, [x0, #1232]
+   551f0:	b905800a 	str	w10, [x0, #1408]
+   551f4:	b9063009 	str	w9, [x0, #1584]
+   551f8:	12003d4a 	and	w10, w10, #0xffff
+   551fc:	7104055f 	cmp	w10, #0x101
+   55200:	54fffcc3 	b.cc	55198 <JNI_OnUnload@@Base+0x3a634>  // b.lo, b.ul, b.last
+   55204:	790b0008 	strh	w8, [x0, #1408]
+   55208:	12003d29 	and	w9, w9, #0xffff
+   5520c:	7104053f 	cmp	w9, #0x101
+   55210:	54fff703 	b.cc	550f0 <JNI_OnUnload@@Base+0x3a58c>  // b.lo, b.ul, b.last
+
+--- size-field hit 56, disassembly line 66001 ---
+   55764:	6b0f015f 	cmp	w10, w15
+   55768:	1a8ab1ea 	csel	w10, w15, w10, lt	// lt = tstop
+   5576c:	6b09001f 	cmp	w0, w9
+   55770:	0b0f0210 	add	w16, w16, w15
+   55774:	1a80c129 	csel	w9, w9, w0, gt
+   55778:	6b10013f 	cmp	w9, w16
+   5577c:	12003dce 	and	w14, w14, #0xffff
+   55780:	4b08014a 	sub	w10, w10, w8
+   55784:	1a89c209 	csel	w9, w16, w9, gt
+   55788:	6b0e015f 	cmp	w10, w14
+   5578c:	4b0901a9 	sub	w9, w13, w9
+   55790:	1a8a81ca 	csel	w10, w14, w10, hi	// hi = pmore
+   55794:	6b0e013f 	cmp	w9, w14
+   55798:	1a8981c9 	csel	w9, w14, w9, hi	// hi = pmore
+   5579c:	7902b96a 	strh	w10, [x11, #348]
+   557a0:	7902bd69 	strh	w9, [x11, #350]
+   557a4:	3400012c 	cbz	w12, 557c8 <JNI_OnUnload@@Base+0x3ac64>
+   557a8:	7941616e 	ldrh	w14, [x11, #176]
+   557ac:	1100058c 	add	w12, w12, #0x1
+   557b0:	9100116b 	add	x11, x11, #0x4
+   557b4:	2a0d03e9 	mov	w9, w13
+   557b8:	2a0803ea 	mov	w10, w8
+   557bc:	2a1003ed 	mov	w13, w16
+   557c0:	2a0f03e8 	mov	w8, w15
+   557c4:	17ffffe2 	b	5574c <JNI_OnUnload@@Base+0x3abe8>
+   557c8:	9102c16c 	add	x12, x11, #0xb0
+   557cc:	91058168 	add	x8, x11, #0x160
+   557d0:	6b02033f 	cmp	w25, w2
+   557d4:	540000a8 	b.hi	557e8 <JNI_OnUnload@@Base+0x3ac84>  // b.pmore
+   557d8:	79400189 	ldrh	w9, [x12]
+   557dc:	7900051f 	strh	wzr, [x8, #2]
+   557e0:	11000529 	add	w9, w9, #0x1
+   557e4:	79000109 	strh	w9, [x8]
+
+--- size-field hit 57, disassembly line 67212 ---
+   56a50:	3d803e81 	str	q1, [x20, #240]
+   56a54:	3d803d00 	str	q0, [x8, #240]
+   56a58:	3d804281 	str	q1, [x20, #256]
+   56a5c:	3d804100 	str	q0, [x8, #256]
+   56a60:	3d804681 	str	q1, [x20, #272]
+   56a64:	3d804500 	str	q0, [x8, #272]
+   56a68:	3d804a81 	str	q1, [x20, #288]
+   56a6c:	3d804900 	str	q0, [x8, #288]
+   56a70:	3d804e81 	str	q1, [x20, #304]
+   56a74:	3d804d00 	str	q0, [x8, #304]
+   56a78:	3d805281 	str	q1, [x20, #320]
+   56a7c:	3d805100 	str	q0, [x8, #320]
+   56a80:	3d805681 	str	q1, [x20, #336]
+   56a84:	3d805500 	str	q0, [x8, #336]
+   56a88:	3d805a81 	str	q1, [x20, #352]
+   56a8c:	3d805900 	str	q0, [x8, #352]
+   56a90:	3d805e81 	str	q1, [x20, #368]
+   56a94:	3d805d00 	str	q0, [x8, #368]
+   56a98:	3d806281 	str	q1, [x20, #384]
+   56a9c:	3d806100 	str	q0, [x8, #384]
+   56aa0:	3d806681 	str	q1, [x20, #400]
+   56aa4:	3d806500 	str	q0, [x8, #400]
+   56aa8:	3d806a81 	str	q1, [x20, #416]
+   56aac:	3d806900 	str	q0, [x8, #416]
+   56ab0:	3d806e81 	str	q1, [x20, #432]
+   56ab4:	3d806d00 	str	q0, [x8, #432]
+   56ab8:	3d807281 	str	q1, [x20, #448]
+   56abc:	3d807100 	str	q0, [x8, #448]
+   56ac0:	3d807681 	str	q1, [x20, #464]
+   56ac4:	3d807500 	str	q0, [x8, #464]
+   56ac8:	3d807a81 	str	q1, [x20, #480]
+   56acc:	3d807900 	str	q0, [x8, #480]
+   56ad0:	3d807e81 	str	q1, [x20, #496]
+
+--- size-field hit 58, disassembly line 67213 ---
+   56a54:	3d803d00 	str	q0, [x8, #240]
+   56a58:	3d804281 	str	q1, [x20, #256]
+   56a5c:	3d804100 	str	q0, [x8, #256]
+   56a60:	3d804681 	str	q1, [x20, #272]
+   56a64:	3d804500 	str	q0, [x8, #272]
+   56a68:	3d804a81 	str	q1, [x20, #288]
+   56a6c:	3d804900 	str	q0, [x8, #288]
+   56a70:	3d804e81 	str	q1, [x20, #304]
+   56a74:	3d804d00 	str	q0, [x8, #304]
+   56a78:	3d805281 	str	q1, [x20, #320]
+   56a7c:	3d805100 	str	q0, [x8, #320]
+   56a80:	3d805681 	str	q1, [x20, #336]
+   56a84:	3d805500 	str	q0, [x8, #336]
+   56a88:	3d805a81 	str	q1, [x20, #352]
+   56a8c:	3d805900 	str	q0, [x8, #352]
+   56a90:	3d805e81 	str	q1, [x20, #368]
+   56a94:	3d805d00 	str	q0, [x8, #368]
+   56a98:	3d806281 	str	q1, [x20, #384]
+   56a9c:	3d806100 	str	q0, [x8, #384]
+   56aa0:	3d806681 	str	q1, [x20, #400]
+   56aa4:	3d806500 	str	q0, [x8, #400]
+   56aa8:	3d806a81 	str	q1, [x20, #416]
+   56aac:	3d806900 	str	q0, [x8, #416]
+   56ab0:	3d806e81 	str	q1, [x20, #432]
+   56ab4:	3d806d00 	str	q0, [x8, #432]
+   56ab8:	3d807281 	str	q1, [x20, #448]
+   56abc:	3d807100 	str	q0, [x8, #448]
+   56ac0:	3d807681 	str	q1, [x20, #464]
+   56ac4:	3d807500 	str	q0, [x8, #464]
+   56ac8:	3d807a81 	str	q1, [x20, #480]
+   56acc:	3d807900 	str	q0, [x8, #480]
+   56ad0:	3d807e81 	str	q1, [x20, #496]
+   56ad4:	3d807d00 	str	q0, [x8, #496]
+
+--- size-field hit 59, disassembly line 71178 ---
+   5a848:	6b07011f 	cmp	w8, w7
+   5a84c:	8b0900a5 	add	x5, x5, x9
+   5a850:	54fff701 	b.ne	5a730 <JNI_OnUnload@@Base+0x3fbcc>  // b.any
+   5a854:	a8c14ff4 	ldp	x20, x19, [sp], #16
+   5a858:	d65f03c0 	ret
+   5a85c:	34000a41 	cbz	w1, 5a9a4 <JNI_OnUnload@@Base+0x3fe40>
+   5a860:	52804008 	mov	w8, #0x200                 	// #512
+   5a864:	794c6009 	ldrh	w9, [x0, #1584]
+   5a868:	794b000a 	ldrh	w10, [x0, #1408]
+   5a86c:	6b0a013f 	cmp	w9, w10
+   5a870:	54000522 	b.cs	5a914 <JNI_OnUnload@@Base+0x3fdb0>  // b.hs, b.nlast
+   5a874:	1400002f 	b	5a930 <JNI_OnUnload@@Base+0x3fdcc>
+   5a878:	b9400009 	ldr	w9, [x0]
+   5a87c:	b940b00a 	ldr	w10, [x0, #176]
+   5a880:	b941600b 	ldr	w11, [x0, #352]
+   5a884:	b942100c 	ldr	w12, [x0, #528]
+   5a888:	7945800d 	ldrh	w13, [x0, #704]
+   5a88c:	7946e00e 	ldrh	w14, [x0, #880]
+   5a890:	7945840f 	ldrh	w15, [x0, #706]
+   5a894:	7946e410 	ldrh	w16, [x0, #882]
+   5a898:	79484011 	ldrh	w17, [x0, #1056]
+   5a89c:	7949a002 	ldrh	w2, [x0, #1232]
+   5a8a0:	79484403 	ldrh	w3, [x0, #1058]
+   5a8a4:	7949a404 	ldrh	w4, [x0, #1234]
+   5a8a8:	4b090149 	sub	w9, w10, w9
+   5a8ac:	794b000a 	ldrh	w10, [x0, #1408]
+   5a8b0:	4b0b018b 	sub	w11, w12, w11
+   5a8b4:	794c600c 	ldrh	w12, [x0, #1584]
+   5a8b8:	4b0d01cd 	sub	w13, w14, w13
+   5a8bc:	794b040e 	ldrh	w14, [x0, #1410]
+   5a8c0:	4b0f020f 	sub	w15, w16, w15
+   5a8c4:	794c6410 	ldrh	w16, [x0, #1586]
+   5a8c8:	4b110051 	sub	w17, w2, w17
+
+--- size-field hit 60, disassembly line 71224 ---
+   5a900:	54000520 	b.eq	5a9a4 <JNI_OnUnload@@Base+0x3fe40>  // b.none
+   5a904:	794c6009 	ldrh	w9, [x0, #1584]
+   5a908:	794b000a 	ldrh	w10, [x0, #1408]
+   5a90c:	6b0a013f 	cmp	w9, w10
+   5a910:	54000103 	b.cc	5a930 <JNI_OnUnload@@Base+0x3fdcc>  // b.lo, b.ul, b.last
+   5a914:	12003d4a 	and	w10, w10, #0xffff
+   5a918:	7108055f 	cmp	w10, #0x201
+   5a91c:	54000382 	b.cs	5a98c <JNI_OnUnload@@Base+0x3fe28>  // b.hs, b.nlast
+   5a920:	12003d29 	and	w9, w9, #0xffff
+   5a924:	7108053f 	cmp	w9, #0x201
+   5a928:	54fffa83 	b.cc	5a878 <JNI_OnUnload@@Base+0x3fd14>  // b.lo, b.ul, b.last
+   5a92c:	1400001c 	b	5a99c <JNI_OnUnload@@Base+0x3fe38>
+   5a930:	b940b009 	ldr	w9, [x0, #176]
+   5a934:	b940000a 	ldr	w10, [x0]
+   5a938:	b941600b 	ldr	w11, [x0, #352]
+   5a93c:	b942100c 	ldr	w12, [x0, #528]
+   5a940:	b9000009 	str	w9, [x0]
+   5a944:	b942c009 	ldr	w9, [x0, #704]
+   5a948:	b900b00a 	str	w10, [x0, #176]
+   5a94c:	b943700a 	ldr	w10, [x0, #880]
+   5a950:	b901600c 	str	w12, [x0, #352]
+   5a954:	b944200c 	ldr	w12, [x0, #1056]
+   5a958:	b902100b 	str	w11, [x0, #528]
+   5a95c:	b944d00b 	ldr	w11, [x0, #1232]
+   5a960:	b902c00a 	str	w10, [x0, #704]
+   5a964:	b946300a 	ldr	w10, [x0, #1584]
+   5a968:	b9037009 	str	w9, [x0, #880]
+   5a96c:	b9458009 	ldr	w9, [x0, #1408]
+   5a970:	b904200b 	str	w11, [x0, #1056]
+   5a974:	b904d00c 	str	w12, [x0, #1232]
+   5a978:	b905800a 	str	w10, [x0, #1408]
+   5a97c:	b9063009 	str	w9, [x0, #1584]
+   5a980:	12003d4a 	and	w10, w10, #0xffff
+
+--- size-field hit 61, disassembly line 71230 ---
+   5a918:	7108055f 	cmp	w10, #0x201
+   5a91c:	54000382 	b.cs	5a98c <JNI_OnUnload@@Base+0x3fe28>  // b.hs, b.nlast
+   5a920:	12003d29 	and	w9, w9, #0xffff
+   5a924:	7108053f 	cmp	w9, #0x201
+   5a928:	54fffa83 	b.cc	5a878 <JNI_OnUnload@@Base+0x3fd14>  // b.lo, b.ul, b.last
+   5a92c:	1400001c 	b	5a99c <JNI_OnUnload@@Base+0x3fe38>
+   5a930:	b940b009 	ldr	w9, [x0, #176]
+   5a934:	b940000a 	ldr	w10, [x0]
+   5a938:	b941600b 	ldr	w11, [x0, #352]
+   5a93c:	b942100c 	ldr	w12, [x0, #528]
+   5a940:	b9000009 	str	w9, [x0]
+   5a944:	b942c009 	ldr	w9, [x0, #704]
+   5a948:	b900b00a 	str	w10, [x0, #176]
+   5a94c:	b943700a 	ldr	w10, [x0, #880]
+   5a950:	b901600c 	str	w12, [x0, #352]
+   5a954:	b944200c 	ldr	w12, [x0, #1056]
+   5a958:	b902100b 	str	w11, [x0, #528]
+   5a95c:	b944d00b 	ldr	w11, [x0, #1232]
+   5a960:	b902c00a 	str	w10, [x0, #704]
+   5a964:	b946300a 	ldr	w10, [x0, #1584]
+   5a968:	b9037009 	str	w9, [x0, #880]
+   5a96c:	b9458009 	ldr	w9, [x0, #1408]
+   5a970:	b904200b 	str	w11, [x0, #1056]
+   5a974:	b904d00c 	str	w12, [x0, #1232]
+   5a978:	b905800a 	str	w10, [x0, #1408]
+   5a97c:	b9063009 	str	w9, [x0, #1584]
+   5a980:	12003d4a 	and	w10, w10, #0xffff
+   5a984:	7108055f 	cmp	w10, #0x201
+   5a988:	54fffcc3 	b.cc	5a920 <JNI_OnUnload@@Base+0x3fdbc>  // b.lo, b.ul, b.last
+   5a98c:	790b0008 	strh	w8, [x0, #1408]
+   5a990:	12003d29 	and	w9, w9, #0xffff
+   5a994:	7108053f 	cmp	w9, #0x201
+   5a998:	54fff703 	b.cc	5a878 <JNI_OnUnload@@Base+0x3fd14>  // b.lo, b.ul, b.last
+
+--- size-field hit 62, disassembly line 71603 ---
+   5aeec:	6b0f015f 	cmp	w10, w15
+   5aef0:	1a8ab1ea 	csel	w10, w15, w10, lt	// lt = tstop
+   5aef4:	6b09001f 	cmp	w0, w9
+   5aef8:	0b0f0210 	add	w16, w16, w15
+   5aefc:	1a80c129 	csel	w9, w9, w0, gt
+   5af00:	6b10013f 	cmp	w9, w16
+   5af04:	12003dce 	and	w14, w14, #0xffff
+   5af08:	4b08014a 	sub	w10, w10, w8
+   5af0c:	1a89c209 	csel	w9, w16, w9, gt
+   5af10:	6b0e015f 	cmp	w10, w14
+   5af14:	4b0901a9 	sub	w9, w13, w9
+   5af18:	1a8a81ca 	csel	w10, w14, w10, hi	// hi = pmore
+   5af1c:	6b0e013f 	cmp	w9, w14
+   5af20:	1a8981c9 	csel	w9, w14, w9, hi	// hi = pmore
+   5af24:	7902b96a 	strh	w10, [x11, #348]
+   5af28:	7902bd69 	strh	w9, [x11, #350]
+   5af2c:	3400012c 	cbz	w12, 5af50 <JNI_OnUnload@@Base+0x403ec>
+   5af30:	7941616e 	ldrh	w14, [x11, #176]
+   5af34:	1100058c 	add	w12, w12, #0x1
+   5af38:	9100116b 	add	x11, x11, #0x4
+   5af3c:	2a0d03e9 	mov	w9, w13
+   5af40:	2a0803ea 	mov	w10, w8
+   5af44:	2a1003ed 	mov	w13, w16
+   5af48:	2a0f03e8 	mov	w8, w15
+   5af4c:	17ffffe2 	b	5aed4 <JNI_OnUnload@@Base+0x40370>
+   5af50:	9102c16c 	add	x12, x11, #0xb0
+   5af54:	91058168 	add	x8, x11, #0x160
+   5af58:	6b02033f 	cmp	w25, w2
+   5af5c:	540000a8 	b.hi	5af70 <JNI_OnUnload@@Base+0x4040c>  // b.pmore
+   5af60:	79400189 	ldrh	w9, [x12]
+   5af64:	7900051f 	strh	wzr, [x8, #2]
+   5af68:	11000529 	add	w9, w9, #0x1
+   5af6c:	79000109 	strh	w9, [x8]
+
+--- size-field hit 63, disassembly line 77491 ---
+   60aec:	6f047402 	bic	v2.4s, #0x80, lsl #24
+   60af0:	ad068941 	stp	q1, q2, [x10, #208]
+   60af4:	ad480941 	ldp	q1, q2, [x10, #256]
+   60af8:	6f047400 	bic	v0.4s, #0x80, lsl #24
+   60afc:	6f047401 	bic	v1.4s, #0x80, lsl #24
+   60b00:	ad078540 	stp	q0, q1, [x10, #240]
+   60b04:	ad490540 	ldp	q0, q1, [x10, #288]
+   60b08:	6f047402 	bic	v2.4s, #0x80, lsl #24
+   60b0c:	6f047400 	bic	v0.4s, #0x80, lsl #24
+   60b10:	ad088142 	stp	q2, q0, [x10, #272]
+   60b14:	ad4a0142 	ldp	q2, q0, [x10, #320]
+   60b18:	6f047401 	bic	v1.4s, #0x80, lsl #24
+   60b1c:	6f047402 	bic	v2.4s, #0x80, lsl #24
+   60b20:	ad098941 	stp	q1, q2, [x10, #304]
+   60b24:	ad4b0941 	ldp	q1, q2, [x10, #352]
+   60b28:	6f047400 	bic	v0.4s, #0x80, lsl #24
+   60b2c:	6f047401 	bic	v1.4s, #0x80, lsl #24
+   60b30:	ad0a8540 	stp	q0, q1, [x10, #336]
+   60b34:	ad4c0540 	ldp	q0, q1, [x10, #384]
+   60b38:	6f047402 	bic	v2.4s, #0x80, lsl #24
+   60b3c:	6f047400 	bic	v0.4s, #0x80, lsl #24
+   60b40:	ad0b8142 	stp	q2, q0, [x10, #368]
+   60b44:	ad4d0142 	ldp	q2, q0, [x10, #416]
+   60b48:	6f047401 	bic	v1.4s, #0x80, lsl #24
+   60b4c:	6f047402 	bic	v2.4s, #0x80, lsl #24
+   60b50:	ad0c8941 	stp	q1, q2, [x10, #400]
+   60b54:	ad4e0941 	ldp	q1, q2, [x10, #448]
+   60b58:	6f047400 	bic	v0.4s, #0x80, lsl #24
+   60b5c:	6f047401 	bic	v1.4s, #0x80, lsl #24
+   60b60:	ad0d8540 	stp	q0, q1, [x10, #432]
+   60b64:	ad4f0540 	ldp	q0, q1, [x10, #480]
+   60b68:	6f047402 	bic	v2.4s, #0x80, lsl #24
+   60b6c:	6f047400 	bic	v0.4s, #0x80, lsl #24
+
+--- size-field hit 64, disassembly line 80992 ---
+   641a0:	b9414389 	ldr	w9, [x28, #320]
+   641a4:	b9000509 	str	w9, [x8, #4]
+   641a8:	b9414789 	ldr	w9, [x28, #324]
+   641ac:	b9000909 	str	w9, [x8, #8]
+   641b0:	b9414b89 	ldr	w9, [x28, #328]
+   641b4:	b9000d09 	str	w9, [x8, #12]
+   641b8:	b9414f89 	ldr	w9, [x28, #332]
+   641bc:	b9001109 	str	w9, [x8, #16]
+   641c0:	b9415389 	ldr	w9, [x28, #336]
+   641c4:	b9001509 	str	w9, [x8, #20]
+   641c8:	b9415789 	ldr	w9, [x28, #340]
+   641cc:	b9001909 	str	w9, [x8, #24]
+   641d0:	b9415b89 	ldr	w9, [x28, #344]
+   641d4:	b9001d09 	str	w9, [x8, #28]
+   641d8:	b9415f89 	ldr	w9, [x28, #348]
+   641dc:	b9002109 	str	w9, [x8, #32]
+   641e0:	b9416389 	ldr	w9, [x28, #352]
+   641e4:	b9002509 	str	w9, [x8, #36]
+   641e8:	b9416789 	ldr	w9, [x28, #356]
+   641ec:	b9002909 	str	w9, [x8, #40]
+   641f0:	b9416b89 	ldr	w9, [x28, #360]
+   641f4:	b9002d09 	str	w9, [x8, #44]
+   641f8:	b9416f89 	ldr	w9, [x28, #364]
+   641fc:	b9003109 	str	w9, [x8, #48]
+   64200:	b9417389 	ldr	w9, [x28, #368]
+   64204:	b9003509 	str	w9, [x8, #52]
+   64208:	b9417789 	ldr	w9, [x28, #372]
+   6420c:	b9003909 	str	w9, [x8, #56]
+   64210:	b9417b89 	ldr	w9, [x28, #376]
+   64214:	b9003d09 	str	w9, [x8, #60]
+   64218:	b9417f89 	ldr	w9, [x28, #380]
+   6421c:	b9004109 	str	w9, [x8, #64]
+   64220:	b9418389 	ldr	w9, [x28, #384]
+
+--- size-field hit 65, disassembly line 80994 ---
+   641a8:	b9414789 	ldr	w9, [x28, #324]
+   641ac:	b9000909 	str	w9, [x8, #8]
+   641b0:	b9414b89 	ldr	w9, [x28, #328]
+   641b4:	b9000d09 	str	w9, [x8, #12]
+   641b8:	b9414f89 	ldr	w9, [x28, #332]
+   641bc:	b9001109 	str	w9, [x8, #16]
+   641c0:	b9415389 	ldr	w9, [x28, #336]
+   641c4:	b9001509 	str	w9, [x8, #20]
+   641c8:	b9415789 	ldr	w9, [x28, #340]
+   641cc:	b9001909 	str	w9, [x8, #24]
+   641d0:	b9415b89 	ldr	w9, [x28, #344]
+   641d4:	b9001d09 	str	w9, [x8, #28]
+   641d8:	b9415f89 	ldr	w9, [x28, #348]
+   641dc:	b9002109 	str	w9, [x8, #32]
+   641e0:	b9416389 	ldr	w9, [x28, #352]
+   641e4:	b9002509 	str	w9, [x8, #36]
+   641e8:	b9416789 	ldr	w9, [x28, #356]
+   641ec:	b9002909 	str	w9, [x8, #40]
+   641f0:	b9416b89 	ldr	w9, [x28, #360]
+   641f4:	b9002d09 	str	w9, [x8, #44]
+   641f8:	b9416f89 	ldr	w9, [x28, #364]
+   641fc:	b9003109 	str	w9, [x8, #48]
+   64200:	b9417389 	ldr	w9, [x28, #368]
+   64204:	b9003509 	str	w9, [x8, #52]
+   64208:	b9417789 	ldr	w9, [x28, #372]
+   6420c:	b9003909 	str	w9, [x8, #56]
+   64210:	b9417b89 	ldr	w9, [x28, #376]
+   64214:	b9003d09 	str	w9, [x8, #60]
+   64218:	b9417f89 	ldr	w9, [x28, #380]
+   6421c:	b9004109 	str	w9, [x8, #64]
+   64220:	b9418389 	ldr	w9, [x28, #384]
+   64224:	b9004509 	str	w9, [x8, #68]
+   64228:	b9418789 	ldr	w9, [x28, #388]
+
+--- size-field hit 66, disassembly line 81108 ---
+   64370:	b9014389 	str	w9, [x28, #320]
+   64374:	b9400909 	ldr	w9, [x8, #8]
+   64378:	b9014789 	str	w9, [x28, #324]
+   6437c:	b9400d09 	ldr	w9, [x8, #12]
+   64380:	b9014b89 	str	w9, [x28, #328]
+   64384:	b9401109 	ldr	w9, [x8, #16]
+   64388:	b9014f89 	str	w9, [x28, #332]
+   6438c:	b9401509 	ldr	w9, [x8, #20]
+   64390:	b9015389 	str	w9, [x28, #336]
+   64394:	b9401909 	ldr	w9, [x8, #24]
+   64398:	b9015789 	str	w9, [x28, #340]
+   6439c:	b9401d09 	ldr	w9, [x8, #28]
+   643a0:	b9015b89 	str	w9, [x28, #344]
+   643a4:	b9402109 	ldr	w9, [x8, #32]
+   643a8:	b9015f89 	str	w9, [x28, #348]
+   643ac:	b9402509 	ldr	w9, [x8, #36]
+   643b0:	b9016389 	str	w9, [x28, #352]
+   643b4:	b9402909 	ldr	w9, [x8, #40]
+   643b8:	b9016789 	str	w9, [x28, #356]
+   643bc:	b9402d09 	ldr	w9, [x8, #44]
+   643c0:	b9016b89 	str	w9, [x28, #360]
+   643c4:	b9403109 	ldr	w9, [x8, #48]
+   643c8:	b9016f89 	str	w9, [x28, #364]
+   643cc:	b9403509 	ldr	w9, [x8, #52]
+   643d0:	b9017389 	str	w9, [x28, #368]
+   643d4:	b9403909 	ldr	w9, [x8, #56]
+   643d8:	b9017789 	str	w9, [x28, #372]
+   643dc:	b9403d09 	ldr	w9, [x8, #60]
+   643e0:	b9017b89 	str	w9, [x28, #376]
+   643e4:	b9404109 	ldr	w9, [x8, #64]
+   643e8:	b9017f89 	str	w9, [x28, #380]
+   643ec:	b9404509 	ldr	w9, [x8, #68]
+   643f0:	b9018389 	str	w9, [x28, #384]
+
+--- size-field hit 67, disassembly line 81110 ---
+   64378:	b9014789 	str	w9, [x28, #324]
+   6437c:	b9400d09 	ldr	w9, [x8, #12]
+   64380:	b9014b89 	str	w9, [x28, #328]
+   64384:	b9401109 	ldr	w9, [x8, #16]
+   64388:	b9014f89 	str	w9, [x28, #332]
+   6438c:	b9401509 	ldr	w9, [x8, #20]
+   64390:	b9015389 	str	w9, [x28, #336]
+   64394:	b9401909 	ldr	w9, [x8, #24]
+   64398:	b9015789 	str	w9, [x28, #340]
+   6439c:	b9401d09 	ldr	w9, [x8, #28]
+   643a0:	b9015b89 	str	w9, [x28, #344]
+   643a4:	b9402109 	ldr	w9, [x8, #32]
+   643a8:	b9015f89 	str	w9, [x28, #348]
+   643ac:	b9402509 	ldr	w9, [x8, #36]
+   643b0:	b9016389 	str	w9, [x28, #352]
+   643b4:	b9402909 	ldr	w9, [x8, #40]
+   643b8:	b9016789 	str	w9, [x28, #356]
+   643bc:	b9402d09 	ldr	w9, [x8, #44]
+   643c0:	b9016b89 	str	w9, [x28, #360]
+   643c4:	b9403109 	ldr	w9, [x8, #48]
+   643c8:	b9016f89 	str	w9, [x28, #364]
+   643cc:	b9403509 	ldr	w9, [x8, #52]
+   643d0:	b9017389 	str	w9, [x28, #368]
+   643d4:	b9403909 	ldr	w9, [x8, #56]
+   643d8:	b9017789 	str	w9, [x28, #372]
+   643dc:	b9403d09 	ldr	w9, [x8, #60]
+   643e0:	b9017b89 	str	w9, [x28, #376]
+   643e4:	b9404109 	ldr	w9, [x8, #64]
+   643e8:	b9017f89 	str	w9, [x28, #380]
+   643ec:	b9404509 	ldr	w9, [x8, #68]
+   643f0:	b9018389 	str	w9, [x28, #384]
+   643f4:	b9404909 	ldr	w9, [x8, #72]
+   643f8:	b9018789 	str	w9, [x28, #388]
+
+--- size-field hit 68, disassembly line 92279 ---
+   6f1fc:	2f10a4a6 	uxtl	v6.4s, v5.4h
+   6f200:	2f13a4a7 	ushll	v7.4s, v5.4h, #3
+   6f204:	2f16a4a5 	ushll	v5.4s, v5.4h, #6
+   6f208:	4e201cc6 	and	v6.16b, v6.16b, v0.16b
+   6f20c:	4e211ce7 	and	v7.16b, v7.16b, v1.16b
+   6f210:	4e221ca5 	and	v5.16b, v5.16b, v2.16b
+   6f214:	4ea61ce6 	orr	v6.16b, v7.16b, v6.16b
+   6f218:	4ea51cc5 	orr	v5.16b, v6.16b, v5.16b
+   6f21c:	4ea384a6 	add	v6.4s, v5.4s, v3.4s
+   6f220:	6f3b04c6 	ushr	v6.4s, v6.4s, #5
+   6f224:	4f2154a5 	shl	v5.4s, v5.4s, #1
+   6f228:	4e241cc6 	and	v6.16b, v6.16b, v4.16b
+   6f22c:	4ea61ca5 	orr	v5.16b, v5.16b, v6.16b
+   6f230:	4f007525 	orr	v5.4s, #0x9, lsl #24
+   6f234:	3d805805 	str	q5, [x0, #352]
+   6f238:	fd401e65 	ldr	d5, [x19, #56]
+   6f23c:	2f10a4a6 	uxtl	v6.4s, v5.4h
+   6f240:	2f13a4a7 	ushll	v7.4s, v5.4h, #3
+   6f244:	2f16a4a5 	ushll	v5.4s, v5.4h, #6
+   6f248:	4e201cc6 	and	v6.16b, v6.16b, v0.16b
+   6f24c:	4e211ce7 	and	v7.16b, v7.16b, v1.16b
+   6f250:	4e221ca5 	and	v5.16b, v5.16b, v2.16b
+   6f254:	4ea61ce6 	orr	v6.16b, v7.16b, v6.16b
+   6f258:	4ea51cc5 	orr	v5.16b, v6.16b, v5.16b
+   6f25c:	4ea384a6 	add	v6.4s, v5.4s, v3.4s
+   6f260:	6f3b04c6 	ushr	v6.4s, v6.4s, #5
+   6f264:	4f2154a5 	shl	v5.4s, v5.4s, #1
+   6f268:	4e241cc6 	and	v6.16b, v6.16b, v4.16b
+   6f26c:	4ea61ca5 	orr	v5.16b, v5.16b, v6.16b
+   6f270:	4f007525 	orr	v5.4s, #0x9, lsl #24
+   6f274:	3d805c05 	str	q5, [x0, #368]
+   6f278:	fd400265 	ldr	d5, [x19]
+   6f27c:	2f10a4a6 	uxtl	v6.4s, v5.4h
+
+--- size-field hit 69, disassembly line 156535 ---
+   ade00:	f900019f 	str	xzr, [x12]
+   ade04:	b900099f 	str	wzr, [x12, #8]
+   ade08:	5298b48c 	mov	w12, #0xc5a4                	// #50596
+   ade0c:	8b080268 	add	x8, x19, x8
+   ade10:	8b090269 	add	x9, x19, x9
+   ade14:	8b0a026a 	add	x10, x19, x10
+   ade18:	8b0b026b 	add	x11, x19, x11
+   ade1c:	8b0c0260 	add	x0, x19, x12
+   ade20:	52840002 	mov	w2, #0x2000                	// #8192
+   ade24:	2a1f03e1 	mov	w1, wzr
+   ade28:	ad0f0100 	stp	q0, q0, [x8, #480]
+   ade2c:	ad0e0100 	stp	q0, q0, [x8, #448]
+   ade30:	ad0d0100 	stp	q0, q0, [x8, #416]
+   ade34:	ad0c0100 	stp	q0, q0, [x8, #384]
+   ade38:	ad0b0100 	stp	q0, q0, [x8, #352]
+   ade3c:	ad0a0100 	stp	q0, q0, [x8, #320]
+   ade40:	ad090100 	stp	q0, q0, [x8, #288]
+   ade44:	ad080100 	stp	q0, q0, [x8, #256]
+   ade48:	ad070100 	stp	q0, q0, [x8, #224]
+   ade4c:	ad060100 	stp	q0, q0, [x8, #192]
+   ade50:	ad050100 	stp	q0, q0, [x8, #160]
+   ade54:	ad040100 	stp	q0, q0, [x8, #128]
+   ade58:	ad030100 	stp	q0, q0, [x8, #96]
+   ade5c:	ad020100 	stp	q0, q0, [x8, #64]
+   ade60:	ad010100 	stp	q0, q0, [x8, #32]
+   ade64:	ad000100 	stp	q0, q0, [x8]
+   ade68:	3900113f 	strb	wzr, [x9, #4]
+   ade6c:	b900013f 	str	wzr, [x9]
+   ade70:	3db13660 	str	q0, [x19, #50384]
+   ade74:	b800f15f 	stur	wzr, [x10, #15]
+   ade78:	ad000160 	stp	q0, q0, [x11]
+   ade7c:	ad010160 	stp	q0, q0, [x11, #32]
+   ade80:	ad020160 	stp	q0, q0, [x11, #64]
+
+--- size-field hit 70, disassembly line 156587 ---
+   aded0:	8b080260 	add	x0, x19, x8
+   aded4:	52840002 	mov	w2, #0x2000                	// #8192
+   aded8:	2a1f03e1 	mov	w1, wzr
+   adedc:	b8386a7f 	str	wzr, [x19, x24]
+   adee0:	97fda1a4 	bl	16570 <memset@plt>
+   adee4:	5284b788 	mov	w8, #0x25bc                	// #9660
+   adee8:	72a00028 	movk	w8, #0x1, lsl #16
+   adeec:	6f00e400 	movi	v0.2d, #0x0
+   adef0:	fc286a60 	str	d0, [x19, x8]
+   adef4:	5284b908 	mov	w8, #0x25c8                	// #9672
+   adef8:	72a00028 	movk	w8, #0x1, lsl #16
+   adefc:	8b080268 	add	x8, x19, x8
+   adf00:	ad000100 	stp	q0, q0, [x8]
+   adf04:	90000328 	adrp	x8, 111000 <JNI_OnUnload@@Base+0xf649c>
+   adf08:	fd40b100 	ldr	d0, [x8, #352]
+   adf0c:	52a04008 	mov	w8, #0x2000000             	// #33554432
+   adf10:	f9000a68 	str	x8, [x19, #16]
+   adf14:	52800039 	mov	w25, #0x1                   	// #1
+   adf18:	52800088 	mov	w8, #0x4                   	// #4
+   adf1c:	fc0042a0 	stur	d0, [x21, #4]
+   adf20:	b8376a7f 	str	wzr, [x19, x23]
+   adf24:	6f046400 	mvni	v0.4s, #0x80, lsl #24
+   adf28:	b9006ebf 	str	wzr, [x21, #108]
+   adf2c:	390a06b9 	strb	w25, [x21, #641]
+   adf30:	b90006c8 	str	w8, [x22, #4]
+   adf34:	52800048 	mov	w8, #0x2                   	// #2
+   adf38:	3db13660 	str	q0, [x19, #50384]
+   adf3c:	b9000ea8 	str	w8, [x21, #12]
+   adf40:	94004e80 	bl	c1940 <JNI_OnUnload@@Base+0xa6ddc>
+   adf44:	b8386a60 	str	w0, [x19, x24]
+   adf48:	b9000299 	str	w25, [x20]
+   adf4c:	a9447bfd 	ldp	x29, x30, [sp, #64]
+   adf50:	a9434ff4 	ldp	x20, x19, [sp, #48]
+
+--- size-field hit 71, disassembly line 157002 ---
+   ae54c:	14000013 	b	ae598 <JNI_OnUnload@@Base+0x93a34>
+   ae550:	6f00e400 	movi	v0.2d, #0x0
+   ae554:	3908027f 	strb	wzr, [x19, #512]
+   ae558:	ad000260 	stp	q0, q0, [x19]
+   ae55c:	ad010260 	stp	q0, q0, [x19, #32]
+   ae560:	ad020260 	stp	q0, q0, [x19, #64]
+   ae564:	ad030260 	stp	q0, q0, [x19, #96]
+   ae568:	ad040260 	stp	q0, q0, [x19, #128]
+   ae56c:	ad050260 	stp	q0, q0, [x19, #160]
+   ae570:	ad060260 	stp	q0, q0, [x19, #192]
+   ae574:	ad070260 	stp	q0, q0, [x19, #224]
+   ae578:	ad080260 	stp	q0, q0, [x19, #256]
+   ae57c:	ad090260 	stp	q0, q0, [x19, #288]
+   ae580:	ad0a0260 	stp	q0, q0, [x19, #320]
+   ae584:	ad0b0260 	stp	q0, q0, [x19, #352]
+   ae588:	ad0c0260 	stp	q0, q0, [x19, #384]
+   ae58c:	ad0d0260 	stp	q0, q0, [x19, #416]
+   ae590:	ad0e0260 	stp	q0, q0, [x19, #448]
+   ae594:	ad0f0260 	stp	q0, q0, [x19, #480]
+   ae598:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   ae59c:	a8c24ff4 	ldp	x20, x19, [sp], #32
+   ae5a0:	d65f03c0 	ret
+   ae5a4:	aa1f03e8 	mov	x8, xzr
+   ae5a8:	3908001f 	strb	wzr, [x0, #512]
+   ae5ac:	3828681f 	strb	wzr, [x0, x8]
+   ae5b0:	91000508 	add	x8, x8, #0x1
+   ae5b4:	f108011f 	cmp	x8, #0x200
+   ae5b8:	54ffffa1 	b.ne	ae5ac <JNI_OnUnload@@Base+0x93a48>  // b.any
+   ae5bc:	d65f03c0 	ret
+   ae5c0:	aa1f03e8 	mov	x8, xzr
+   ae5c4:	3908001f 	strb	wzr, [x0, #512]
+   ae5c8:	3828681f 	strb	wzr, [x0, x8]
+   ae5cc:	91000508 	add	x8, x8, #0x1
+
+--- size-field hit 72, disassembly line 166741 ---
+   b7d78:	3ca96a60 	str	q0, [x19, x9]
+   b7d7c:	52800049 	mov	w9, #0x2                   	// #2
+   b7d80:	8b080268 	add	x8, x19, x8
+   b7d84:	ad000100 	stp	q0, q0, [x8]
+   b7d88:	ad010100 	stp	q0, q0, [x8, #32]
+   b7d8c:	ad020100 	stp	q0, q0, [x8, #64]
+   b7d90:	ad030100 	stp	q0, q0, [x8, #96]
+   b7d94:	ad040100 	stp	q0, q0, [x8, #128]
+   b7d98:	ad050100 	stp	q0, q0, [x8, #160]
+   b7d9c:	ad060100 	stp	q0, q0, [x8, #192]
+   b7da0:	ad070100 	stp	q0, q0, [x8, #224]
+   b7da4:	ad080100 	stp	q0, q0, [x8, #256]
+   b7da8:	ad090100 	stp	q0, q0, [x8, #288]
+   b7dac:	ad0a0100 	stp	q0, q0, [x8, #320]
+   b7db0:	ad0b0100 	stp	q0, q0, [x8, #352]
+   b7db4:	ad0c0100 	stp	q0, q0, [x8, #384]
+   b7db8:	b90002a9 	str	w9, [x21]
+   b7dbc:	b901b6bf 	str	wzr, [x21, #436]
+   b7dc0:	aa1303e0 	mov	x0, x19
+   b7dc4:	a9427bfd 	ldp	x29, x30, [sp, #32]
+   b7dc8:	a9414ff4 	ldp	x20, x19, [sp, #16]
+   b7dcc:	f84307f5 	ldr	x21, [sp], #48
+   b7dd0:	14001ba7 	b	bec6c <JNI_OnUnload@@Base+0xa4108>
+   b7dd4:	f81a0ffb 	str	x27, [sp, #-96]!
+   b7dd8:	a90167fa 	stp	x26, x25, [sp, #16]
+   b7ddc:	a9025ff8 	stp	x24, x23, [sp, #32]
+   b7de0:	a90357f6 	stp	x22, x21, [sp, #48]
+   b7de4:	a9044ff4 	stp	x20, x19, [sp, #64]
+   b7de8:	a9057bfd 	stp	x29, x30, [sp, #80]
+   b7dec:	910143fd 	add	x29, sp, #0x50
+   b7df0:	b9000c5f 	str	wzr, [x2, #12]
+   b7df4:	39402028 	ldrb	w8, [x1, #8]
+   b7df8:	aa0203f3 	mov	x19, x2
+
+--- size-field hit 73, disassembly line 170129 ---
+   bb268:	4f009460 	orr	v0.8h, #0x3
+   bb26c:	ad078021 	stp	q1, q0, [x1, #240]
+   bb270:	ad490021 	ldp	q1, q0, [x1, #288]
+   bb274:	6f0797e2 	bic	v2.8h, #0xff
+   bb278:	4f009462 	orr	v2.8h, #0x3
+   bb27c:	6f0797e1 	bic	v1.8h, #0xff
+   bb280:	4f009461 	orr	v1.8h, #0x3
+   bb284:	ad088422 	stp	q2, q1, [x1, #272]
+   bb288:	ad4a0422 	ldp	q2, q1, [x1, #320]
+   bb28c:	6f0797e0 	bic	v0.8h, #0xff
+   bb290:	4f009460 	orr	v0.8h, #0x3
+   bb294:	6f0797e2 	bic	v2.8h, #0xff
+   bb298:	4f009442 	orr	v2.8h, #0x2
+   bb29c:	ad098820 	stp	q0, q2, [x1, #304]
+   bb2a0:	ad4b0820 	ldp	q0, q2, [x1, #352]
+   bb2a4:	6f0797e1 	bic	v1.8h, #0xff
+   bb2a8:	4f009441 	orr	v1.8h, #0x2
+   bb2ac:	6f0797e0 	bic	v0.8h, #0xff
+   bb2b0:	4f009440 	orr	v0.8h, #0x2
+   bb2b4:	ad0a8021 	stp	q1, q0, [x1, #336]
+   bb2b8:	ad4c0420 	ldp	q0, q1, [x1, #384]
+   bb2bc:	6f0797e2 	bic	v2.8h, #0xff
+   bb2c0:	4f009442 	orr	v2.8h, #0x2
+   bb2c4:	6f0797e0 	bic	v0.8h, #0xff
+   bb2c8:	6f0797e1 	bic	v1.8h, #0xff
+   bb2cc:	4f009420 	orr	v0.8h, #0x1
+   bb2d0:	4f009421 	orr	v1.8h, #0x1
+   bb2d4:	ad0b8022 	stp	q2, q0, [x1, #368]
+   bb2d8:	3d806421 	str	q1, [x1, #400]
+   bb2dc:	ad4d0420 	ldp	q0, q1, [x1, #416]
+   bb2e0:	6f0797e0 	bic	v0.8h, #0xff
+   bb2e4:	6f0797e1 	bic	v1.8h, #0xff
+   bb2e8:	4f009420 	orr	v0.8h, #0x1
+
+--- size-field hit 74, disassembly line 171663 ---
+   bca60:	52931708 	mov	w8, #0x98b8                	// #39096
+   bca64:	6f00e400 	movi	v0.2d, #0x0
+   bca68:	8b080008 	add	x8, x0, x8
+   bca6c:	ad000100 	stp	q0, q0, [x8]
+   bca70:	ad010100 	stp	q0, q0, [x8, #32]
+   bca74:	ad020100 	stp	q0, q0, [x8, #64]
+   bca78:	ad030100 	stp	q0, q0, [x8, #96]
+   bca7c:	ad040100 	stp	q0, q0, [x8, #128]
+   bca80:	ad050100 	stp	q0, q0, [x8, #160]
+   bca84:	ad060100 	stp	q0, q0, [x8, #192]
+   bca88:	ad070100 	stp	q0, q0, [x8, #224]
+   bca8c:	ad080100 	stp	q0, q0, [x8, #256]
+   bca90:	ad090100 	stp	q0, q0, [x8, #288]
+   bca94:	ad0a0100 	stp	q0, q0, [x8, #320]
+   bca98:	3d805900 	str	q0, [x8, #352]
+   bca9c:	52929488 	mov	w8, #0x94a4                	// #38052
+   bcaa0:	8b080000 	add	x0, x0, x8
+   bcaa4:	97fd66b3 	bl	16570 <memset@plt>
+   bcaa8:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   bcaac:	528b1e88 	mov	w8, #0x58f4                	// #22772
+   bcab0:	8b080260 	add	x0, x19, x8
+   bcab4:	52877602 	mov	w2, #0x3bb0                	// #15280
+   bcab8:	2a1f03e1 	mov	w1, wzr
+   bcabc:	f84207f3 	ldr	x19, [sp], #32
+   bcac0:	17fd66ac 	b	16570 <memset@plt>
+   bcac4:	d10243ff 	sub	sp, sp, #0x90
+   bcac8:	a9036ffc 	stp	x28, x27, [sp, #48]
+   bcacc:	a90467fa 	stp	x26, x25, [sp, #64]
+   bcad0:	a9055ff8 	stp	x24, x23, [sp, #80]
+   bcad4:	a90657f6 	stp	x22, x21, [sp, #96]
+   bcad8:	a9074ff4 	stp	x20, x19, [sp, #112]
+   bcadc:	a9087bfd 	stp	x29, x30, [sp, #128]
+   bcae0:	910203fd 	add	x29, sp, #0x80
+
+--- size-field hit 75, disassembly line 172500 ---
+   bd774:	94002ada 	bl	c82dc <JNI_OnUnload@@Base+0xad778>
+   bd778:	37780b60 	tbnz	w0, #15, bd8e4 <JNI_OnUnload@@Base+0xa2d80>
+   bd77c:	52934408 	mov	w8, #0x9a20                	// #39456
+   bd780:	8b080288 	add	x8, x20, x8
+   bd784:	a90057f6 	stp	x22, x21, [sp]
+   bd788:	b90002df 	str	wzr, [x22]
+   bd78c:	f900011f 	str	xzr, [x8]
+   bd790:	37700260 	tbnz	w0, #14, bd7dc <JNI_OnUnload@@Base+0xa2c78>
+   bd794:	529cde88 	mov	w8, #0xe6f4                	// #59124
+   bd798:	6f00e400 	movi	v0.2d, #0x0
+   bd79c:	529d1249 	mov	w9, #0xe892                	// #59538
+   bd7a0:	8b080268 	add	x8, x19, x8
+   bd7a4:	3ca96a60 	str	q0, [x19, x9]
+   bd7a8:	ad0c0100 	stp	q0, q0, [x8, #384]
+   bd7ac:	ad0b0100 	stp	q0, q0, [x8, #352]
+   bd7b0:	ad0a0100 	stp	q0, q0, [x8, #320]
+   bd7b4:	ad090100 	stp	q0, q0, [x8, #288]
+   bd7b8:	ad080100 	stp	q0, q0, [x8, #256]
+   bd7bc:	ad070100 	stp	q0, q0, [x8, #224]
+   bd7c0:	ad060100 	stp	q0, q0, [x8, #192]
+   bd7c4:	ad050100 	stp	q0, q0, [x8, #160]
+   bd7c8:	ad040100 	stp	q0, q0, [x8, #128]
+   bd7cc:	ad030100 	stp	q0, q0, [x8, #96]
+   bd7d0:	ad020100 	stp	q0, q0, [x8, #64]
+   bd7d4:	ad010100 	stp	q0, q0, [x8, #32]
+   bd7d8:	ad000100 	stp	q0, q0, [x8]
+   bd7dc:	52800041 	mov	w1, #0x2                   	// #2
+   bd7e0:	aa1403e0 	mov	x0, x20
+   bd7e4:	94002ab8 	bl	c82c4 <JNI_OnUnload@@Base+0xad760>
+   bd7e8:	2a1f03f9 	mov	w25, wzr
+   bd7ec:	d101d3b6 	sub	x22, x29, #0x74
+   bd7f0:	528001f7 	mov	w23, #0xf                   	// #15
+   bd7f4:	52800278 	mov	w24, #0x13                  	// #19
+
+--- size-field hit 76, disassembly line 174113 ---
+   bf0a8:	f84307f5 	ldr	x21, [sp], #48
+   bf0ac:	d65f03c0 	ret
+   bf0b0:	36000041 	tbz	w1, #0, bf0b8 <JNI_OnUnload@@Base+0xa4554>
+   bf0b4:	d65f03c0 	ret
+   bf0b8:	529cde08 	mov	w8, #0xe6f0                	// #59120
+   bf0bc:	529cde89 	mov	w9, #0xe6f4                	// #59124
+   bf0c0:	6f00e400 	movi	v0.2d, #0x0
+   bf0c4:	529d124a 	mov	w10, #0xe892                	// #59538
+   bf0c8:	8b080008 	add	x8, x0, x8
+   bf0cc:	3906e11f 	strb	wzr, [x8, #440]
+   bf0d0:	3caa6800 	str	q0, [x0, x10]
+   bf0d4:	5280004a 	mov	w10, #0x2                   	// #2
+   bf0d8:	8b090009 	add	x9, x0, x9
+   bf0dc:	ad0c0120 	stp	q0, q0, [x9, #384]
+   bf0e0:	ad0b0120 	stp	q0, q0, [x9, #352]
+   bf0e4:	ad0a0120 	stp	q0, q0, [x9, #320]
+   bf0e8:	ad090120 	stp	q0, q0, [x9, #288]
+   bf0ec:	ad080120 	stp	q0, q0, [x9, #256]
+   bf0f0:	ad070120 	stp	q0, q0, [x9, #224]
+   bf0f4:	ad060120 	stp	q0, q0, [x9, #192]
+   bf0f8:	ad050120 	stp	q0, q0, [x9, #160]
+   bf0fc:	ad040120 	stp	q0, q0, [x9, #128]
+   bf100:	ad030120 	stp	q0, q0, [x9, #96]
+   bf104:	ad020120 	stp	q0, q0, [x9, #64]
+   bf108:	ad010120 	stp	q0, q0, [x9, #32]
+   bf10c:	ad000120 	stp	q0, q0, [x9]
+   bf110:	b900010a 	str	w10, [x8]
+   bf114:	b901b51f 	str	wzr, [x8, #436]
+   bf118:	17fffed5 	b	bec6c <JNI_OnUnload@@Base+0xa4108>
+   bf11c:	d10203ff 	sub	sp, sp, #0x80
+   bf120:	a9026ffc 	stp	x28, x27, [sp, #32]
+   bf124:	a90367fa 	stp	x26, x25, [sp, #48]
+   bf128:	a9045ff8 	stp	x24, x23, [sp, #64]
+
+--- size-field hit 77, disassembly line 175652 ---
+   c08b4:	f84207f3 	ldr	x19, [sp], #32
+   c08b8:	d65f03c0 	ret
+   c08bc:	6f00e400 	movi	v0.2d, #0x0
+   c08c0:	ad070000 	stp	q0, q0, [x0, #224]
+   c08c4:	ad060000 	stp	q0, q0, [x0, #192]
+   c08c8:	ad050000 	stp	q0, q0, [x0, #160]
+   c08cc:	ad040000 	stp	q0, q0, [x0, #128]
+   c08d0:	ad030000 	stp	q0, q0, [x0, #96]
+   c08d4:	ad020000 	stp	q0, q0, [x0, #64]
+   c08d8:	ad010000 	stp	q0, q0, [x0, #32]
+   c08dc:	ad000000 	stp	q0, q0, [x0]
+   c08e0:	ad080000 	stp	q0, q0, [x0, #256]
+   c08e4:	ad090000 	stp	q0, q0, [x0, #288]
+   c08e8:	ad0a0000 	stp	q0, q0, [x0, #320]
+   c08ec:	ad0b0000 	stp	q0, q0, [x0, #352]
+   c08f0:	ad0c0000 	stp	q0, q0, [x0, #384]
+   c08f4:	ad0d0000 	stp	q0, q0, [x0, #416]
+   c08f8:	ad0e0000 	stp	q0, q0, [x0, #448]
+   c08fc:	ad0f0000 	stp	q0, q0, [x0, #480]
+   c0900:	d65f03c0 	ret
+   c0904:	a9be4ff4 	stp	x20, x19, [sp, #-32]!
+   c0908:	a9017bfd 	stp	x29, x30, [sp, #16]
+   c090c:	910043fd 	add	x29, sp, #0x10
+   c0910:	aa0003f3 	mov	x19, x0
+   c0914:	aa1f03f4 	mov	x20, xzr
+   c0918:	f8746a60 	ldr	x0, [x19, x20]
+   c091c:	b50000c0 	cbnz	x0, c0934 <JNI_OnUnload@@Base+0xa5dd0>
+   c0920:	91002294 	add	x20, x20, #0x8
+   c0924:	f104029f 	cmp	x20, #0x100
+   c0928:	540000a0 	b.eq	c093c <JNI_OnUnload@@Base+0xa5dd8>  // b.none
+   c092c:	f8746a60 	ldr	x0, [x19, x20]
+   c0930:	b4ffff80 	cbz	x0, c0920 <JNI_OnUnload@@Base+0xa5dbc>
+   c0934:	97fd5537 	bl	15e10 <free@plt>
+
+--- size-field hit 78, disassembly line 175769 ---
+   c0a88:	ad010300 	stp	q0, q0, [x24, #32]
+   c0a8c:	3d800700 	str	q0, [x24, #16]
+   c0a90:	ad000120 	stp	q0, q0, [x9]
+   c0a94:	ad010120 	stp	q0, q0, [x9, #32]
+   c0a98:	ad020120 	stp	q0, q0, [x9, #64]
+   c0a9c:	ad030120 	stp	q0, q0, [x9, #96]
+   c0aa0:	ad040120 	stp	q0, q0, [x9, #128]
+   c0aa4:	ad050120 	stp	q0, q0, [x9, #160]
+   c0aa8:	ad060120 	stp	q0, q0, [x9, #192]
+   c0aac:	ad070120 	stp	q0, q0, [x9, #224]
+   c0ab0:	ad0f0120 	stp	q0, q0, [x9, #480]
+   c0ab4:	ad0e0120 	stp	q0, q0, [x9, #448]
+   c0ab8:	ad0d0120 	stp	q0, q0, [x9, #416]
+   c0abc:	ad0c0120 	stp	q0, q0, [x9, #384]
+   c0ac0:	ad0b0120 	stp	q0, q0, [x9, #352]
+   c0ac4:	ad0a0120 	stp	q0, q0, [x9, #320]
+   c0ac8:	ad090120 	stp	q0, q0, [x9, #288]
+   c0acc:	ad080120 	stp	q0, q0, [x9, #256]
+   c0ad0:	52940709 	mov	w9, #0xa038                	// #41016
+   c0ad4:	8b080319 	add	x25, x24, x8
+   c0ad8:	8b090308 	add	x8, x24, x9
+   c0adc:	f900033f 	str	xzr, [x25]
+   c0ae0:	3d800100 	str	q0, [x8]
+   c0ae4:	f900091f 	str	xzr, [x8, #16]
+   c0ae8:	529d0e08 	mov	w8, #0xe870                	// #59504
+   c0aec:	8b080316 	add	x22, x24, x8
+   c0af0:	aa1603e0 	mov	x0, x22
+   c0af4:	94001957 	bl	c7050 <JNI_OnUnload@@Base+0xac4ec>
+   c0af8:	529d1f08 	mov	w8, #0xe8f8                	// #59640
+   c0afc:	8b080277 	add	x23, x19, x8
+   c0b00:	52800021 	mov	w1, #0x1                   	// #1
+   c0b04:	aa1703e0 	mov	x0, x23
+   c0b08:	5280003c 	mov	w28, #0x1                   	// #1
+
+## Functions around applyConfig helper targets
+
+=== around 0x1cbc0 ===
+   1cb48:	97ffe69e 	bl	165c0 <pthread_cond_signal@plt>
+   1cb4c:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   1cb50:	aa1403e0 	mov	x0, x20
+   1cb54:	a8c24ff4 	ldp	x20, x19, [sp], #32
+   1cb58:	17ffe60a 	b	16380 <pthread_mutex_unlock@plt>
+   1cb5c:	f81d0ff5 	str	x21, [sp, #-48]!
+   1cb60:	a9014ff4 	stp	x20, x19, [sp, #16]
+   1cb64:	a9027bfd 	stp	x29, x30, [sp, #32]
+   1cb68:	910083fd 	add	x29, sp, #0x20
+   1cb6c:	b001f894 	adrp	x20, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cb70:	912e0294 	add	x20, x20, #0xb80
+   1cb74:	91001295 	add	x21, x20, #0x4
+   1cb78:	2a0003f3 	mov	w19, w0
+   1cb7c:	aa1503e0 	mov	x0, x21
+   1cb80:	97ffe714 	bl	167d0 <pthread_mutex_lock@plt>
+   1cb84:	39400288 	ldrb	w8, [x20]
+   1cb88:	52800029 	mov	w9, #0x1                   	// #1
+   1cb8c:	1ad32129 	lsl	w9, w9, w19
+   1cb90:	2a090108 	orr	w8, w8, w9
+   1cb94:	3802c688 	strb	w8, [x20], #44
+   1cb98:	aa1403e0 	mov	x0, x20
+   1cb9c:	97ffe689 	bl	165c0 <pthread_cond_signal@plt>
+   1cba0:	a9427bfd 	ldp	x29, x30, [sp, #32]
+   1cba4:	a9414ff4 	ldp	x20, x19, [sp, #16]
+   1cba8:	aa1503e0 	mov	x0, x21
+   1cbac:	f84307f5 	ldr	x21, [sp], #48
+   1cbb0:	17ffe5f4 	b	16380 <pthread_mutex_unlock@plt>
+   1cbb4:	d65f03c0 	ret
+   1cbb8:	d65f03c0 	ret
+   1cbbc:	d65f03c0 	ret
+   1cbc0:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cbc4:	7100401f 	cmp	w0, #0x10
+   1cbc8:	52828029 	mov	w9, #0x1401                	// #5121
+   1cbcc:	52906c6a 	mov	w10, #0x8363                	// #33635
+   1cbd0:	528320eb 	mov	w11, #0x1907                	// #6407
+   1cbd4:	912d5108 	add	x8, x8, #0xb54
+   1cbd8:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cbdc:	1a8b056a 	cinc	w10, w11, ne	// ne = any
+   1cbe0:	29002500 	stp	w0, w9, [x8]
+   1cbe4:	b900090a 	str	w10, [x8, #8]
+   1cbe8:	d65f03c0 	ret
+   1cbec:	f81e0ff3 	str	x19, [sp, #-32]!
+   1cbf0:	a9017bfd 	stp	x29, x30, [sp, #16]
+   1cbf4:	910043fd 	add	x29, sp, #0x10
+   1cbf8:	b001f893 	adrp	x19, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cbfc:	9107e273 	add	x19, x19, #0x1f8
+   1cc00:	52813d02 	mov	w2, #0x9e8                 	// #2536
+   1cc04:	aa1303e0 	mov	x0, x19
+   1cc08:	2a1f03e1 	mov	w1, wzr
+   1cc0c:	97ffe659 	bl	16570 <memset@plt>
+   1cc10:	f0000749 	adrp	x9, 107000 <JNI_OnUnload@@Base+0xec49c>
+   1cc14:	f000074b 	adrp	x11, 107000 <JNI_OnUnload@@Base+0xec49c>
+   1cc18:	fd413d20 	ldr	d0, [x9, #632]
+   1cc1c:	3dc0a161 	ldr	q1, [x11, #640]
+   1cc20:	91257268 	add	x8, x19, #0x95c
+   1cc24:	5283210a 	mov	w10, #0x1908                	// #6408
+   1cc28:	b21a07e9 	mov	x9, #0xc0000000c0          	// #824633721024
+   1cc2c:	91254260 	add	x0, x19, #0x950
+   1cc30:	52800201 	mov	w1, #0x10                  	// #16
+   1cc34:	52a00602 	mov	w2, #0x300000              	// #3145728
+   1cc38:	fd000100 	str	d0, [x8]
+   1cc3c:	b909666a 	str	w10, [x19, #2404]
+   1cc40:	f904c269 	str	x9, [x19, #2432]
+   1cc44:	3d825e61 	str	q1, [x19, #2416]
+   1cc48:	97ffe4ea 	bl	15ff0 <posix_memalign@plt>
+   1cc4c:	f944aa60 	ldr	x0, [x19, #2384]
+   1cc50:	52a00602 	mov	w2, #0x300000              	// #3145728
+   1cc54:	2a1f03e1 	mov	w1, wzr
+   1cc58:	91460008 	add	x8, x0, #0x180, lsl #12
+   1cc5c:	a9002260 	stp	x0, x8, [x19]
+   1cc60:	97ffe644 	bl	16570 <memset@plt>
+   1cc64:	91263260 	add	x0, x19, #0x98c
+   1cc68:	aa1f03e1 	mov	x1, xzr
+   1cc6c:	97ffe649 	bl	16590 <pthread_mutex_init@plt>
+   1cc70:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   1cc74:	9126d260 	add	x0, x19, #0x9b4
+   1cc78:	aa1f03e1 	mov	x1, xzr
+   1cc7c:	f84207f3 	ldr	x19, [sp], #32
+   1cc80:	17ffe754 	b	169d0 <pthread_cond_init@plt>
+   1cc84:	f81d0ff5 	str	x21, [sp, #-48]!
+   1cc88:	a9014ff4 	stp	x20, x19, [sp, #16]
+   1cc8c:	a9027bfd 	stp	x29, x30, [sp, #32]
+   1cc90:	910083fd 	add	x29, sp, #0x20
+   1cc94:	b001f895 	adrp	x21, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cc98:	912d22b5 	add	x21, x21, #0xb48
+   1cc9c:	9100f2b3 	add	x19, x21, #0x3c
+   1cca0:	aa1303e0 	mov	x0, x19
+   1cca4:	97ffe6cb 	bl	167d0 <pthread_mutex_lock@plt>
+   1cca8:	910192b4 	add	x20, x21, #0x64
+   1ccac:	aa1403e0 	mov	x0, x20
+   1ccb0:	97ffe644 	bl	165c0 <pthread_cond_signal@plt>
+   1ccb4:	aa1303e0 	mov	x0, x19
+   1ccb8:	97ffe5b2 	bl	16380 <pthread_mutex_unlock@plt>
+   1ccbc:	aa1303e0 	mov	x0, x19
+   1ccc0:	97ffe3f0 	bl	15c80 <pthread_mutex_destroy@plt>
+   1ccc4:	aa1403e0 	mov	x0, x20
+   1ccc8:	97ffe48a 	bl	15ef0 <pthread_cond_destroy@plt>
+   1cccc:	f94002a0 	ldr	x0, [x21]
+   1ccd0:	b4000080 	cbz	x0, 1cce0 <JNI_OnUnload@@Base+0x217c>
+   1ccd4:	97ffe44f 	bl	15e10 <free@plt>
+   1ccd8:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1ccdc:	f905a51f 	str	xzr, [x8, #2888]
+   1cce0:	b001f893 	adrp	x19, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cce4:	91082273 	add	x19, x19, #0x208
+   1cce8:	aa1303e0 	mov	x0, x19
+   1ccec:	2a1f03e1 	mov	w1, wzr
+   1ccf0:	94000d72 	bl	202b8 <JNI_OnUnload@@Base+0x5754>
+   1ccf4:	91128260 	add	x0, x19, #0x4a0
+   1ccf8:	a9427bfd 	ldp	x29, x30, [sp, #32]
+   1ccfc:	a9414ff4 	ldp	x20, x19, [sp, #16]
+   1cd00:	2a1f03e1 	mov	w1, wzr
+   1cd04:	f84307f5 	ldr	x21, [sp], #48
+   1cd08:	14000d6c 	b	202b8 <JNI_OnUnload@@Base+0x5754>
+   1cd0c:	d65f03c0 	ret
+   1cd10:	d65f03c0 	ret
+   1cd14:	d65f03c0 	ret
+   1cd18:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cd1c:	9107e108 	add	x8, x8, #0x1f8
+   1cd20:	b9895909 	ldrsw	x9, [x8, #2392]
+   1cd24:	52a0018a 	mov	w10, #0xc0000               	// #786432
+   1cd28:	f8697908 	ldr	x8, [x8, x9, lsl #3]
+   1cd2c:	12000009 	and	w9, w0, #0x1
+   1cd30:	9baa2120 	umaddl	x0, w9, w10, x8
+   1cd34:	d65f03c0 	ret
+   1cd38:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cd3c:	9107e108 	add	x8, x8, #0x1f8
+   1cd40:	b9495d0c 	ldr	w12, [x8, #2396]
+   1cd44:	8b204908 	add	x8, x8, w0, uxtw #2
+   1cd48:	b9496908 	ldr	w8, [x8, #2408]
+   1cd4c:	52820009 	mov	w9, #0x1000                	// #4096
+   1cd50:	5281000a 	mov	w10, #0x800                 	// #2048
+   1cd54:	5280800b 	mov	w11, #0x400                 	// #1024
+   1cd58:	5280400d 	mov	w13, #0x200                 	// #512
+   1cd5c:	7100419f 	cmp	w12, #0x10
+   1cd60:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cd64:	1a8b01aa 	csel	w10, w13, w11, eq	// eq = none
+   1cd68:	7100011f 	cmp	w8, #0x0
+   1cd6c:	1a890140 	csel	w0, w10, w9, eq	// eq = none
+   1cd70:	d65f03c0 	ret
+   1cd74:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cd78:	9107e108 	add	x8, x8, #0x1f8
+   1cd7c:	b9495d0b 	ldr	w11, [x8, #2396]
+   1cd80:	8b204908 	add	x8, x8, w0, uxtw #2
+   1cd84:	b9496908 	ldr	w8, [x8, #2408]
+   1cd88:	52810009 	mov	w9, #0x800                 	// #2048
+   1cd8c:	5280800a 	mov	w10, #0x400                 	// #1024
+   1cd90:	5280400c 	mov	w12, #0x200                 	// #512
+   1cd94:	7100417f 	cmp	w11, #0x10
+   1cd98:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cd9c:	1a8a018a 	csel	w10, w12, w10, eq	// eq = none
+   1cda0:	7100011f 	cmp	w8, #0x0
+   1cda4:	1a890140 	csel	w0, w10, w9, eq	// eq = none
+   1cda8:	d65f03c0 	ret
+   1cdac:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cdb0:	9107e108 	add	x8, x8, #0x1f8
+   1cdb4:	8b204908 	add	x8, x8, w0, uxtw #2
+   1cdb8:	b9496900 	ldr	w0, [x8, #2408]
+   1cdbc:	d65f03c0 	ret
+   1cdc0:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cdc4:	b94b5508 	ldr	w8, [x8, #2900]
+   1cdc8:	52800089 	mov	w9, #0x4                   	// #4
+   1cdcc:	7100411f 	cmp	w8, #0x10
+   1cdd0:	52800048 	mov	w8, #0x2                   	// #2
+   1cdd4:	1a890100 	csel	w0, w8, w9, eq	// eq = none
+   1cdd8:	d65f03c0 	ret
+   1cddc:	52800020 	mov	w0, #0x1                   	// #1
+   1cde0:	d65f03c0 	ret
+   1cde4:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cde8:	9107e108 	add	x8, x8, #0x1f8
+   1cdec:	8b204909 	add	x9, x8, w0, uxtw #2
+   1cdf0:	b949692a 	ldr	w10, [x9, #2408]
+   1cdf4:	6b01015f 	cmp	w10, w1
+   1cdf8:	54000200 	b.eq	1ce38 <JNI_OnUnload@@Base+0x22d4>  // b.none
+   1cdfc:	2a0003ea 	mov	w10, w0
+   1ce00:	7100003f 	cmp	w1, #0x0
+   1ce04:	5280400b 	mov	w11, #0x200                 	// #512
+   1ce08:	5280200c 	mov	w12, #0x100                 	// #256
+   1ce0c:	5280300d 	mov	w13, #0x180                 	// #384
+   1ce10:	5280180e 	mov	w14, #0xc0                  	// #192
+   1ce14:	9125a129 	add	x9, x9, #0x968
+   1ce18:	5280002f 	mov	w15, #0x1                   	// #1
+   1ce1c:	1a8b018b 	csel	w11, w12, w11, eq	// eq = none
+   1ce20:	1a8d01cc 	csel	w12, w14, w13, eq	// eq = none
+   1ce24:	8b0a0908 	add	x8, x8, x10, lsl #2
+   1ce28:	b909790b 	str	w11, [x8, #2424]
+   1ce2c:	b909810c 	str	w12, [x8, #2432]
+   1ce30:	b9000121 	str	w1, [x9]
+   1ce34:	b909710f 	str	w15, [x8, #2416]
+   1ce38:	d65f03c0 	ret
+   1ce3c:	d65f03c0 	ret
+   1ce40:	f81e0ff3 	str	x19, [sp, #-32]!
+   1ce44:	a9017bfd 	stp	x29, x30, [sp, #16]
+   1ce48:	910043fd 	add	x29, sp, #0x10
+   1ce4c:	b001f893 	adrp	x19, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1ce50:	912e1273 	add	x19, x19, #0xb84
+   1ce54:	aa1303e0 	mov	x0, x19
+   1ce58:	97ffe65e 	bl	167d0 <pthread_mutex_lock@plt>
+   1ce5c:	9100a260 	add	x0, x19, #0x28
+   1ce60:	aa1303e1 	mov	x1, x19
+   1ce64:	97ffe55f 	bl	163e0 <pthread_cond_wait@plt>
+   1ce68:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   1ce6c:	aa1303e0 	mov	x0, x19
+   1ce70:	f84207f3 	ldr	x19, [sp], #32
+   1ce74:	17ffe543 	b	16380 <pthread_mutex_unlock@plt>
+   1ce78:	f81e0ff3 	str	x19, [sp, #-32]!
+   1ce7c:	a9017bfd 	stp	x29, x30, [sp, #16]
+   1ce80:	910043fd 	add	x29, sp, #0x10
+   1ce84:	b001f893 	adrp	x19, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1ce88:	912e1273 	add	x19, x19, #0xb84
+   1ce8c:	aa1303e0 	mov	x0, x19
+
+=== around 0x1d728 ===
+   1d6b0:	d61f0060 	br	x3
+   1d6b4:	9001e308 	adrp	x8, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1d6b8:	b9407508 	ldr	w8, [x8, #116]
+   1d6bc:	34000048 	cbz	w8, 1d6c4 <JNI_OnUnload@@Base+0x2b60>
+   1d6c0:	d65f03c0 	ret
+   1d6c4:	d001e3e8 	adrp	x8, 3c9b000 <JNI_OnUnload@@Base+0x3c8049c>
+   1d6c8:	b9402909 	ldr	w9, [x8, #40]
+   1d6cc:	71000529 	subs	w9, w9, #0x1
+   1d6d0:	54000168 	b.hi	1d6fc <JNI_OnUnload@@Base+0x2b98>  // b.pmore
+   1d6d4:	9001e308 	adrp	x8, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1d6d8:	91014108 	add	x8, x8, #0x50
+   1d6dc:	f9400100 	ldr	x0, [x8]
+   1d6e0:	52820002 	mov	w2, #0x1000                	// #4096
+   1d6e4:	f9400009 	ldr	x9, [x0]
+   1d6e8:	f9400123 	ldr	x3, [x9]
+   1d6ec:	5297f689 	mov	w9, #0xbfb4                	// #49076
+   1d6f0:	72a00029 	movk	w9, #0x1, lsl #16
+   1d6f4:	8b090101 	add	x1, x8, x9
+   1d6f8:	d61f0060 	br	x3
+   1d6fc:	b9002909 	str	w9, [x8, #40]
+   1d700:	d65f03c0 	ret
+   1d704:	d0000928 	adrp	x8, 143000 <JNI_OnUnload@@Base+0x12849c>
+   1d708:	b90eb900 	str	w0, [x8, #3768]
+   1d70c:	d65f03c0 	ret
+   1d710:	d001e3e8 	adrp	x8, 3c9b000 <JNI_OnUnload@@Base+0x3c8049c>
+   1d714:	b9004900 	str	w0, [x8, #72]
+   1d718:	d65f03c0 	ret
+   1d71c:	d0000928 	adrp	x8, 143000 <JNI_OnUnload@@Base+0x12849c>
+   1d720:	b90ebd00 	str	w0, [x8, #3772]
+   1d724:	d65f03c0 	ret
+   1d728:	71000c1f 	cmp	w0, #0x3
+   1d72c:	52800068 	mov	w8, #0x3                   	// #3
+   1d730:	b0000769 	adrp	x9, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1d734:	1a88b008 	csel	w8, w0, w8, lt	// lt = tstop
+   1d738:	91020129 	add	x9, x9, #0x80
+   1d73c:	0aa87d08 	bic	w8, w8, w8, asr #31
+   1d740:	3c684920 	ldr	b0, [x9, w8, uxtw]
+   1d744:	d0000928 	adrp	x8, 143000 <JNI_OnUnload@@Base+0x12849c>
+   1d748:	7e21d800 	ucvtf	s0, s0
+   1d74c:	bd0ec100 	str	s0, [x8, #3776]
+   1d750:	d65f03c0 	ret
+   1d754:	d001e3e8 	adrp	x8, 3c9b000 <JNI_OnUnload@@Base+0x3c8049c>
+   1d758:	b9003d00 	str	w0, [x8, #60]
+   1d75c:	d65f03c0 	ret
+   1d760:	d10343ff 	sub	sp, sp, #0xd0
+   1d764:	f90043f9 	str	x25, [sp, #128]
+   1d768:	a9095ff8 	stp	x24, x23, [sp, #144]
+   1d76c:	a90a57f6 	stp	x22, x21, [sp, #160]
+   1d770:	a90b4ff4 	stp	x20, x19, [sp, #176]
+   1d774:	a90c7bfd 	stp	x29, x30, [sp, #192]
+   1d778:	910303fd 	add	x29, sp, #0xc0
+   1d77c:	d53bd056 	mrs	x22, tpidr_el0
+   1d780:	f94016c8 	ldr	x8, [x22, #40]
+   1d784:	52800309 	mov	w9, #0x18                  	// #24
+   1d788:	9001e313 	adrp	x19, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1d78c:	72a00089 	movk	w9, #0x4, lsl #16
+   1d790:	91004273 	add	x19, x19, #0x10
+   1d794:	529c0702 	mov	w2, #0xe038                	// #57400
+   1d798:	8b090017 	add	x23, x0, x9
+   1d79c:	72a00022 	movk	w2, #0x1, lsl #16
+   1d7a0:	aa1303e0 	mov	x0, x19
+   1d7a4:	2a1f03e1 	mov	w1, wzr
+   1d7a8:	f81b83a8 	stur	x8, [x29, #-72]
+   1d7ac:	97ffe371 	bl	16570 <memset@plt>
+   1d7b0:	d0000928 	adrp	x8, 143000 <JNI_OnUnload@@Base+0x12849c>
+   1d7b4:	b98eb908 	ldrsw	x8, [x8, #3768]
+   1d7b8:	71000d1f 	cmp	w8, #0x3
+   1d7bc:	54000128 	b.hi	1d7e0 <JNI_OnUnload@@Base+0x2c7c>  // b.pmore
+   1d7c0:	b0000769 	adrp	x9, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1d7c4:	b000076a 	adrp	x10, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1d7c8:	d37ef508 	lsl	x8, x8, #2
+   1d7cc:	91035129 	add	x9, x9, #0xd4
+   1d7d0:	9103914a 	add	x10, x10, #0xe4
+   1d7d4:	b8686929 	ldr	w9, [x9, x8]
+   1d7d8:	b8686948 	ldr	w8, [x10, x8]
+   1d7dc:	14000003 	b	1d7e8 <JNI_OnUnload@@Base+0x2c84>
+   1d7e0:	5282df08 	mov	w8, #0x16f8                	// #5880
+   1d7e4:	52800069 	mov	w9, #0x3                   	// #3
+   1d7e8:	290da269 	stp	w9, w8, [x19, #108]
+   1d7ec:	529c0608 	mov	w8, #0xe030                	// #57392
+   1d7f0:	72a00028 	movk	w8, #0x1, lsl #16
+   1d7f4:	aa1303e0 	mov	x0, x19
+   1d7f8:	2a1f03e1 	mov	w1, wzr
+   1d7fc:	aa1f03e2 	mov	x2, xzr
+   1d800:	2a1f03e3 	mov	w3, wzr
+   1d804:	aa1f03e4 	mov	x4, xzr
+   1d808:	aa1f03e5 	mov	x5, xzr
+   1d80c:	38286a7f 	strb	wzr, [x19, x8]
+   1d810:	97ffe330 	bl	164d0 <slCreateEngine@plt>
+   1d814:	f9400260 	ldr	x0, [x19]
+   1d818:	2a1f03e1 	mov	w1, wzr
+   1d81c:	f9400008 	ldr	x8, [x0]
+   1d820:	f9400108 	ldr	x8, [x8]
+   1d824:	d63f0100 	blr	x8
+   1d828:	f9400260 	ldr	x0, [x19]
+   1d82c:	f00008c9 	adrp	x9, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1d830:	91002262 	add	x2, x19, #0x8
+   1d834:	f9400008 	ldr	x8, [x0]
+   1d838:	f9478d29 	ldr	x9, [x9, #3864]
+   1d83c:	f9400d08 	ldr	x8, [x8, #24]
+   1d840:	f9400121 	ldr	x1, [x9]
+   1d844:	d63f0100 	blr	x8
+   1d848:	f9400660 	ldr	x0, [x19, #8]
+   1d84c:	91004261 	add	x1, x19, #0x10
+   1d850:	2a1f03e2 	mov	w2, wzr
+   1d854:	aa1f03e3 	mov	x3, xzr
+   1d858:	f9400008 	ldr	x8, [x0]
+   1d85c:	aa1f03e4 	mov	x4, xzr
+   1d860:	f9401d08 	ldr	x8, [x8, #56]
+   1d864:	d63f0100 	blr	x8
+   1d868:	f9400a60 	ldr	x0, [x19, #16]
+   1d86c:	2a1f03e1 	mov	w1, wzr
+   1d870:	f9400008 	ldr	x8, [x0]
+   1d874:	f9400108 	ldr	x8, [x8]
+   1d878:	d63f0100 	blr	x8
+   1d87c:	b0000769 	adrp	x9, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1d880:	91021129 	add	x9, x9, #0x84
+   1d884:	3dc00120 	ldr	q0, [x9]
+   1d888:	b9406e6a 	ldr	w10, [x19, #108]
+   1d88c:	5280f7a8 	mov	w8, #0x7bd                 	// #1981
+   1d890:	910183eb 	add	x11, sp, #0x60
+   1d894:	3d8013e0 	str	q0, [sp, #64]
+   1d898:	3cc0c120 	ldur	q0, [x9, #12]
+   1d89c:	52800089 	mov	w9, #0x4                   	// #4
+   1d8a0:	910103ec 	add	x12, sp, #0x40
+   1d8a4:	b90023e9 	str	w9, [sp, #32]
+   1d8a8:	910083e9 	add	x9, sp, #0x20
+   1d8ac:	72b00008 	movk	w8, #0x8000, lsl #16
+   1d8b0:	a90333eb 	stp	x11, x12, [sp, #48]
+   1d8b4:	a9017fe9 	stp	x9, xzr, [sp, #16]
+   1d8b8:	f00008c9 	adrp	x9, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1d8bc:	a940ae60 	ldp	x0, x11, [x19, #8]
+   1d8c0:	f9472529 	ldr	x9, [x9, #3656]
+   1d8c4:	290c2be8 	stp	w8, w10, [sp, #96]
+   1d8c8:	f00008c8 	adrp	x8, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1d8cc:	f9478908 	ldr	x8, [x8, #3856]
+   1d8d0:	f9400134 	ldr	x20, [x9]
+   1d8d4:	f90017eb 	str	x11, [sp, #40]
+   1d8d8:	3c84c3e0 	stur	q0, [sp, #76]
+   1d8dc:	f9400115 	ldr	x21, [x8]
+   1d8e0:	b20003e8 	mov	x8, #0x100000001           	// #4294967297
+   1d8e4:	f90007e8 	str	x8, [sp, #8]
+   1d8e8:	91006261 	add	x1, x19, #0x18
+   1d8ec:	a93ad7b4 	stp	x20, x21, [x29, #-88]
+   1d8f0:	f9400008 	ldr	x8, [x0]
+   1d8f4:	9100c3e2 	add	x2, sp, #0x30
+   1d8f8:	910043e3 	add	x3, sp, #0x10
+   1d8fc:	d10163a5 	sub	x5, x29, #0x58
+   1d900:	f9400908 	ldr	x8, [x8, #16]
+   1d904:	910023e6 	add	x6, sp, #0x8
+   1d908:	52800044 	mov	w4, #0x2                   	// #2
+   1d90c:	d63f0100 	blr	x8
+   1d910:	f9400e60 	ldr	x0, [x19, #24]
+   1d914:	2a1f03e1 	mov	w1, wzr
+   1d918:	f9400008 	ldr	x8, [x0]
+   1d91c:	f9400108 	ldr	x8, [x8]
+   1d920:	d63f0100 	blr	x8
+   1d924:	f9400e60 	ldr	x0, [x19, #24]
+   1d928:	f00008c9 	adrp	x9, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   1d92c:	91008262 	add	x2, x19, #0x20
+   1d930:	f9400008 	ldr	x8, [x0]
+   1d934:	f9465d29 	ldr	x9, [x9, #3256]
+   1d938:	f9400d08 	ldr	x8, [x8, #24]
+   1d93c:	f9400121 	ldr	x1, [x9]
+   1d940:	d63f0100 	blr	x8
+   1d944:	f9400e60 	ldr	x0, [x19, #24]
+   1d948:	9100a262 	add	x2, x19, #0x28
+   1d94c:	aa1403e1 	mov	x1, x20
+   1d950:	f9400008 	ldr	x8, [x0]
+   1d954:	f9400d08 	ldr	x8, [x8, #24]
+   1d958:	d63f0100 	blr	x8
+   1d95c:	f9401660 	ldr	x0, [x19, #40]
+   1d960:	90000001 	adrp	x1, 1d000 <JNI_OnUnload@@Base+0x249c>
+   1d964:	91194021 	add	x1, x1, #0x650
+   1d968:	aa1f03e2 	mov	x2, xzr
+   1d96c:	f9400008 	ldr	x8, [x0]
+   1d970:	f9400d08 	ldr	x8, [x8, #24]
+   1d974:	d63f0100 	blr	x8
+   1d978:	f9400e60 	ldr	x0, [x19, #24]
+   1d97c:	91012262 	add	x2, x19, #0x48
+   1d980:	aa1503e1 	mov	x1, x21
+   1d984:	f9400008 	ldr	x8, [x0]
+   1d988:	f9400d08 	ldr	x8, [x8, #24]
+   1d98c:	d63f0100 	blr	x8
+   1d990:	f9401260 	ldr	x0, [x19, #32]
+   1d994:	52800061 	mov	w1, #0x3                   	// #3
+   1d998:	f9400008 	ldr	x8, [x0]
+   1d99c:	f9400108 	ldr	x8, [x8]
+   1d9a0:	d63f0100 	blr	x8
+   1d9a4:	528df002 	mov	w2, #0x6f80                	// #28544
+   1d9a8:	9101d260 	add	x0, x19, #0x74
+   1d9ac:	72a00022 	movk	w2, #0x1, lsl #16
+   1d9b0:	2a1f03e1 	mov	w1, wzr
+   1d9b4:	97ffe2ef 	bl	16570 <memset@plt>
+   1d9b8:	b9406e68 	ldr	w8, [x19, #108]
+   1d9bc:	340002a8 	cbz	w8, 1da10 <JNI_OnUnload@@Base+0x2eac>
+   1d9c0:	9001e314 	adrp	x20, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1d9c4:	529bff18 	mov	w24, #0xdff8                	// #57336
+   1d9c8:	aa1f03f5 	mov	x21, xzr
+   1d9cc:	91021294 	add	x20, x20, #0x84
+   1d9d0:	72a00038 	movk	w24, #0x1, lsl #16
+   1d9d4:	5285be19 	mov	w25, #0x2df0                	// #11760
+   1d9d8:	8b150a68 	add	x8, x19, x21, lsl #2
+   1d9dc:	b838691f 	str	wzr, [x8, x24]
+   1d9e0:	f9401660 	ldr	x0, [x19, #40]
+   1d9e4:	b9407269 	ldr	w9, [x19, #112]
+   1d9e8:	aa1403e1 	mov	x1, x20
+   1d9ec:	f9400008 	ldr	x8, [x0]
+   1d9f0:	531f7922 	lsl	w2, w9, #1
+   1d9f4:	f9400108 	ldr	x8, [x8]
+
+=== around 0x1f600 ===
+   1f588:	17ffff84 	b	1f398 <JNI_OnUnload@@Base+0x4834>
+   1f58c:	f0000741 	adrp	x1, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f590:	aa1703e0 	mov	x0, x23
+   1f594:	910dc021 	add	x1, x1, #0x370
+   1f598:	97ffdad6 	bl	160f0 <strstr@plt>
+   1f59c:	b40000c0 	cbz	x0, 1f5b4 <JNI_OnUnload@@Base+0x4a50>
+   1f5a0:	910183e0 	add	x0, sp, #0x60
+   1f5a4:	94000171 	bl	1fb68 <JNI_OnUnload@@Base+0x5004>
+   1f5a8:	f9401fe8 	ldr	x8, [sp, #56]
+   1f5ac:	b9000100 	str	w0, [x8]
+   1f5b0:	17ffff7a 	b	1f398 <JNI_OnUnload@@Base+0x4834>
+   1f5b4:	f0000741 	adrp	x1, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f5b8:	aa1703e0 	mov	x0, x23
+   1f5bc:	910de021 	add	x1, x1, #0x378
+   1f5c0:	97ffdacc 	bl	160f0 <strstr@plt>
+   1f5c4:	b40000c0 	cbz	x0, 1f5dc <JNI_OnUnload@@Base+0x4a78>
+   1f5c8:	910183e0 	add	x0, sp, #0x60
+   1f5cc:	94000167 	bl	1fb68 <JNI_OnUnload@@Base+0x5004>
+   1f5d0:	f9401be8 	ldr	x8, [sp, #48]
+   1f5d4:	b9000100 	str	w0, [x8]
+   1f5d8:	17ffff70 	b	1f398 <JNI_OnUnload@@Base+0x4834>
+   1f5dc:	f0000741 	adrp	x1, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f5e0:	aa1703e0 	mov	x0, x23
+   1f5e4:	910df821 	add	x1, x1, #0x37e
+   1f5e8:	97ffdac2 	bl	160f0 <strstr@plt>
+   1f5ec:	b40000c0 	cbz	x0, 1f604 <JNI_OnUnload@@Base+0x4aa0>
+   1f5f0:	910183e0 	add	x0, sp, #0x60
+   1f5f4:	9400015d 	bl	1fb68 <JNI_OnUnload@@Base+0x5004>
+   1f5f8:	f94017e8 	ldr	x8, [sp, #40]
+   1f5fc:	b9000100 	str	w0, [x8]
+   1f600:	17ffff66 	b	1f398 <JNI_OnUnload@@Base+0x4834>
+   1f604:	f0000741 	adrp	x1, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f608:	aa1703e0 	mov	x0, x23
+   1f60c:	910e2821 	add	x1, x1, #0x38a
+   1f610:	97ffdab8 	bl	160f0 <strstr@plt>
+   1f614:	b4ffec20 	cbz	x0, 1f398 <JNI_OnUnload@@Base+0x4834>
+   1f618:	910183e0 	add	x0, sp, #0x60
+   1f61c:	94000153 	bl	1fb68 <JNI_OnUnload@@Base+0x5004>
+   1f620:	b9000340 	str	w0, [x26]
+   1f624:	17ffff5d 	b	1f398 <JNI_OnUnload@@Base+0x4834>
+   1f628:	f9002bff 	str	xzr, [sp, #80]
+   1f62c:	f94027f7 	ldr	x23, [sp, #72]
+   1f630:	f10002ff 	cmp	x23, #0x0
+   1f634:	1a9f07f6 	cset	w22, ne	// ne = any
+   1f638:	b4000537 	cbz	x23, 1f6dc <JNI_OnUnload@@Base+0x4b78>
+   1f63c:	b94002a8 	ldr	w8, [x21]
+   1f640:	71000d1f 	cmp	w8, #0x3
+   1f644:	540004c1 	b.ne	1f6dc <JNI_OnUnload@@Base+0x4b78>  // b.any
+   1f648:	52800020 	mov	w0, #0x1                   	// #1
+   1f64c:	aa1403e1 	mov	x1, x20
+   1f650:	97ffdc38 	bl	16730 <glGenTextures@plt>
+   1f654:	b9400281 	ldr	w1, [x20]
+   1f658:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f65c:	97ffdc7d 	bl	16850 <glBindTexture@plt>
+   1f660:	f94023e8 	ldr	x8, [sp, #64]
+   1f664:	b9400323 	ldr	w3, [x25]
+   1f668:	b9400364 	ldr	w4, [x27]
+   1f66c:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f670:	b9400102 	ldr	w2, [x8]
+   1f674:	f9401fe8 	ldr	x8, [sp, #56]
+   1f678:	2a1f03e1 	mov	w1, wzr
+   1f67c:	2a1f03e5 	mov	w5, wzr
+   1f680:	b9400106 	ldr	w6, [x8]
+   1f684:	f9401be8 	ldr	x8, [sp, #48]
+   1f688:	b9400107 	ldr	w7, [x8]
+   1f68c:	f90003f7 	str	x23, [sp]
+   1f690:	97ffda50 	bl	15fd0 <glTexImage2D@plt>
+   1f694:	f94017e8 	ldr	x8, [sp, #40]
+   1f698:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f69c:	52850021 	mov	w1, #0x2801                	// #10241
+   1f6a0:	b9400102 	ldr	w2, [x8]
+   1f6a4:	97ffda27 	bl	15f40 <glTexParameteri@plt>
+   1f6a8:	b9400342 	ldr	w2, [x26]
+   1f6ac:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f6b0:	52850001 	mov	w1, #0x2800                	// #10240
+   1f6b4:	97ffda23 	bl	15f40 <glTexParameteri@plt>
+   1f6b8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f6bc:	52850041 	mov	w1, #0x2802                	// #10242
+   1f6c0:	529025e2 	mov	w2, #0x812f                	// #33071
+   1f6c4:	97ffda1f 	bl	15f40 <glTexParameteri@plt>
+   1f6c8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f6cc:	52850061 	mov	w1, #0x2803                	// #10243
+   1f6d0:	529025e2 	mov	w2, #0x812f                	// #33071
+   1f6d4:	97ffda1b 	bl	15f40 <glTexParameteri@plt>
+   1f6d8:	97ffdb06 	bl	162f0 <glFinish@plt>
+   1f6dc:	f9402be0 	ldr	x0, [sp, #80]
+   1f6e0:	b4000040 	cbz	x0, 1f6e8 <JNI_OnUnload@@Base+0x4b84>
+   1f6e4:	97ffda97 	bl	16140 <fclose@plt>
+   1f6e8:	b400007c 	cbz	x28, 1f6f4 <JNI_OnUnload@@Base+0x4b90>
+   1f6ec:	aa1c03e0 	mov	x0, x28
+   1f6f0:	97ffd9c8 	bl	15e10 <free@plt>
+   1f6f4:	34000076 	cbz	w22, 1f700 <JNI_OnUnload@@Base+0x4b9c>
+   1f6f8:	aa1703e0 	mov	x0, x23
+   1f6fc:	97ffd9c5 	bl	15e10 <free@plt>
+   1f700:	b94002a8 	ldr	w8, [x21]
+   1f704:	7100011f 	cmp	w8, #0x0
+   1f708:	5a9f13e0 	csetm	w0, eq	// eq = none
+   1f70c:	f9401668 	ldr	x8, [x19, #40]
+   1f710:	f85a03a9 	ldur	x9, [x29, #-96]
+   1f714:	eb09011f 	cmp	x8, x9
+   1f718:	54ffe2c0 	b.eq	1f370 <JNI_OnUnload@@Base+0x480c>  // b.none
+   1f71c:	97ffdc89 	bl	16940 <__stack_chk_fail@plt>
+   1f720:	aa1503e0 	mov	x0, x21
+   1f724:	a94173f5 	ldp	x21, x28, [sp, #16]
+   1f728:	aa1f03f7 	mov	x23, xzr
+   1f72c:	2a1f03f6 	mov	w22, wzr
+   1f730:	17ffffed 	b	1f6e4 <JNI_OnUnload@@Base+0x4b80>
+   1f734:	a9ba6ffc 	stp	x28, x27, [sp, #-96]!
+   1f738:	a90167fa 	stp	x26, x25, [sp, #16]
+   1f73c:	a9025ff8 	stp	x24, x23, [sp, #32]
+   1f740:	a90357f6 	stp	x22, x21, [sp, #48]
+   1f744:	a9044ff4 	stp	x20, x19, [sp, #64]
+   1f748:	a9057bfd 	stp	x29, x30, [sp, #80]
+   1f74c:	910143fd 	add	x29, sp, #0x50
+   1f750:	d11543ff 	sub	sp, sp, #0x550
+   1f754:	d53bd048 	mrs	x8, tpidr_el0
+   1f758:	f9000be8 	str	x8, [sp, #16]
+   1f75c:	f9401508 	ldr	x8, [x8, #40]
+   1f760:	aa0003f6 	mov	x22, x0
+   1f764:	52802f00 	mov	w0, #0x178                 	// #376
+   1f768:	aa0303f3 	mov	x19, x3
+   1f76c:	aa0203f4 	mov	x20, x2
+   1f770:	aa0103f5 	mov	x21, x1
+   1f774:	f81a03a8 	stur	x8, [x29, #-96]
+   1f778:	97ffd9ca 	bl	15ea0 <malloc@plt>
+   1f77c:	6f00e400 	movi	v0.2d, #0x0
+   1f780:	52800028 	mov	w8, #0x1                   	// #1
+   1f784:	9110e2c9 	add	x9, x22, #0x438
+   1f788:	3d805800 	str	q0, [x0, #352]
+   1f78c:	b9016808 	str	w8, [x0, #360]
+   1f790:	911122c8 	add	x8, x22, #0x448
+   1f794:	f90013e9 	str	x9, [sp, #32]
+   1f798:	911162c9 	add	x9, x22, #0x458
+   1f79c:	f900b81f 	str	xzr, [x0, #368]
+   1f7a0:	ad000000 	stp	q0, q0, [x0]
+   1f7a4:	ad010000 	stp	q0, q0, [x0, #32]
+   1f7a8:	ad020000 	stp	q0, q0, [x0, #64]
+   1f7ac:	ad030000 	stp	q0, q0, [x0, #96]
+   1f7b0:	ad040000 	stp	q0, q0, [x0, #128]
+   1f7b4:	ad050000 	stp	q0, q0, [x0, #160]
+   1f7b8:	ad060000 	stp	q0, q0, [x0, #192]
+   1f7bc:	ad070000 	stp	q0, q0, [x0, #224]
+   1f7c0:	ad080000 	stp	q0, q0, [x0, #256]
+   1f7c4:	ad090000 	stp	q0, q0, [x0, #288]
+   1f7c8:	ad0a0000 	stp	q0, q0, [x0, #320]
+   1f7cc:	a902a7e8 	stp	x8, x9, [sp, #40]
+   1f7d0:	f94002c8 	ldr	x8, [x22]
+   1f7d4:	aa0003f7 	mov	x23, x0
+   1f7d8:	9105a009 	add	x9, x0, #0x168
+   1f7dc:	f90007e9 	str	x9, [sp, #8]
+   1f7e0:	b40000c8 	cbz	x8, 1f7f8 <JNI_OnUnload@@Base+0x4c94>
+   1f7e4:	aa0803e9 	mov	x9, x8
+   1f7e8:	f940b908 	ldr	x8, [x8, #368]
+   1f7ec:	b5ffffc8 	cbnz	x8, 1f7e4 <JNI_OnUnload@@Base+0x4c80>
+   1f7f0:	9105c128 	add	x8, x9, #0x170
+   1f7f4:	14000002 	b	1f7fc <JNI_OnUnload@@Base+0x4c98>
+   1f7f8:	aa1603e8 	mov	x8, x22
+   1f7fc:	f9000117 	str	x23, [x8]
+   1f800:	910062e8 	add	x8, x23, #0x18
+   1f804:	f000075b 	adrp	x27, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f808:	f000075a 	adrp	x26, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f80c:	f0000738 	adrp	x24, 106000 <JNI_OnUnload@@Base+0xeb49c>
+   1f810:	910042dc 	add	x28, x22, #0x10
+   1f814:	f9000fe8 	str	x8, [sp, #24]
+   1f818:	910592e8 	add	x8, x23, #0x164
+   1f81c:	910e5b7b 	add	x27, x27, #0x396
+   1f820:	910e7b5a 	add	x26, x26, #0x39e
+   1f824:	913d0318 	add	x24, x24, #0xf40
+   1f828:	f90003e8 	str	x8, [sp]
+   1f82c:	52808001 	mov	w1, #0x400                 	// #1024
+   1f830:	aa1403e0 	mov	x0, x20
+   1f834:	aa1503e2 	mov	x2, x21
+   1f838:	97ffdc5e 	bl	169b0 <fgets@plt>
+   1f83c:	b4000fe0 	cbz	x0, 1fa38 <JNI_OnUnload@@Base+0x4ed4>
+   1f840:	f9400661 	ldr	x1, [x19, #8]
+   1f844:	aa1403e0 	mov	x0, x20
+   1f848:	97ffda2a 	bl	160f0 <strstr@plt>
+   1f84c:	b5000e80 	cbnz	x0, 1fa1c <JNI_OnUnload@@Base+0x4eb8>
+   1f850:	aa1403e0 	mov	x0, x20
+   1f854:	aa1b03e1 	mov	x1, x27
+   1f858:	97ffda26 	bl	160f0 <strstr@plt>
+   1f85c:	b40002a0 	cbz	x0, 1f8b0 <JNI_OnUnload@@Base+0x4d4c>
+   1f860:	910103e1 	add	x1, sp, #0x40
+   1f864:	52802002 	mov	w2, #0x100                 	// #256
+   1f868:	aa1403e0 	mov	x0, x20
+   1f86c:	94000151 	bl	1fdb0 <JNI_OnUnload@@Base+0x524c>
+   1f870:	910503e0 	add	x0, sp, #0x140
+   1f874:	910103e4 	add	x4, sp, #0x40
+   1f878:	52808001 	mov	w1, #0x400                 	// #1024
+   1f87c:	aa1803e2 	mov	x2, x24
+   1f880:	aa1c03e3 	mov	x3, x28
+   1f884:	9400016e 	bl	1fe3c <JNI_OnUnload@@Base+0x52d8>
+   1f888:	910503e0 	add	x0, sp, #0x140
+   1f88c:	910083e1 	add	x1, sp, #0x20
+   1f890:	aa1703e2 	mov	x2, x23
+   1f894:	97fffcda 	bl	1ebfc <JNI_OnUnload@@Base+0x4098>
+   1f898:	35000be0 	cbnz	w0, 1fa14 <JNI_OnUnload@@Base+0x4eb0>
+   1f89c:	b94016e8 	ldr	w8, [x23, #20]
+   1f8a0:	37fffc68 	tbnz	w8, #31, 1f82c <JNI_OnUnload@@Base+0x4cc8>
+   1f8a4:	52800028 	mov	w8, #0x1                   	// #1
+   1f8a8:	b90496c8 	str	w8, [x22, #1172]
+   1f8ac:	17ffffe0 	b	1f82c <JNI_OnUnload@@Base+0x4cc8>
+   1f8b0:	aa1403e0 	mov	x0, x20
+   1f8b4:	aa1a03e1 	mov	x1, x26
+   1f8b8:	97ffda0e 	bl	160f0 <strstr@plt>
+   1f8bc:	b40004e0 	cbz	x0, 1f958 <JNI_OnUnload@@Base+0x4df4>
+   1f8c0:	aa1b03f9 	mov	x25, x27
+   1f8c4:	aa1803fb 	mov	x27, x24
+   1f8c8:	aa1a03f8 	mov	x24, x26
+   1f8cc:	b9416efa 	ldr	w26, [x23, #364]
+
+=== around 0x20500 ===
+   20488:	0a0a013a 	and	w26, w9, w10
+   2048c:	5280051b 	mov	w27, #0x28                  	// #40
+   20490:	29011be5 	stp	w5, w6, [sp, #8]
+   20494:	aa0803fc 	mov	x28, x8
+   20498:	350000ba 	cbnz	w26, 204ac <JNI_OnUnload@@Base+0x5948>
+   2049c:	f940bb88 	ldr	x8, [x28, #368]
+   204a0:	b4000dc8 	cbz	x8, 20658 <JNI_OnUnload@@Base+0x5af4>
+   204a4:	aa0803fc 	mov	x28, x8
+   204a8:	34ffffba 	cbz	w26, 2049c <JNI_OnUnload@@Base+0x5938>
+   204ac:	f940bb88 	ldr	x8, [x28, #368]
+   204b0:	b4000b88 	cbz	x8, 20620 <JNI_OnUnload@@Base+0x5abc>
+   204b4:	f94006f3 	ldr	x19, [x23, #8]
+   204b8:	b9416794 	ldr	w20, [x28, #356]
+   204bc:	b9416b88 	ldr	w8, [x28, #360]
+   204c0:	d503201f 	nop
+   204c4:	9b1b4e98 	madd	x24, x20, x27, x19
+   204c8:	1b167d0a 	mul	w10, w8, w22
+   204cc:	1b157d08 	mul	w8, w8, w21
+   204d0:	2943a70b 	ldp	w11, w9, [x24, #28]
+   204d4:	b9015f8a 	str	w10, [x28, #348]
+   204d8:	b9016388 	str	w8, [x28, #352]
+   204dc:	b940030c 	ldr	w12, [x24]
+   204e0:	2903a30a 	stp	w10, w8, [x24, #28]
+   204e4:	3400018c 	cbz	w12, 20514 <JNI_OnUnload@@Base+0x59b0>
+   204e8:	9b1b4e8c 	madd	x12, x20, x27, x19
+   204ec:	b940198c 	ldr	w12, [x12, #24]
+   204f0:	3400012c 	cbz	w12, 20514 <JNI_OnUnload@@Base+0x59b0>
+   204f4:	6b0b015f 	cmp	w10, w11
+   204f8:	540000e1 	b.ne	20514 <JNI_OnUnload@@Base+0x59b0>  // b.any
+   204fc:	6b09011f 	cmp	w8, w9
+   20500:	540000a1 	b.ne	20514 <JNI_OnUnload@@Base+0x59b0>  // b.any
+   20504:	b9015b8c 	str	w12, [x28, #344]
+   20508:	b9400f88 	ldr	w8, [x28, #12]
+   2050c:	36f808e8 	tbz	w8, #31, 20628 <JNI_OnUnload@@Base+0x5ac4>
+   20510:	17ffffe3 	b	2049c <JNI_OnUnload@@Base+0x5938>
+   20514:	b9415b88 	ldr	w8, [x28, #344]
+   20518:	91056399 	add	x25, x28, #0x158
+   2051c:	34000088 	cbz	w8, 2052c <JNI_OnUnload@@Base+0x59c8>
+   20520:	52800020 	mov	w0, #0x1                   	// #1
+   20524:	aa1903e1 	mov	x1, x25
+   20528:	97ffd93e 	bl	16a20 <glDeleteFramebuffers@plt>
+   2052c:	9b1b4e88 	madd	x8, x20, x27, x19
+   20530:	b9402508 	ldr	w8, [x8, #36]
+   20534:	7100091f 	cmp	w8, #0x2
+   20538:	540000c1 	b.ne	20550 <JNI_OnUnload@@Base+0x59ec>  // b.any
+   2053c:	b9400308 	ldr	w8, [x24]
+   20540:	34000088 	cbz	w8, 20550 <JNI_OnUnload@@Base+0x59ec>
+   20544:	52800020 	mov	w0, #0x1                   	// #1
+   20548:	aa1803e1 	mov	x1, x24
+   2054c:	97ffd8ad 	bl	16800 <glDeleteTextures@plt>
+   20550:	9b1b4e93 	madd	x19, x20, x27, x19
+   20554:	52800020 	mov	w0, #0x1                   	// #1
+   20558:	aa1803e1 	mov	x1, x24
+   2055c:	b9001a7f 	str	wzr, [x19, #24]
+   20560:	97ffd874 	bl	16730 <glGenTextures@plt>
+   20564:	b9400301 	ldr	w1, [x24]
+   20568:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2056c:	97ffd8b9 	bl	16850 <glBindTexture@plt>
+   20570:	29408a66 	ldp	w6, w2, [x19, #4]
+   20574:	b9415f83 	ldr	w3, [x28, #348]
+   20578:	b9416384 	ldr	w4, [x28, #352]
+   2057c:	b9400e67 	ldr	w7, [x19, #12]
+   20580:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   20584:	2a1f03e1 	mov	w1, wzr
+   20588:	2a1f03e5 	mov	w5, wzr
+   2058c:	f90003ff 	str	xzr, [sp]
+   20590:	97ffd690 	bl	15fd0 <glTexImage2D@plt>
+   20594:	b9401662 	ldr	w2, [x19, #20]
+   20598:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2059c:	52850021 	mov	w1, #0x2801                	// #10241
+   205a0:	97ffd668 	bl	15f40 <glTexParameteri@plt>
+   205a4:	b9401262 	ldr	w2, [x19, #16]
+   205a8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205ac:	52850001 	mov	w1, #0x2800                	// #10240
+   205b0:	97ffd664 	bl	15f40 <glTexParameteri@plt>
+   205b4:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205b8:	52850041 	mov	w1, #0x2802                	// #10242
+   205bc:	529025e2 	mov	w2, #0x812f                	// #33071
+   205c0:	97ffd660 	bl	15f40 <glTexParameteri@plt>
+   205c4:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205c8:	52850061 	mov	w1, #0x2803                	// #10243
+   205cc:	529025e2 	mov	w2, #0x812f                	// #33071
+   205d0:	97ffd65c 	bl	15f40 <glTexParameteri@plt>
+   205d4:	52800020 	mov	w0, #0x1                   	// #1
+   205d8:	aa1903e1 	mov	x1, x25
+   205dc:	97ffd5c1 	bl	15ce0 <glGenFramebuffers@plt>
+   205e0:	b9415b81 	ldr	w1, [x28, #344]
+   205e4:	5291a800 	mov	w0, #0x8d40                	// #36160
+   205e8:	97ffd66a 	bl	15f90 <glBindFramebuffer@plt>
+   205ec:	b9400303 	ldr	w3, [x24]
+   205f0:	5291a800 	mov	w0, #0x8d40                	// #36160
+   205f4:	52919c01 	mov	w1, #0x8ce0                	// #36064
+   205f8:	5281bc22 	mov	w2, #0xde1                 	// #3553
+   205fc:	2a1f03e4 	mov	w4, wzr
+   20600:	97ffd6ec 	bl	161b0 <glFramebufferTexture2D@plt>
+   20604:	5291a800 	mov	w0, #0x8d40                	// #36160
+   20608:	97ffd8ee 	bl	169c0 <glCheckFramebufferStatus@plt>
+   2060c:	b9415b88 	ldr	w8, [x28, #344]
+   20610:	5291a800 	mov	w0, #0x8d40                	// #36160
+   20614:	2a1f03e1 	mov	w1, wzr
+   20618:	b9001a68 	str	w8, [x19, #24]
+   2061c:	97ffd65d 	bl	15f90 <glBindFramebuffer@plt>
+   20620:	b9400f88 	ldr	w8, [x28, #12]
+   20624:	37fff3c8 	tbnz	w8, #31, 2049c <JNI_OnUnload@@Base+0x5938>
+   20628:	b9400380 	ldr	w0, [x28]
+   2062c:	97ffd6a1 	bl	160b0 <glUseProgram@plt>
+   20630:	b9400f80 	ldr	w0, [x28, #12]
+   20634:	4eaa1d40 	mov	v0.16b, v10.16b
+   20638:	4eab1d61 	mov	v1.16b, v11.16b
+   2063c:	4ea81d02 	mov	v2.16b, v8.16b
+   20640:	4ea91d23 	mov	v3.16b, v9.16b
+   20644:	97ffd81b 	bl	166b0 <glUniform4f@plt>
+   20648:	2a1f03e0 	mov	w0, wzr
+   2064c:	97ffd699 	bl	160b0 <glUseProgram@plt>
+   20650:	f940bb88 	ldr	x8, [x28, #368]
+   20654:	b5fff288 	cbnz	x8, 204a4 <JNI_OnUnload@@Base+0x5940>
+   20658:	b9400be8 	ldr	w8, [sp, #8]
+   2065c:	b9015f88 	str	w8, [x28, #348]
+   20660:	b9400fe8 	ldr	w8, [sp, #12]
+   20664:	b9016388 	str	w8, [x28, #352]
+   20668:	a9487bfd 	ldp	x29, x30, [sp, #128]
+   2066c:	a9474ff4 	ldp	x20, x19, [sp, #112]
+   20670:	a94657f6 	ldp	x22, x21, [sp, #96]
+   20674:	a9455ff8 	ldp	x24, x23, [sp, #80]
+   20678:	a94467fa 	ldp	x26, x25, [sp, #64]
+   2067c:	a9436ffc 	ldp	x28, x27, [sp, #48]
+   20680:	6d4223e9 	ldp	d9, d8, [sp, #32]
+   20684:	6d412beb 	ldp	d11, d10, [sp, #16]
+   20688:	910243ff 	add	sp, sp, #0x90
+   2068c:	d65f03c0 	ret
+   20690:	d10243ff 	sub	sp, sp, #0x90
+   20694:	fd000bea 	str	d10, [sp, #16]
+   20698:	6d0223e9 	stp	d9, d8, [sp, #32]
+   2069c:	a9036ffc 	stp	x28, x27, [sp, #48]
+   206a0:	a90467fa 	stp	x26, x25, [sp, #64]
+   206a4:	a9055ff8 	stp	x24, x23, [sp, #80]
+   206a8:	a90657f6 	stp	x22, x21, [sp, #96]
+   206ac:	a9074ff4 	stp	x20, x19, [sp, #112]
+   206b0:	a9087bfd 	stp	x29, x30, [sp, #128]
+   206b4:	910203fd 	add	x29, sp, #0x80
+   206b8:	d53bd059 	mrs	x25, tpidr_el0
+   206bc:	f9401728 	ldr	x8, [x25, #40]
+   206c0:	f90007e8 	str	x8, [sp, #8]
+   206c4:	b4001840 	cbz	x0, 209cc <JNI_OnUnload@@Base+0x5e68>
+   206c8:	b9449808 	ldr	w8, [x0, #1176]
+   206cc:	2a0203f3 	mov	w19, w2
+   206d0:	2a0103f6 	mov	w22, w1
+   206d4:	aa0003f5 	mov	x21, x0
+   206d8:	34000328 	cbz	w8, 2073c <JNI_OnUnload@@Base+0x5bd8>
+   206dc:	b94496a8 	ldr	w8, [x21, #1172]
+   206e0:	a94072ba 	ldp	x26, x28, [x21]
+   206e4:	2a0503f7 	mov	w23, w5
+   206e8:	2a0403f8 	mov	w24, w4
+   206ec:	2a0303f4 	mov	w20, w3
+   206f0:	34000708 	cbz	w8, 207d0 <JNI_OnUnload@@Base+0x5c6c>
+   206f4:	910003e0 	mov	x0, sp
+   206f8:	97ffeadd 	bl	1b26c <JNI_OnUnload@@Base+0x708>
+   206fc:	f9421aa9 	ldr	x9, [x21, #1072]
+   20700:	f94003e8 	ldr	x8, [sp]
+   20704:	b5000069 	cbnz	x9, 20710 <JNI_OnUnload@@Base+0x5bac>
+   20708:	aa0803e9 	mov	x9, x8
+   2070c:	f9021aa8 	str	x8, [x21, #1072]
+   20710:	cb090108 	sub	x8, x8, x9
+   20714:	d2d09009 	mov	x9, #0x848000000000        	// #145685290680320
+   20718:	f2e825c9 	movk	x9, #0x412e, lsl #48
+   2071c:	9e630100 	ucvtf	d0, x8
+   20720:	9e670121 	fmov	d1, x9
+   20724:	1e611800 	fdiv	d0, d0, d1
+   20728:	1e624008 	fcvt	s8, d0
+   2072c:	b94482a8 	ldr	w8, [x21, #1152]
+   20730:	7100051f 	cmp	w8, #0x1
+   20734:	5400056a 	b.ge	207e0 <JNI_OnUnload@@Base+0x5c7c>  // b.tcont
+   20738:	14000047 	b	20854 <JNI_OnUnload@@Base+0x5cf0>
+   2073c:	b001f874 	adrp	x20, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   20740:	912f8294 	add	x20, x20, #0xbe0
+   20744:	b9400280 	ldr	w0, [x20]
+   20748:	97ffd65a 	bl	160b0 <glUseProgram@plt>
+   2074c:	5291a800 	mov	w0, #0x8d40                	// #36160
+   20750:	2a1f03e1 	mov	w1, wzr
+   20754:	97ffd60f 	bl	15f90 <glBindFramebuffer@plt>
+   20758:	b9400680 	ldr	w0, [x20, #4]
+   2075c:	97ffd7c1 	bl	16660 <glEnableVertexAttribArray@plt>
+   20760:	b9400680 	ldr	w0, [x20, #4]
+   20764:	f9400e85 	ldr	x5, [x20, #24]
+   20768:	52800041 	mov	w1, #0x2                   	// #2
+   2076c:	528280c2 	mov	w2, #0x1406                	// #5126
+   20770:	2a1f03e3 	mov	w3, wzr
+   20774:	2a1f03e4 	mov	w4, wzr
+   20778:	97ffd6ca 	bl	162a0 <glVertexAttribPointer@plt>
+   2077c:	b9400a80 	ldr	w0, [x20, #8]
+   20780:	97ffd7b8 	bl	16660 <glEnableVertexAttribArray@plt>
+   20784:	b9400a80 	ldr	w0, [x20, #8]
+   20788:	f9401285 	ldr	x5, [x20, #32]
+   2078c:	52800041 	mov	w1, #0x2                   	// #2
+   20790:	528280c2 	mov	w2, #0x1406                	// #5126
+   20794:	2a1f03e3 	mov	w3, wzr
+   20798:	2a1f03e4 	mov	w4, wzr
+   2079c:	97ffd6c1 	bl	162a0 <glVertexAttribPointer@plt>
+   207a0:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   207a4:	2a1603e1 	mov	w1, w22
+   207a8:	97ffd82a 	bl	16850 <glBindTexture@plt>
+   207ac:	52800080 	mov	w0, #0x4                   	// #4
+   207b0:	528000c2 	mov	w2, #0x6                   	// #6
+   207b4:	2a1303e1 	mov	w1, w19
+   207b8:	97ffd522 	bl	15c40 <glDrawArrays@plt>
+   207bc:	f9401728 	ldr	x8, [x25, #40]
+   207c0:	f94007e9 	ldr	x9, [sp, #8]
+   207c4:	eb09011f 	cmp	x8, x9
+   207c8:	540010a0 	b.eq	209dc <JNI_OnUnload@@Base+0x5e78>  // b.none
+   207cc:	1400008e 	b	20a04 <JNI_OnUnload@@Base+0x5ea0>
 
 ## Calls/references near framebuffer-related imports
 Found 8 graphics-call references.
