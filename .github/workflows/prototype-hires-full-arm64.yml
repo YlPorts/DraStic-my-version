@@ -1,0 +1,178 @@
+name: Prototype ARM64 1x-4x full buffers
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/prototype-hires-full-arm64.yml'
+      - 'tools/apply_arm64_patches.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Restore pristine ARM64 library from main
+        run: |
+          git fetch origin main
+          git show origin/main:universal/lib/arm64-v8a/libdrastic_arm64.so > /tmp/libdrastic_arm64_original.so
+          test "$(sha256sum /tmp/libdrastic_arm64_original.so | awk '{print $1}')" = "3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902"
+
+      - name: Assemble full 1x-4x patch set
+        run: |
+          mkdir -p /tmp/patches prototype analysis
+
+          cat > /tmp/patches/mem_12m.S <<'ASM'
+          .text
+          mov w2, #0xc00000
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/mem_12m.S -o /tmp/patches/mem_12m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/mem_12m.o /tmp/patches/mem_12m.bin
+          test "$(stat -c%s /tmp/patches/mem_12m.bin)" = "4"
+
+          cat > /tmp/patches/half_6m.S <<'ASM'
+          .text
+          add x8, x0, #0x600, lsl #12
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/half_6m.S -o /tmp/patches/half_6m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/half_6m.o /tmp/patches/half_6m.bin
+          test "$(stat -c%s /tmp/patches/half_6m.bin)" = "4"
+
+          cat > /tmp/patches/screen_slot_3m.S <<'ASM'
+          .text
+          mov w10, #0x300000
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/screen_slot_3m.S -o /tmp/patches/screen_slot_3m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/screen_slot_3m.o /tmp/patches/screen_slot_3m.bin
+          test "$(stat -c%s /tmp/patches/screen_slot_3m.bin)" = "4"
+
+          cat > /tmp/patches/scale_area.S <<'ASM'
+          .text
+          // x8 already points to renderer-global base; w8 is the current scale index.
+          add w8, w8, #1
+          mov w9, #0x400
+          mov w10, #0x200
+          cmp w12, #0x10
+          csel w9, w10, w9, eq
+          mul w9, w9, w8
+          mul w0, w9, w8
+          nop
+          nop
+          ret
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/scale_area.S -o /tmp/patches/scale_area.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/scale_area.o /tmp/patches/scale_area.bin
+          test "$(stat -c%s /tmp/patches/scale_area.bin)" = "40"
+
+          cat > /tmp/patches/row_stride.S <<'ASM'
+          .text
+          add w8, w8, #1
+          mov w9, #0x400
+          mov w10, #0x200
+          cmp w11, #0x10
+          csel w9, w10, w9, eq
+          mul w0, w9, w8
+          nop
+          nop
+          ret
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/row_stride.S -o /tmp/patches/row_stride.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/row_stride.o /tmp/patches/row_stride.bin
+          test "$(stat -c%s /tmp/patches/row_stride.bin)" = "36"
+
+          cat > /tmp/patches/scale_select.S <<'ASM'
+          .text
+          // Fixed ADRP encoding for x13 -> page 0x14c000 when placed at VA 0x1cdf4.
+          .inst 0x9000098d
+          ldr x13, [x13, #1128]
+          ubfx x1, x13, #51, #2
+          cmp w10, w1
+          b.eq patch_end
+          mov w10, w0
+          add w13, w1, #1
+          lsl w11, w13, #8
+          add w12, w13, w13, lsl #1
+          lsl w12, w12, #6
+          add x9, x9, #0x968
+          mov w15, #1
+          add x8, x8, x10, lsl #2
+          str w11, [x8, #2424]
+          str w12, [x8, #2432]
+          str w1, [x9]
+          str w15, [x8, #2416]
+          patch_end:
+          ret
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/scale_select.S -o /tmp/patches/scale_select.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/scale_select.o /tmp/patches/scale_select.bin
+          test "$(stat -c%s /tmp/patches/scale_select.bin)" = "72"
+
+          cat > /tmp/patches/copy_slot_3m.S <<'ASM'
+          .text
+          mov w2, #0x300000
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/copy_slot_3m.S -o /tmp/patches/copy_slot_3m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/copy_slot_3m.o /tmp/patches/copy_slot_3m.bin
+          test "$(stat -c%s /tmp/patches/copy_slot_3m.bin)" = "4"
+
+      - name: Apply full patch from pristine main binary
+        run: |
+          python3 tools/apply_arm64_patches.py             /tmp/libdrastic_arm64_original.so             prototype/libdrastic_arm64_1x4x_full.so             --patch 0x1cc34:/tmp/patches/mem_12m.bin             --patch 0x1cc50:/tmp/patches/mem_12m.bin             --patch 0x1cc58:/tmp/patches/half_6m.bin             --patch 0x1cd24:/tmp/patches/screen_slot_3m.bin             --patch 0x1cd4c:/tmp/patches/scale_area.bin             --patch 0x1cd88:/tmp/patches/row_stride.bin             --patch 0x1cdf4:/tmp/patches/scale_select.bin             --patch 0x5f0f8:/tmp/patches/copy_slot_3m.bin             | tee analysis/full_1x4x_arm64_patch.txt
+
+      - name: Verify all patched regions
+        run: |
+          {
+            echo
+            echo "## Allocation 0x1cc24-0x1cc64"
+            aarch64-linux-gnu-objdump -d --start-address=0x1cc24 --stop-address=0x1cc64 prototype/libdrastic_arm64_1x4x_full.so
+            echo
+            echo "## Screen pointer + helpers 0x1cd18-0x1cdac"
+            aarch64-linux-gnu-objdump -d --start-address=0x1cd18 --stop-address=0x1cdac prototype/libdrastic_arm64_1x4x_full.so
+            echo
+            echo "## Scale selector 0x1cde4-0x1ce3c"
+            aarch64-linux-gnu-objdump -d --start-address=0x1cde4 --stop-address=0x1ce3c prototype/libdrastic_arm64_1x4x_full.so
+            echo
+            echo "## Full-slot copy 0x5f0e8-0x5f104"
+            aarch64-linux-gnu-objdump -d --start-address=0x5f0e8 --stop-address=0x5f104 prototype/libdrastic_arm64_1x4x_full.so
+          } | tee -a analysis/full_1x4x_arm64_patch.txt
+
+          grep -q "mov.*w2, #0xc00000" analysis/full_1x4x_arm64_patch.txt
+          grep -q "add.*x8, x0, #0x600, lsl #12" analysis/full_1x4x_arm64_patch.txt
+          grep -q "mov.*w10, #0x300000" analysis/full_1x4x_arm64_patch.txt
+          grep -q "ubfx.*x1, x13, #51, #2" analysis/full_1x4x_arm64_patch.txt
+          grep -q "mul.*w9, w9, w8" analysis/full_1x4x_arm64_patch.txt
+          grep -q "mul.*w0, w9, w8" analysis/full_1x4x_arm64_patch.txt
+          grep -q "mov.*w2, #0x300000" analysis/full_1x4x_arm64_patch.txt
+
+      - name: Commit verification report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analysis/full_1x4x_arm64_patch.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify full ARM64 1x-4x buffer patch"
+            git pull --rebase origin feature/internal-resolution-scaling
+            git push
+          fi
+
+      - name: Upload full prototype
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-arm64-full-1x4x-prototype
+          path: |
+            prototype/libdrastic_arm64_1x4x_full.so
+            analysis/full_1x4x_arm64_patch.txt
