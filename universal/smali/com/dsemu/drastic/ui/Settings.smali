@@ -5089,6 +5089,92 @@
     return-void
 .end method
 
+.method public static synthetic refreshHiresGlobal(Lcom/dsemu/drastic/ui/Settings;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/dsemu/drastic/ui/Settings;->D()V
+
+    return-void
+.end method
+
+.method public static synthetic refreshHiresGame(Lcom/dsemu/drastic/ui/Settings;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/dsemu/drastic/ui/Settings;->U()V
+
+    return-void
+.end method
+
+.method private showHiresScaleDialog(Z)V
+    .locals 6
+
+    const/4 v0, 0x4
+
+    new-array v1, v0, [Ljava/lang/String;
+
+    const/4 v0, 0x0
+
+    const-string v2, "1x (Native)"
+
+    aput-object v2, v1, v0
+
+    const/4 v0, 0x1
+
+    const-string v2, "2x (512x384)"
+
+    aput-object v2, v1, v0
+
+    const/4 v0, 0x2
+
+    const-string v2, "3x (768x576)"
+
+    aput-object v2, v1, v0
+
+    const/4 v0, 0x3
+
+    const-string v2, "4x (1024x768)"
+
+    aput-object v2, v1, v0
+
+    new-instance v0, Landroid/app/AlertDialog$Builder;
+
+    invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    const-string v2, "Internal 3D resolution"
+
+    invoke-virtual {v0, v2}, Landroid/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    if-eqz p1, :hires_scale_global
+
+    sget v3, Lf0/h;->Hires3DScaleGame:I
+
+    goto :hires_scale_current
+
+    :hires_scale_global
+    sget v3, Lf0/h;->Hires3DScale:I
+
+    :hires_scale_current
+    add-int/lit8 v3, v3, -0x1
+
+    new-instance v4, Lcom/dsemu/drastic/ui/Settings$HiresScaleListener;
+
+    invoke-direct {v4, p0, p1}, Lcom/dsemu/drastic/ui/Settings$HiresScaleListener;-><init>(Lcom/dsemu/drastic/ui/Settings;Z)V
+
+    invoke-virtual {v0, v1, v3, v4}, Landroid/app/AlertDialog$Builder;->setSingleChoiceItems([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/Dialog;->show()V
+
+    return-void
+.end method
+
 .method public onClick(Landroid/view/View;)V
     .locals 12
     .annotation build Landroid/annotation/TargetApi;
@@ -6297,24 +6383,28 @@
     :pswitch_2e
     check-cast p1, Landroid/widget/CheckBox;
 
-    invoke-virtual {p1}, Landroid/widget/CompoundButton;->isChecked()Z
+    sget-boolean v0, Lf0/h;->V0:Z
 
-    move-result p1
+    invoke-virtual {p1, v0}, Landroid/widget/CompoundButton;->setChecked(Z)V
 
-    sput-boolean p1, Lf0/h;->V0:Z
+    const/4 v0, 0x1
 
-    goto/16 :goto_d
+    invoke-direct {p0, v0}, Lcom/dsemu/drastic/ui/Settings;->showHiresScaleDialog(Z)V
+
+    goto/16 :goto_1c
 
     :pswitch_2f
     check-cast p1, Landroid/widget/CheckBox;
 
-    invoke-virtual {p1}, Landroid/widget/CompoundButton;->isChecked()Z
+    sget-boolean v0, Lf0/h;->D0:Z
 
-    move-result p1
+    invoke-virtual {p1, v0}, Landroid/widget/CompoundButton;->setChecked(Z)V
 
-    sput-boolean p1, Lf0/h;->D0:Z
+    const/4 v0, 0x0
 
-    goto/16 :goto_e
+    invoke-direct {p0, v0}, Lcom/dsemu/drastic/ui/Settings;->showHiresScaleDialog(Z)V
+
+    goto/16 :goto_1c
 
     :pswitch_30
     check-cast p1, Landroid/widget/CheckBox;
