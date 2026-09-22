@@ -67,7 +67,7 @@
 
     aput-object v2, v0, v3
 
-    const/16 v2, 0xe
+    const/16 v2, 0xf
 
     new-array v2, v2, [I
 
@@ -147,7 +147,9 @@
 
     const/16 v13, 0x9
 
-    new-array v14, v13, [I
+    const/16 v14, 0xa
+
+    new-array v14, v14, [I
 
     fill-array-data v14, :array_9
 
@@ -187,7 +189,9 @@
 
     aput-object v14, v0, v3
 
-    new-array v14, v5, [I
+    const/16 v14, 0xd
+
+    new-array v14, v14, [I
 
     fill-array-data v14, :array_b
 
@@ -237,7 +241,9 @@
 
     aput-object v2, v0, v1
 
-    new-array v1, v13, [I
+    const/16 v1, 0xa
+
+    new-array v1, v1, [I
 
     fill-array-data v1, :array_12
 
@@ -300,6 +306,7 @@
         0x7f090220
         0x7f090221
         0x7f0901f5
+        0x7f0902d1
     .end array-data
 
     :array_2
@@ -408,6 +415,7 @@
         0x7f0900e4
         0x7f0900e8
         0x7f09009d
+        0x7f0902d3
     .end array-data
 
     :array_a
@@ -434,6 +442,7 @@
         0x7f0900e7
         0x7f09009c
         0x7f0901f5
+        0x7f0902d1
     .end array-data
 
     :array_c
@@ -521,6 +530,7 @@
         0x7f0900e4
         0x7f0900e8
         0x7f09009d
+        0x7f0902d3
     .end array-data
 
     :array_13
