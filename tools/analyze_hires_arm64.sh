@@ -189,6 +189,21 @@ PY
   echo "## HiRes caller function context 0x3c800-0x3cb00"
   "$OBJDUMP" -d --start-address=0x3c800 --stop-address=0x3cb00 "$BIN" || true
   echo
+  echo
+  echo "## Candidate decoded-field accesses (1124, 1188, 1200)"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+for off in (1124,1188,1200):
+    pat=re.compile(r'\[[xw]\d+,\s*#%d\]' % off)
+    hits=[i for i,l in enumerate(lines) if pat.search(l)]
+    print(f"\n### offset {off}: {len(hits)} accesses")
+    for n,i in enumerate(hits[:80],1):
+        print(f"\n--- {off} hit {n}, line {i+1} ---")
+        for l in lines[max(0,i-8):min(len(lines),i+12)]:
+            print(l)
+PY
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
