@@ -1,0 +1,55 @@
+name: Dump Q deep HiRes rasterizer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-q-rasterizer-deep.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+      - name: Dump deep HiRes paths
+        run: |
+          SO=universal/lib/arm64-v8a/libdrastic_arm64.so
+          OUT=/tmp/q-rasterizer-deep.txt
+          aarch64-linux-gnu-objdump -d "$SO" > /tmp/full.txt
+          {
+            echo '===== SHA ====='
+            sha256sum "$SO"
+
+            echo
+            echo '===== 2x planar unpack / resolve 0x4c800-0x4d380 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x4c800 --stop-address=0x4d380 "$SO"
+
+            echo
+            echo '===== HiRes renderer block 0x5d800-0x60680 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5d800 --stop-address=0x60680 "$SO"
+
+            echo
+            echo '===== helper block 0x8d000-0x8fc80 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x8d000 --stop-address=0x8fc80 "$SO"
+
+            echo
+            echo '===== xrefs to HiRes helpers ====='
+            grep -nE 'bl[[:space:]]+5e648|bl[[:space:]]+5eebc|bl[[:space:]]+5f928|bl[[:space:]]+5f9f4|bl[[:space:]]+5fb28|bl[[:space:]]+5fb8c|b[[:space:]]+5e648|b[[:space:]]+5eebc|b[[:space:]]+5f928|b[[:space:]]+5f9f4|b[[:space:]]+5fb28|b[[:space:]]+5fb8c' /tmp/full.txt -B 16 -A 24 || true
+
+            echo
+            echo '===== 2x-looking constants inside 0x4c800-0x60680 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x4c800 --stop-address=0x60680 "$SO" |
+              grep -nE '#0x2([[:space:]]|$)|#0x4([[:space:]]|$)|#0x100([[:space:]]|$)|#0x180([[:space:]]|$)|#0x200([[:space:]]|$)|#0x300([[:space:]]|$)|#0x400([[:space:]]|$)|#0x600([[:space:]]|$)|#0x800([[:space:]]|$)|#0xc00([[:space:]]|$)|#0x1000([[:space:]]|$)|#0x180000|#0xc0000' | head -n 2200 || true
+          } | tee "$OUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q-rasterizer-deep
+          path: /tmp/q-rasterizer-deep.txt
