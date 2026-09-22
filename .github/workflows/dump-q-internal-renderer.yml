@@ -30,7 +30,7 @@ jobs:
           {
             echo '===== ELF / symbols ====='
             sha256sum "$SO"
-            aarch64-linux-gnu-nm -D "$SO" | grep -E 'renderFrame|fxRender|extfxRender|getScreenBuffers|applyConfig|glTex|glViewport|glBindFramebuffer' || true
+            aarch64-linux-gnu-nm -D "$SO" | grep -E 'renderFrame|fxRender|extfxRender|getScreenBuffers|applyConfig|clearScreens|glTex|glViewport|glBindFramebuffer' || true
 
             echo
             echo '===== renderer allocation + scale helpers 0x1cb80-0x1ceb0 ====='
@@ -49,8 +49,20 @@ jobs:
             aarch64-linux-gnu-objdump -d --start-address=0x1d3b8 --stop-address=0x1d52c "$SO"
 
             echo
-            echo '===== renderer core candidate 0x3c600-0x3d100 ====='
-            aarch64-linux-gnu-objdump -d --start-address=0x3c600 --stop-address=0x3d100 "$SO"
+            echo '===== clear/screens scratch 0x1d52c-0x1d6b0 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1d52c --stop-address=0x1d6b0 "$SO"
+
+            echo
+            echo '===== screen helper consumers 0x7fe80-0x80780 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x7fe80 --stop-address=0x80780 "$SO"
+
+            echo
+            echo '===== full-slot copy region 0x5efc0-0x5f180 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5efc0 --stop-address=0x5f180 "$SO"
+
+            echo
+            echo '===== renderer core candidate 0x3c600-0x3d180 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x3c600 --stop-address=0x3d180 "$SO"
 
             echo
             echo '===== callers of screen/scale helpers ====='
@@ -59,11 +71,11 @@ jobs:
 
             echo
             echo '===== exact framebuffer-size immediates / row constants ====='
-            grep -nE '#0x300000|#0x180000|#0xc0000|#0x60000|#0x400000|#0x800000|#0x1000000|#0x100([[:space:]]|$)|#0xc0([[:space:]]|$)|#0x200([[:space:]]|$)|#0x180([[:space:]]|$)|#0x300([[:space:]]|$)|#0x400([[:space:]]|$)' /tmp/q-full-disasm.txt | head -n 1600 || true
+            grep -nE '#0x300000|#0x180000|#0xc0000|#0x60000|#0x400000|#0x800000|#0x1000000|#0x100([[:space:]]|$)|#0xc0([[:space:]]|$)|#0x200([[:space:]]|$)|#0x180([[:space:]]|$)|#0x300([[:space:]]|$)|#0x400([[:space:]]|$)' /tmp/q-full-disasm.txt | head -n 1800 || true
 
             echo
             echo '===== refs near renderer globals 0x3f2d000 ====='
-            grep -nE '3f2d000|#2392|#2396|#2408|#2416|#2424|#2432|#0x958|#0x95c|#0x968|#0x970|#0x980' /tmp/q-full-disasm.txt | head -n 1600 || true
+            grep -nE '3f2d000|#2392|#2396|#2408|#2416|#2424|#2432|#0x958|#0x95c|#0x968|#0x970|#0x980' /tmp/q-full-disasm.txt | head -n 1800 || true
           } | tee "$OUT"
 
       - uses: actions/upload-artifact@v4
