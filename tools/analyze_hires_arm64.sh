@@ -181,6 +181,10 @@ PY
   aarch64-linux-gnu-readelf -lW "$BIN" || true
   aarch64-linux-gnu-readelf -SW "$BIN" | grep -E '(^| )\.(text|plt|rodata|data|bss)( |$)' || true
   echo
+  echo
+  echo "## Packed-config decoder 0x17c58"
+  "$OBJDUMP" -d --start-address=0x17c58 --stop-address=0x17df4 "$BIN" || true
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
