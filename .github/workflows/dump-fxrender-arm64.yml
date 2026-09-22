@@ -1,0 +1,29 @@
+name: Dump fxRender ARM64 path
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-fxrender-arm64.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install binutils
+        run: sudo apt-get update && sudo apt-get install -y binutils-aarch64-linux-gnu
+      - name: Dump JNI FX path
+        run: |
+          {
+            echo '===== JNI fx wrappers 0x18e80-0x19040 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x18e80 --stop-address=0x19040 universal/lib/arm64-v8a/libdrastic_arm64.so
+            echo '===== renderFrame 0x1ce80-0x1d020 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1ce80 --stop-address=0x1d020 universal/lib/arm64-v8a/libdrastic_arm64.so
+          } | tee /tmp/fxrender-arm64.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fxrender-arm64-dump
+          path: /tmp/fxrender-arm64.txt
