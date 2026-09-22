@@ -105,7 +105,7 @@ jobs:
           aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/w2_alloc15m.o /tmp/h_patch/w2_alloc15m.bin
           test "$(stat -c%s /tmp/h_patch/w2_alloc15m.bin)" = 4
 
-          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/h_patch/libdrastic_arm64_n0.so             --patch 0x1cc34:/tmp/h_patch/w2_alloc15m.bin             --patch 0x1cc50:/tmp/h_patch/w2_alloc15m.bin
+          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/h_patch/libdrastic_arm64_n0.so             --expected-sha256 ab4ca1c5bf814962551110fa79b29d71d8265d00c527c223efe19bb61e35a1ac             --patch 0x1cc34:/tmp/h_patch/w2_alloc15m.bin             --patch 0x1cc50:/tmp/h_patch/w2_alloc15m.bin
 
           aarch64-linux-gnu-as patches/arm64/renderframe_source_expander.S -o /tmp/h_patch/renderframe_expander.o
           aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/renderframe_expander.o /tmp/h_patch/renderframe_expander.bin
