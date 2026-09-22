@@ -6,6 +6,10 @@ on:
       - feature/internal-resolution-scaling
     paths:
       - '.github/workflows/build-o-renderframe-fxrender-expansion.yml'
+      - 'patches/arm64/renderframe_source_expander.S'
+      - 'tools/patch_renderframe_expander.py'
+      - 'patches/arm64/fxrender_expander_wrappers.S'
+      - 'tools/patch_fxrender_expander.py'
   workflow_dispatch:
 
 jobs:
