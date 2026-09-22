@@ -4125,6 +4125,22 @@
     or-long/2addr v0, v2
 
     :cond_12
+    # Custom ARM64 internal-resolution index in previously unused bits 51-52.
+    # 0=1x, 1=2x, 2=3x, 3=4x. Keep legacy _Hires3D bit 41 intact.
+    sget v2, Lf0/h;->Hires3DScaleGame:I
+
+    add-int/lit8 v2, v2, -0x1
+
+    and-int/lit8 v2, v2, 0x3
+
+    int-to-long v2, v2
+
+    const/16 v4, 0x33
+
+    shl-long/2addr v2, v4
+
+    or-long/2addr v0, v2
+
     return-wide v0
 .end method
 
