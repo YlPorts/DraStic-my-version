@@ -1,0 +1,150 @@
+name: Build O all live upload paths 1x-4x test
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-o-all-live-upload-paths.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Restore startup-safe config
+        run: |
+          git fetch origin main
+          git show origin/main:universal/smali/f0/h.smali > universal/smali/f0/h.smali
+          python3 tools/prepare_safe_hires_live_config.py universal/smali/f0/h.smali
+
+      - name: Assemble screenbuffer downsamplers and fixed-size patches
+        run: |
+          mkdir -p /tmp/h_patch
+
+          aarch64-linux-gnu-as patches/arm64/screenbuffers_hires16.S -o /tmp/h_patch/h16.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/h16.o /tmp/h_patch/h16.bin
+          python3 tools/append_arm64_branch.py /tmp/h_patch/h16.bin 0x19268 0x195f0
+
+          aarch64-linux-gnu-as patches/arm64/screenbuffers_hires32.S -o /tmp/h_patch/h32.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/h32.o /tmp/h_patch/h32.bin
+          python3 tools/append_arm64_branch.py /tmp/h_patch/h32.bin 0x19398 0x195f0
+
+          cat > /tmp/h_patch/w8_slot3m.S <<'ASM'
+          .text
+          mov w8, #0x300000
+          ASM
+          cat > /tmp/h_patch/w9_slot3m.S <<'ASM'
+          .text
+          mov w9, #0x300000
+          ASM
+          cat > /tmp/h_patch/w10_slot3m.S <<'ASM'
+          .text
+          mov w10, #0x300000
+          ASM
+          cat > /tmp/h_patch/w11_slot3m.S <<'ASM'
+          .text
+          mov w11, #0x300000
+          ASM
+          cat > /tmp/h_patch/w2_half6m.S <<'ASM'
+          .text
+          mov w2, #0x600000
+          ASM
+          cat > /tmp/h_patch/w1_aux4x.S <<'ASM'
+          .text
+          mov w1, #0x180000
+          ASM
+
+          for x in w8_slot3m w9_slot3m w10_slot3m w11_slot3m w2_half6m w1_aux4x; do
+            aarch64-linux-gnu-as /tmp/h_patch/$x.S -o /tmp/h_patch/$x.o
+            aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/$x.o /tmp/h_patch/$x.bin
+            test "$(stat -c%s /tmp/h_patch/$x.bin)" = 4
+          done
+
+      - name: Apply H native patches
+        run: |
+          test "$(sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | awk '{print $1}')" = "29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5"
+
+          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/h_patch/libdrastic_arm64_h.so             --expected-sha256 29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5             --patch 0x19268:/tmp/h_patch/h16.bin             --patch 0x19398:/tmp/h_patch/h32.bin             --patch 0x1cf48:/tmp/h_patch/w9_slot3m.bin             --patch 0x1cfb0:/tmp/h_patch/w8_slot3m.bin             --patch 0x1d060:/tmp/h_patch/w11_slot3m.bin             --patch 0x1d128:/tmp/h_patch/w11_slot3m.bin             --patch 0x1d27c:/tmp/h_patch/w8_slot3m.bin             --patch 0x1d304:/tmp/h_patch/w9_slot3m.bin             --patch 0x1d468:/tmp/h_patch/w10_slot3m.bin             --patch 0x1d560:/tmp/h_patch/w2_half6m.bin             --patch 0x1d570:/tmp/h_patch/w2_half6m.bin             --patch 0x1d620:/tmp/h_patch/w2_half6m.bin             --patch 0x1d634:/tmp/h_patch/w2_half6m.bin             --patch 0x3cc70:/tmp/h_patch/w1_aux4x.bin
+
+          cp /tmp/h_patch/libdrastic_arm64_h.so universal/lib/arm64-v8a/libdrastic_arm64.so
+
+      - name: Verify all H patches
+        run: |
+          {
+            aarch64-linux-gnu-objdump -d --start-address=0x1cf38 --stop-address=0x1d650 universal/lib/arm64-v8a/libdrastic_arm64.so
+            aarch64-linux-gnu-objdump -d --start-address=0x3cc60 --stop-address=0x3cc80 universal/lib/arm64-v8a/libdrastic_arm64.so
+          } | tee /tmp/h_patch/verify.txt
+
+          test "$(grep -c 'mov.*#0x300000' /tmp/h_patch/verify.txt)" -ge 7
+          test "$(grep -c 'mov.*#0x600000' /tmp/h_patch/verify.txt)" -ge 4
+          grep -q 'mov.*w1, #0x180000' /tmp/h_patch/verify.txt
+          sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/native.sha256
+
+      - name: Add 3 MiB scratch and patch all live upload paths
+        run: |
+          cat > /tmp/h_patch/w2_alloc15m.S <<'ASM'
+          .text
+          mov w2, #0xf00000
+          ASM
+          aarch64-linux-gnu-as /tmp/h_patch/w2_alloc15m.S -o /tmp/h_patch/w2_alloc15m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/w2_alloc15m.o /tmp/h_patch/w2_alloc15m.bin
+
+          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/h_patch/libdrastic_arm64_o0.so             --expected-sha256 ab4ca1c5bf814962551110fa79b29d71d8265d00c527c223efe19bb61e35a1ac             --patch 0x1cc34:/tmp/h_patch/w2_alloc15m.bin             --patch 0x1cc50:/tmp/h_patch/w2_alloc15m.bin
+
+          aarch64-linux-gnu-as patches/arm64/live_upload_expanders.S -o /tmp/h_patch/live_uploads.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/live_uploads.o /tmp/h_patch/live_uploads.bin
+
+          python3 tools/patch_live_upload_expanders.py             /tmp/h_patch/libdrastic_arm64_o0.so             /tmp/h_patch/live_uploads.bin             /tmp/h_patch/libdrastic_arm64_o.so
+
+          cp /tmp/h_patch/libdrastic_arm64_o.so universal/lib/arm64-v8a/libdrastic_arm64.so
+
+          aarch64-linux-gnu-objdump -d --start-address=0x1cf40 --stop-address=0x1cfd0             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_renderframe.txt
+          aarch64-linux-gnu-objdump -d --start-address=0x1d280 --stop-address=0x1d330             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_fxrender.txt
+          aarch64-linux-gnu-objdump -d --start-address=0xf0600 --stop-address=0xf0a80             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_helper.txt
+          aarch64-linux-gnu-objdump -d --start-address=0x1cc30 --stop-address=0x1cc5c             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_alloc.txt
+
+          test "$(grep -c 'bl.*f06' /tmp/h_patch/o_renderframe.txt)" -ge 2
+          test "$(grep -c 'bl.*f06' /tmp/h_patch/o_fxrender.txt)" -ge 2
+          grep -q 'mov.*#0xf00000' /tmp/h_patch/o_alloc.txt
+          grep -q 'cmp.*w1, #0x3' /tmp/h_patch/o_helper.txt
+          grep -q 'cmp.*w8, #0x200' /tmp/h_patch/o_helper.txt
+
+      - name: Verify dynamic Java texture dimensions
+        run: |
+          grep -q 'sget v1, Lf0/h;->Hires3DScale:I' 'universal/smali/com/dsemu/drastic/DraSticGlView$j.smali'
+          grep -q 'shl-int/lit8 v1, v1, 0x8' 'universal/smali/com/dsemu/drastic/DraSticGlView$j.smali'
+          grep -q 'mul-int/lit8 v3, v3, 0x3' 'universal/smali/com/dsemu/drastic/DraSticGlView$j.smali'
+          grep -q 'sget p1, Lf0/h;->Hires3DScale:I' 'universal/smali/com/dsemu/drastic/DraSticExtGlView$a.smali'
+
+      - name: Build O APK
+        run: java -jar apktool.jar b universal -o DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.apk
+
+      - name: Sign and verify
+        run: |
+          java -jar uber-apk-signer.jar --apks DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.apk --onlyVerify --verbose
+          sha256sum DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.apk > DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-O-all-live-uploads-1x4x-test
+          path: |
+            DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.apk
+            DraStic_O_ALL_LIVE_UPLOADS_1x4x_TEST.sha256
+            /tmp/h_patch/native.sha256
+            /tmp/h_patch/verify.txt
