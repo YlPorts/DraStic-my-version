@@ -10,6 +10,9 @@ on:
       - 'universal/lib/arm64-v8a/libdrastic_arm64.so'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   patch-and-verify:
     runs-on: ubuntu-latest
@@ -68,6 +71,16 @@ jobs:
           grep -q "add.*w13, w1, #0x1" analysis/multiscale_patch.txt
           grep -q "lsl.*w11, w13, #8" analysis/multiscale_patch.txt
           grep -q "lsl.*w12, w12, #6" analysis/multiscale_patch.txt
+
+      - name: Commit verification report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analysis/multiscale_patch.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify ARM64 multi-scale HiRes native patch"
+            git push
+          fi
 
       - name: Upload prototype native library and verification report
         uses: actions/upload-artifact@v4
