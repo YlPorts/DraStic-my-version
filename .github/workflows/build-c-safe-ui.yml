@@ -31,10 +31,9 @@ jobs:
       - name: Restore safe config class and add only UI scale fields
         run: |
           git show origin/main:universal/smali/f0/h.smali > universal/smali/f0/h.smali
-          sed -i '/^\.field public static D0:Z = false$/a\\\n.field public static Hires3DScale:I = 0x1' universal/smali/f0/h.smali
-          sed -i '/^\.field public static V0:Z = false$/a\\\n.field public static Hires3DScaleGame:I = 0x1' universal/smali/f0/h.smali
-          grep -q '^\.field public static Hires3DScale:I = 0x1$' universal/smali/f0/h.smali
-          grep -q '^\.field public static Hires3DScaleGame:I = 0x1$' universal/smali/f0/h.smali
+          python3 -c "from pathlib import Path; p=Path('universal/smali/f0/h.smali'); s=p.read_text(); s=s.replace('.field public static D0:Z = false\\n','.field public static D0:Z = false\\n\\n.field public static Hires3DScale:I = 0x1\\n',1); s=s.replace('.field public static V0:Z = false\\n','.field public static V0:Z = false\\n\\n.field public static Hires3DScaleGame:I = 0x1\\n',1); p.write_text(s)"
+          grep -q 'Hires3DScale:I = 0x1' universal/smali/f0/h.smali
+          grep -q 'Hires3DScaleGame:I = 0x1' universal/smali/f0/h.smali
 
       - name: Build APK
         run: |
