@@ -48,6 +48,7 @@ jobs:
           git add analysis/build_validation.txt
           if ! git diff --cached --quiet; then
             git commit -m "Record internal resolution APK build validation"
+            git pull --rebase origin feature/internal-resolution-scaling
             git push
           fi
 
