@@ -279,6 +279,22 @@ for n,i in enumerate(hits[:80],1):
         print(l)
 PY
   echo
+  echo
+  echo "## SIMD packed-config bit table and decoded boolean fields"
+  aarch64-linux-gnu-objdump -s --start-address=0x106cc0 --stop-address=0x106ce0 "$BIN" || true
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+for off in (1172,1176,1180,1184):
+    pat=re.compile(r'\[[xw]\d+,\s*#'+str(off)+r'\]')
+    hits=[i for i,l in enumerate(lines) if pat.search(l)]
+    print(f"\n### decoded offset {off}: {len(hits)} accesses")
+    for n,i in enumerate(hits[:80],1):
+        print(f"\n--- {off} hit {n}, line {i+1} ---")
+        for l in lines[max(0,i-18):min(len(lines),i+25)]:
+            print(l)
+PY
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
