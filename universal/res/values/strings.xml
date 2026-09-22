@@ -263,7 +263,7 @@ The button will still be active in the menus. (If disabled, the button can be us
     <string name="str_set_hdr_system">System Settings</string>
     <string name="str_set_hdr_video">Video Settings</string>
     <string name="str_set_hdr_video_game">Video Settings (Game)</string>
-    <string name="str_set_hires">High-Resolution 3D Rendering</string>
+    <string name="str_set_hires">Internal 3D Resolution (1x-4x)</string>
     <string name="str_set_ignorecardlimit">Ignore Gamecard Limit</string>
     <string name="str_set_key_clear">Unmap</string>
     <string name="str_set_key_skip">Skip</string>
