@@ -622,30 +622,16 @@
 
     invoke-static {v0, p1, p1, v1}, Landroid/opengl/GLES20;->glBufferSubData(IIILjava/nio/Buffer;)V
 
-    sget-boolean p1, Lf0/h;->V0:Z
+    # External FX path follows the real internal 1x-4x scale.
+    sget p1, Lf0/h;->Hires3DScale:I
 
-    if-eqz p1, :cond_0
+    move v3, p1
 
-    const/16 p1, 0x200
+    shl-int/lit8 v3, v3, 0x8
 
-    const/16 v0, 0x180
+    mul-int/lit8 v4, p1, 0x3
 
-    const/16 v3, 0x200
-
-    const/16 v4, 0x180
-
-    goto :goto_0
-
-    :cond_0
-    const/16 p1, 0x100
-
-    const/16 v0, 0xc0
-
-    const/16 v3, 0x100
-
-    const/16 v4, 0xc0
-
-    :goto_0
+    shl-int/lit8 v4, v4, 0x6
     const/4 v5, 0x0
 
     const/4 v6, 0x0
@@ -682,30 +668,18 @@
 .method public onSurfaceCreated(Ljavax/microedition/khronos/opengles/GL10;Ljavax/microedition/khronos/egl/EGLConfig;)V
     .locals 13
 
-    sget-boolean p1, Lf0/h;->V0:Z
-
+    # External GL texture allocation follows the real internal 1x-4x scale.
     const/16 p2, 0xc0
 
-    if-eqz p1, :cond_0
+    sget p1, Lf0/h;->Hires3DScale:I
 
-    const/16 p1, 0x200
+    move v3, p1
 
-    const/16 v0, 0x180
+    shl-int/lit8 v3, v3, 0x8
 
-    const/16 v3, 0x200
+    mul-int/lit8 v4, p1, 0x3
 
-    const/16 v4, 0x180
-
-    goto :goto_0
-
-    :cond_0
-    const/16 p1, 0x100
-
-    const/16 v3, 0x100
-
-    const/16 v4, 0xc0
-
-    :goto_0
+    shl-int/lit8 v4, v4, 0x6
     invoke-static {}, Lf0/h;->g()Ljava/lang/String;
 
     move-result-object p1
