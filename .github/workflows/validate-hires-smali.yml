@@ -1,0 +1,35 @@
+name: Validate internal-resolution branch APK
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/validate-hires-smali.yml'
+      - 'universal/smali/f0/h.smali'
+      - 'universal/smali/com/dsemu/drastic/ui/Settings.smali'
+      - 'universal/res/**'
+  workflow_dispatch:
+
+jobs:
+  apktool-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Rebuild APK with apktool
+        run: |
+          java -jar apktool.jar b universal -o DraStic_internal_resolution_test_unsigned.apk
+
+      - name: Upload rebuilt APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-internal-resolution-test-unsigned
+          path: DraStic_internal_resolution_test_unsigned.apk
