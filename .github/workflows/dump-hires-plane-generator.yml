@@ -1,0 +1,29 @@
+name: Dump HiRes plane generator
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-hires-plane-generator.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install binutils
+        run: sudo apt-get update && sudo apt-get install -y binutils-aarch64-linux-gnu
+      - name: Dump HiRes plane routines
+        run: |
+          {
+            echo '===== plane generator 0x5f900-0x5fc20 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5f900 --stop-address=0x5fc20 universal/lib/arm64-v8a/libdrastic_arm64.so
+            echo '===== callers 0x5e500-0x5f300 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5e500 --stop-address=0x5f300 universal/lib/arm64-v8a/libdrastic_arm64.so
+          } | tee /tmp/hires-plane-generator.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hires-plane-generator
+          path: /tmp/hires-plane-generator.txt
