@@ -1,0 +1,29 @@
+name: Dump ARM64 rasterizer 2x limits
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-rasterizer-2x-limits.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install binutils
+        run: sudo apt-get update && sudo apt-get install -y binutils-aarch64-linux-gnu
+      - name: Dump rasterizer regions
+        run: |
+          {
+            echo '===== raster core 0x32e80-0x33aa0 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x32e80 --stop-address=0x33aa0 universal/lib/arm64-v8a/libdrastic_arm64.so
+            echo '===== raster setup 0x364c0-0x36720 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x364c0 --stop-address=0x36720 universal/lib/arm64-v8a/libdrastic_arm64.so
+          } | tee /tmp/rasterizer-2x-limits.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rasterizer-2x-limits
+          path: /tmp/rasterizer-2x-limits.txt
