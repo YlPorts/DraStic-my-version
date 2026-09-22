@@ -1,0 +1,36 @@
+name: Dump Q HiRes plane callers
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-q-plane-callers.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+      - name: Dump callers and plane storage
+        run: |
+          SO=universal/lib/arm64-v8a/libdrastic_arm64.so
+          {
+            echo '===== caller of 5fb8c 0x55200-0x55980 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x55200 --stop-address=0x55980 "$SO"
+            echo
+            echo '===== surrounding plane/storage functions 0x5f240-0x5fb90 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5f240 --stop-address=0x5fb90 "$SO"
+            echo
+            echo '===== core row conversion entry 0x4c5c0-0x4cc70 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x4c5c0 --stop-address=0x4cc70 "$SO"
+          } | tee /tmp/q-plane-callers.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q-plane-callers
+          path: /tmp/q-plane-callers.txt
