@@ -8667,6 +8667,8 @@
 
     sput v1, Lf0/h;->Hires3DScale:I
 
+    sput v1, Lf0/h;->Hires3DScaleGame:I
+
     const/4 v3, 0x1
 
     if-le v1, v3, :hires_scale_progress_global_off
@@ -8675,12 +8677,16 @@
 
     sput-boolean v4, Lf0/h;->D0:Z
 
+    sput-boolean v4, Lf0/h;->V0:Z
+
     goto :hires_scale_progress_global_text
 
     :hires_scale_progress_global_off
     const/4 v4, 0x0
 
     sput-boolean v4, Lf0/h;->D0:Z
+
+    sput-boolean v4, Lf0/h;->V0:Z
 
     :hires_scale_progress_global_text
     const v3, 0x7f0902d0
