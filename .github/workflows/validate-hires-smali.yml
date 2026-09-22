@@ -1,3 +1,4 @@
+# Full ARM64 1x-4x validation trigger
 name: Validate internal-resolution branch APK
 
 on:
