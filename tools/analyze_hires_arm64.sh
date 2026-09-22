@@ -232,6 +232,32 @@ for n,i in enumerate(hits[:120],1):
         print(l)
 PY
   echo
+  echo
+  echo "## References to renderer HiRes word at base+0x8AAF8"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+# Search both literal construction and nearby accesses.
+hits=[i for i,l in enumerate(lines) if '#0xaaf8' in l.lower()]
+print(f"Found {len(hits)} immediate references.")
+for n,i in enumerate(hits,1):
+    print(f"\n--- 0x8AAF8 ref {n}, line {i+1} ---")
+    for l in lines[max(0,i-45):min(len(lines),i+80)]:
+        print(l)
+PY
+  echo
+  echo "## Cross-references to candidate code caves"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+for addr in ('1cbb4','1cbb8','1cbbc','1cd0c','1cd10','1cd14','1ce3c'):
+    pat=re.compile(r'\b(?:bl|b)\s+'+addr+r'\b',re.I)
+    hits=[(i,l) for i,l in enumerate(lines) if pat.search(l)]
+    print(addr, len(hits))
+    for i,l in hits[:20]:
+        print(f"  {i+1}: {l}")
+PY
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
