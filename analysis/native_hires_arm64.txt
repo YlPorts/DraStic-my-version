@@ -1,0 +1,2502 @@
+# DraStic ARM64 native HiRes3D analysis
+
+Binary: universal/lib/arm64-v8a/libdrastic_arm64.so
+SHA-256: 3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902
+Generated (UTC): 2026-09-22T03:20:49Z
+
+## ELF header
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              DYN (Shared object file)
+  Machine:                           AArch64
+  Version:                           0x1
+  Entry point address:               0x16b40
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          1354432 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         8
+  Size of section headers:           64 (bytes)
+  Number of section headers:         26
+  Section header string table index: 25
+
+## JNI / graphics dynamic symbols
+0000000000018708 T Java_com_dsemu_drastic_DraSticJNI_addCustomCheat
+000000000001a4a0 T Java_com_dsemu_drastic_DraSticJNI_applyConfig
+000000000001905c T Java_com_dsemu_drastic_DraSticJNI_clearScreens
+0000000000018f7c T Java_com_dsemu_drastic_DraSticJNI_extfxLoad
+0000000000019014 T Java_com_dsemu_drastic_DraSticJNI_extfxRender
+0000000000018ff8 T Java_com_dsemu_drastic_DraSticJNI_extfxSetup
+000000000001883c T Java_com_dsemu_drastic_DraSticJNI_findCustomCheat
+0000000000018ea8 T Java_com_dsemu_drastic_DraSticJNI_fxLoad
+0000000000018f40 T Java_com_dsemu_drastic_DraSticJNI_fxRender
+0000000000018f24 T Java_com_dsemu_drastic_DraSticJNI_fxSetup
+000000000001809c T Java_com_dsemu_drastic_DraSticJNI_getCheatCount
+000000000001841c T Java_com_dsemu_drastic_DraSticJNI_getCheatEnabled
+0000000000018074 T Java_com_dsemu_drastic_DraSticJNI_getCheatFolderCount
+0000000000018238 T Java_com_dsemu_drastic_DraSticJNI_getCheatFolderExpanded
+00000000000183e8 T Java_com_dsemu_drastic_DraSticJNI_getCheatFolderId
+00000000000181fc T Java_com_dsemu_drastic_DraSticJNI_getCheatFolderMultiSelect
+00000000000180c4 T Java_com_dsemu_drastic_DraSticJNI_getCheatFolderName
+0000000000018160 T Java_com_dsemu_drastic_DraSticJNI_getCheatFolderNote
+00000000000182b0 T Java_com_dsemu_drastic_DraSticJNI_getCheatName
+000000000001834c T Java_com_dsemu_drastic_DraSticJNI_getCheatNote
+00000000000184f0 T Java_com_dsemu_drastic_DraSticJNI_getCustomCheatCount
+0000000000018628 T Java_com_dsemu_drastic_DraSticJNI_getCustomCheatData
+0000000000018590 T Java_com_dsemu_drastic_DraSticJNI_getCustomCheatEnabled
+0000000000018500 T Java_com_dsemu_drastic_DraSticJNI_getCustomCheatName
+000000000001a650 T Java_com_dsemu_drastic_DraSticJNI_getFrameInfo
+0000000000017ed0 T Java_com_dsemu_drastic_DraSticJNI_getInfoString
+000000000001a6bc T Java_com_dsemu_drastic_DraSticJNI_getPerformanceCounters
+000000000001899c T Java_com_dsemu_drastic_DraSticJNI_getRomIconData
+0000000000018e00 T Java_com_dsemu_drastic_DraSticJNI_getRomSize
+0000000000018924 T Java_com_dsemu_drastic_DraSticJNI_getRomType
+000000000001a958 T Java_com_dsemu_drastic_DraSticJNI_getRumbleState
+0000000000018034 T Java_com_dsemu_drastic_DraSticJNI_getSavingSlot
+0000000000019068 T Java_com_dsemu_drastic_DraSticJNI_getScreenBuffers
+0000000000019640 T Java_com_dsemu_drastic_DraSticJNI_getScreenshot
+0000000000019844 T Java_com_dsemu_drastic_DraSticJNI_getSnapshots16
+0000000000019a58 T Java_com_dsemu_drastic_DraSticJNI_getSnapshots16Direct
+0000000000019d30 T Java_com_dsemu_drastic_DraSticJNI_getSnapshots16TopGreyscale
+0000000000017e58 T Java_com_dsemu_drastic_DraSticJNI_getVersionString
+000000000001a2e0 T Java_com_dsemu_drastic_DraSticJNI_insertGame
+00000000000188bc T Java_com_dsemu_drastic_DraSticJNI_isNdsFile
+0000000000018000 T Java_com_dsemu_drastic_DraSticJNI_isSaving
+0000000000018050 T Java_com_dsemu_drastic_DraSticJNI_loadState
+000000000001a914 T Java_com_dsemu_drastic_DraSticJNI_luaGetOverrides
+000000000001a920 T Java_com_dsemu_drastic_DraSticJNI_luaIsActive
+000000000001a900 T Java_com_dsemu_drastic_DraSticJNI_luaUpdateAxisValues
+000000000001a93c T Java_com_dsemu_drastic_DraSticJNI_luaUpdateRotation
+0000000000017df4 T Java_com_dsemu_drastic_DraSticJNI_onInit
+000000000001a75c T Java_com_dsemu_drastic_DraSticJNI_pauseSystem
+000000000001a72c T Java_com_dsemu_drastic_DraSticJNI_quitSystem
+000000000001a754 T Java_com_dsemu_drastic_DraSticJNI_releaseSystem
+00000000000186b0 T Java_com_dsemu_drastic_DraSticJNI_removeCustomCheat
+0000000000019030 T Java_com_dsemu_drastic_DraSticJNI_renderFrame
+0000000000019044 T Java_com_dsemu_drastic_DraSticJNI_renderFrameTex
+0000000000019050 T Java_com_dsemu_drastic_DraSticJNI_renderFrameTexExt
+000000000001a52c T Java_com_dsemu_drastic_DraSticJNI_resetDS
+0000000000017f84 T Java_com_dsemu_drastic_DraSticJNI_saveState
+000000000001a8f8 T Java_com_dsemu_drastic_DraSticJNI_setAudioVolume
+000000000001a520 T Java_com_dsemu_drastic_DraSticJNI_setAutosaveInterval
+000000000001845c T Java_com_dsemu_drastic_DraSticJNI_setCheatEnabled
+0000000000018278 T Java_com_dsemu_drastic_DraSticJNI_setCheatFolderExpanded
+00000000000185c4 T Java_com_dsemu_drastic_DraSticJNI_setCustomCheatEnabled
+0000000000019f5c T Java_com_dsemu_drastic_DraSticJNI_setFirmwareUserdata
+000000000001a70c T Java_com_dsemu_drastic_DraSticJNI_setHingeStatus
+000000000001a720 T Java_com_dsemu_drastic_DraSticJNI_setWhitenoiseFeed
+000000000001a648 T Java_com_dsemu_drastic_DraSticJNI_signalScreen
+000000000001a04c T Java_com_dsemu_drastic_DraSticJNI_startGame
+000000000001a614 T Java_com_dsemu_drastic_DraSticJNI_updateAccelerometer
+0000000000018494 T Java_com_dsemu_drastic_DraSticJNI_updateCheats
+000000000001a53c T Java_com_dsemu_drastic_DraSticJNI_updateFrame
+000000000001a630 T Java_com_dsemu_drastic_DraSticJNI_updateGyroscope
+000000000001a5d8 T Java_com_dsemu_drastic_DraSticJNI_updateInput
+000000000001a64c T Java_com_dsemu_drastic_DraSticJNI_waitScreen
+                 U glActiveTexture
+                 U glAttachShader
+                 U glBindFramebuffer
+                 U glBindTexture
+                 U glCheckFramebufferStatus
+                 U glClear
+                 U glCompileShader
+                 U glCreateProgram
+                 U glCreateShader
+                 U glDeleteFramebuffers
+                 U glDeleteProgram
+                 U glDeleteShader
+                 U glDeleteTextures
+                 U glDetachShader
+                 U glDrawArrays
+                 U glEnableVertexAttribArray
+                 U glFinish
+                 U glFramebufferTexture2D
+                 U glGenFramebuffers
+                 U glGenTextures
+                 U glGetAttribLocation
+                 U glGetShaderInfoLog
+                 U glGetShaderiv
+                 U glGetUniformLocation
+                 U glLinkProgram
+                 U glShaderSource
+                 U glTexImage2D
+                 U glTexParameteri
+                 U glTexSubImage2D
+                 U glUniform1f
+                 U glUniform1i
+                 U glUniform2f
+                 U glUniform4f
+                 U glUseProgram
+                 U glVertexAttribPointer
+                 U glViewport
+
+## Imported OpenGL/EGL functions
+     9: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glActiveTexture
+    23: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glDrawArrays
+    37: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glUniform1f
+    41: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glClear
+    77: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glBindFramebuffer
+    81: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glTexImage2D
+    96: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glUseProgram
+   112: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glFramebufferTexture2D
+   149: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glUniform2f
+   174: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glUniform1i
+   196: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glUniform4f
+   223: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glBindTexture
+   253: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND glViewport
+
+## Interesting strings
+Java_com_dsemu_drastic_DraSticJNI_extfxRender
+Java_com_dsemu_drastic_DraSticJNI_fxRender
+Java_com_dsemu_drastic_DraSticJNI_renderFrame
+Java_com_dsemu_drastic_DraSticJNI_renderFrameTex
+Java_com_dsemu_drastic_DraSticJNI_renderFrameTexExt
+glViewport
+glActiveTexture
+glBindTexture
+glAttachShader
+glCompileShader
+glCreateShader
+glDeleteShader
+glDetachShader
+glGetShaderInfoLog
+glGetShaderiv
+glShaderSource
+glBindFramebuffer
+glCheckFramebufferStatus
+glDeleteFramebuffers
+glDeleteTextures
+glFramebufferTexture2D
+glGenFramebuffers
+glGenTextures
+libGLESv2.so
+%d texture cache bytes allocated, %d texture cache elements.
+a_texture_coordinate
+u_texture_size
+<texture
+</texture>
+textures=
+framebuffer
+shader=
+attribute vec2 a_texture_coordinate;
+varying vec2 v_texture_coordinate;
+  v_texture_coordinate = a_texture_coordinate;
+varying vec2 v_texture_coordinate;
+uniform sampler2D u_texture;
+  vec4 color = texture2D(u_texture, v_texture_coordinate);
+Android (7019983 based on r365631c3) clang version 9.0.9 (https://android.googlesource.com/toolchain/llvm-project a2a1e703c0edb03ba29944e529ccbf457742737b) (based on LLVM 9.0.9svn)
+
+## applyConfig disassembly
+000000000001a4a0 <Java_com_dsemu_drastic_DraSticJNI_applyConfig@@Base>:
+   1a4a0:	f81e0ff3 	str	x19, [sp, #-32]!
+   1a4a4:	a9017bfd 	stp	x29, x30, [sp, #16]
+   1a4a8:	910043fd 	add	x29, sp, #0x10
+   1a4ac:	d0000993 	adrp	x19, 14c000 <JNI_OnUnload@@Base+0x13149c>
+   1a4b0:	91000273 	add	x19, x19, #0x0
+   1a4b4:	f9400268 	ldr	x8, [x19]
+   1a4b8:	d3608849 	ubfx	x9, x2, #32, #3
+   1a4bc:	f9023662 	str	x2, [x19, #1128]
+   1a4c0:	3912de69 	strb	w9, [x19, #1207]
+   1a4c4:	b4000288 	cbz	x8, 1a514 <Java_com_dsemu_drastic_DraSticJNI_applyConfig@@Base+0x74>
+   1a4c8:	5294cb09 	mov	w9, #0xa658                	// #42584
+   1a4cc:	72a00109 	movk	w9, #0x8, lsl #16
+   1a4d0:	8b090100 	add	x0, x8, x9
+   1a4d4:	97fff5e1 	bl	17c58 <wcstol@plt+0x1128>
+   1a4d8:	f9423668 	ldr	x8, [x19, #1128]
+   1a4dc:	f9400269 	ldr	x9, [x19]
+   1a4e0:	5280020a 	mov	w10, #0x10                  	// #16
+   1a4e4:	5280040b 	mov	w11, #0x20                  	// #32
+   1a4e8:	f269011f 	tst	x8, #0x800000
+   1a4ec:	529f2628 	mov	w8, #0xf931                	// #63793
+   1a4f0:	1a8a0160 	csel	w0, w11, w10, eq	// eq = none
+   1a4f4:	72a07648 	movk	w8, #0x3b2, lsl #16
+   1a4f8:	38286920 	strb	w0, [x9, x8]
+   1a4fc:	940009b1 	bl	1cbc0 <JNI_OnUnload@@Base+0x205c>
+   1a500:	f9423668 	ldr	x8, [x19, #1128]
+   1a504:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   1a508:	d3659900 	ubfx	x0, x8, #37, #2
+   1a50c:	f84207f3 	ldr	x19, [sp], #32
+   1a510:	14000c86 	b	1d728 <JNI_OnUnload@@Base+0x2bc4>
+   1a514:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   1a518:	f84207f3 	ldr	x19, [sp], #32
+   1a51c:	d65f03c0 	ret
+
+
+## Bit tests around config bit 41 (0x20000000000 / Hires3D)
+No direct bit-41 test found; compiler may extract/shift the config field differently.
+
+## Native-resolution / HiRes-sized immediates
+Found 1727 matching instructions.
+
+--- hit 1, disassembly line 2401 ---
+   1781c:	52800162 	mov	w2, #0xb                   	// #11
+   17820:	aa1303e0 	mov	x0, x19
+   17824:	aa1503e1 	mov	x1, x21
+   17828:	97fffa6a 	bl	161d0 <fprintf@plt>
+   1782c:	b94182e3 	ldr	w3, [x23, #384]
+   17830:	52800182 	mov	w2, #0xc                   	// #12
+   17834:	aa1303e0 	mov	x0, x19
+   17838:	aa1503e1 	mov	x1, x21
+   1783c:	97fffa65 	bl	161d0 <fprintf@plt>
+   17840:	529e1e88 	mov	w8, #0xf0f4                	// #61684
+   17844:	72a02b88 	movk	w8, #0x15c, lsl #16
+
+--- hit 2, disassembly line 2518 ---
+   179f0:	52800162 	mov	w2, #0xb                   	// #11
+   179f4:	aa1303e0 	mov	x0, x19
+   179f8:	aa1503e1 	mov	x1, x21
+   179fc:	97fff9f5 	bl	161d0 <fprintf@plt>
+   17a00:	b9418343 	ldr	w3, [x26, #384]
+   17a04:	52800182 	mov	w2, #0xc                   	// #12
+   17a08:	aa1303e0 	mov	x0, x19
+   17a0c:	aa1503e1 	mov	x1, x21
+   17a10:	97fff9f0 	bl	161d0 <fprintf@plt>
+   17a14:	528adc88 	mov	w8, #0x56e4                	// #22244
+   17a18:	72a04ba8 	movk	w8, #0x25d, lsl #16
+
+--- hit 3, disassembly line 2546 ---
+   17a60:	f9400342 	ldr	x2, [x26]
+   17a64:	aa1303e0 	mov	x0, x19
+   17a68:	aa1703e1 	mov	x1, x23
+   17a6c:	97fff9d9 	bl	161d0 <fprintf@plt>
+   17a70:	f9408294 	ldr	x20, [x20, #256]
+   17a74:	f0000760 	adrp	x0, 106000 <JNI_OnUnload@@Base+0xeb49c>
+   17a78:	52a02848 	mov	w8, #0x1420000             	// #21102592
+   17a7c:	9138f000 	add	x0, x0, #0xe3c
+   17a80:	52800381 	mov	w1, #0x1c                  	// #28
+   17a84:	52800022 	mov	w2, #0x1                   	// #1
+   17a88:	aa1303e3 	mov	x3, x19
+
+--- hit 4, disassembly line 2625 ---
+   17b9c:	a8c66ffc 	ldp	x28, x27, [sp], #96
+   17ba0:	d65f03c0 	ret
+   17ba4:	97fffb67 	bl	16940 <__stack_chk_fail@plt>
+   17ba8:	d10483ff 	sub	sp, sp, #0x120
+   17bac:	a9104ffc 	stp	x28, x19, [sp, #256]
+   17bb0:	a9117bfd 	stp	x29, x30, [sp, #272]
+   17bb4:	910443fd 	add	x29, sp, #0x110
+   17bb8:	a90893e3 	stp	x3, x4, [sp, #136]
+   17bbc:	a9099be5 	stp	x5, x6, [sp, #152]
+   17bc0:	f90057e7 	str	x7, [sp, #168]
+   17bc4:	ad0007e0 	stp	q0, q1, [sp]
+
+--- hit 5, disassembly line 2661 ---
+   17c2c:	f85e83a9 	ldur	x9, [x29, #-24]
+   17c30:	eb09011f 	cmp	x8, x9
+   17c34:	540000a1 	b.ne	17c48 <wcstol@plt+0x1118>  // b.any
+   17c38:	a9517bfd 	ldp	x29, x30, [sp, #272]
+   17c3c:	a9504ffc 	ldp	x28, x19, [sp, #256]
+   17c40:	910483ff 	add	sp, sp, #0x120
+   17c44:	d65f03c0 	ret
+   17c48:	97fffb3e 	bl	16940 <__stack_chk_fail@plt>
+   17c4c:	b00009a8 	adrp	x8, 14c000 <JNI_OnUnload@@Base+0x13149c>
+   17c50:	39130d00 	strb	w0, [x8, #1219]
+   17c54:	d65f03c0 	ret
+
+--- hit 6, disassembly line 2759 ---
+   17db4:	530c3d68 	ubfx	w8, w11, #12, #4
+   17db8:	7100151f 	cmp	w8, #0x5
+   17dbc:	540000a8 	b.hi	17dd0 <wcstol@plt+0x12a0>  // b.pmore
+   17dc0:	90000789 	adrp	x9, 107000 <JNI_OnUnload@@Base+0xec49c>
+   17dc4:	91030129 	add	x9, x9, #0xc0
+   17dc8:	b8685928 	ldr	w8, [x9, w8, uxtw #2]
+   17dcc:	14000002 	b	17dd4 <wcstol@plt+0x12a4>
+   17dd0:	2a1f03e8 	mov	w8, wzr
+   17dd4:	b9048c08 	str	w8, [x0, #1164]
+   17dd8:	52000140 	eor	w0, w10, #0x1
+   17ddc:	9400164d 	bl	1d710 <JNI_OnUnload@@Base+0x2bac>
+
+--- hit 7, disassembly line 2852 ---
+   17f10:	53020905 	ubfx	w5, w8, #2, #1
+   17f14:	53010506 	ubfx	w6, w8, #1, #1
+   17f18:	12000107 	and	w7, w8, #0x1
+   17f1c:	910003e0 	mov	x0, sp
+   17f20:	52802001 	mov	w1, #0x100                 	// #256
+   17f24:	ad0703e0 	stp	q0, q0, [sp, #224]
+   17f28:	ad0603e0 	stp	q0, q0, [sp, #192]
+   17f2c:	ad0503e0 	stp	q0, q0, [sp, #160]
+   17f30:	ad0403e0 	stp	q0, q0, [sp, #128]
+   17f34:	ad0303e0 	stp	q0, q0, [sp, #96]
+   17f38:	ad0203e0 	stp	q0, q0, [sp, #64]
+
+--- hit 8, disassembly line 2854 ---
+   17f18:	12000107 	and	w7, w8, #0x1
+   17f1c:	910003e0 	mov	x0, sp
+   17f20:	52802001 	mov	w1, #0x100                 	// #256
+   17f24:	ad0703e0 	stp	q0, q0, [sp, #224]
+   17f28:	ad0603e0 	stp	q0, q0, [sp, #192]
+   17f2c:	ad0503e0 	stp	q0, q0, [sp, #160]
+   17f30:	ad0403e0 	stp	q0, q0, [sp, #128]
+   17f34:	ad0303e0 	stp	q0, q0, [sp, #96]
+   17f38:	ad0203e0 	stp	q0, q0, [sp, #64]
+   17f3c:	ad0103e0 	stp	q0, q0, [sp, #32]
+   17f40:	ad0003e0 	stp	q0, q0, [sp]
+
+--- hit 9, disassembly line 3634 ---
+   18a68:	ad000320 	stp	q0, q0, [x25]
+   18a6c:	ad0f0360 	stp	q0, q0, [x27, #480]
+   18a70:	ad0e0360 	stp	q0, q0, [x27, #448]
+   18a74:	ad0d0360 	stp	q0, q0, [x27, #416]
+   18a78:	ad0c0360 	stp	q0, q0, [x27, #384]
+   18a7c:	ad0b0360 	stp	q0, q0, [x27, #352]
+   18a80:	ad0a0360 	stp	q0, q0, [x27, #320]
+   18a84:	ad090360 	stp	q0, q0, [x27, #288]
+   18a88:	ad080360 	stp	q0, q0, [x27, #256]
+   18a8c:	ad070360 	stp	q0, q0, [x27, #224]
+   18a90:	ad060360 	stp	q0, q0, [x27, #192]
+
+--- hit 10, disassembly line 3638 ---
+   18a78:	ad0c0360 	stp	q0, q0, [x27, #384]
+   18a7c:	ad0b0360 	stp	q0, q0, [x27, #352]
+   18a80:	ad0a0360 	stp	q0, q0, [x27, #320]
+   18a84:	ad090360 	stp	q0, q0, [x27, #288]
+   18a88:	ad080360 	stp	q0, q0, [x27, #256]
+   18a8c:	ad070360 	stp	q0, q0, [x27, #224]
+   18a90:	ad060360 	stp	q0, q0, [x27, #192]
+   18a94:	ad050360 	stp	q0, q0, [x27, #160]
+   18a98:	ad040360 	stp	q0, q0, [x27, #128]
+   18a9c:	ad030360 	stp	q0, q0, [x27, #96]
+   18aa0:	ad020360 	stp	q0, q0, [x27, #64]
+
+--- hit 11, disassembly line 3640 ---
+   18a80:	ad0a0360 	stp	q0, q0, [x27, #320]
+   18a84:	ad090360 	stp	q0, q0, [x27, #288]
+   18a88:	ad080360 	stp	q0, q0, [x27, #256]
+   18a8c:	ad070360 	stp	q0, q0, [x27, #224]
+   18a90:	ad060360 	stp	q0, q0, [x27, #192]
+   18a94:	ad050360 	stp	q0, q0, [x27, #160]
+   18a98:	ad040360 	stp	q0, q0, [x27, #128]
+   18a9c:	ad030360 	stp	q0, q0, [x27, #96]
+   18aa0:	ad020360 	stp	q0, q0, [x27, #64]
+   18aa4:	ad010360 	stp	q0, q0, [x27, #32]
+   18aa8:	ad000360 	stp	q0, q0, [x27]
+
+--- hit 12, disassembly line 3648 ---
+   18aa0:	ad020360 	stp	q0, q0, [x27, #64]
+   18aa4:	ad010360 	stp	q0, q0, [x27, #32]
+   18aa8:	ad000360 	stp	q0, q0, [x27]
+   18aac:	ad070040 	stp	q0, q0, [x2, #224]
+   18ab0:	ad060040 	stp	q0, q0, [x2, #192]
+   18ab4:	ad050040 	stp	q0, q0, [x2, #160]
+   18ab8:	ad040040 	stp	q0, q0, [x2, #128]
+   18abc:	ad030040 	stp	q0, q0, [x2, #96]
+   18ac0:	ad020040 	stp	q0, q0, [x2, #64]
+   18ac4:	ad010040 	stp	q0, q0, [x2, #32]
+   18ac8:	ad000040 	stp	q0, q0, [x2]
+
+--- hit 13, disassembly line 3732 ---
+   18bf0:	aa1b03e9 	mov	x9, x27
+   18bf4:	8b08034a 	add	x10, x26, x8
+   18bf8:	b940014b 	ldr	w11, [x10]
+   18bfc:	91004108 	add	x8, x8, #0x10
+   18c00:	7108011f 	cmp	w8, #0x200
+   18c04:	12000d6c 	and	w12, w11, #0xf
+   18c08:	3900012c 	strb	w12, [x9]
+   18c0c:	53041d6c 	ubfx	w12, w11, #4, #4
+   18c10:	3900052c 	strb	w12, [x9, #1]
+   18c14:	53082d6c 	ubfx	w12, w11, #8, #4
+   18c18:	3900092c 	strb	w12, [x9, #2]
+
+--- hit 14, disassembly line 3817 ---
+   18d44:	ad040c42 	stp	q2, q3, [x2, #128]
+   18d48:	ad5887e0 	ldp	q0, q1, [sp, #784]
+   18d4c:	ad578fe2 	ldp	q2, q3, [sp, #752]
+   18d50:	ad070440 	stp	q0, q1, [x2, #224]
+   18d54:	ad060c42 	stp	q2, q3, [x2, #192]
+   18d58:	f9400268 	ldr	x8, [x19]
+   18d5c:	710002bf 	cmp	w21, #0x0
+   18d60:	aa1303e0 	mov	x0, x19
+   18d64:	aa1803e1 	mov	x1, x24
+   18d68:	f9437d08 	ldr	x8, [x8, #1784]
+   18d6c:	2a1f03e3 	mov	w3, wzr
+
+--- hit 15, disassembly line 4238 ---
+   19378:	91000508 	add	x8, x8, #0x1
+   1937c:	91200000 	add	x0, x0, #0x800
+   19380:	91200318 	add	x24, x24, #0x800
+   19384:	9110014a 	add	x10, x10, #0x400
+   19388:	f103011f 	cmp	x8, #0xc0
+   1938c:	91100129 	add	x9, x9, #0x400
+   19390:	54fff781 	b.ne	19280 <Java_com_dsemu_drastic_DraSticJNI_getScreenBuffers@@Base+0x218>  // b.any
+   19394:	14000097 	b	195f0 <Java_com_dsemu_drastic_DraSticJNI_getScreenBuffers@@Base+0x588>
+   19398:	aa1f03e8 	mov	x8, xzr
+   1939c:	6f01e440 	movi	v0.2d, #0xff000000ff00
+   193a0:	6f00e621 	movi	v1.2d, #0xff000000ff
+
+--- hit 16, disassembly line 4329 ---
+   194e4:	33105de1 	bfxil	w1, w15, #16, #8
+   194e8:	12181e0f 	and	w15, w16, #0xff00
+   194ec:	33103e0f 	bfi	w15, w16, #16, #16
+   194f0:	33105e0f 	bfxil	w15, w16, #16, #8
+   194f4:	f10401bf 	cmp	x13, #0x100
+   194f8:	32081c30 	orr	w16, w1, #0xff000000
+   194fc:	32081def 	orr	w15, w15, #0xff000000
+   19500:	910021ce 	add	x14, x14, #0x8
+   19504:	b8316930 	str	w16, [x9, x17]
+   19508:	b831694f 	str	w15, [x10, x17]
+   1950c:	54fffe01 	b.ne	194cc <Java_com_dsemu_drastic_DraSticJNI_getScreenBuffers@@Base+0x464>  // b.any
+
+--- hit 17, disassembly line 4340 ---
+   19510:	91000508 	add	x8, x8, #0x1
+   19514:	9140058c 	add	x12, x12, #0x1, lsl #12
+   19518:	9140056b 	add	x11, x11, #0x1, lsl #12
+   1951c:	9110014a 	add	x10, x10, #0x400
+   19520:	f103011f 	cmp	x8, #0xc0
+   19524:	91100129 	add	x9, x9, #0x400
+   19528:	54fff461 	b.ne	193b4 <Java_com_dsemu_drastic_DraSticJNI_getScreenBuffers@@Base+0x34c>  // b.any
+   1952c:	14000031 	b	195f0 <Java_com_dsemu_drastic_DraSticJNI_getScreenBuffers@@Base+0x588>
+   19530:	aa1f03e8 	mov	x8, xzr
+   19534:	4f070700 	movi	v0.4s, #0xf8
+   19538:	4f072781 	movi	v1.4s, #0xfc, lsl #8
+
+--- hit 18, disassembly line 4978 ---
+   19ee8:	f103f99f 	cmp	x12, #0xfe
+   19eec:	54fffdc1 	b.ne	19ea4 <Java_com_dsemu_drastic_DraSticJNI_getSnapshots16TopGreyscale@@Base+0x174>  // b.any
+   19ef0:	91100129 	add	x9, x9, #0x400
+   19ef4:	7102fd1f 	cmp	w8, #0xbf
+   19ef8:	9104016b 	add	x11, x11, #0x100
+   19efc:	54fffce1 	b.ne	19e98 <Java_com_dsemu_drastic_DraSticJNI_getSnapshots16TopGreyscale@@Base+0x168>  // b.any
+   19f00:	f9400268 	ldr	x8, [x19]
+   19f04:	aa1303e0 	mov	x0, x19
+   19f08:	aa1603e1 	mov	x1, x22
+   19f0c:	2a1f03e3 	mov	w3, wzr
+   19f10:	f9437d08 	ldr	x8, [x8, #1784]
+
+--- hit 19, disassembly line 5307 ---
+   1a3f4:	a8c45ff8 	ldp	x24, x23, [sp], #64
+   1a3f8:	d65f03c0 	ret
+   1a3fc:	d10443ff 	sub	sp, sp, #0x110
+   1a400:	a90f4ffc 	stp	x28, x19, [sp, #240]
+   1a404:	a9107bfd 	stp	x29, x30, [sp, #256]
+   1a408:	910403fd 	add	x29, sp, #0x100
+   1a40c:	a90817e4 	stp	x4, x5, [sp, #128]
+   1a410:	a9091fe6 	stp	x6, x7, [sp, #144]
+   1a414:	ad0007e0 	stp	q0, q1, [sp]
+   1a418:	ad010fe2 	stp	q2, q3, [sp, #32]
+   1a41c:	ad0217e4 	stp	q4, q5, [sp, #64]
+
+--- hit 20, disassembly line 5308 ---
+   1a3f8:	d65f03c0 	ret
+   1a3fc:	d10443ff 	sub	sp, sp, #0x110
+   1a400:	a90f4ffc 	stp	x28, x19, [sp, #240]
+   1a404:	a9107bfd 	stp	x29, x30, [sp, #256]
+   1a408:	910403fd 	add	x29, sp, #0x100
+   1a40c:	a90817e4 	stp	x4, x5, [sp, #128]
+   1a410:	a9091fe6 	stp	x6, x7, [sp, #144]
+   1a414:	ad0007e0 	stp	q0, q1, [sp]
+   1a418:	ad010fe2 	stp	q2, q3, [sp, #32]
+   1a41c:	ad0217e4 	stp	q4, q5, [sp, #64]
+   1a420:	ad031fe6 	stp	q6, q7, [sp, #96]
+
+--- hit 21, disassembly line 5341 ---
+   1a47c:	f9401668 	ldr	x8, [x19, #40]
+   1a480:	f85e83a9 	ldur	x9, [x29, #-24]
+   1a484:	eb09011f 	cmp	x8, x9
+   1a488:	540000a1 	b.ne	1a49c <Java_com_dsemu_drastic_DraSticJNI_insertGame@@Base+0x1bc>  // b.any
+   1a48c:	a9507bfd 	ldp	x29, x30, [sp, #256]
+   1a490:	a94f4ffc 	ldp	x28, x19, [sp, #240]
+   1a494:	910443ff 	add	sp, sp, #0x110
+   1a498:	d65f03c0 	ret
+   1a49c:	97fff129 	bl	16940 <__stack_chk_fail@plt>
+
+000000000001a4a0 <Java_com_dsemu_drastic_DraSticJNI_applyConfig@@Base>:
+
+--- hit 22, disassembly line 5604 ---
+   1a818:	940003ae 	bl	1b6d0 <JNI_OnUnload@@Base+0xb6c>
+   1a81c:	b40004e0 	cbz	x0, 1a8b8 <Java_com_dsemu_drastic_DraSticJNI_pauseSystem@@Base+0x15c>
+   1a820:	aa0003f4 	mov	x20, x0
+   1a824:	910023e0 	add	x0, sp, #0x8
+   1a828:	52802001 	mov	w1, #0x100                 	// #256
+   1a82c:	aa1303e2 	mov	x2, x19
+   1a830:	97fff060 	bl	169b0 <fgets@plt>
+   1a834:	b40003e0 	cbz	x0, 1a8b0 <Java_com_dsemu_drastic_DraSticJNI_pauseSystem@@Base+0x154>
+   1a838:	b0000775 	adrp	x21, 107000 <JNI_OnUnload@@Base+0xec49c>
+   1a83c:	b0000776 	adrp	x22, 107000 <JNI_OnUnload@@Base+0xec49c>
+   1a840:	910296b5 	add	x21, x21, #0xa5
+
+--- hit 23, disassembly line 5617 ---
+   1a84c:	aa1503e1 	mov	x1, x21
+   1a850:	97ffee28 	bl	160f0 <strstr@plt>
+   1a854:	b4000140 	cbz	x0, 1a87c <Java_com_dsemu_drastic_DraSticJNI_pauseSystem@@Base+0x120>
+   1a858:	910023e0 	add	x0, sp, #0x8
+   1a85c:	52802001 	mov	w1, #0x100                 	// #256
+   1a860:	aa1303e2 	mov	x2, x19
+   1a864:	97fff053 	bl	169b0 <fgets@plt>
+   1a868:	b4000240 	cbz	x0, 1a8b0 <Java_com_dsemu_drastic_DraSticJNI_pauseSystem@@Base+0x154>
+   1a86c:	910023e0 	add	x0, sp, #0x8
+   1a870:	aa1503e1 	mov	x1, x21
+   1a874:	97ffee1f 	bl	160f0 <strstr@plt>
+
+--- hit 24, disassembly line 6518 ---
+   1b620:	a9415ff8 	ldp	x24, x23, [sp, #16]
+   1b624:	f84507fc 	ldr	x28, [sp], #80
+   1b628:	d65f03c0 	ret
+   1b62c:	d10483ff 	sub	sp, sp, #0x120
+   1b630:	a9104ffc 	stp	x28, x19, [sp, #256]
+   1b634:	a9117bfd 	stp	x29, x30, [sp, #272]
+   1b638:	910443fd 	add	x29, sp, #0x110
+   1b63c:	a90893e3 	stp	x3, x4, [sp, #136]
+   1b640:	a9099be5 	stp	x5, x6, [sp, #152]
+   1b644:	f90057e7 	str	x7, [sp, #168]
+   1b648:	ad0007e0 	stp	q0, q1, [sp]
+
+--- hit 25, disassembly line 6554 ---
+   1b6b0:	f85e83a9 	ldur	x9, [x29, #-24]
+   1b6b4:	eb09011f 	cmp	x8, x9
+   1b6b8:	540000a1 	b.ne	1b6cc <JNI_OnUnload@@Base+0xb68>  // b.any
+   1b6bc:	a9517bfd 	ldp	x29, x30, [sp, #272]
+   1b6c0:	a9504ffc 	ldp	x28, x19, [sp, #256]
+   1b6c4:	910483ff 	add	sp, sp, #0x120
+   1b6c8:	d65f03c0 	ret
+   1b6cc:	97ffec9d 	bl	16940 <__stack_chk_fail@plt>
+   1b6d0:	a9be4ff4 	stp	x20, x19, [sp, #-32]!
+   1b6d4:	a9017bfd 	stp	x29, x30, [sp, #16]
+   1b6d8:	910043fd 	add	x29, sp, #0x10
+
+--- hit 26, disassembly line 7936 ---
+   1cc48:	97ffe4ea 	bl	15ff0 <posix_memalign@plt>
+   1cc4c:	f944aa60 	ldr	x0, [x19, #2384]
+   1cc50:	52a00602 	mov	w2, #0x300000              	// #3145728
+   1cc54:	2a1f03e1 	mov	w1, wzr
+   1cc58:	91460008 	add	x8, x0, #0x180, lsl #12
+   1cc5c:	a9002260 	stp	x0, x8, [x19]
+   1cc60:	97ffe644 	bl	16570 <memset@plt>
+   1cc64:	91263260 	add	x0, x19, #0x98c
+   1cc68:	aa1f03e1 	mov	x1, xzr
+   1cc6c:	97ffe649 	bl	16590 <pthread_mutex_init@plt>
+   1cc70:	a9417bfd 	ldp	x29, x30, [sp, #16]
+
+--- hit 27, disassembly line 8000 ---
+   1cd48:	b9496908 	ldr	w8, [x8, #2408]
+   1cd4c:	52820009 	mov	w9, #0x1000                	// #4096
+   1cd50:	5281000a 	mov	w10, #0x800                 	// #2048
+   1cd54:	5280800b 	mov	w11, #0x400                 	// #1024
+   1cd58:	5280400d 	mov	w13, #0x200                 	// #512
+   1cd5c:	7100419f 	cmp	w12, #0x10
+   1cd60:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cd64:	1a8b01aa 	csel	w10, w13, w11, eq	// eq = none
+   1cd68:	7100011f 	cmp	w8, #0x0
+   1cd6c:	1a890140 	csel	w0, w10, w9, eq	// eq = none
+   1cd70:	d65f03c0 	ret
+
+--- hit 28, disassembly line 8014 ---
+   1cd80:	8b204908 	add	x8, x8, w0, uxtw #2
+   1cd84:	b9496908 	ldr	w8, [x8, #2408]
+   1cd88:	52810009 	mov	w9, #0x800                 	// #2048
+   1cd8c:	5280800a 	mov	w10, #0x400                 	// #1024
+   1cd90:	5280400c 	mov	w12, #0x200                 	// #512
+   1cd94:	7100417f 	cmp	w11, #0x10
+   1cd98:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cd9c:	1a8a018a 	csel	w10, w12, w10, eq	// eq = none
+   1cda0:	7100011f 	cmp	w8, #0x0
+   1cda4:	1a890140 	csel	w0, w10, w9, eq	// eq = none
+   1cda8:	d65f03c0 	ret
+
+--- hit 29, disassembly line 8043 ---
+   1cdf4:	6b01015f 	cmp	w10, w1
+   1cdf8:	54000200 	b.eq	1ce38 <JNI_OnUnload@@Base+0x22d4>  // b.none
+   1cdfc:	2a0003ea 	mov	w10, w0
+   1ce00:	7100003f 	cmp	w1, #0x0
+   1ce04:	5280400b 	mov	w11, #0x200                 	// #512
+   1ce08:	5280200c 	mov	w12, #0x100                 	// #256
+   1ce0c:	5280300d 	mov	w13, #0x180                 	// #384
+   1ce10:	5280180e 	mov	w14, #0xc0                  	// #192
+   1ce14:	9125a129 	add	x9, x9, #0x968
+   1ce18:	5280002f 	mov	w15, #0x1                   	// #1
+   1ce1c:	1a8b018b 	csel	w11, w12, w11, eq	// eq = none
+
+--- hit 30, disassembly line 8044 ---
+   1cdf8:	54000200 	b.eq	1ce38 <JNI_OnUnload@@Base+0x22d4>  // b.none
+   1cdfc:	2a0003ea 	mov	w10, w0
+   1ce00:	7100003f 	cmp	w1, #0x0
+   1ce04:	5280400b 	mov	w11, #0x200                 	// #512
+   1ce08:	5280200c 	mov	w12, #0x100                 	// #256
+   1ce0c:	5280300d 	mov	w13, #0x180                 	// #384
+   1ce10:	5280180e 	mov	w14, #0xc0                  	// #192
+   1ce14:	9125a129 	add	x9, x9, #0x968
+   1ce18:	5280002f 	mov	w15, #0x1                   	// #1
+   1ce1c:	1a8b018b 	csel	w11, w12, w11, eq	// eq = none
+   1ce20:	1a8d01cc 	csel	w12, w14, w13, eq	// eq = none
+
+--- hit 31, disassembly line 8045 ---
+   1cdfc:	2a0003ea 	mov	w10, w0
+   1ce00:	7100003f 	cmp	w1, #0x0
+   1ce04:	5280400b 	mov	w11, #0x200                 	// #512
+   1ce08:	5280200c 	mov	w12, #0x100                 	// #256
+   1ce0c:	5280300d 	mov	w13, #0x180                 	// #384
+   1ce10:	5280180e 	mov	w14, #0xc0                  	// #192
+   1ce14:	9125a129 	add	x9, x9, #0x968
+   1ce18:	5280002f 	mov	w15, #0x1                   	// #1
+   1ce1c:	1a8b018b 	csel	w11, w12, w11, eq	// eq = none
+   1ce20:	1a8d01cc 	csel	w12, w14, w13, eq	// eq = none
+   1ce24:	8b0a0908 	add	x8, x8, x10, lsl #2
+
+--- hit 32, disassembly line 8046 ---
+   1ce00:	7100003f 	cmp	w1, #0x0
+   1ce04:	5280400b 	mov	w11, #0x200                 	// #512
+   1ce08:	5280200c 	mov	w12, #0x100                 	// #256
+   1ce0c:	5280300d 	mov	w13, #0x180                 	// #384
+   1ce10:	5280180e 	mov	w14, #0xc0                  	// #192
+   1ce14:	9125a129 	add	x9, x9, #0x968
+   1ce18:	5280002f 	mov	w15, #0x1                   	// #1
+   1ce1c:	1a8b018b 	csel	w11, w12, w11, eq	// eq = none
+   1ce20:	1a8d01cc 	csel	w12, w14, w13, eq	// eq = none
+   1ce24:	8b0a0908 	add	x8, x8, x10, lsl #2
+   1ce28:	b909790b 	str	w11, [x8, #2424]
+
+--- hit 33, disassembly line 8647 ---
+   1d764:	f90043f9 	str	x25, [sp, #128]
+   1d768:	a9095ff8 	stp	x24, x23, [sp, #144]
+   1d76c:	a90a57f6 	stp	x22, x21, [sp, #160]
+   1d770:	a90b4ff4 	stp	x20, x19, [sp, #176]
+   1d774:	a90c7bfd 	stp	x29, x30, [sp, #192]
+   1d778:	910303fd 	add	x29, sp, #0xc0
+   1d77c:	d53bd056 	mrs	x22, tpidr_el0
+   1d780:	f94016c8 	ldr	x8, [x22, #40]
+   1d784:	52800309 	mov	w9, #0x18                  	// #24
+   1d788:	9001e313 	adrp	x19, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1d78c:	72a00089 	movk	w9, #0x4, lsl #16
+
+--- hit 34, disassembly line 8648 ---
+   1d768:	a9095ff8 	stp	x24, x23, [sp, #144]
+   1d76c:	a90a57f6 	stp	x22, x21, [sp, #160]
+   1d770:	a90b4ff4 	stp	x20, x19, [sp, #176]
+   1d774:	a90c7bfd 	stp	x29, x30, [sp, #192]
+   1d778:	910303fd 	add	x29, sp, #0xc0
+   1d77c:	d53bd056 	mrs	x22, tpidr_el0
+   1d780:	f94016c8 	ldr	x8, [x22, #40]
+   1d784:	52800309 	mov	w9, #0x18                  	// #24
+   1d788:	9001e313 	adrp	x19, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1d78c:	72a00089 	movk	w9, #0x4, lsl #16
+   1d790:	91004273 	add	x19, x19, #0x10
+
+--- hit 35, disassembly line 8817 ---
+   1da0c:	54fffe63 	b.cc	1d9d8 <JNI_OnUnload@@Base+0x2e74>  // b.lo, b.ul, b.last
+   1da10:	9001e308 	adrp	x8, 3c7d000 <JNI_OnUnload@@Base+0x3c6249c>
+   1da14:	91018108 	add	x8, x8, #0x60
+   1da18:	b940210a 	ldr	w10, [x8, #32]
+   1da1c:	52802009 	mov	w9, #0x100                 	// #256
+   1da20:	b900011f 	str	wzr, [x8]
+   1da24:	7800d2e9 	sturh	w9, [x23, #13]
+   1da28:	52800029 	mov	w9, #0x1                   	// #1
+   1da2c:	b90002ea 	str	w10, [x23]
+   1da30:	900008ea 	adrp	x10, 139000 <JNI_OnUnload@@Base+0x11e49c>
+   1da34:	39003ee9 	strb	w9, [x23, #15]
+
+--- hit 36, disassembly line 8839 ---
+   1da64:	f94016c8 	ldr	x8, [x22, #40]
+   1da68:	f85b83a9 	ldur	x9, [x29, #-72]
+   1da6c:	eb09011f 	cmp	x8, x9
+   1da70:	54000121 	b.ne	1da94 <JNI_OnUnload@@Base+0x2f30>  // b.any
+   1da74:	a94c7bfd 	ldp	x29, x30, [sp, #192]
+   1da78:	a94b4ff4 	ldp	x20, x19, [sp, #176]
+   1da7c:	a94a57f6 	ldp	x22, x21, [sp, #160]
+   1da80:	a9495ff8 	ldp	x24, x23, [sp, #144]
+   1da84:	f94043f9 	ldr	x25, [sp, #128]
+   1da88:	2a1f03e0 	mov	w0, wzr
+   1da8c:	910343ff 	add	sp, sp, #0xd0
+
+--- hit 37, disassembly line 10043 ---
+   1ed34:	a8c45ffc 	ldp	x28, x23, [sp], #64
+   1ed38:	d65f03c0 	ret
+   1ed3c:	d10443ff 	sub	sp, sp, #0x110
+   1ed40:	a90f4ffc 	stp	x28, x19, [sp, #240]
+   1ed44:	a9107bfd 	stp	x29, x30, [sp, #256]
+   1ed48:	910403fd 	add	x29, sp, #0x100
+   1ed4c:	a90817e4 	stp	x4, x5, [sp, #128]
+   1ed50:	a9091fe6 	stp	x6, x7, [sp, #144]
+   1ed54:	ad0007e0 	stp	q0, q1, [sp]
+   1ed58:	ad010fe2 	stp	q2, q3, [sp, #32]
+   1ed5c:	ad0217e4 	stp	q4, q5, [sp, #64]
+
+--- hit 38, disassembly line 10044 ---
+   1ed38:	d65f03c0 	ret
+   1ed3c:	d10443ff 	sub	sp, sp, #0x110
+   1ed40:	a90f4ffc 	stp	x28, x19, [sp, #240]
+   1ed44:	a9107bfd 	stp	x29, x30, [sp, #256]
+   1ed48:	910403fd 	add	x29, sp, #0x100
+   1ed4c:	a90817e4 	stp	x4, x5, [sp, #128]
+   1ed50:	a9091fe6 	stp	x6, x7, [sp, #144]
+   1ed54:	ad0007e0 	stp	q0, q1, [sp]
+   1ed58:	ad010fe2 	stp	q2, q3, [sp, #32]
+   1ed5c:	ad0217e4 	stp	q4, q5, [sp, #64]
+   1ed60:	ad031fe6 	stp	q6, q7, [sp, #96]
+
+--- hit 39, disassembly line 10075 ---
+   1edb4:	f9401668 	ldr	x8, [x19, #40]
+   1edb8:	f85e83a9 	ldur	x9, [x29, #-24]
+   1edbc:	eb09011f 	cmp	x8, x9
+   1edc0:	540000a1 	b.ne	1edd4 <JNI_OnUnload@@Base+0x4270>  // b.any
+   1edc4:	a9507bfd 	ldp	x29, x30, [sp, #256]
+   1edc8:	a94f4ffc 	ldp	x28, x19, [sp, #240]
+   1edcc:	910443ff 	add	sp, sp, #0x110
+   1edd0:	d65f03c0 	ret
+   1edd4:	97ffdedb 	bl	16940 <__stack_chk_fail@plt>
+   1edd8:	d101c3ff 	sub	sp, sp, #0x70
+   1eddc:	a9016ffc 	stp	x28, x27, [sp, #16]
+
+--- hit 40, disassembly line 10372 ---
+   1f258:	d65f03c0 	ret
+   1f25c:	97ffddb9 	bl	16940 <__stack_chk_fail@plt>
+   1f260:	d10743ff 	sub	sp, sp, #0x1d0
+   1f264:	a9176ffc 	stp	x28, x27, [sp, #368]
+   1f268:	a91867fa 	stp	x26, x25, [sp, #384]
+   1f26c:	a9195ff8 	stp	x24, x23, [sp, #400]
+   1f270:	a91a57f6 	stp	x22, x21, [sp, #416]
+   1f274:	a91b4ff4 	stp	x20, x19, [sp, #432]
+   1f278:	a91c7bfd 	stp	x29, x30, [sp, #448]
+   1f27c:	910703fd 	add	x29, sp, #0x1c0
+   1f280:	d53bd053 	mrs	x19, tpidr_el0
+
+--- hit 41, disassembly line 10407 ---
+   1f2e4:	540003ca 	b.ge	1f35c <JNI_OnUnload@@Base+0x47f8>  // b.tcont
+   1f2e8:	a904ffff 	stp	xzr, xzr, [sp, #72]
+   1f2ec:	f9400749 	ldr	x9, [x26, #8]
+   1f2f0:	f000074a 	adrp	x10, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f2f4:	3dc06140 	ldr	q0, [x10, #384]
+   1f2f8:	5280050a 	mov	w10, #0x28                  	// #40
+   1f2fc:	9b0a2514 	madd	x20, x8, x10, x9
+   1f300:	91004349 	add	x9, x26, #0x10
+   1f304:	f90013e9 	str	x9, [sp, #32]
+   1f308:	91001289 	add	x9, x20, #0x4
+   1f30c:	d284c028 	mov	x8, #0x2601                	// #9729
+
+--- hit 42, disassembly line 10442 ---
+   1f370:	a95c7bfd 	ldp	x29, x30, [sp, #448]
+   1f374:	a95b4ff4 	ldp	x20, x19, [sp, #432]
+   1f378:	a95a57f6 	ldp	x22, x21, [sp, #416]
+   1f37c:	a9595ff8 	ldp	x24, x23, [sp, #400]
+   1f380:	a95867fa 	ldp	x26, x25, [sp, #384]
+   1f384:	a9576ffc 	ldp	x28, x27, [sp, #368]
+   1f388:	910743ff 	add	sp, sp, #0x1d0
+   1f38c:	d65f03c0 	ret
+   1f390:	12800008 	mov	w8, #0xffffffff            	// #-1
+   1f394:	b9000328 	str	w8, [x25]
+   1f398:	52808001 	mov	w1, #0x400                 	// #1024
+
+--- hit 43, disassembly line 10494 ---
+   1f440:	5a9f0108 	csinv	w8, w8, wzr, eq	// eq = none
+   1f444:	b9000368 	str	w8, [x27]
+   1f448:	17ffffd4 	b	1f398 <JNI_OnUnload@@Base+0x4834>
+   1f44c:	910183e1 	add	x1, sp, #0x60
+   1f450:	52802002 	mov	w2, #0x100                 	// #256
+   1f454:	aa1703e0 	mov	x0, x23
+   1f458:	94000256 	bl	1fdb0 <JNI_OnUnload@@Base+0x524c>
+   1f45c:	f0000741 	adrp	x1, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   1f460:	aa1703e0 	mov	x0, x23
+   1f464:	910d4021 	add	x1, x1, #0x350
+   1f468:	97ffdb22 	bl	160f0 <strstr@plt>
+
+--- hit 44, disassembly line 10712 ---
+   1f7a8:	ad020000 	stp	q0, q0, [x0, #64]
+   1f7ac:	ad030000 	stp	q0, q0, [x0, #96]
+   1f7b0:	ad040000 	stp	q0, q0, [x0, #128]
+   1f7b4:	ad050000 	stp	q0, q0, [x0, #160]
+   1f7b8:	ad060000 	stp	q0, q0, [x0, #192]
+   1f7bc:	ad070000 	stp	q0, q0, [x0, #224]
+   1f7c0:	ad080000 	stp	q0, q0, [x0, #256]
+   1f7c4:	ad090000 	stp	q0, q0, [x0, #288]
+   1f7c8:	ad0a0000 	stp	q0, q0, [x0, #320]
+   1f7cc:	a902a7e8 	stp	x8, x9, [sp, #40]
+   1f7d0:	f94002c8 	ldr	x8, [x22]
+
+--- hit 45, disassembly line 10714 ---
+   1f7b0:	ad040000 	stp	q0, q0, [x0, #128]
+   1f7b4:	ad050000 	stp	q0, q0, [x0, #160]
+   1f7b8:	ad060000 	stp	q0, q0, [x0, #192]
+   1f7bc:	ad070000 	stp	q0, q0, [x0, #224]
+   1f7c0:	ad080000 	stp	q0, q0, [x0, #256]
+   1f7c4:	ad090000 	stp	q0, q0, [x0, #288]
+   1f7c8:	ad0a0000 	stp	q0, q0, [x0, #320]
+   1f7cc:	a902a7e8 	stp	x8, x9, [sp, #40]
+   1f7d0:	f94002c8 	ldr	x8, [x22]
+   1f7d4:	aa0003f7 	mov	x23, x0
+   1f7d8:	9105a009 	add	x9, x0, #0x168
+
+--- hit 46, disassembly line 10755 ---
+   1f854:	aa1b03e1 	mov	x1, x27
+   1f858:	97ffda26 	bl	160f0 <strstr@plt>
+   1f85c:	b40002a0 	cbz	x0, 1f8b0 <JNI_OnUnload@@Base+0x4d4c>
+   1f860:	910103e1 	add	x1, sp, #0x40
+   1f864:	52802002 	mov	w2, #0x100                 	// #256
+   1f868:	aa1403e0 	mov	x0, x20
+   1f86c:	94000151 	bl	1fdb0 <JNI_OnUnload@@Base+0x524c>
+   1f870:	910503e0 	add	x0, sp, #0x140
+   1f874:	910103e4 	add	x4, sp, #0x40
+   1f878:	52808001 	mov	w1, #0x400                 	// #1024
+   1f87c:	aa1803e2 	mov	x2, x24
+
+--- hit 47, disassembly line 11130 ---
+   1fe30:	a9414ff4 	ldp	x20, x19, [sp, #16]
+   1fe34:	a8c357f6 	ldp	x22, x21, [sp], #48
+   1fe38:	d65f03c0 	ret
+   1fe3c:	d10483ff 	sub	sp, sp, #0x120
+   1fe40:	a9104ffc 	stp	x28, x19, [sp, #256]
+   1fe44:	a9117bfd 	stp	x29, x30, [sp, #272]
+   1fe48:	910443fd 	add	x29, sp, #0x110
+   1fe4c:	a90893e3 	stp	x3, x4, [sp, #136]
+   1fe50:	a9099be5 	stp	x5, x6, [sp, #152]
+   1fe54:	f90057e7 	str	x7, [sp, #168]
+   1fe58:	ad0007e0 	stp	q0, q1, [sp]
+
+--- hit 48, disassembly line 11166 ---
+   1fec0:	f85e83a9 	ldur	x9, [x29, #-24]
+   1fec4:	eb09011f 	cmp	x8, x9
+   1fec8:	540000a1 	b.ne	1fedc <JNI_OnUnload@@Base+0x5378>  // b.any
+   1fecc:	a9517bfd 	ldp	x29, x30, [sp, #272]
+   1fed0:	a9504ffc 	ldp	x28, x19, [sp, #256]
+   1fed4:	910483ff 	add	sp, sp, #0x120
+   1fed8:	d65f03c0 	ret
+   1fedc:	97ffda99 	bl	16940 <__stack_chk_fail@plt>
+   1fee0:	f81e0ff3 	str	x19, [sp, #-32]!
+   1fee4:	a9017bfd 	stp	x29, x30, [sp, #16]
+   1fee8:	910043fd 	add	x29, sp, #0x10
+
+--- hit 49, disassembly line 12146 ---
+   20e10:	9101c3ff 	add	sp, sp, #0x70
+   20e14:	d65f03c0 	ret
+   20e18:	53157c4a 	lsr	w10, w2, #21
+   20e1c:	5288030b 	mov	w11, #0x4018                	// #16408
+   20e20:	72a0200b 	movk	w11, #0x100, lsl #16
+   20e24:	8b2a480a 	add	x10, x0, w10, uxtw #2
+   20e28:	b86b694c 	ldr	w12, [x10, x11]
+   20e2c:	53107c49 	lsr	w9, w2, #16
+   20e30:	5280002d 	mov	w13, #0x1                   	// #1
+   20e34:	1ac921af 	lsl	w15, w13, w9
+   20e38:	2a0f018c 	orr	w12, w12, w15
+
+--- hit 50, disassembly line 12154 ---
+   20e30:	5280002d 	mov	w13, #0x1                   	// #1
+   20e34:	1ac921af 	lsl	w15, w13, w9
+   20e38:	2a0f018c 	orr	w12, w12, w15
+   20e3c:	5280030f 	mov	w15, #0x18                  	// #24
+   20e40:	72a0200f 	movk	w15, #0x100, lsl #16
+   20e44:	8b294809 	add	x9, x0, w9, uxtw #2
+   20e48:	b82b694c 	str	w12, [x10, x11]
+   20e4c:	b86f692a 	ldr	w10, [x9, x15]
+   20e50:	cb224028 	sub	x8, x1, w2, uxtw
+   20e54:	530b7c4e 	lsr	w14, w2, #11
+   20e58:	9342fd08 	asr	x8, x8, #2
+
+--- hit 51, disassembly line 12172 ---
+   20e78:	d65f03c0 	ret
+   20e7c:	52880309 	mov	w9, #0x4018                	// #16408
+   20e80:	5280030a 	mov	w10, #0x18                  	// #24
+   20e84:	52800028 	mov	w8, #0x1                   	// #1
+   20e88:	72a02009 	movk	w9, #0x100, lsl #16
+   20e8c:	72a0200a 	movk	w10, #0x100, lsl #16
+   20e90:	340002e4 	cbz	w4, 20eec <JNI_OnUnload@@Base+0x6388>
+   20e94:	53157c4b 	lsr	w11, w2, #21
+   20e98:	8b2b480b 	add	x11, x0, w11, uxtw #2
+   20e9c:	b869696c 	ldr	w12, [x11, x9]
+   20ea0:	53107c4e 	lsr	w14, w2, #16
+
+--- hit 52, disassembly line 12173 ---
+   20e7c:	52880309 	mov	w9, #0x4018                	// #16408
+   20e80:	5280030a 	mov	w10, #0x18                  	// #24
+   20e84:	52800028 	mov	w8, #0x1                   	// #1
+   20e88:	72a02009 	movk	w9, #0x100, lsl #16
+   20e8c:	72a0200a 	movk	w10, #0x100, lsl #16
+   20e90:	340002e4 	cbz	w4, 20eec <JNI_OnUnload@@Base+0x6388>
+   20e94:	53157c4b 	lsr	w11, w2, #21
+   20e98:	8b2b480b 	add	x11, x0, w11, uxtw #2
+   20e9c:	b869696c 	ldr	w12, [x11, x9]
+   20ea0:	53107c4e 	lsr	w14, w2, #16
+   20ea4:	1ace210f 	lsl	w15, w8, w14
+
+--- hit 53, disassembly line 12244 ---
+   20f98:	b9610d29 	ldr	w9, [x9, #8460]
+   20f9c:	7100053f 	cmp	w9, #0x1
+   20fa0:	540004a1 	b.ne	21034 <JNI_OnUnload@@Base+0x64d0>  // b.any
+   20fa4:	52800109 	mov	w9, #0x8                   	// #8
+   20fa8:	72a02009 	movk	w9, #0x100, lsl #16
+   20fac:	f8696809 	ldr	x9, [x0, x9]
+   20fb0:	12002c2b 	and	w11, w1, #0xfff
+   20fb4:	aa1f03ea 	mov	x10, xzr
+   20fb8:	8b0b0129 	add	x9, x9, x11
+   20fbc:	5280040b 	mov	w11, #0x20                  	// #32
+   20fc0:	72a0002b 	movk	w11, #0x1, lsl #16
+
+--- hit 54, disassembly line 12283 ---
+   21034:	d2e80009 	mov	x9, #0x4000000000000000    	// #4611686018427387904
+   21038:	f8285809 	str	x9, [x0, w8, uxtw #3]
+   2103c:	d65f03c0 	ret
+   21040:	52800108 	mov	w8, #0x8                   	// #8
+   21044:	72a02008 	movk	w8, #0x100, lsl #16
+   21048:	f8686808 	ldr	x8, [x0, x8]
+   2104c:	52a02009 	mov	w9, #0x1000000             	// #16777216
+   21050:	5280040b 	mov	w11, #0x20                  	// #32
+   21054:	8b090009 	add	x9, x0, x9
+   21058:	52800c0a 	mov	w10, #0x60                  	// #96
+   2105c:	72a0002b 	movk	w11, #0x1, lsl #16
+
+--- hit 55, disassembly line 12363 ---
+   21174:	f82c580d 	str	x13, [x0, w12, uxtw #3]
+   21178:	54fff961 	b.ne	210a4 <JNI_OnUnload@@Base+0x6540>  // b.any
+   2117c:	d65f03c0 	ret
+   21180:	52800108 	mov	w8, #0x8                   	// #8
+   21184:	72a02008 	movk	w8, #0x100, lsl #16
+   21188:	f8686809 	ldr	x9, [x0, x8]
+   2118c:	529a9b08 	mov	w8, #0xd4d8                	// #54488
+   21190:	72a001e8 	movk	w8, #0xf, lsl #16
+   21194:	b868692a 	ldr	w10, [x9, x8]
+   21198:	11200048 	add	w8, w2, #0x800
+   2119c:	6b0a011f 	cmp	w8, w10
+
+--- hit 56, disassembly line 12382 ---
+   211c0:	6b09011f 	cmp	w8, w9
+   211c4:	54000323 	b.cc	21228 <JNI_OnUnload@@Base+0x66c4>  // b.lo, b.ul, b.last
+   211c8:	53157c4a 	lsr	w10, w2, #21
+   211cc:	5288030b 	mov	w11, #0x4018                	// #16408
+   211d0:	72a0200b 	movk	w11, #0x100, lsl #16
+   211d4:	8b2a480a 	add	x10, x0, w10, uxtw #2
+   211d8:	b86b694c 	ldr	w12, [x10, x11]
+   211dc:	53107c49 	lsr	w9, w2, #16
+   211e0:	5280002d 	mov	w13, #0x1                   	// #1
+   211e4:	1ac921af 	lsl	w15, w13, w9
+   211e8:	2a0f018c 	orr	w12, w12, w15
+
+--- hit 57, disassembly line 12390 ---
+   211e0:	5280002d 	mov	w13, #0x1                   	// #1
+   211e4:	1ac921af 	lsl	w15, w13, w9
+   211e8:	2a0f018c 	orr	w12, w12, w15
+   211ec:	5280030f 	mov	w15, #0x18                  	// #24
+   211f0:	72a0200f 	movk	w15, #0x100, lsl #16
+   211f4:	8b294809 	add	x9, x0, w9, uxtw #2
+   211f8:	b82b694c 	str	w12, [x10, x11]
+   211fc:	b86f692a 	ldr	w10, [x9, x15]
+   21200:	cb224028 	sub	x8, x1, w2, uxtw
+   21204:	530b7c4e 	lsr	w14, w2, #11
+   21208:	9342fd08 	asr	x8, x8, #2
+
+--- hit 58, disassembly line 12408 ---
+   21228:	d65f03c0 	ret
+   2122c:	53157c2e 	lsr	w14, w1, #21
+   21230:	5288030a 	mov	w10, #0x4018                	// #16408
+   21234:	53107c29 	lsr	w9, w1, #16
+   21238:	72a0200a 	movk	w10, #0x100, lsl #16
+   2123c:	5280002b 	mov	w11, #0x1                   	// #1
+   21240:	8b2e480f 	add	x15, x0, w14, uxtw #2
+   21244:	1ac9216c 	lsl	w12, w11, w9
+   21248:	8b0a01e9 	add	x9, x15, x10
+   2124c:	0b020028 	add	w8, w1, w2
+   21250:	53105022 	ubfx	w2, w1, #16, #5
+
+--- hit 59, disassembly line 12433 ---
+   2128c:	540011e1 	b.ne	214c8 <JNI_OnUnload@@Base+0x6964>  // b.any
+   21290:	6a0c015f 	tst	w10, w12
+   21294:	540026a0 	b.eq	21768 <JNI_OnUnload@@Base+0x6c04>  // b.none
+   21298:	5280030b 	mov	w11, #0x18                  	// #24
+   2129c:	72a0200b 	movk	w11, #0x100, lsl #16
+   212a0:	8b0b002b 	add	x11, x1, x11
+   212a4:	b940016d 	ldr	w13, [x11]
+   212a8:	5280002e 	mov	w14, #0x1                   	// #1
+   212ac:	0b0801e8 	add	w8, w15, w8
+   212b0:	1ad121ce 	lsl	w14, w14, w17
+   212b4:	d2e80010 	mov	x16, #0x4000000000000000    	// #4611686018427387904
+
+--- hit 60, disassembly line 12462 ---
+   21300:	d65f03c0 	ret
+   21304:	6a0c015f 	tst	w10, w12
+   21308:	54000340 	b.eq	21370 <JNI_OnUnload@@Base+0x680c>  // b.none
+   2130c:	52800302 	mov	w2, #0x18                  	// #24
+   21310:	72a02002 	movk	w2, #0x100, lsl #16
+   21314:	8b020021 	add	x1, x1, x2
+   21318:	b9400022 	ldr	w2, [x1]
+   2131c:	52800024 	mov	w4, #0x1                   	// #1
+   21320:	11007de3 	add	w3, w15, #0x1f
+   21324:	1ad12091 	lsl	w17, w4, w17
+   21328:	d2e80004 	mov	x4, #0x4000000000000000    	// #4611686018427387904
+
+--- hit 61, disassembly line 12492 ---
+   21378:	54000420 	b.eq	213fc <JNI_OnUnload@@Base+0x6898>  // b.none
+   2137c:	531b6a11 	lsl	w17, w16, #5
+   21380:	52800310 	mov	w16, #0x18                  	// #24
+   21384:	11008231 	add	w17, w17, #0x20
+   21388:	72a02010 	movk	w16, #0x100, lsl #16
+   2138c:	8b314c11 	add	x17, x0, w17, uxtw #3
+   21390:	d2e80001 	mov	x1, #0x4000000000000000    	// #4611686018427387904
+   21394:	531f798c 	lsl	w12, w12, #1
+   21398:	6a0a019f 	tst	w12, w10
+   2139c:	54000141 	b.ne	213c4 <JNI_OnUnload@@Base+0x6860>  // b.any
+   213a0:	14000002 	b	213a8 <JNI_OnUnload@@Base+0x6844>
+
+--- hit 62, disassembly line 12502 ---
+   213a0:	14000002 	b	213a8 <JNI_OnUnload@@Base+0x6844>
+   213a4:	0a2c014a 	bic	w10, w10, w12
+   213a8:	910005ef 	add	x15, x15, #0x1
+   213ac:	720011ff 	tst	w15, #0x1f
+   213b0:	91040231 	add	x17, x17, #0x100
+   213b4:	54000240 	b.eq	213fc <JNI_OnUnload@@Base+0x6898>  // b.none
+   213b8:	531f798c 	lsl	w12, w12, #1
+   213bc:	6a0a019f 	tst	w12, w10
+   213c0:	54ffff40 	b.eq	213a8 <JNI_OnUnload@@Base+0x6844>  // b.none
+   213c4:	8b0f0803 	add	x3, x0, x15, lsl #2
+   213c8:	b8706862 	ldr	w2, [x3, x16]
+
+--- hit 63, disassembly line 12530 ---
+   21410:	531b69ce 	lsl	w14, w14, #5
+   21414:	52880309 	mov	w9, #0x4018                	// #16408
+   21418:	5280030a 	mov	w10, #0x18                  	// #24
+   2141c:	111001ef 	add	w15, w15, #0x400
+   21420:	72a02009 	movk	w9, #0x100, lsl #16
+   21424:	72a0200a 	movk	w10, #0x100, lsl #16
+   21428:	110081ce 	add	w14, w14, #0x20
+   2142c:	8b2f4c0f 	add	x15, x0, w15, uxtw #3
+   21430:	d2e80010 	mov	x16, #0x4000000000000000    	// #4611686018427387904
+   21434:	aa0c03f1 	mov	x17, x12
+   21438:	8b110802 	add	x2, x0, x17, lsl #2
+
+--- hit 64, disassembly line 12531 ---
+   21414:	52880309 	mov	w9, #0x4018                	// #16408
+   21418:	5280030a 	mov	w10, #0x18                  	// #24
+   2141c:	111001ef 	add	w15, w15, #0x400
+   21420:	72a02009 	movk	w9, #0x100, lsl #16
+   21424:	72a0200a 	movk	w10, #0x100, lsl #16
+   21428:	110081ce 	add	w14, w14, #0x20
+   2142c:	8b2f4c0f 	add	x15, x0, w15, uxtw #3
+   21430:	d2e80010 	mov	x16, #0x4000000000000000    	// #4611686018427387904
+   21434:	aa0c03f1 	mov	x17, x12
+   21438:	8b110802 	add	x2, x0, x17, lsl #2
+   2143c:	b8696841 	ldr	w1, [x2, x9]
+
+--- hit 65, disassembly line 12555 ---
+   21474:	aa0e03e3 	mov	x3, x14
+   21478:	370000c1 	tbnz	w1, #0, 21490 <JNI_OnUnload@@Base+0x692c>
+   2147c:	91000463 	add	x3, x3, #0x1
+   21480:	53017c21 	lsr	w1, w1, #1
+   21484:	91040042 	add	x2, x2, #0x100
+   21488:	34fffe01 	cbz	w1, 21448 <JNI_OnUnload@@Base+0x68e4>
+   2148c:	3607ff81 	tbz	w1, #0, 2147c <JNI_OnUnload@@Base+0x6918>
+   21490:	8b030805 	add	x5, x0, x3, lsl #2
+   21494:	b86a68a4 	ldr	w4, [x5, x10]
+   21498:	b82a68bf 	str	wzr, [x5, x10]
+   2149c:	34ffff04 	cbz	w4, 2147c <JNI_OnUnload@@Base+0x6918>
+
+--- hit 66, disassembly line 12576 ---
+   214c8:	6a0c015f 	tst	w10, w12
+   214cc:	0b10016d 	add	w13, w11, w16
+   214d0:	54000340 	b.eq	21538 <JNI_OnUnload@@Base+0x69d4>  // b.none
+   214d4:	5280030b 	mov	w11, #0x18                  	// #24
+   214d8:	72a0200b 	movk	w11, #0x100, lsl #16
+   214dc:	8b0b002b 	add	x11, x1, x11
+   214e0:	b940016e 	ldr	w14, [x11]
+   214e4:	52800022 	mov	w2, #0x1                   	// #1
+   214e8:	11007de1 	add	w1, w15, #0x1f
+   214ec:	1ad12051 	lsl	w17, w2, w17
+   214f0:	d2e80002 	mov	x2, #0x4000000000000000    	// #4611686018427387904
+
+--- hit 67, disassembly line 12607 ---
+   21544:	1a9f07f1 	cset	w17, ne	// ne = any
+   21548:	6b0d019f 	cmp	w12, w13
+   2154c:	54000da2 	b.cs	21700 <JNI_OnUnload@@Base+0x6b9c>  // b.hs, b.nlast
+   21550:	5280030e 	mov	w14, #0x18                  	// #24
+   21554:	72a0200e 	movk	w14, #0x100, lsl #16
+   21558:	d2e8000f 	mov	x15, #0x4000000000000000    	// #4611686018427387904
+   2155c:	aa0c03f0 	mov	x16, x12
+   21560:	36000071 	tbz	w17, #0, 2156c <JNI_OnUnload@@Base+0x6a08>
+   21564:	1400000a 	b	2158c <JNI_OnUnload@@Base+0x6a28>
+   21568:	0a2b014a 	bic	w10, w10, w11
+   2156c:	531f796b 	lsl	w11, w11, #1
+
+--- hit 68, disassembly line 12639 ---
+   215c4:	17ffffe9 	b	21568 <JNI_OnUnload@@Base+0x6a04>
+   215c8:	2a0d03ec 	mov	w12, w13
+   215cc:	5288030a 	mov	w10, #0x4018                	// #16408
+   215d0:	8b2c4809 	add	x9, x0, w12, uxtw #2
+   215d4:	72a0200a 	movk	w10, #0x100, lsl #16
+   215d8:	8b0a0129 	add	x9, x9, x10
+   215dc:	b940012a 	ldr	w10, [x9]
+   215e0:	531b698d 	lsl	w13, w12, #5
+   215e4:	331b2d8b 	bfi	w11, w12, #5, #12
+   215e8:	6b0b01bf 	cmp	w13, w11
+   215ec:	540003e2 	b.cs	21668 <JNI_OnUnload@@Base+0x6b04>  // b.hs, b.nlast
+
+--- hit 69, disassembly line 12649 ---
+   215ec:	540003e2 	b.cs	21668 <JNI_OnUnload@@Base+0x6b04>  // b.hs, b.nlast
+   215f0:	5280030e 	mov	w14, #0x18                  	// #24
+   215f4:	12000150 	and	w16, w10, #0x1
+   215f8:	5280002c 	mov	w12, #0x1                   	// #1
+   215fc:	72a0200e 	movk	w14, #0x100, lsl #16
+   21600:	d2e8000f 	mov	x15, #0x4000000000000000    	// #4611686018427387904
+   21604:	36000070 	tbz	w16, #0, 21610 <JNI_OnUnload@@Base+0x6aac>
+   21608:	14000009 	b	2162c <JNI_OnUnload@@Base+0x6ac8>
+   2160c:	0a2c014a 	bic	w10, w10, w12
+   21610:	531f798c 	lsl	w12, w12, #1
+   21614:	910005ad 	add	x13, x13, #0x1
+
+--- hit 70, disassembly line 12686 ---
+   21680:	2a2c03ec 	mvn	w12, w12
+   21684:	2a0b03ed 	mov	w13, w11
+   21688:	5280030f 	mov	w15, #0x18                  	// #24
+   2168c:	8b0b080b 	add	x11, x0, x11, lsl #2
+   21690:	72a0200f 	movk	w15, #0x100, lsl #16
+   21694:	8b0f016b 	add	x11, x11, x15
+   21698:	b940016f 	ldr	w15, [x11]
+   2169c:	531b69ae 	lsl	w14, w13, #5
+   216a0:	331b41a8 	bfi	w8, w13, #5, #17
+   216a4:	5280002d 	mov	w13, #0x1                   	// #1
+   216a8:	d2e80010 	mov	x16, #0x4000000000000000    	// #4611686018427387904
+
+--- hit 71, disassembly line 12717 ---
+   216fc:	2a0d03ec 	mov	w12, w13
+   21700:	34000351 	cbz	w17, 21768 <JNI_OnUnload@@Base+0x6c04>
+   21704:	5280030f 	mov	w15, #0x18                  	// #24
+   21708:	8b2c480e 	add	x14, x0, w12, uxtw #2
+   2170c:	72a0200f 	movk	w15, #0x100, lsl #16
+   21710:	8b0f01ce 	add	x14, x14, x15
+   21714:	b94001cf 	ldr	w15, [x14]
+   21718:	531b698d 	lsl	w13, w12, #5
+   2171c:	331b4188 	bfi	w8, w12, #5, #17
+   21720:	5280002c 	mov	w12, #0x1                   	// #1
+   21724:	d2e80010 	mov	x16, #0x4000000000000000    	// #4611686018427387904
+
+--- hit 72, disassembly line 12750 ---
+   21780:	a9014ff4 	stp	x20, x19, [sp, #16]
+   21784:	a9027bfd 	stp	x29, x30, [sp, #32]
+   21788:	910083fd 	add	x29, sp, #0x20
+   2178c:	52800108 	mov	w8, #0x8                   	// #8
+   21790:	72a02008 	movk	w8, #0x100, lsl #16
+   21794:	f8686808 	ldr	x8, [x0, x8]
+   21798:	529a9a09 	mov	w9, #0xd4d0                	// #54480
+   2179c:	72a001e9 	movk	w9, #0xf, lsl #16
+   217a0:	aa0003f3 	mov	x19, x0
+   217a4:	8b090109 	add	x9, x8, x9
+   217a8:	b9400134 	ldr	w20, [x9]
+
+--- hit 73, disassembly line 12880 ---
+   21988:	aa1f03f8 	mov	x24, xzr
+   2198c:	128fffe8 	mov	w8, #0xffff8000            	// #-32768
+   21990:	72a0081a 	movk	w26, #0x40, lsl #16
+   21994:	5280003b 	mov	w27, #0x1                   	// #1
+   21998:	72a0201c 	movk	w28, #0x100, lsl #16
+   2199c:	72a02013 	movk	w19, #0x100, lsl #16
+   219a0:	b90017e8 	str	w8, [sp, #20]
+   219a4:	14000008 	b	219c4 <JNI_OnUnload@@Base+0x6e60>
+   219a8:	294223e1 	ldp	w1, w8, [sp, #16]
+   219ac:	91402318 	add	x24, x24, #0x8, lsl #12
+   219b0:	5140235a 	sub	w26, w26, #0x8, lsl #12
+
+--- hit 74, disassembly line 12881 ---
+   2198c:	128fffe8 	mov	w8, #0xffff8000            	// #-32768
+   21990:	72a0081a 	movk	w26, #0x40, lsl #16
+   21994:	5280003b 	mov	w27, #0x1                   	// #1
+   21998:	72a0201c 	movk	w28, #0x100, lsl #16
+   2199c:	72a02013 	movk	w19, #0x100, lsl #16
+   219a0:	b90017e8 	str	w8, [sp, #20]
+   219a4:	14000008 	b	219c4 <JNI_OnUnload@@Base+0x6e60>
+   219a8:	294223e1 	ldp	w1, w8, [sp, #16]
+   219ac:	91402318 	add	x24, x24, #0x8, lsl #12
+   219b0:	5140235a 	sub	w26, w26, #0x8, lsl #12
+   219b4:	51402021 	sub	w1, w1, #0x8, lsl #12
+
+--- hit 75, disassembly line 12996 ---
+   21b58:	aa1f03e8 	mov	x8, xzr
+   21b5c:	f9400529 	ldr	x9, [x9, #8]
+   21b60:	2a0103ea 	mov	w10, w1
+   21b64:	5280002b 	mov	w11, #0x1                   	// #1
+   21b68:	72a0200c 	movk	w12, #0x100, lsl #16
+   21b6c:	72a0200d 	movk	w13, #0x100, lsl #16
+   21b70:	d3557d0e 	ubfx	x14, x8, #21, #11
+   21b74:	8b2e4ace 	add	x14, x22, w14, uxtw #2
+   21b78:	b86c69cf 	ldr	w15, [x14, x12]
+   21b7c:	d3507d11 	ubfx	x17, x8, #16, #16
+   21b80:	1ad12160 	lsl	w0, w11, w17
+
+--- hit 76, disassembly line 12997 ---
+   21b5c:	f9400529 	ldr	x9, [x9, #8]
+   21b60:	2a0103ea 	mov	w10, w1
+   21b64:	5280002b 	mov	w11, #0x1                   	// #1
+   21b68:	72a0200c 	movk	w12, #0x100, lsl #16
+   21b6c:	72a0200d 	movk	w13, #0x100, lsl #16
+   21b70:	d3557d0e 	ubfx	x14, x8, #21, #11
+   21b74:	8b2e4ace 	add	x14, x22, w14, uxtw #2
+   21b78:	b86c69cf 	ldr	w15, [x14, x12]
+   21b7c:	d3507d11 	ubfx	x17, x8, #16, #16
+   21b80:	1ad12160 	lsl	w0, w11, w17
+   21b84:	8b080130 	add	x16, x9, x8
+
+--- hit 77, disassembly line 13055 ---
+   21c44:	9a8d0189 	csel	x9, x12, x13, eq	// eq = none
+   21c48:	a900228e 	stp	x14, x8, [x20]
+   21c4c:	52800108 	mov	w8, #0x8                   	// #8
+   21c50:	a901268a 	stp	x10, x9, [x20, #16]
+   21c54:	72a02008 	movk	w8, #0x100, lsl #16
+   21c58:	f8686a68 	ldr	x8, [x19, x8]
+   21c5c:	529a9a09 	mov	w9, #0xd4d0                	// #54480
+   21c60:	72a001e9 	movk	w9, #0xf, lsl #16
+   21c64:	52800036 	mov	w22, #0x1                   	// #1
+   21c68:	8b090108 	add	x8, x8, x9
+   21c6c:	b9400117 	ldr	w23, [x8]
+
+--- hit 78, disassembly line 13084 ---
+   21cb8:	aa1303e0 	mov	x0, x19
+   21cbc:	97fffd5c 	bl	2122c <JNI_OnUnload@@Base+0x66c8>
+   21cc0:	f9402a93 	ldr	x19, [x20, #80]
+   21cc4:	52800108 	mov	w8, #0x8                   	// #8
+   21cc8:	72a02008 	movk	w8, #0x100, lsl #16
+   21ccc:	529a9a09 	mov	w9, #0xd4d0                	// #54480
+   21cd0:	f8686a68 	ldr	x8, [x19, x8]
+   21cd4:	72a001e9 	movk	w9, #0xf, lsl #16
+   21cd8:	52a06001 	mov	w1, #0x3000000             	// #50331648
+   21cdc:	52a01002 	mov	w2, #0x800000              	// #8388608
+   21ce0:	8b090108 	add	x8, x8, x9
+
+--- hit 79, disassembly line 13112 ---
+   21d28:	aa1f03f5 	mov	x21, xzr
+   21d2c:	52a06016 	mov	w22, #0x3000000             	// #50331648
+   21d30:	14000004 	b	21d40 <JNI_OnUnload@@Base+0x71dc>
+   21d34:	910006b5 	add	x21, x21, #0x1
+   21d38:	f10802bf 	cmp	x21, #0x200
+   21d3c:	540002c0 	b.eq	21d94 <JNI_OnUnload@@Base+0x7230>  // b.none
+   21d40:	f94d5a88 	ldr	x8, [x20, #6832]
+   21d44:	aa1f03f7 	mov	x23, xzr
+   21d48:	8b153d08 	add	x8, x8, x21, lsl #15
+   21d4c:	8b160118 	add	x24, x8, x22
+   21d50:	8b374313 	add	x19, x24, w23, uxtw
+
+--- hit 80, disassembly line 13292 ---
+   21ff8:	b91a4ee8 	str	w8, [x23, #6732]
+   21ffc:	540017c9 	b.ls	222f4 <JNI_OnUnload@@Base+0x7790>  // b.plast
+   22000:	52880308 	mov	w8, #0x4018                	// #16408
+   22004:	52800309 	mov	w9, #0x18                  	// #24
+   22008:	72a02008 	movk	w8, #0x100, lsl #16
+   2200c:	72a02009 	movk	w9, #0x100, lsl #16
+   22010:	52800036 	mov	w22, #0x1                   	// #1
+   22014:	8b08031b 	add	x27, x24, x8
+   22018:	8b09031c 	add	x28, x24, x9
+   2201c:	14000005 	b	22030 <JNI_OnUnload@@Base+0x74cc>
+   22020:	f94007f3 	ldr	x19, [sp, #8]
+
+--- hit 81, disassembly line 13293 ---
+   21ffc:	540017c9 	b.ls	222f4 <JNI_OnUnload@@Base+0x7790>  // b.plast
+   22000:	52880308 	mov	w8, #0x4018                	// #16408
+   22004:	52800309 	mov	w9, #0x18                  	// #24
+   22008:	72a02008 	movk	w8, #0x100, lsl #16
+   2200c:	72a02009 	movk	w9, #0x100, lsl #16
+   22010:	52800036 	mov	w22, #0x1                   	// #1
+   22014:	8b08031b 	add	x27, x24, x8
+   22018:	8b09031c 	add	x28, x24, x9
+   2201c:	14000005 	b	22030 <JNI_OnUnload@@Base+0x74cc>
+   22020:	f94007f3 	ldr	x19, [sp, #8]
+   22024:	11401335 	add	w21, w25, #0x4, lsl #12
+
+--- hit 82, disassembly line 13488 ---
+   22308:	f9400d4a 	ldr	x10, [x10, #24]
+   2230c:	2a1503e8 	mov	w8, w21
+   22310:	2a1303eb 	mov	w11, w19
+   22314:	5280002c 	mov	w12, #0x1                   	// #1
+   22318:	72a0200d 	movk	w13, #0x100, lsl #16
+   2231c:	72a0200e 	movk	w14, #0x100, lsl #16
+   22320:	8b09010f 	add	x15, x8, x9
+   22324:	d3557de0 	ubfx	x0, x15, #21, #11
+   22328:	8b204b00 	add	x0, x24, w0, uxtw #2
+   2232c:	b86d6801 	ldr	w1, [x0, x13]
+   22330:	d3507df1 	ubfx	x17, x15, #16, #16
+
+--- hit 83, disassembly line 13489 ---
+   2230c:	2a1503e8 	mov	w8, w21
+   22310:	2a1303eb 	mov	w11, w19
+   22314:	5280002c 	mov	w12, #0x1                   	// #1
+   22318:	72a0200d 	movk	w13, #0x100, lsl #16
+   2231c:	72a0200e 	movk	w14, #0x100, lsl #16
+   22320:	8b09010f 	add	x15, x8, x9
+   22324:	d3557de0 	ubfx	x0, x15, #21, #11
+   22328:	8b204b00 	add	x0, x24, w0, uxtw #2
+   2232c:	b86d6801 	ldr	w1, [x0, x13]
+   22330:	d3507df1 	ubfx	x17, x15, #16, #16
+   22334:	1ad12182 	lsl	w2, w12, w17
+
+--- hit 84, disassembly line 13612 ---
+   224f8:	540007c3 	b.cc	225f0 <JNI_OnUnload@@Base+0x7a8c>  // b.lo, b.ul, b.last
+   224fc:	53017d28 	lsr	w8, w9, #1
+   22500:	32160109 	orr	w9, w8, #0x400
+   22504:	2a0a03e8 	mov	w8, w10
+   22508:	3218012a 	orr	w10, w9, #0x100
+   2250c:	6b0a010a 	subs	w10, w8, w10
+   22510:	54000783 	b.cc	22600 <JNI_OnUnload@@Base+0x7a9c>  // b.lo, b.ul, b.last
+   22514:	53017d28 	lsr	w8, w9, #1
+   22518:	32180109 	orr	w9, w8, #0x100
+   2251c:	2a0a03e8 	mov	w8, w10
+   22520:	321a012a 	orr	w10, w9, #0x40
+
+--- hit 85, disassembly line 13616 ---
+   22508:	3218012a 	orr	w10, w9, #0x100
+   2250c:	6b0a010a 	subs	w10, w8, w10
+   22510:	54000783 	b.cc	22600 <JNI_OnUnload@@Base+0x7a9c>  // b.lo, b.ul, b.last
+   22514:	53017d28 	lsr	w8, w9, #1
+   22518:	32180109 	orr	w9, w8, #0x100
+   2251c:	2a0a03e8 	mov	w8, w10
+   22520:	321a012a 	orr	w10, w9, #0x40
+   22524:	6b0a010a 	subs	w10, w8, w10
+   22528:	54000743 	b.cc	22610 <JNI_OnUnload@@Base+0x7aac>  // b.lo, b.ul, b.last
+   2252c:	53017d28 	lsr	w8, w9, #1
+   22530:	321a0109 	orr	w9, w8, #0x40
+
+--- hit 86, disassembly line 13671 ---
+   225e4:	3216012a 	orr	w10, w9, #0x400
+   225e8:	6b0a010a 	subs	w10, w8, w10
+   225ec:	54fff882 	b.cs	224fc <JNI_OnUnload@@Base+0x7998>  // b.hs, b.nlast
+   225f0:	53017d29 	lsr	w9, w9, #1
+   225f4:	3218012a 	orr	w10, w9, #0x100
+   225f8:	6b0a010a 	subs	w10, w8, w10
+   225fc:	54fff8c2 	b.cs	22514 <JNI_OnUnload@@Base+0x79b0>  // b.hs, b.nlast
+   22600:	53017d29 	lsr	w9, w9, #1
+   22604:	321a012a 	orr	w10, w9, #0x40
+   22608:	6b0a010a 	subs	w10, w8, w10
+   2260c:	54fff902 	b.cs	2252c <JNI_OnUnload@@Base+0x79c8>  // b.hs, b.nlast
+
+--- hit 87, disassembly line 13949 ---
+   22a3c:	35fffcc8 	cbnz	w8, 229d4 <JNI_OnUnload@@Base+0x7e70>
+   22a40:	aa1403e0 	mov	x0, x20
+   22a44:	97ffff3c 	bl	22734 <JNI_OnUnload@@Base+0x7bd0>
+   22a48:	17ffffe3 	b	229d4 <JNI_OnUnload@@Base+0x7e70>
+   22a4c:	51040269 	sub	w9, w19, #0x100
+   22a50:	7100313f 	cmp	w9, #0xc
+   22a54:	54000408 	b.hi	22ad4 <JNI_OnUnload@@Base+0x7f70>  // b.pmore
+   22a58:	5280002a 	mov	w10, #0x1                   	// #1
+   22a5c:	1ac9214a 	lsl	w10, w10, w9
+   22a60:	5282222b 	mov	w11, #0x1111                	// #4369
+   22a64:	6a0b015f 	tst	w10, w11
+
+--- hit 88, disassembly line 13969 ---
+   22a8c:	373808ea 	tbnz	w10, #7, 22ba8 <JNI_OnUnload@@Base+0x8044>
+   22a90:	5299ad09 	mov	w9, #0xcd68                	// #52584
+   22a94:	72a02b89 	movk	w9, #0x15c, lsl #16
+   22a98:	17ffffd3 	b	229e4 <JNI_OnUnload@@Base+0x7e80>
+   22a9c:	51440269 	sub	w9, w19, #0x100, lsl #12
+   22aa0:	7100493f 	cmp	w9, #0x12
+   22aa4:	54fff988 	b.hi	229d4 <JNI_OnUnload@@Base+0x7e70>  // b.pmore
+   22aa8:	9000074a 	adrp	x10, 10a000 <JNI_OnUnload@@Base+0xef49c>
+   22aac:	91189d4a 	add	x10, x10, #0x627
+   22ab0:	10fff92b 	adr	x11, 229d4 <JNI_OnUnload@@Base+0x7e70>
+   22ab4:	3869694c 	ldrb	w12, [x10, x9]
+
+--- hit 89, disassembly line 14143 ---
+   22d44:	72a00028 	movk	w8, #0x1, lsl #16
+   22d48:	710a7e9f 	cmp	w20, #0x29f
+   22d4c:	8b080275 	add	x21, x19, x8
+   22d50:	540003ac 	b.gt	22dc4 <JNI_OnUnload@@Base+0x8260>
+   22d54:	51040289 	sub	w9, w20, #0x100
+   22d58:	7100313f 	cmp	w9, #0xc
+   22d5c:	54000688 	b.hi	22e2c <JNI_OnUnload@@Base+0x82c8>  // b.pmore
+   22d60:	52800028 	mov	w8, #0x1                   	// #1
+   22d64:	1ac92108 	lsl	w8, w8, w9
+   22d68:	5282222a 	mov	w10, #0x1111                	// #4369
+   22d6c:	6a0a011f 	tst	w8, w10
+
+--- hit 90, disassembly line 14187 ---
+   22df4:	35001028 	cbnz	w8, 22ff8 <JNI_OnUnload@@Base+0x8494>
+   22df8:	aa1303e0 	mov	x0, x19
+   22dfc:	97fffe4e 	bl	22734 <JNI_OnUnload@@Base+0x7bd0>
+   22e00:	1400007e 	b	22ff8 <JNI_OnUnload@@Base+0x8494>
+   22e04:	7144029f 	cmp	w20, #0x100, lsl #12
+   22e08:	54000c20 	b.eq	22f8c <JNI_OnUnload@@Base+0x8428>  // b.none
+   22e0c:	320c83e8 	mov	w8, #0x100010              	// #1048592
+   22e10:	6b08029f 	cmp	w20, w8
+   22e14:	54000f21 	b.ne	22ff8 <JNI_OnUnload@@Base+0x8494>  // b.any
+   22e18:	f94d2ac0 	ldr	x0, [x22, #6736]
+   22e1c:	a9427bfd 	ldp	x29, x30, [sp, #32]
+
+--- hit 91, disassembly line 14354 ---
+   23090:	6b0a027f 	cmp	w19, w10
+   23094:	5400018c 	b.gt	230c4 <JNI_OnUnload@@Base+0x8560>
+   23098:	7108127f 	cmp	w19, #0x204
+   2309c:	540009a0 	b.eq	231d0 <JNI_OnUnload@@Base+0x866c>  // b.none
+   230a0:	7144027f 	cmp	w19, #0x100, lsl #12
+   230a4:	54000861 	b.ne	231b0 <JNI_OnUnload@@Base+0x864c>  // b.any
+   230a8:	529a8b08 	mov	w8, #0xd458                	// #54360
+   230ac:	72a001e8 	movk	w8, #0xf, lsl #16
+   230b0:	8b080000 	add	x0, x0, x8
+   230b4:	94004296 	bl	33b0c <JNI_OnUnload@@Base+0x18fa8>
+   230b8:	a9417bfd 	ldp	x29, x30, [sp, #16]
+
+--- hit 92, disassembly line 14399 ---
+   23144:	32130100 	orr	w0, w8, #0x2000
+   23148:	a9417bfd 	ldp	x29, x30, [sp, #16]
+   2314c:	f84207f3 	ldr	x19, [sp], #32
+   23150:	d65f03c0 	ret
+   23154:	51040269 	sub	w9, w19, #0x100
+   23158:	7100313f 	cmp	w9, #0xc
+   2315c:	540002a8 	b.hi	231b0 <JNI_OnUnload@@Base+0x864c>  // b.pmore
+   23160:	5280002a 	mov	w10, #0x1                   	// #1
+   23164:	1ac9214a 	lsl	w10, w10, w9
+   23168:	5282222b 	mov	w11, #0x1111                	// #4369
+   2316c:	6a0b015f 	tst	w10, w11
+
+--- hit 93, disassembly line 14498 ---
+   232d0:	8b214008 	add	x8, x0, w1, uxtw
+   232d4:	72a00029 	movk	w9, #0x1, lsl #16
+   232d8:	b8696900 	ldr	w0, [x8, x9]
+   232dc:	d65f03c0 	ret
+   232e0:	51040029 	sub	w9, w1, #0x100
+   232e4:	7100313f 	cmp	w9, #0xc
+   232e8:	54000388 	b.hi	23358 <JNI_OnUnload@@Base+0x87f4>  // b.pmore
+   232ec:	5280002a 	mov	w10, #0x1                   	// #1
+   232f0:	1ac9214a 	lsl	w10, w10, w9
+   232f4:	5282222b 	mov	w11, #0x1111                	// #4369
+   232f8:	6a0b015f 	tst	w10, w11
+
+--- hit 94, disassembly line 14521 ---
+   2332c:	78696908 	ldrh	w8, [x8, x9]
+   23330:	14000040 	b	23430 <JNI_OnUnload@@Base+0x88cc>
+   23334:	7108103f 	cmp	w1, #0x204
+   23338:	540003e0 	b.eq	233b4 <JNI_OnUnload@@Base+0x8850>  // b.none
+   2333c:	7144003f 	cmp	w1, #0x100, lsl #12
+   23340:	540004e0 	b.eq	233dc <JNI_OnUnload@@Base+0x8878>  // b.none
+   23344:	320c83e9 	mov	w9, #0x100010              	// #1048592
+   23348:	6b09003f 	cmp	w1, w9
+   2334c:	54000061 	b.ne	23358 <JNI_OnUnload@@Base+0x87f4>  // b.any
+   23350:	f94d2900 	ldr	x0, [x8, #6736]
+   23354:	14014cce 	b	7668c <JNI_OnUnload@@Base+0x5bb28>
+
+--- hit 95, disassembly line 14719 ---
+   23644:	39430ae9 	ldrb	w9, [x23, #194]
+   23648:	12001e8a 	and	w10, w20, #0xff
+   2364c:	2a0a0129 	orr	w9, w9, w10
+   23650:	53103d29 	lsl	w9, w9, #16
+   23654:	b900c2e9 	str	w9, [x23, #192]
+   23658:	14000091 	b	2389c <JNI_OnUnload@@Base+0x8d38>
+   2365c:	36280434 	tbz	w20, #5, 236e0 <JNI_OnUnload@@Base+0x8b7c>
+   23660:	394006c8 	ldrb	w8, [x22, #1]
+   23664:	363003e8 	tbz	w8, #6, 236e0 <JNI_OnUnload@@Base+0x8b7c>
+   23668:	f9401308 	ldr	x8, [x24, #32]
+   2366c:	52800209 	mov	w9, #0x10                  	// #16
+
+--- hit 96, disassembly line 14726 ---
+   23660:	394006c8 	ldrb	w8, [x22, #1]
+   23664:	363003e8 	tbz	w8, #6, 236e0 <JNI_OnUnload@@Base+0x8b7c>
+   23668:	f9401308 	ldr	x8, [x24, #32]
+   2366c:	52800209 	mov	w9, #0x10                  	// #16
+   23670:	72a02009 	movk	w9, #0x100, lsl #16
+   23674:	f8696908 	ldr	x8, [x8, x9]
+   23678:	b9610d09 	ldr	w9, [x8, #8460]
+   2367c:	7100053f 	cmp	w9, #0x1
+   23680:	54000081 	b.ne	23690 <JNI_OnUnload@@Base+0x8b2c>  // b.any
+   23684:	b962a909 	ldr	w9, [x8, #8872]
+   23688:	321e0129 	orr	w9, w9, #0x4
+
+--- hit 97, disassembly line 14736 ---
+   23688:	321e0129 	orr	w9, w9, #0x4
+   2368c:	b922a909 	str	w9, [x8, #8872]
+   23690:	f9401708 	ldr	x8, [x24, #40]
+   23694:	52800209 	mov	w9, #0x10                  	// #16
+   23698:	72a02009 	movk	w9, #0x100, lsl #16
+   2369c:	f8696908 	ldr	x8, [x8, x9]
+   236a0:	f9504108 	ldr	x8, [x8, #8320]
+   236a4:	b942150a 	ldr	w10, [x8, #532]
+   236a8:	3210014a 	orr	w10, w10, #0x10000
+   236ac:	b902150a 	str	w10, [x8, #532]
+   236b0:	f940170b 	ldr	x11, [x24, #40]
+
+--- hit 98, disassembly line 14768 ---
+   23708:	39461908 	ldrb	w8, [x8, #390]
+   2370c:	37000288 	tbnz	w8, #0, 2375c <JNI_OnUnload@@Base+0x8bf8>
+   23710:	f9401308 	ldr	x8, [x24, #32]
+   23714:	5280020d 	mov	w13, #0x10                  	// #16
+   23718:	72a0200d 	movk	w13, #0x100, lsl #16
+   2371c:	f86d6908 	ldr	x8, [x8, x13]
+   23720:	f950410b 	ldr	x11, [x8, #8320]
+   23724:	b9421568 	ldr	w8, [x11, #532]
+   23728:	320e010c 	orr	w12, w8, #0x40000
+   2372c:	b902156c 	str	w12, [x11, #532]
+   23730:	f9401308 	ldr	x8, [x24, #32]
+
+--- hit 99, disassembly line 14828 ---
+   237f8:	140000df 	b	23b74 <JNI_OnUnload@@Base+0x9010>
+   237fc:	b94212e8 	ldr	w8, [x23, #528]
+   23800:	12001e89 	and	w9, w20, #0xff
+   23804:	5280020a 	mov	w10, #0x10                  	// #16
+   23808:	72a0200a 	movk	w10, #0x100, lsl #16
+   2380c:	0a292108 	bic	w8, w8, w9, lsl #8
+   23810:	b90212e8 	str	w8, [x23, #528]
+   23814:	f9401308 	ldr	x8, [x24, #32]
+   23818:	f86a6908 	ldr	x8, [x8, x10]
+   2381c:	b961090a 	ldr	w10, [x8, #8456]
+   23820:	0a292149 	bic	w9, w10, w9, lsl #8
+
+--- hit 100, disassembly line 14863 ---
+   23884:	17ffffd6 	b	237dc <JNI_OnUnload@@Base+0x8c78>
+   23888:	39430ee9 	ldrb	w9, [x23, #195]
+   2388c:	2a140129 	orr	w9, w9, w20
+   23890:	53081d29 	lsl	w9, w9, #24
+   23894:	b900c2e9 	str	w9, [x23, #192]
+   23898:	37f826a9 	tbnz	w9, #31, 23d6c <JNI_OnUnload@@Base+0x9208>
+   2389c:	b9002509 	str	w9, [x8, #36]
+   238a0:	f9401728 	ldr	x8, [x25, #40]
+   238a4:	f9400fe9 	ldr	x9, [sp, #24]
+   238a8:	eb09011f 	cmp	x8, x9
+   238ac:	540016c0 	b.eq	23b84 <JNI_OnUnload@@Base+0x9020>  // b.none
+
+--- hit 101, disassembly line 14900 ---
+   23918:	39479908 	ldrb	w8, [x8, #486]
+   2391c:	36000288 	tbz	w8, #0, 2396c <JNI_OnUnload@@Base+0x8e08>
+   23920:	f9401308 	ldr	x8, [x24, #32]
+   23924:	5280020c 	mov	w12, #0x10                  	// #16
+   23928:	72a0200c 	movk	w12, #0x100, lsl #16
+   2392c:	f86c6908 	ldr	x8, [x8, x12]
+   23930:	f950410a 	ldr	x10, [x8, #8320]
+   23934:	b9421548 	ldr	w8, [x10, #532]
+   23938:	320f010b 	orr	w11, w8, #0x20000
+   2393c:	b902154b 	str	w11, [x10, #532]
+   23940:	f9401308 	ldr	x8, [x24, #32]
+
+--- hit 102, disassembly line 14923 ---
+   23974:	529a8b08 	mov	w8, #0xd458                	// #54360
+   23978:	72a001e8 	movk	w8, #0xf, lsl #16
+   2397c:	8b080260 	add	x0, x19, x8
+   23980:	9400405d 	bl	33af4 <JNI_OnUnload@@Base+0x18f90>
+   23984:	394602e8 	ldrb	w8, [x23, #384]
+   23988:	121d7908 	and	w8, w8, #0xfffffffb
+   2398c:	2a140108 	orr	w8, w8, w20
+   23990:	390602e8 	strb	w8, [x23, #384]
+   23994:	f9401728 	ldr	x8, [x25, #40]
+   23998:	f9400fe9 	ldr	x9, [sp, #24]
+   2399c:	eb09011f 	cmp	x8, x9
+
+--- hit 103, disassembly line 14926 ---
+   23980:	9400405d 	bl	33af4 <JNI_OnUnload@@Base+0x18f90>
+   23984:	394602e8 	ldrb	w8, [x23, #384]
+   23988:	121d7908 	and	w8, w8, #0xfffffffb
+   2398c:	2a140108 	orr	w8, w8, w20
+   23990:	390602e8 	strb	w8, [x23, #384]
+   23994:	f9401728 	ldr	x8, [x25, #40]
+   23998:	f9400fe9 	ldr	x9, [sp, #24]
+   2399c:	eb09011f 	cmp	x8, x9
+   239a0:	54000f20 	b.eq	23b84 <JNI_OnUnload@@Base+0x9020>  // b.none
+   239a4:	17ffff8e 	b	237dc <JNI_OnUnload@@Base+0x8c78>
+   239a8:	f9401308 	ldr	x8, [x24, #32]
+
+--- hit 104, disassembly line 14934 ---
+   239a0:	54000f20 	b.eq	23b84 <JNI_OnUnload@@Base+0x9020>  // b.none
+   239a4:	17ffff8e 	b	237dc <JNI_OnUnload@@Base+0x8c78>
+   239a8:	f9401308 	ldr	x8, [x24, #32]
+   239ac:	52800209 	mov	w9, #0x10                  	// #16
+   239b0:	72a02009 	movk	w9, #0x100, lsl #16
+   239b4:	f8696908 	ldr	x8, [x8, x9]
+   239b8:	36000074 	tbz	w20, #0, 239c4 <JNI_OnUnload@@Base+0x8e60>
+   239bc:	b94206e9 	ldr	w9, [x23, #516]
+   239c0:	34002429 	cbz	w9, 23e44 <JNI_OnUnload@@Base+0x92e0>
+   239c4:	12000294 	and	w20, w20, #0x1
+   239c8:	b921091f 	str	wzr, [x8, #8456]
+
+--- hit 105, disassembly line 14966 ---
+   23a20:	f9401309 	ldr	x9, [x24, #32]
+   23a24:	b94212ea 	ldr	w10, [x23, #528]
+   23a28:	b94206eb 	ldr	w11, [x23, #516]
+   23a2c:	5280020c 	mov	w12, #0x10                  	// #16
+   23a30:	72a0200c 	movk	w12, #0x100, lsl #16
+   23a34:	f86c6929 	ldr	x9, [x9, x12]
+   23a38:	0a080148 	and	w8, w10, w8
+   23a3c:	4b0b03ea 	neg	w10, w11
+   23a40:	6a0a0108 	ands	w8, w8, w10
+   23a44:	b9210928 	str	w8, [x9, #8456]
+   23a48:	54000960 	b.eq	23b74 <JNI_OnUnload@@Base+0x9010>  // b.none
+
+--- hit 106, disassembly line 14988 ---
+   23a78:	0a090108 	and	w8, w8, w9
+   23a7c:	b90212e8 	str	w8, [x23, #528]
+   23a80:	f9401308 	ldr	x8, [x24, #32]
+   23a84:	5280020a 	mov	w10, #0x10                  	// #16
+   23a88:	72a0200a 	movk	w10, #0x100, lsl #16
+   23a8c:	f86a6908 	ldr	x8, [x8, x10]
+   23a90:	b961090a 	ldr	w10, [x8, #8456]
+   23a94:	0a090149 	and	w9, w10, w9
+   23a98:	1400000a 	b	23ac0 <JNI_OnUnload@@Base+0x8f5c>
+   23a9c:	b94212e8 	ldr	w8, [x23, #528]
+   23aa0:	52800209 	mov	w9, #0x10                  	// #16
+
+--- hit 107, disassembly line 14995 ---
+   23a94:	0a090149 	and	w9, w10, w9
+   23a98:	1400000a 	b	23ac0 <JNI_OnUnload@@Base+0x8f5c>
+   23a9c:	b94212e8 	ldr	w8, [x23, #528]
+   23aa0:	52800209 	mov	w9, #0x10                  	// #16
+   23aa4:	72a02009 	movk	w9, #0x100, lsl #16
+   23aa8:	0a346108 	bic	w8, w8, w20, lsl #24
+   23aac:	b90212e8 	str	w8, [x23, #528]
+   23ab0:	f9401308 	ldr	x8, [x24, #32]
+   23ab4:	f8696908 	ldr	x8, [x8, x9]
+   23ab8:	b9610909 	ldr	w9, [x8, #8456]
+   23abc:	0a346129 	bic	w9, w9, w20, lsl #24
+
+--- hit 108, disassembly line 15092 ---
+   23c18:	7100051f 	cmp	w8, #0x1
+   23c1c:	54000728 	b.hi	23d00 <JNI_OnUnload@@Base+0x919c>  // b.pmore
+   23c20:	f9401308 	ldr	x8, [x24, #32]
+   23c24:	5280020b 	mov	w11, #0x10                  	// #16
+   23c28:	72a0200b 	movk	w11, #0x100, lsl #16
+   23c2c:	f86b6908 	ldr	x8, [x8, x11]
+   23c30:	f9504109 	ldr	x9, [x8, #8320]
+   23c34:	b9421528 	ldr	w8, [x9, #532]
+   23c38:	320b010a 	orr	w10, w8, #0x200000
+   23c3c:	b902152a 	str	w10, [x9, #532]
+   23c40:	f9401308 	ldr	x8, [x24, #32]
+
+--- hit 109, disassembly line 15148 ---
+   23cf8:	38296914 	strb	w20, [x8, x9]
+   23cfc:	17ffff99 	b	23b60 <JNI_OnUnload@@Base+0x8ffc>
+   23d00:	b94212e8 	ldr	w8, [x23, #528]
+   23d04:	52800209 	mov	w9, #0x10                  	// #16
+   23d08:	72a02009 	movk	w9, #0x100, lsl #16
+   23d0c:	120a7908 	and	w8, w8, #0xffdfffff
+   23d10:	b90212e8 	str	w8, [x23, #528]
+   23d14:	f9401308 	ldr	x8, [x24, #32]
+   23d18:	f8696908 	ldr	x8, [x8, x9]
+   23d1c:	b9610909 	ldr	w9, [x8, #8456]
+   23d20:	120a7929 	and	w9, w9, #0xffdfffff
+
+--- hit 110, disassembly line 15430 ---
+   24160:	54fffa20 	b.eq	240a4 <JNI_OnUnload@@Base+0x9540>  // b.none
+   24164:	17ffffbf 	b	24060 <JNI_OnUnload@@Base+0x94fc>
+   24168:	f94012c8 	ldr	x8, [x22, #32]
+   2416c:	52800209 	mov	w9, #0x10                  	// #16
+   24170:	72a02009 	movk	w9, #0x100, lsl #16
+   24174:	f8696908 	ldr	x8, [x8, x9]
+   24178:	79003114 	strh	w20, [x8, #24]
+   2417c:	17ffffc1 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24180:	f94012c8 	ldr	x8, [x22, #32]
+   24184:	52800209 	mov	w9, #0x10                  	// #16
+   24188:	72a02009 	movk	w9, #0x100, lsl #16
+
+--- hit 111, disassembly line 15436 ---
+   24178:	79003114 	strh	w20, [x8, #24]
+   2417c:	17ffffc1 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24180:	f94012c8 	ldr	x8, [x22, #32]
+   24184:	52800209 	mov	w9, #0x10                  	// #16
+   24188:	72a02009 	movk	w9, #0x100, lsl #16
+   2418c:	7200069f 	tst	w20, #0x3
+   24190:	f8696918 	ldr	x24, [x8, x9]
+   24194:	12000688 	and	w8, w20, #0x3
+   24198:	531f7908 	lsl	w8, w8, #1
+   2419c:	11001508 	add	w8, w8, #0x5
+   241a0:	7940b309 	ldrh	w9, [x24, #88]
+
+--- hit 112, disassembly line 15460 ---
+   241d8:	39017b1f 	strb	wzr, [x24, #94]
+   241dc:	140000e1 	b	24560 <JNI_OnUnload@@Base+0x99fc>
+   241e0:	f94012c8 	ldr	x8, [x22, #32]
+   241e4:	52800209 	mov	w9, #0x10                  	// #16
+   241e8:	72a02009 	movk	w9, #0x100, lsl #16
+   241ec:	f8696908 	ldr	x8, [x8, x9]
+   241f0:	7900f114 	strh	w20, [x8, #120]
+   241f4:	17ffffa3 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   241f8:	f94012c8 	ldr	x8, [x22, #32]
+   241fc:	5280020a 	mov	w10, #0x10                  	// #16
+   24200:	72a0200a 	movk	w10, #0x100, lsl #16
+
+--- hit 113, disassembly line 15466 ---
+   241f0:	7900f114 	strh	w20, [x8, #120]
+   241f4:	17ffffa3 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   241f8:	f94012c8 	ldr	x8, [x22, #32]
+   241fc:	5280020a 	mov	w10, #0x10                  	// #16
+   24200:	72a0200a 	movk	w10, #0x100, lsl #16
+   24204:	f86a6908 	ldr	x8, [x8, x10]
+   24208:	36000074 	tbz	w20, #0, 24214 <JNI_OnUnload@@Base+0x96b0>
+   2420c:	b941512a 	ldr	w10, [x9, #336]
+   24210:	34002e0a 	cbz	w10, 247d0 <JNI_OnUnload@@Base+0x9c6c>
+   24214:	12000294 	and	w20, w20, #0x1
+   24218:	b921091f 	str	wzr, [x8, #8456]
+
+--- hit 114, disassembly line 15485 ---
+   2423c:	0a0a0108 	and	w8, w8, w10
+   24240:	b9015d28 	str	w8, [x9, #348]
+   24244:	f94012c8 	ldr	x8, [x22, #32]
+   24248:	52800209 	mov	w9, #0x10                  	// #16
+   2424c:	72a02009 	movk	w9, #0x100, lsl #16
+   24250:	f8696908 	ldr	x8, [x8, x9]
+   24254:	b9610909 	ldr	w9, [x8, #8456]
+   24258:	0a0a0129 	and	w9, w9, w10
+   2425c:	b9210909 	str	w9, [x8, #8456]
+   24260:	f94016e8 	ldr	x8, [x23, #40]
+   24264:	f9400fe9 	ldr	x9, [sp, #24]
+
+--- hit 115, disassembly line 15527 ---
+   242e4:	54ffee00 	b.eq	240a4 <JNI_OnUnload@@Base+0x9540>  // b.none
+   242e8:	17ffff5e 	b	24060 <JNI_OnUnload@@Base+0x94fc>
+   242ec:	f94012c8 	ldr	x8, [x22, #32]
+   242f0:	52800209 	mov	w9, #0x10                  	// #16
+   242f4:	72a02009 	movk	w9, #0x100, lsl #16
+   242f8:	7200069f 	tst	w20, #0x3
+   242fc:	f8696918 	ldr	x24, [x8, x9]
+   24300:	12000688 	and	w8, w20, #0x3
+   24304:	531f7908 	lsl	w8, w8, #1
+   24308:	11001508 	add	w8, w8, #0x5
+   2430c:	79403309 	ldrh	w9, [x24, #24]
+
+--- hit 116, disassembly line 15551 ---
+   24344:	39007b1f 	strb	wzr, [x24, #30]
+   24348:	140000a2 	b	245d0 <JNI_OnUnload@@Base+0x9a6c>
+   2434c:	f94012c8 	ldr	x8, [x22, #32]
+   24350:	52800209 	mov	w9, #0x10                  	// #16
+   24354:	72a02009 	movk	w9, #0x100, lsl #16
+   24358:	f8696908 	ldr	x8, [x8, x9]
+   2435c:	79007114 	strh	w20, [x8, #56]
+   24360:	17ffff48 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24364:	f94012c8 	ldr	x8, [x22, #32]
+   24368:	52800209 	mov	w9, #0x10                  	// #16
+   2436c:	72a02009 	movk	w9, #0x100, lsl #16
+
+--- hit 117, disassembly line 15557 ---
+   2435c:	79007114 	strh	w20, [x8, #56]
+   24360:	17ffff48 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24364:	f94012c8 	ldr	x8, [x22, #32]
+   24368:	52800209 	mov	w9, #0x10                  	// #16
+   2436c:	72a02009 	movk	w9, #0x100, lsl #16
+   24370:	f8696908 	ldr	x8, [x8, x9]
+   24374:	7900b114 	strh	w20, [x8, #88]
+   24378:	17ffff42 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   2437c:	f94012c8 	ldr	x8, [x22, #32]
+   24380:	52800209 	mov	w9, #0x10                  	// #16
+   24384:	72a02009 	movk	w9, #0x100, lsl #16
+
+--- hit 118, disassembly line 15563 ---
+   24374:	7900b114 	strh	w20, [x8, #88]
+   24378:	17ffff42 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   2437c:	f94012c8 	ldr	x8, [x22, #32]
+   24380:	52800209 	mov	w9, #0x10                  	// #16
+   24384:	72a02009 	movk	w9, #0x100, lsl #16
+   24388:	7200069f 	tst	w20, #0x3
+   2438c:	f8696918 	ldr	x24, [x8, x9]
+   24390:	12000688 	and	w8, w20, #0x3
+   24394:	531f7908 	lsl	w8, w8, #1
+   24398:	11001508 	add	w8, w8, #0x5
+   2439c:	7940f309 	ldrh	w9, [x24, #120]
+
+--- hit 119, disassembly line 15606 ---
+   24420:	78296914 	strh	w20, [x8, x9]
+   24424:	17ffff17 	b	24080 <JNI_OnUnload@@Base+0x951c>
+   24428:	f94012c8 	ldr	x8, [x22, #32]
+   2442c:	52800209 	mov	w9, #0x10                  	// #16
+   24430:	72a02009 	movk	w9, #0x100, lsl #16
+   24434:	7200069f 	tst	w20, #0x3
+   24438:	f8696918 	ldr	x24, [x8, x9]
+   2443c:	12000688 	and	w8, w20, #0x3
+   24440:	531f7908 	lsl	w8, w8, #1
+   24444:	11001508 	add	w8, w8, #0x5
+   24448:	79407309 	ldrh	w9, [x24, #56]
+
+--- hit 120, disassembly line 15638 ---
+   244a0:	f94012ca 	ldr	x10, [x22, #32]
+   244a4:	b9415d2b 	ldr	w11, [x9, #348]
+   244a8:	b941512c 	ldr	w12, [x9, #336]
+   244ac:	52800209 	mov	w9, #0x10                  	// #16
+   244b0:	72a02009 	movk	w9, #0x100, lsl #16
+   244b4:	f8696949 	ldr	x9, [x10, x9]
+   244b8:	0a080168 	and	w8, w11, w8
+   244bc:	4b0c03ea 	neg	w10, w12
+   244c0:	6a0a0108 	ands	w8, w8, w10
+   244c4:	b9210928 	str	w8, [x9, #8456]
+   244c8:	54ffde60 	b.eq	24094 <JNI_OnUnload@@Base+0x9530>  // b.none
+
+--- hit 121, disassembly line 16016 ---
+   24a88:	9401107d 	bl	68c7c <JNI_OnUnload@@Base+0x4e118>
+   24a8c:	17ffffa5 	b	24920 <JNI_OnUnload@@Base+0x9dbc>
+   24a90:	f9401308 	ldr	x8, [x24, #32]
+   24a94:	52800209 	mov	w9, #0x10                  	// #16
+   24a98:	72a02009 	movk	w9, #0x100, lsl #16
+   24a9c:	f8696908 	ldr	x8, [x8, x9]
+   24aa0:	36000074 	tbz	w20, #0, 24aac <JNI_OnUnload@@Base+0x9f48>
+   24aa4:	b9415329 	ldr	w9, [x25, #336]
+   24aa8:	34001e89 	cbz	w9, 24e78 <JNI_OnUnload@@Base+0xa314>
+   24aac:	12000294 	and	w20, w20, #0x1
+   24ab0:	b921091f 	str	wzr, [x8, #8456]
+
+--- hit 122, disassembly line 16057 ---
+   24b2c:	f9401308 	ldr	x8, [x24, #32]
+   24b30:	b9415f29 	ldr	w9, [x25, #348]
+   24b34:	b941532a 	ldr	w10, [x25, #336]
+   24b38:	5280020b 	mov	w11, #0x10                  	// #16
+   24b3c:	72a0200b 	movk	w11, #0x100, lsl #16
+   24b40:	f86b6908 	ldr	x8, [x8, x11]
+   24b44:	0a140129 	and	w9, w9, w20
+   24b48:	4b0a03ea 	neg	w10, w10
+   24b4c:	6a0a0129 	ands	w9, w9, w10
+   24b50:	b9210909 	str	w9, [x8, #8456]
+   24b54:	54ffef00 	b.eq	24934 <JNI_OnUnload@@Base+0x9dd0>  // b.none
+
+--- hit 123, disassembly line 16116 ---
+   24c18:	3707e8e9 	tbnz	w9, #0, 24934 <JNI_OnUnload@@Base+0x9dd0>
+   24c1c:	3617e8c8 	tbz	w8, #2, 24934 <JNI_OnUnload@@Base+0x9dd0>
+   24c20:	f9401308 	ldr	x8, [x24, #32]
+   24c24:	52800209 	mov	w9, #0x10                  	// #16
+   24c28:	72a02009 	movk	w9, #0x100, lsl #16
+   24c2c:	f8696908 	ldr	x8, [x8, x9]
+   24c30:	b9610d09 	ldr	w9, [x8, #8460]
+   24c34:	7100053f 	cmp	w9, #0x1
+   24c38:	54000081 	b.ne	24c48 <JNI_OnUnload@@Base+0xa0e4>  // b.any
+   24c3c:	b962a909 	ldr	w9, [x8, #8872]
+   24c40:	321e0129 	orr	w9, w9, #0x4
+
+--- hit 124, disassembly line 16126 ---
+   24c40:	321e0129 	orr	w9, w9, #0x4
+   24c44:	b922a909 	str	w9, [x8, #8872]
+   24c48:	f9401708 	ldr	x8, [x24, #40]
+   24c4c:	52800209 	mov	w9, #0x10                  	// #16
+   24c50:	72a02009 	movk	w9, #0x100, lsl #16
+   24c54:	f8696908 	ldr	x8, [x8, x9]
+   24c58:	f9504108 	ldr	x8, [x8, #8320]
+   24c5c:	b942150a 	ldr	w10, [x8, #532]
+   24c60:	320e014a 	orr	w10, w10, #0x40000
+   24c64:	b902150a 	str	w10, [x8, #532]
+   24c68:	f940170b 	ldr	x11, [x24, #40]
+
+--- hit 125, disassembly line 16167 ---
+   24ce4:	5280020a 	mov	w10, #0x10                  	// #16
+   24ce8:	0a090108 	and	w8, w8, w9
+   24cec:	b9015f28 	str	w8, [x25, #348]
+   24cf0:	f9401308 	ldr	x8, [x24, #32]
+   24cf4:	72a0200a 	movk	w10, #0x100, lsl #16
+   24cf8:	f86a6908 	ldr	x8, [x8, x10]
+   24cfc:	b961090a 	ldr	w10, [x8, #8456]
+   24d00:	0a090149 	and	w9, w10, w9
+   24d04:	b9210909 	str	w9, [x8, #8456]
+   24d08:	f94016e8 	ldr	x8, [x23, #40]
+   24d0c:	f9400fe9 	ldr	x9, [sp, #24]
+
+--- hit 126, disassembly line 16324 ---
+   24f58:	51100029 	sub	w9, w1, #0x400
+   24f5c:	2a0203f3 	mov	w19, w2
+   24f60:	2a0103f5 	mov	w21, w1
+   24f64:	aa0003f4 	mov	x20, x0
+   24f68:	7104013f 	cmp	w9, #0x100
+   24f6c:	8b080008 	add	x8, x0, x8
+   24f70:	540005a2 	b.cs	25024 <JNI_OnUnload@@Base+0xa4c0>  // b.hs, b.nlast
+   24f74:	f9400116 	ldr	x22, [x8]
+   24f78:	52860e09 	mov	w9, #0x3070                	// #12400
+   24f7c:	8b354288 	add	x8, x20, w21, uxtw
+   24f80:	72a00049 	movk	w9, #0x2, lsl #16
+
+--- hit 127, disassembly line 16440 ---
+   25128:	394006e9 	ldrb	w9, [x23, #1]
+   2512c:	363003e9 	tbz	w9, #6, 251a8 <JNI_OnUnload@@Base+0xa644>
+   25130:	f9400909 	ldr	x9, [x8, #16]
+   25134:	5280020a 	mov	w10, #0x10                  	// #16
+   25138:	72a0200a 	movk	w10, #0x100, lsl #16
+   2513c:	f86a6929 	ldr	x9, [x9, x10]
+   25140:	b9610d2a 	ldr	w10, [x9, #8460]
+   25144:	7100055f 	cmp	w10, #0x1
+   25148:	54000081 	b.ne	25158 <JNI_OnUnload@@Base+0xa5f4>  // b.any
+   2514c:	b962a92a 	ldr	w10, [x9, #8872]
+   25150:	321e014a 	orr	w10, w10, #0x4
+
+--- hit 128, disassembly line 16450 ---
+   25150:	321e014a 	orr	w10, w10, #0x4
+   25154:	b922a92a 	str	w10, [x9, #8872]
+   25158:	f9400509 	ldr	x9, [x8, #8]
+   2515c:	5280020b 	mov	w11, #0x10                  	// #16
+   25160:	72a0200b 	movk	w11, #0x100, lsl #16
+   25164:	f86b6929 	ldr	x9, [x9, x11]
+   25168:	f9504129 	ldr	x9, [x9, #8320]
+   2516c:	b942152a 	ldr	w10, [x9, #532]
+   25170:	3210014a 	orr	w10, w10, #0x10000
+   25174:	b902152a 	str	w10, [x9, #532]
+   25178:	f9400508 	ldr	x8, [x8, #8]
+
+--- hit 129, disassembly line 16481 ---
+   251cc:	3940030a 	ldrb	w10, [x24]
+   251d0:	3600028a 	tbz	w10, #0, 25220 <JNI_OnUnload@@Base+0xa6bc>
+   251d4:	f940090a 	ldr	x10, [x8, #16]
+   251d8:	5280020c 	mov	w12, #0x10                  	// #16
+   251dc:	72a0200c 	movk	w12, #0x100, lsl #16
+   251e0:	f86c694a 	ldr	x10, [x10, x12]
+   251e4:	f950414a 	ldr	x10, [x10, #8320]
+   251e8:	b942154b 	ldr	w11, [x10, #532]
+   251ec:	320f016b 	orr	w11, w11, #0x20000
+   251f0:	b902154b 	str	w11, [x10, #532]
+   251f4:	f9400908 	ldr	x8, [x8, #16]
+
+--- hit 130, disassembly line 16504 ---
+   25228:	529a7f08 	mov	w8, #0xd3f8                	// #54264
+   2522c:	72a001e8 	movk	w8, #0xf, lsl #16
+   25230:	8b080280 	add	x0, x20, x8
+   25234:	94003a30 	bl	33af4 <JNI_OnUnload@@Base+0x18f90>
+   25238:	394602c8 	ldrb	w8, [x22, #384]
+   2523c:	121d7908 	and	w8, w8, #0xfffffffb
+   25240:	2a130108 	orr	w8, w8, w19
+   25244:	390602c8 	strb	w8, [x22, #384]
+   25248:	17ffff67 	b	24fe4 <JNI_OnUnload@@Base+0xa480>
+   2524c:	394606c9 	ldrb	w9, [x22, #385]
+   25250:	12001e6a 	and	w10, w19, #0xff
+
+--- hit 131, disassembly line 16507 ---
+   25234:	94003a30 	bl	33af4 <JNI_OnUnload@@Base+0x18f90>
+   25238:	394602c8 	ldrb	w8, [x22, #384]
+   2523c:	121d7908 	and	w8, w8, #0xfffffffb
+   25240:	2a130108 	orr	w8, w8, w19
+   25244:	390602c8 	strb	w8, [x22, #384]
+   25248:	17ffff67 	b	24fe4 <JNI_OnUnload@@Base+0xa480>
+   2524c:	394606c9 	ldrb	w9, [x22, #385]
+   25250:	12001e6a 	and	w10, w19, #0xff
+   25254:	361002d3 	tbz	w19, #2, 252ac <JNI_OnUnload@@Base+0xa748>
+   25258:	3941830b 	ldrb	w11, [x24, #96]
+   2525c:	3700028b 	tbnz	w11, #0, 252ac <JNI_OnUnload@@Base+0xa748>
+
+--- hit 132, disassembly line 16516 ---
+   25258:	3941830b 	ldrb	w11, [x24, #96]
+   2525c:	3700028b 	tbnz	w11, #0, 252ac <JNI_OnUnload@@Base+0xa748>
+   25260:	f940090b 	ldr	x11, [x8, #16]
+   25264:	5280020d 	mov	w13, #0x10                  	// #16
+   25268:	72a0200d 	movk	w13, #0x100, lsl #16
+   2526c:	f86d696b 	ldr	x11, [x11, x13]
+   25270:	f950416b 	ldr	x11, [x11, #8320]
+   25274:	b942156c 	ldr	w12, [x11, #532]
+   25278:	320e018c 	orr	w12, w12, #0x40000
+   2527c:	b902156c 	str	w12, [x11, #532]
+   25280:	f9400908 	ldr	x8, [x8, #16]
+
+--- hit 133, disassembly line 16568 ---
+   25328:	3906fac0 	strb	w0, [x22, #446]
+   2532c:	17ffff2e 	b	24fe4 <JNI_OnUnload@@Base+0xa480>
+   25330:	f9400908 	ldr	x8, [x8, #16]
+   25334:	52800209 	mov	w9, #0x10                  	// #16
+   25338:	72a02009 	movk	w9, #0x100, lsl #16
+   2533c:	f8696908 	ldr	x8, [x8, x9]
+   25340:	36000073 	tbz	w19, #0, 2534c <JNI_OnUnload@@Base+0xa7e8>
+   25344:	b94206c9 	ldr	w9, [x22, #516]
+   25348:	34000e89 	cbz	w9, 25518 <JNI_OnUnload@@Base+0xa9b4>
+   2534c:	12000273 	and	w19, w19, #0x1
+   25350:	b921091f 	str	wzr, [x8, #8456]
+
+--- hit 134, disassembly line 16607 ---
+   253c4:	f9400908 	ldr	x8, [x8, #16]
+   253c8:	b94212ca 	ldr	w10, [x22, #528]
+   253cc:	b94206cb 	ldr	w11, [x22, #516]
+   253d0:	5280020c 	mov	w12, #0x10                  	// #16
+   253d4:	72a0200c 	movk	w12, #0x100, lsl #16
+   253d8:	f86c6908 	ldr	x8, [x8, x12]
+   253dc:	0a090149 	and	w9, w10, w9
+   253e0:	4b0b03ea 	neg	w10, w11
+   253e4:	6a0a0129 	ands	w9, w9, w10
+   253e8:	b9210909 	str	w9, [x8, #8456]
+   253ec:	54ffdfc0 	b.eq	24fe4 <JNI_OnUnload@@Base+0xa480>  // b.none
+
+--- hit 135, disassembly line 16628 ---
+   25418:	0a2a2129 	bic	w9, w9, w10, lsl #8
+   2541c:	b90212c9 	str	w9, [x22, #528]
+   25420:	f9400908 	ldr	x8, [x8, #16]
+   25424:	52800209 	mov	w9, #0x10                  	// #16
+   25428:	72a02009 	movk	w9, #0x100, lsl #16
+   2542c:	f8696908 	ldr	x8, [x8, x9]
+   25430:	b9610909 	ldr	w9, [x8, #8456]
+   25434:	0a2a2129 	bic	w9, w9, w10, lsl #8
+   25438:	b9210909 	str	w9, [x8, #8456]
+   2543c:	17fffeea 	b	24fe4 <JNI_OnUnload@@Base+0xa480>
+   25440:	b94212c9 	ldr	w9, [x22, #528]
+
+--- hit 136, disassembly line 16641 ---
+   2544c:	0a0a0129 	and	w9, w9, w10
+   25450:	b90212c9 	str	w9, [x22, #528]
+   25454:	f9400908 	ldr	x8, [x8, #16]
+   25458:	52800209 	mov	w9, #0x10                  	// #16
+   2545c:	72a02009 	movk	w9, #0x100, lsl #16
+   25460:	f8696908 	ldr	x8, [x8, x9]
+   25464:	b9610909 	ldr	w9, [x8, #8456]
+   25468:	0a0a0129 	and	w9, w9, w10
+   2546c:	b9210909 	str	w9, [x8, #8456]
+   25470:	17fffedd 	b	24fe4 <JNI_OnUnload@@Base+0xa480>
+   25474:	b94212c9 	ldr	w9, [x22, #528]
+
+--- hit 137, disassembly line 16652 ---
+   25478:	0a336129 	bic	w9, w9, w19, lsl #24
+   2547c:	b90212c9 	str	w9, [x22, #528]
+   25480:	f9400908 	ldr	x8, [x8, #16]
+   25484:	52800209 	mov	w9, #0x10                  	// #16
+   25488:	72a02009 	movk	w9, #0x100, lsl #16
+   2548c:	f8696908 	ldr	x8, [x8, x9]
+   25490:	b9610909 	ldr	w9, [x8, #8456]
+   25494:	0a336129 	bic	w9, w9, w19, lsl #24
+   25498:	b9210909 	str	w9, [x8, #8456]
+   2549c:	17fffed2 	b	24fe4 <JNI_OnUnload@@Base+0xa480>
+   254a0:	53061e69 	ubfx	w9, w19, #6, #2
+
+--- hit 138, disassembly line 16665 ---
+   254ac:	7100093f 	cmp	w9, #0x2
+   254b0:	54ffdea1 	b.ne	25084 <JNI_OnUnload@@Base+0xa520>  // b.any
+   254b4:	f9400908 	ldr	x8, [x8, #16]
+   254b8:	52800209 	mov	w9, #0x10                  	// #16
+   254bc:	72a02009 	movk	w9, #0x100, lsl #16
+   254c0:	f8696900 	ldr	x0, [x8, x9]
+   254c4:	b962a808 	ldr	w8, [x0, #8872]
+   254c8:	321c0108 	orr	w8, w8, #0x10
+   254cc:	b922a808 	str	w8, [x0, #8872]
+   254d0:	94003438 	bl	325b0 <JNI_OnUnload@@Base+0x17a4c>
+   254d4:	17fffeec 	b	25084 <JNI_OnUnload@@Base+0xa520>
+
+--- hit 139, disassembly line 16674 ---
+   254d0:	94003438 	bl	325b0 <JNI_OnUnload@@Base+0x17a4c>
+   254d4:	17fffeec 	b	25084 <JNI_OnUnload@@Base+0xa520>
+   254d8:	f9400908 	ldr	x8, [x8, #16]
+   254dc:	52800209 	mov	w9, #0x10                  	// #16
+   254e0:	72a02009 	movk	w9, #0x100, lsl #16
+   254e4:	f8696916 	ldr	x22, [x8, x9]
+   254e8:	b962aac8 	ldr	w8, [x22, #8872]
+   254ec:	aa1603e0 	mov	x0, x22
+   254f0:	321c0108 	orr	w8, w8, #0x10
+   254f4:	b922aac8 	str	w8, [x22, #8872]
+   254f8:	9400342e 	bl	325b0 <JNI_OnUnload@@Base+0x17a4c>
+
+--- hit 140, disassembly line 16836 ---
+   25758:	b9007528 	str	w8, [x9, #116]
+   2575c:	17ffffd2 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   25760:	f9401508 	ldr	x8, [x8, #40]
+   25764:	52800209 	mov	w9, #0x10                  	// #16
+   25768:	72a02009 	movk	w9, #0x100, lsl #16
+   2576c:	f8696908 	ldr	x8, [x8, x9]
+   25770:	79003114 	strh	w20, [x8, #24]
+   25774:	1400012c 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   25778:	f9401509 	ldr	x9, [x8, #40]
+   2577c:	5280020a 	mov	w10, #0x10                  	// #16
+   25780:	72a0200a 	movk	w10, #0x100, lsl #16
+
+--- hit 141, disassembly line 16842 ---
+   25770:	79003114 	strh	w20, [x8, #24]
+   25774:	1400012c 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   25778:	f9401509 	ldr	x9, [x8, #40]
+   2577c:	5280020a 	mov	w10, #0x10                  	// #16
+   25780:	72a0200a 	movk	w10, #0x100, lsl #16
+   25784:	7200069f 	tst	w20, #0x3
+   25788:	f86a6937 	ldr	x23, [x9, x10]
+   2578c:	12000689 	and	w9, w20, #0x3
+   25790:	531f7929 	lsl	w9, w9, #1
+   25794:	11001529 	add	w9, w9, #0x5
+   25798:	794032ea 	ldrh	w10, [x23, #24]
+
+--- hit 142, disassembly line 16866 ---
+   257d0:	39007aff 	strb	wzr, [x23, #30]
+   257d4:	140000bf 	b	25ad0 <JNI_OnUnload@@Base+0xaf6c>
+   257d8:	f9401508 	ldr	x8, [x8, #40]
+   257dc:	52800209 	mov	w9, #0x10                  	// #16
+   257e0:	72a02009 	movk	w9, #0x100, lsl #16
+   257e4:	f8696908 	ldr	x8, [x8, x9]
+   257e8:	79007114 	strh	w20, [x8, #56]
+   257ec:	1400010e 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   257f0:	f9401509 	ldr	x9, [x8, #40]
+   257f4:	5280020a 	mov	w10, #0x10                  	// #16
+   257f8:	72a0200a 	movk	w10, #0x100, lsl #16
+
+--- hit 143, disassembly line 16872 ---
+   257e8:	79007114 	strh	w20, [x8, #56]
+   257ec:	1400010e 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   257f0:	f9401509 	ldr	x9, [x8, #40]
+   257f4:	5280020a 	mov	w10, #0x10                  	// #16
+   257f8:	72a0200a 	movk	w10, #0x100, lsl #16
+   257fc:	7200069f 	tst	w20, #0x3
+   25800:	f86a6937 	ldr	x23, [x9, x10]
+   25804:	12000689 	and	w9, w20, #0x3
+   25808:	531f7929 	lsl	w9, w9, #1
+   2580c:	11001529 	add	w9, w9, #0x5
+   25810:	794072ea 	ldrh	w10, [x23, #56]
+
+--- hit 144, disassembly line 16896 ---
+   25848:	3900faff 	strb	wzr, [x23, #62]
+   2584c:	140000bd 	b	25b40 <JNI_OnUnload@@Base+0xafdc>
+   25850:	f9401508 	ldr	x8, [x8, #40]
+   25854:	52800209 	mov	w9, #0x10                  	// #16
+   25858:	72a02009 	movk	w9, #0x100, lsl #16
+   2585c:	f8696908 	ldr	x8, [x8, x9]
+   25860:	7900b114 	strh	w20, [x8, #88]
+   25864:	140000f0 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   25868:	f9401509 	ldr	x9, [x8, #40]
+   2586c:	5280020a 	mov	w10, #0x10                  	// #16
+   25870:	72a0200a 	movk	w10, #0x100, lsl #16
+
+--- hit 145, disassembly line 16902 ---
+   25860:	7900b114 	strh	w20, [x8, #88]
+   25864:	140000f0 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   25868:	f9401509 	ldr	x9, [x8, #40]
+   2586c:	5280020a 	mov	w10, #0x10                  	// #16
+   25870:	72a0200a 	movk	w10, #0x100, lsl #16
+   25874:	7200069f 	tst	w20, #0x3
+   25878:	f86a6937 	ldr	x23, [x9, x10]
+   2587c:	12000689 	and	w9, w20, #0x3
+   25880:	531f7929 	lsl	w9, w9, #1
+   25884:	11001529 	add	w9, w9, #0x5
+   25888:	7940b2ea 	ldrh	w10, [x23, #88]
+
+--- hit 146, disassembly line 16926 ---
+   258c0:	39017aff 	strb	wzr, [x23, #94]
+   258c4:	140000bb 	b	25bb0 <JNI_OnUnload@@Base+0xb04c>
+   258c8:	f9401508 	ldr	x8, [x8, #40]
+   258cc:	52800209 	mov	w9, #0x10                  	// #16
+   258d0:	72a02009 	movk	w9, #0x100, lsl #16
+   258d4:	f8696908 	ldr	x8, [x8, x9]
+   258d8:	7900f114 	strh	w20, [x8, #120]
+   258dc:	140000d2 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   258e0:	f9401509 	ldr	x9, [x8, #40]
+   258e4:	5280020a 	mov	w10, #0x10                  	// #16
+   258e8:	72a0200a 	movk	w10, #0x100, lsl #16
+
+--- hit 147, disassembly line 16932 ---
+   258d8:	7900f114 	strh	w20, [x8, #120]
+   258dc:	140000d2 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   258e0:	f9401509 	ldr	x9, [x8, #40]
+   258e4:	5280020a 	mov	w10, #0x10                  	// #16
+   258e8:	72a0200a 	movk	w10, #0x100, lsl #16
+   258ec:	7200069f 	tst	w20, #0x3
+   258f0:	f86a6937 	ldr	x23, [x9, x10]
+   258f4:	12000689 	and	w9, w20, #0x3
+   258f8:	531f7929 	lsl	w9, w9, #1
+   258fc:	11001529 	add	w9, w9, #0x5
+   25900:	7940f2ea 	ldrh	w10, [x23, #120]
+
+--- hit 148, disassembly line 16963 ---
+   25954:	94014626 	bl	771ec <JNI_OnUnload@@Base+0x5c688>
+   25958:	140000b3 	b	25c24 <JNI_OnUnload@@Base+0xb0c0>
+   2595c:	f9401508 	ldr	x8, [x8, #40]
+   25960:	52800209 	mov	w9, #0x10                  	// #16
+   25964:	72a02009 	movk	w9, #0x100, lsl #16
+   25968:	f8696908 	ldr	x8, [x8, x9]
+   2596c:	36000074 	tbz	w20, #0, 25978 <JNI_OnUnload@@Base+0xae14>
+   25970:	b9415149 	ldr	w9, [x10, #336]
+   25974:	34001fe9 	cbz	w9, 25d70 <JNI_OnUnload@@Base+0xb20c>
+   25978:	12000294 	and	w20, w20, #0x1
+   2597c:	b921091f 	str	wzr, [x8, #8456]
+
+--- hit 149, disassembly line 16988 ---
+   259b8:	f9401508 	ldr	x8, [x8, #40]
+   259bc:	b9415d4b 	ldr	w11, [x10, #348]
+   259c0:	b941514a 	ldr	w10, [x10, #336]
+   259c4:	5280020c 	mov	w12, #0x10                  	// #16
+   259c8:	72a0200c 	movk	w12, #0x100, lsl #16
+   259cc:	f86c6908 	ldr	x8, [x8, x12]
+   259d0:	0a090169 	and	w9, w11, w9
+   259d4:	4b0a03ea 	neg	w10, w10
+   259d8:	6a0a0129 	ands	w9, w9, w10
+   259dc:	b9210909 	str	w9, [x8, #8456]
+   259e0:	54ffe620 	b.eq	256a4 <JNI_OnUnload@@Base+0xab40>  // b.none
+
+--- hit 150, disassembly line 17010 ---
+   25a10:	0a0b0129 	and	w9, w9, w11
+   25a14:	b9015d49 	str	w9, [x10, #348]
+   25a18:	f9401508 	ldr	x8, [x8, #40]
+   25a1c:	52800209 	mov	w9, #0x10                  	// #16
+   25a20:	72a02009 	movk	w9, #0x100, lsl #16
+   25a24:	f8696908 	ldr	x8, [x8, x9]
+   25a28:	b9610909 	ldr	w9, [x8, #8456]
+   25a2c:	0a0b0129 	and	w9, w9, w11
+   25a30:	b9210909 	str	w9, [x8, #8456]
+   25a34:	17ffff1c 	b	256a4 <JNI_OnUnload@@Base+0xab40>
+   25a38:	aa1303e0 	mov	x0, x19
+
+--- hit 151, disassembly line 17274 ---
+   25e30:	710822bf 	cmp	w21, #0x208
+   25e34:	54000ae1 	b.ne	25f90 <JNI_OnUnload@@Base+0xb42c>  // b.any
+   25e38:	f94006c8 	ldr	x8, [x22, #8]
+   25e3c:	52800209 	mov	w9, #0x10                  	// #16
+   25e40:	72a02009 	movk	w9, #0x100, lsl #16
+   25e44:	f8696908 	ldr	x8, [x8, x9]
+   25e48:	36000074 	tbz	w20, #0, 25e54 <JNI_OnUnload@@Base+0xb2f0>
+   25e4c:	b94152e9 	ldr	w9, [x23, #336]
+   25e50:	34001889 	cbz	w9, 26160 <JNI_OnUnload@@Base+0xb5fc>
+   25e54:	12000294 	and	w20, w20, #0x1
+   25e58:	b921091f 	str	wzr, [x8, #8456]
+
+--- hit 152, disassembly line 17293 ---
+   25e7c:	5280020a 	mov	w10, #0x10                  	// #16
+   25e80:	0a090108 	and	w8, w8, w9
+   25e84:	b9015ee8 	str	w8, [x23, #348]
+   25e88:	f94006c8 	ldr	x8, [x22, #8]
+   25e8c:	72a0200a 	movk	w10, #0x100, lsl #16
+   25e90:	f86a6908 	ldr	x8, [x8, x10]
+   25e94:	b961090a 	ldr	w10, [x8, #8456]
+   25e98:	0a090149 	and	w9, w10, w9
+   25e9c:	b9210909 	str	w9, [x8, #8456]
+   25ea0:	140000be 	b	26198 <JNI_OnUnload@@Base+0xb634>
+   25ea4:	710622bf 	cmp	w21, #0x188
+
+--- hit 153, disassembly line 17329 ---
+   25f0c:	37001469 	tbnz	w9, #0, 26198 <JNI_OnUnload@@Base+0xb634>
+   25f10:	36101448 	tbz	w8, #2, 26198 <JNI_OnUnload@@Base+0xb634>
+   25f14:	f94006c8 	ldr	x8, [x22, #8]
+   25f18:	52800209 	mov	w9, #0x10                  	// #16
+   25f1c:	72a02009 	movk	w9, #0x100, lsl #16
+   25f20:	f8696908 	ldr	x8, [x8, x9]
+   25f24:	b9610d09 	ldr	w9, [x8, #8460]
+   25f28:	7100053f 	cmp	w9, #0x1
+   25f2c:	54000081 	b.ne	25f3c <JNI_OnUnload@@Base+0xb3d8>  // b.any
+   25f30:	b962a909 	ldr	w9, [x8, #8872]
+   25f34:	321e0129 	orr	w9, w9, #0x4
+
+--- hit 154, disassembly line 17339 ---
+   25f34:	321e0129 	orr	w9, w9, #0x4
+   25f38:	b922a909 	str	w9, [x8, #8872]
+   25f3c:	f94002c8 	ldr	x8, [x22]
+   25f40:	52800209 	mov	w9, #0x10                  	// #16
+   25f44:	72a02009 	movk	w9, #0x100, lsl #16
+   25f48:	f8696908 	ldr	x8, [x8, x9]
+   25f4c:	f9504108 	ldr	x8, [x8, #8320]
+   25f50:	b942150a 	ldr	w10, [x8, #532]
+   25f54:	320e014a 	orr	w10, w10, #0x40000
+   25f58:	b902150a 	str	w10, [x8, #532]
+   25f5c:	f94002cb 	ldr	x11, [x22]
+
+--- hit 155, disassembly line 17402 ---
+   26030:	f94006c8 	ldr	x8, [x22, #8]
+   26034:	b9415ee9 	ldr	w9, [x23, #348]
+   26038:	b94152ea 	ldr	w10, [x23, #336]
+   2603c:	5280020b 	mov	w11, #0x10                  	// #16
+   26040:	72a0200b 	movk	w11, #0x100, lsl #16
+   26044:	f86b6908 	ldr	x8, [x8, x11]
+   26048:	0a140129 	and	w9, w9, w20
+   2604c:	4b0a03ea 	neg	w10, w10
+   26050:	6a0a0129 	ands	w9, w9, w10
+   26054:	b9210909 	str	w9, [x8, #8456]
+   26058:	54000a00 	b.eq	26198 <JNI_OnUnload@@Base+0xb634>  // b.none
+
+--- hit 156, disassembly line 17511 ---
+   261e4:	d65f03c0 	ret
+   261e8:	71056d3f 	cmp	w9, #0x15b
+   261ec:	2a1f03e8 	mov	w8, wzr
+   261f0:	5400028d 	b.le	26240 <JNI_OnUnload@@Base+0xb6dc>
+   261f4:	7106013f 	cmp	w9, #0x180
+   261f8:	54ffff40 	b.eq	261e0 <JNI_OnUnload@@Base+0xb67c>  // b.none
+   261fc:	7105793f 	cmp	w9, #0x15e
+   26200:	54ffff00 	b.eq	261e0 <JNI_OnUnload@@Base+0xb67c>  // b.none
+   26204:	7105713f 	cmp	w9, #0x15c
+   26208:	540002a1 	b.ne	2625c <JNI_OnUnload@@Base+0xb6f8>  // b.any
+   2620c:	5296e208 	mov	w8, #0xb710                	// #46864
+
+--- hit 157, disassembly line 17534 ---
+   26240:	7100113f 	cmp	w9, #0x4
+   26244:	54fffce0 	b.eq	261e0 <JNI_OnUnload@@Base+0xb67c>  // b.none
+   26248:	7100f13f 	cmp	w9, #0x3c
+   2624c:	54000081 	b.ne	2625c <JNI_OnUnload@@Base+0xb6f8>  // b.any
+   26250:	52804008 	mov	w8, #0x200                 	// #512
+   26254:	2a0803e0 	mov	w0, w8
+   26258:	d65f03c0 	ret
+   2625c:	8b090008 	add	x8, x0, x9
+   26260:	5296b709 	mov	w9, #0xb5b8                	// #46520
+   26264:	72a001e9 	movk	w9, #0xf, lsl #16
+   26268:	17ffffdd 	b	261dc <JNI_OnUnload@@Base+0xb678>
+
+--- hit 158, disassembly line 17735 ---
+   26564:	540004e0 	b.eq	26600 <JNI_OnUnload@@Base+0xba9c>  // b.none
+   26568:	3500092b 	cbnz	w11, 2668c <JNI_OnUnload@@Base+0xbb28>
+   2656c:	53157e8e 	lsr	w14, w20, #21
+   26570:	5288030f 	mov	w15, #0x4018                	// #16408
+   26574:	72a0200f 	movk	w15, #0x100, lsl #16
+   26578:	8b2e4a6e 	add	x14, x19, w14, uxtw #2
+   2657c:	b86f69c0 	ldr	w0, [x14, x15]
+   26580:	52800c0a 	mov	w10, #0x60                  	// #96
+   26584:	53107e8c 	lsr	w12, w20, #16
+   26588:	5280002d 	mov	w13, #0x1                   	// #1
+   2658c:	9b0a2128 	madd	x8, x9, x10, x8
+
+--- hit 159, disassembly line 17748 ---
+   26598:	b9400100 	ldr	w0, [x8]
+   2659c:	f940050a 	ldr	x10, [x8, #8]
+   265a0:	2a1403eb 	mov	w11, w20
+   265a4:	52800311 	mov	w17, #0x18                  	// #24
+   265a8:	72a02011 	movk	w17, #0x100, lsl #16
+   265ac:	b82f69c9 	str	w9, [x14, x15]
+   265b0:	92755169 	and	x9, x11, #0xfffff800
+   265b4:	8b2c4a6c 	add	x12, x19, w12, uxtw #2
+   265b8:	8a00012e 	and	x14, x9, x0
+   265bc:	b871698f 	ldr	w15, [x12, x17]
+   265c0:	8b0e014e 	add	x14, x10, x14
+
+--- hit 160, disassembly line 17780 ---
+   26618:	d63f0100 	blr	x8
+   2661c:	4b150289 	sub	w9, w20, w21
+   26620:	5288030a 	mov	w10, #0x4018                	// #16408
+   26624:	53157d2b 	lsr	w11, w9, #21
+   26628:	72a0200a 	movk	w10, #0x100, lsl #16
+   2662c:	8b2b4a6b 	add	x11, x19, w11, uxtw #2
+   26630:	b86a696c 	ldr	w12, [x11, x10]
+   26634:	5280002d 	mov	w13, #0x1                   	// #1
+   26638:	53107d2e 	lsr	w14, w9, #16
+   2663c:	1ace21af 	lsl	w15, w13, w14
+   26640:	2a0f018c 	orr	w12, w12, w15
+
+## Calls/references near framebuffer-related imports
+Found 8 graphics-call references.
+
+--- graphics hit 1, disassembly line 473 ---
+   15fb4:	f9436e11 	ldr	x17, [x16, #1752]
+   15fb8:	911b6210 	add	x16, x16, #0x6d8
+   15fbc:	d61f0220 	br	x17
+
+0000000000015fc0 <mbrlen@plt>:
+   15fc0:	f0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   15fc4:	f9437211 	ldr	x17, [x16, #1760]
+   15fc8:	911b8210 	add	x16, x16, #0x6e0
+   15fcc:	d61f0220 	br	x17
+
+0000000000015fd0 <glTexImage2D@plt>:
+   15fd0:	f0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   15fd4:	f9437611 	ldr	x17, [x16, #1768]
+   15fd8:	911ba210 	add	x16, x16, #0x6e8
+   15fdc:	d61f0220 	br	x17
+
+0000000000015fe0 <__strchr_chk@plt>:
+   15fe0:	f0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   15fe4:	f9437a11 	ldr	x17, [x16, #1776]
+   15fe8:	911bc210 	add	x16, x16, #0x6f0
+   15fec:	d61f0220 	br	x17
+
+--- graphics hit 2, disassembly line 653 ---
+   16194:	f943e611 	ldr	x17, [x16, #1992]
+   16198:	911f2210 	add	x16, x16, #0x7c8
+   1619c:	d61f0220 	br	x17
+
+00000000000161a0 <isalnum@plt>:
+   161a0:	d0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   161a4:	f943ea11 	ldr	x17, [x16, #2000]
+   161a8:	911f4210 	add	x16, x16, #0x7d0
+   161ac:	d61f0220 	br	x17
+
+00000000000161b0 <glFramebufferTexture2D@plt>:
+   161b0:	d0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   161b4:	f943ee11 	ldr	x17, [x16, #2008]
+   161b8:	911f6210 	add	x16, x16, #0x7d8
+   161bc:	d61f0220 	br	x17
+
+00000000000161c0 <glShaderSource@plt>:
+   161c0:	d0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   161c4:	f943f211 	ldr	x17, [x16, #2016]
+   161c8:	911f8210 	add	x16, x16, #0x7e0
+   161cc:	d61f0220 	br	x17
+
+--- graphics hit 3, disassembly line 1469 ---
+   16a14:	f9460611 	ldr	x17, [x16, #3080]
+   16a18:	91302210 	add	x16, x16, #0xc08
+   16a1c:	d61f0220 	br	x17
+
+0000000000016a20 <glDeleteFramebuffers@plt>:
+   16a20:	d0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   16a24:	f9460a11 	ldr	x17, [x16, #3088]
+   16a28:	91304210 	add	x16, x16, #0xc10
+   16a2c:	d61f0220 	br	x17
+
+0000000000016a30 <glViewport@plt>:
+   16a30:	d0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   16a34:	f9460e11 	ldr	x17, [x16, #3096]
+   16a38:	91306210 	add	x16, x16, #0xc18
+   16a3c:	d61f0220 	br	x17
+
+0000000000016a40 <dl_iterate_phdr@plt>:
+   16a40:	d0000910 	adrp	x16, 138000 <JNI_OnUnload@@Base+0x11d49c>
+   16a44:	f9461211 	ldr	x17, [x16, #3104]
+   16a48:	91308210 	add	x16, x16, #0xc20
+   16a4c:	d61f0220 	br	x17
+
+--- graphics hit 4, disassembly line 10638 ---
+   1f668:	b9400364 	ldr	w4, [x27]
+   1f66c:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f670:	b9400102 	ldr	w2, [x8]
+   1f674:	f9401fe8 	ldr	x8, [sp, #56]
+   1f678:	2a1f03e1 	mov	w1, wzr
+   1f67c:	2a1f03e5 	mov	w5, wzr
+   1f680:	b9400106 	ldr	w6, [x8]
+   1f684:	f9401be8 	ldr	x8, [sp, #48]
+   1f688:	b9400107 	ldr	w7, [x8]
+   1f68c:	f90003f7 	str	x23, [sp]
+   1f690:	97ffda50 	bl	15fd0 <glTexImage2D@plt>
+   1f694:	f94017e8 	ldr	x8, [sp, #40]
+   1f698:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f69c:	52850021 	mov	w1, #0x2801                	// #10241
+   1f6a0:	b9400102 	ldr	w2, [x8]
+   1f6a4:	97ffda27 	bl	15f40 <glTexParameteri@plt>
+   1f6a8:	b9400342 	ldr	w2, [x26]
+   1f6ac:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   1f6b0:	52850001 	mov	w1, #0x2800                	// #10240
+   1f6b4:	97ffda23 	bl	15f40 <glTexParameteri@plt>
+   1f6b8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+
+--- graphics hit 5, disassembly line 11598 ---
+   20568:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2056c:	97ffd8b9 	bl	16850 <glBindTexture@plt>
+   20570:	29408a66 	ldp	w6, w2, [x19, #4]
+   20574:	b9415f83 	ldr	w3, [x28, #348]
+   20578:	b9416384 	ldr	w4, [x28, #352]
+   2057c:	b9400e67 	ldr	w7, [x19, #12]
+   20580:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   20584:	2a1f03e1 	mov	w1, wzr
+   20588:	2a1f03e5 	mov	w5, wzr
+   2058c:	f90003ff 	str	xzr, [sp]
+   20590:	97ffd690 	bl	15fd0 <glTexImage2D@plt>
+   20594:	b9401662 	ldr	w2, [x19, #20]
+   20598:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   2059c:	52850021 	mov	w1, #0x2801                	// #10241
+   205a0:	97ffd668 	bl	15f40 <glTexParameteri@plt>
+   205a4:	b9401262 	ldr	w2, [x19, #16]
+   205a8:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205ac:	52850001 	mov	w1, #0x2800                	// #10240
+   205b0:	97ffd664 	bl	15f40 <glTexParameteri@plt>
+   205b4:	5281bc20 	mov	w0, #0xde1                 	// #3553
+   205b8:	52850041 	mov	w1, #0x2802                	// #10242
+
+--- graphics hit 6, disassembly line 11626 ---
+   205d8:	aa1903e1 	mov	x1, x25
+   205dc:	97ffd5c1 	bl	15ce0 <glGenFramebuffers@plt>
+   205e0:	b9415b81 	ldr	w1, [x28, #344]
+   205e4:	5291a800 	mov	w0, #0x8d40                	// #36160
+   205e8:	97ffd66a 	bl	15f90 <glBindFramebuffer@plt>
+   205ec:	b9400303 	ldr	w3, [x24]
+   205f0:	5291a800 	mov	w0, #0x8d40                	// #36160
+   205f4:	52919c01 	mov	w1, #0x8ce0                	// #36064
+   205f8:	5281bc22 	mov	w2, #0xde1                 	// #3553
+   205fc:	2a1f03e4 	mov	w4, wzr
+   20600:	97ffd6ec 	bl	161b0 <glFramebufferTexture2D@plt>
+   20604:	5291a800 	mov	w0, #0x8d40                	// #36160
+   20608:	97ffd8ee 	bl	169c0 <glCheckFramebufferStatus@plt>
+   2060c:	b9415b88 	ldr	w8, [x28, #344]
+   20610:	5291a800 	mov	w0, #0x8d40                	// #36160
+   20614:	2a1f03e1 	mov	w1, wzr
+   20618:	b9001a68 	str	w8, [x19, #24]
+   2061c:	97ffd65d 	bl	15f90 <glBindFramebuffer@plt>
+   20620:	b9400f88 	ldr	w8, [x28, #12]
+   20624:	37fff3c8 	tbnz	w8, #31, 2049c <JNI_OnUnload@@Base+0x5938>
+   20628:	b9400380 	ldr	w0, [x28]
+
+--- graphics hit 7, disassembly line 11809 ---
+   208b4:	b9415f56 	ldr	w22, [x26, #348]
+   208b8:	b9416357 	ldr	w23, [x26, #352]
+   208bc:	6b1b02df 	cmp	w22, w27
+   208c0:	54000061 	b.ne	208cc <JNI_OnUnload@@Base+0x5d68>  // b.any
+   208c4:	6b1c02ff 	cmp	w23, w28
+   208c8:	540001c0 	b.eq	20900 <JNI_OnUnload@@Base+0x5d9c>  // b.none
+   208cc:	2a1f03e0 	mov	w0, wzr
+   208d0:	2a1f03e1 	mov	w1, wzr
+   208d4:	2a1603e2 	mov	w2, w22
+   208d8:	2a1703e3 	mov	w3, w23
+   208dc:	97ffd855 	bl	16a30 <glViewport@plt>
+   208e0:	2a1603fb 	mov	w27, w22
+   208e4:	2a1703fc 	mov	w28, w23
+   208e8:	14000006 	b	20900 <JNI_OnUnload@@Base+0x5d9c>
+   208ec:	b94486a0 	ldr	w0, [x21, #1156]
+   208f0:	b9448aa1 	ldr	w1, [x21, #1160]
+   208f4:	b9448ea2 	ldr	w2, [x21, #1164]
+   208f8:	b94492a3 	ldr	w3, [x21, #1168]
+   208fc:	97ffd84d 	bl	16a30 <glViewport@plt>
+   20900:	b9400740 	ldr	w0, [x26, #4]
+   20904:	97ffd757 	bl	16660 <glEnableVertexAttribArray@plt>
+
+--- graphics hit 8, disassembly line 11817 ---
+   208d4:	2a1603e2 	mov	w2, w22
+   208d8:	2a1703e3 	mov	w3, w23
+   208dc:	97ffd855 	bl	16a30 <glViewport@plt>
+   208e0:	2a1603fb 	mov	w27, w22
+   208e4:	2a1703fc 	mov	w28, w23
+   208e8:	14000006 	b	20900 <JNI_OnUnload@@Base+0x5d9c>
+   208ec:	b94486a0 	ldr	w0, [x21, #1156]
+   208f0:	b9448aa1 	ldr	w1, [x21, #1160]
+   208f4:	b9448ea2 	ldr	w2, [x21, #1164]
+   208f8:	b94492a3 	ldr	w3, [x21, #1168]
+   208fc:	97ffd84d 	bl	16a30 <glViewport@plt>
+   20900:	b9400740 	ldr	w0, [x26, #4]
+   20904:	97ffd757 	bl	16660 <glEnableVertexAttribArray@plt>
+   20908:	b9400740 	ldr	w0, [x26, #4]
+   2090c:	f94236a5 	ldr	x5, [x21, #1128]
+   20910:	52800041 	mov	w1, #0x2                   	// #2
+   20914:	528280c2 	mov	w2, #0x1406                	// #5126
+   20918:	2a1f03e3 	mov	w3, wzr
+   2091c:	2a1f03e4 	mov	w4, wzr
+   20920:	97ffd660 	bl	162a0 <glVertexAttribPointer@plt>
+   20924:	b9400b40 	ldr	w0, [x26, #8]
