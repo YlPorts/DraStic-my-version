@@ -33,7 +33,10 @@ jobs:
           patch_start:
               // Read custom 2-bit scale index from packed config bits 51-52.
               // 0=1x, 1=2x, 2=3x, 3=4x.
-              adrp x13, 0x14c000
+              // Fixed encoding for: adrp x13, 0x14c000
+              // when this block is placed at VA 0x1cdf4.
+              // Using .inst avoids ELF relocation shifting the target page.
+              .inst 0x9000098d
               ldr x13, [x13, #1128]
               ubfx x1, x13, #51, #2
 
@@ -61,8 +64,7 @@ jobs:
               ret
           ASM
           aarch64-linux-gnu-as /tmp/hires_scale_patch.S -o /tmp/hires_scale_patch.o
-          aarch64-linux-gnu-ld -Ttext=0x1cdf4 -o /tmp/hires_scale_patch.elf /tmp/hires_scale_patch.o
-          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/hires_scale_patch.elf /tmp/hires_scale_patch.bin
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/hires_scale_patch.o /tmp/hires_scale_patch.bin
           test "$(stat -c%s /tmp/hires_scale_patch.bin)" = "72"
 
       - name: Patch a copy of libdrastic_arm64.so
@@ -89,6 +91,7 @@ jobs:
               prototype/libdrastic_arm64_multiscale.so
           } | tee -a analysis/multiscale_patch.txt
 
+          grep -q "adrp.*x13, 14c000" analysis/multiscale_patch.txt
           grep -q "ubfx.*x1, x13, #51, #2" analysis/multiscale_patch.txt
           grep -q "add.*w13, w1, #0x1" analysis/multiscale_patch.txt
           grep -q "lsl.*w11, w13, #8" analysis/multiscale_patch.txt
