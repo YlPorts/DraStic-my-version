@@ -79,6 +79,7 @@ jobs:
           git add analysis/multiscale_patch.txt
           if ! git diff --cached --quiet; then
             git commit -m "Verify ARM64 multi-scale HiRes native patch"
+            git pull --rebase origin feature/internal-resolution-scaling
             git push
           fi
 
