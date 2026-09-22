@@ -220,7 +220,7 @@
     <string name="str_set_hdr_system">Ajustes de sistema</string>
     <string name="str_set_hdr_video">Ajustes de vídeo</string>
     <string name="str_set_hdr_video_game">Ajustes de vídeo (por juego)</string>
-    <string name="str_set_hires">Renderizado 3D de alta resolución</string>
+    <string name="str_set_hires">Resolución 3D interna (1x-4x)</string>
     <string name="str_set_ignorecardlimit">Ignorar el límite de la tarjeta de juego</string>
     <string name="str_set_key_clear">Desestructurar</string>
     <string name="str_set_key_skip">Omitir</string>
