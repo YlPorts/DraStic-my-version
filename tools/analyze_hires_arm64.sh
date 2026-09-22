@@ -150,6 +150,37 @@ for target in targets:
         print(l)
 PY
   echo
+  echo
+  echo "## Calls to native HiRes size setter at 0x1cde4"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+pat=re.compile(r'\bbl\s+1cde4\b', re.I)
+hits=[i for i,l in enumerate(lines) if pat.search(l)]
+print(f"Found {len(hits)} calls.")
+for n,i in enumerate(hits,1):
+    print(f"\n--- call {n}, disassembly line {i+1} ---")
+    for l in lines[max(0,i-35):min(len(lines),i+25)]:
+        print(l)
+PY
+  echo
+  echo "## Accesses to stored packed config at global offset +1128"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+pat=re.compile(r'\[[xw]\d+,\s*#1128\]')
+hits=[i for i,l in enumerate(lines) if pat.search(l)]
+print(f"Found {len(hits)} accesses.")
+for n,i in enumerate(hits[:100],1):
+    print(f"\n--- config access {n}, disassembly line {i+1} ---")
+    for l in lines[max(0,i-22):min(len(lines),i+28)]:
+        print(l)
+PY
+  echo
+  echo "## ELF program/section mapping for patch addresses"
+  aarch64-linux-gnu-readelf -lW "$BIN" || true
+  aarch64-linux-gnu-readelf -SW "$BIN" | grep -E '(^| )\.(text|plt|rodata|data|bss)( |$)' || true
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
