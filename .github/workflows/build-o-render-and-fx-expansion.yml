@@ -6,6 +6,8 @@ on:
       - feature/internal-resolution-scaling
     paths:
       - '.github/workflows/build-o-render-and-fx-expansion.yml'
+      - 'patches/arm64/renderframe_source_expander.S'
+      - 'tools/patch_renderframe_expander.py'
       - 'patches/arm64/fxrender_expander_adapters.S'
       - 'tools/patch_fxrender_expander.py'
   workflow_dispatch:
@@ -121,6 +123,7 @@ jobs:
           aarch64-linux-gnu-objdump -d --start-address=0x1cc30 --stop-address=0x1cc5c             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/n_alloc.txt
 
           grep -q 'bl.*f0600' /tmp/h_patch/n_renderframe.txt
+          grep -q '1cfbc:.*bl' /tmp/h_patch/n_renderframe.txt
           grep -q 'mov.*#0xf00000' /tmp/h_patch/n_alloc.txt
           grep -q 'cmp.*w2, #0x3' /tmp/h_patch/n_expander.txt
           grep -q 'cmp.*w8, #0x200' /tmp/h_patch/n_expander.txt
