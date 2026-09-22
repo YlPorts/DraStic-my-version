@@ -27,44 +27,7 @@ jobs:
         run: |
           git fetch origin main
           git show origin/main:universal/smali/f0/h.smali > universal/smali/f0/h.smali
-          python3 -c "from pathlib import Path; p=Path('universal/smali/f0/h.smali'); s=p.read_text(); s=s.replace('.field public static D0:Z = false\\n','.field public static D0:Z = false\\n\\n.field public static Hires3DScale:I = 0x1\\n',1); s=s.replace('.field public static V0:Z = false\\n','.field public static V0:Z = false\\n\\n.field public static Hires3DScaleGame:I = 0x1\\n',1); p.write_text(s)"
-
-      - name: Add minimal packed scale bits to n()
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('universal/smali/f0/h.smali')
-          s=p.read_text()
-          sig='.method public static n()J'
-          start=s.index(sig)
-          end=s.index('.end method', start)
-          m=s[start:end]
-          needle='''    :cond_12
-    return-wide v0
-'''
-          repl='''    :cond_12
-    sget v2, Lf0/h;->Hires3DScale:I
-
-    add-int/lit8 v2, v2, -0x1
-
-    and-int/lit8 v2, v2, 0x3
-
-    int-to-long v2, v2
-
-    const/16 v4, 0x33
-
-    shl-long/2addr v2, v4
-
-    or-long/2addr v0, v2
-
-    return-wide v0
-'''
-          if needle not in m:
-              raise SystemExit('n() return anchor missing')
-          m=m.replace(needle,repl,1)
-          s=s[:start]+m+s[end:]
-          p.write_text(s)
-          PY
+          python3 tools/prepare_safe_hires_config.py universal/smali/f0/h.smali
 
       - name: Verify full patched ARM64 library is present
         run: |
