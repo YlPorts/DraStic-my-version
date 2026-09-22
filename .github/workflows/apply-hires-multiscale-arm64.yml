@@ -1,4 +1,4 @@
-name: Install ARM64 multi-scale HiRes patch
+name: Install ARM64 full 1x-4x HiRes patch
 
 on:
   push:
@@ -15,72 +15,132 @@ jobs:
   install-patch:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout full history
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install AArch64 binutils
         run: |
           sudo apt-get update
           sudo apt-get install -y binutils-aarch64-linux-gnu
 
-      - name: Assemble verified patch
+      - name: Restore pristine library from main
         run: |
-          cat > /tmp/hires_scale_patch.S <<'ASM'
+          git fetch origin main
+          git show origin/main:universal/lib/arm64-v8a/libdrastic_arm64.so > /tmp/libdrastic_arm64_original.so
+          test "$(sha256sum /tmp/libdrastic_arm64_original.so | awk '{print $1}')" = "3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902"
+
+      - name: Assemble verified full patch set
+        run: |
+          mkdir -p /tmp/patches analysis
+
+          printf '.text\nmov w2, #0xc00000\n' > /tmp/patches/mem_12m.S
+          aarch64-linux-gnu-as /tmp/patches/mem_12m.S -o /tmp/patches/mem_12m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/mem_12m.o /tmp/patches/mem_12m.bin
+
+          printf '.text\nadd x8, x0, #0x600, lsl #12\n' > /tmp/patches/half_6m.S
+          aarch64-linux-gnu-as /tmp/patches/half_6m.S -o /tmp/patches/half_6m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/half_6m.o /tmp/patches/half_6m.bin
+
+          printf '.text\nmov w10, #0x300000\n' > /tmp/patches/screen_slot_3m.S
+          aarch64-linux-gnu-as /tmp/patches/screen_slot_3m.S -o /tmp/patches/screen_slot_3m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/screen_slot_3m.o /tmp/patches/screen_slot_3m.bin
+
+          cat > /tmp/patches/scale_area.S <<'ASM'
           .text
-          .global patch_start
-          patch_start:
-              // adrp x13, 0x14c000 at VA 0x1cdf4
-              .inst 0x9000098d
-              ldr x13, [x13, #1128]
-              ubfx x1, x13, #51, #2
-              cmp w10, w1
-              b.eq patch_end
-              mov w10, w0
-              add w13, w1, #1
-              lsl w11, w13, #8
-              add w12, w13, w13, lsl #1
-              lsl w12, w12, #6
-              add x9, x9, #0x968
-              mov w15, #1
-              add x8, x8, x10, lsl #2
-              str w11, [x8, #2424]
-              str w12, [x8, #2432]
-              str w1, [x9]
-              str w15, [x8, #2416]
-          patch_end:
-              ret
+          add w8, w8, #1
+          mov w9, #0x400
+          mov w10, #0x200
+          cmp w12, #0x10
+          csel w9, w10, w9, eq
+          mul w9, w9, w8
+          mul w0, w9, w8
+          nop
+          nop
+          ret
           ASM
-          aarch64-linux-gnu-as /tmp/hires_scale_patch.S -o /tmp/hires_scale_patch.o
-          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/hires_scale_patch.o /tmp/hires_scale_patch.bin
-          test "$(stat -c%s /tmp/hires_scale_patch.bin)" = "72"
+          aarch64-linux-gnu-as /tmp/patches/scale_area.S -o /tmp/patches/scale_area.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/scale_area.o /tmp/patches/scale_area.bin
 
-      - name: Patch installed ARM64 library
-        run: |
-          mkdir -p analysis
-          python3 tools/patch_hires_scale_arm64.py \
-            universal/lib/arm64-v8a/libdrastic_arm64.so \
-            /tmp/hires_scale_patch.bin \
-            /tmp/libdrastic_arm64.so \
-            | tee analysis/native_patch_installed.txt
-          test "$(sha256sum /tmp/libdrastic_arm64.so | awk '{print $1}')" = "3667b5ec89f3cef1c7a7eb29f22dc6e13b892a9e9f58434e3d371c51cbfdda69"
-          mv /tmp/libdrastic_arm64.so universal/lib/arm64-v8a/libdrastic_arm64.so
+          cat > /tmp/patches/row_stride.S <<'ASM'
+          .text
+          add w8, w8, #1
+          mov w9, #0x400
+          mov w10, #0x200
+          cmp w11, #0x10
+          csel w9, w10, w9, eq
+          mul w0, w9, w8
+          nop
+          nop
+          ret
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/row_stride.S -o /tmp/patches/row_stride.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/row_stride.o /tmp/patches/row_stride.bin
 
-      - name: Verify installed disassembly
-        run: |
-          aarch64-linux-gnu-objdump -d \
-            --start-address=0x1cde4 --stop-address=0x1ce3c \
-            universal/lib/arm64-v8a/libdrastic_arm64.so \
-            | tee -a analysis/native_patch_installed.txt
-          grep -q "adrp.*x13, 14c000" analysis/native_patch_installed.txt
-          grep -q "ubfx.*x1, x13, #51, #2" analysis/native_patch_installed.txt
-          grep -q "lsl.*w11, w13, #8" analysis/native_patch_installed.txt
-          grep -q "lsl.*w12, w12, #6" analysis/native_patch_installed.txt
+          cat > /tmp/patches/scale_select.S <<'ASM'
+          .text
+          .inst 0x9000098d
+          ldr x13, [x13, #1128]
+          ubfx x1, x13, #51, #2
+          cmp w10, w1
+          b.eq patch_end
+          mov w10, w0
+          add w13, w1, #1
+          lsl w11, w13, #8
+          add w12, w13, w13, lsl #1
+          lsl w12, w12, #6
+          add x9, x9, #0x968
+          mov w15, #1
+          add x8, x8, x10, lsl #2
+          str w11, [x8, #2424]
+          str w12, [x8, #2432]
+          str w1, [x9]
+          str w15, [x8, #2416]
+          patch_end:
+          ret
+          ASM
+          aarch64-linux-gnu-as /tmp/patches/scale_select.S -o /tmp/patches/scale_select.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/scale_select.o /tmp/patches/scale_select.bin
 
-      - name: Commit patched library
+          printf '.text\nmov w2, #0x300000\n' > /tmp/patches/copy_slot_3m.S
+          aarch64-linux-gnu-as /tmp/patches/copy_slot_3m.S -o /tmp/patches/copy_slot_3m.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/patches/copy_slot_3m.o /tmp/patches/copy_slot_3m.bin
+
+          test "$(stat -c%s /tmp/patches/mem_12m.bin)" = "4"
+          test "$(stat -c%s /tmp/patches/half_6m.bin)" = "4"
+          test "$(stat -c%s /tmp/patches/screen_slot_3m.bin)" = "4"
+          test "$(stat -c%s /tmp/patches/scale_area.bin)" = "40"
+          test "$(stat -c%s /tmp/patches/row_stride.bin)" = "36"
+          test "$(stat -c%s /tmp/patches/scale_select.bin)" = "72"
+          test "$(stat -c%s /tmp/patches/copy_slot_3m.bin)" = "4"
+
+      - name: Build full patched library
         run: |
+          python3 tools/apply_arm64_patches.py             /tmp/libdrastic_arm64_original.so             /tmp/libdrastic_arm64_full.so             --patch 0x1cc34:/tmp/patches/mem_12m.bin             --patch 0x1cc50:/tmp/patches/mem_12m.bin             --patch 0x1cc58:/tmp/patches/half_6m.bin             --patch 0x1cd24:/tmp/patches/screen_slot_3m.bin             --patch 0x1cd4c:/tmp/patches/scale_area.bin             --patch 0x1cd88:/tmp/patches/row_stride.bin             --patch 0x1cdf4:/tmp/patches/scale_select.bin             --patch 0x5f0f8:/tmp/patches/copy_slot_3m.bin             | tee analysis/native_full_patch_installed.txt
+
+          test "$(sha256sum /tmp/libdrastic_arm64_full.so | awk '{print $1}')" = "29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5"
+
+      - name: Verify installed binary
+        run: |
+          {
+            aarch64-linux-gnu-objdump -d --start-address=0x1cc24 --stop-address=0x1cc64 /tmp/libdrastic_arm64_full.so
+            aarch64-linux-gnu-objdump -d --start-address=0x1cd18 --stop-address=0x1cdac /tmp/libdrastic_arm64_full.so
+            aarch64-linux-gnu-objdump -d --start-address=0x1cde4 --stop-address=0x1ce3c /tmp/libdrastic_arm64_full.so
+            aarch64-linux-gnu-objdump -d --start-address=0x5f0e8 --stop-address=0x5f104 /tmp/libdrastic_arm64_full.so
+          } | tee -a analysis/native_full_patch_installed.txt
+
+          grep -q "mov.*w2, #0xc00000" analysis/native_full_patch_installed.txt
+          grep -q "mov.*w10, #0x300000" analysis/native_full_patch_installed.txt
+          grep -q "ubfx.*x1, x13, #51, #2" analysis/native_full_patch_installed.txt
+          grep -q "mul.*w0, w9, w8" analysis/native_full_patch_installed.txt
+
+      - name: Install and commit patched library
+        run: |
+          cp /tmp/libdrastic_arm64_full.so universal/lib/arm64-v8a/libdrastic_arm64.so
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add universal/lib/arm64-v8a/libdrastic_arm64.so analysis/native_patch_installed.txt
-          git commit -m "Install ARM64 1x-4x internal 3D resolution patch"
+          git add universal/lib/arm64-v8a/libdrastic_arm64.so analysis/native_full_patch_installed.txt
+          git commit -m "Install full ARM64 1x-4x internal resolution support"
           git pull --rebase origin feature/internal-resolution-scaling
           git push
