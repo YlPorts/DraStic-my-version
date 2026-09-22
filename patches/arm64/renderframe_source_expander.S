@@ -15,6 +15,7 @@ mov x30, x18
 ret
 
 // Bottom entry expects x8/w24 and returns x8/w5.
+.word 0xfeed3001
 bottom_entry:
 mov x18, x30
 mov x0, x8
