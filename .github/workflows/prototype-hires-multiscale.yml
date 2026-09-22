@@ -7,7 +7,6 @@ on:
     paths:
       - '.github/workflows/prototype-hires-multiscale.yml'
       - 'tools/patch_hires_scale_arm64.py'
-      - 'universal/lib/arm64-v8a/libdrastic_arm64.so'
   workflow_dispatch:
 
 permissions:
