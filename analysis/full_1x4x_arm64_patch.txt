@@ -1,0 +1,144 @@
+Input SHA-256: 3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902
+VA 0x1cc34 -> file 0x1cc34, 4 bytes
+  before: 0206a052
+  after : 0218a052
+VA 0x1cc50 -> file 0x1cc50, 4 bytes
+  before: 0206a052
+  after : 0218a052
+VA 0x1cc58 -> file 0x1cc58, 4 bytes
+  before: 08004691
+  after : 08005891
+VA 0x1cd24 -> file 0x1cd24, 4 bytes
+  before: 8a01a052
+  after : 0a06a052
+VA 0x1cd4c -> file 0x1cd4c, 40 bytes
+  before: 090082520a0081520b8080520d4080529f4100714901891aaa018b1a1f0100714001891ac0035fd6
+  after : 08050011098080520a4080529f4100714901891a297d081b207d081b1f2003d51f2003d5c0035fd6
+VA 0x1cd88 -> file 0x1cd88, 36 bytes
+  before: 090081520a8080520c4080527f4100714901891a8a018a1a1f0100714001891ac0035fd6
+  after : 08050011098080520a4080527f4100714901891a207d081b1f2003d51f2003d5c0035fd6
+VA 0x1cdf4 -> file 0x1cdf4, 72 bytes
+  before: 5f01016b00020054ea03002a3f0000710b4080520c2080520d3080520e18805229a125912f0080528b018b1acc018d1a08090a8b0b7909b90c8109b9210100b90f7109b9c0035fd6
+  after : 8d090090ad3542f9a1d173d35f01016ba0010054ea03002a2d040011ab5d1853ac050d0b8c651a5329a125912f00805208090a8b0b7909b90c8109b9210100b90f7109b9c0035fd6
+VA 0x5f0f8 -> file 0x5f0f8, 4 bytes
+  before: 8201a052
+  after : 0206a052
+Output SHA-256: 29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5
+
+## Allocation 0x1cc24-0x1cc64
+
+prototype/libdrastic_arm64_1x4x_full.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000001cc24 <JNI_OnUnload@@Base+0x20c0>:
+   1cc24:	5283210a 	mov	w10, #0x1908                	// #6408
+   1cc28:	b21a07e9 	mov	x9, #0xc0000000c0          	// #824633721024
+   1cc2c:	91254260 	add	x0, x19, #0x950
+   1cc30:	52800201 	mov	w1, #0x10                  	// #16
+   1cc34:	52a01802 	mov	w2, #0xc00000              	// #12582912
+   1cc38:	fd000100 	str	d0, [x8]
+   1cc3c:	b909666a 	str	w10, [x19, #2404]
+   1cc40:	f904c269 	str	x9, [x19, #2432]
+   1cc44:	3d825e61 	str	q1, [x19, #2416]
+   1cc48:	97ffe4ea 	bl	15ff0 <posix_memalign@plt>
+   1cc4c:	f944aa60 	ldr	x0, [x19, #2384]
+   1cc50:	52a01802 	mov	w2, #0xc00000              	// #12582912
+   1cc54:	2a1f03e1 	mov	w1, wzr
+   1cc58:	91580008 	add	x8, x0, #0x600, lsl #12
+   1cc5c:	a9002260 	stp	x0, x8, [x19]
+   1cc60:	97ffe644 	bl	16570 <memset@plt>
+
+## Screen pointer + helpers 0x1cd18-0x1cdac
+
+prototype/libdrastic_arm64_1x4x_full.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000001cd18 <JNI_OnUnload@@Base+0x21b4>:
+   1cd18:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cd1c:	9107e108 	add	x8, x8, #0x1f8
+   1cd20:	b9895909 	ldrsw	x9, [x8, #2392]
+   1cd24:	52a0060a 	mov	w10, #0x300000              	// #3145728
+   1cd28:	f8697908 	ldr	x8, [x8, x9, lsl #3]
+   1cd2c:	12000009 	and	w9, w0, #0x1
+   1cd30:	9baa2120 	umaddl	x0, w9, w10, x8
+   1cd34:	d65f03c0 	ret
+   1cd38:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cd3c:	9107e108 	add	x8, x8, #0x1f8
+   1cd40:	b9495d0c 	ldr	w12, [x8, #2396]
+   1cd44:	8b204908 	add	x8, x8, w0, uxtw #2
+   1cd48:	b9496908 	ldr	w8, [x8, #2408]
+   1cd4c:	11000508 	add	w8, w8, #0x1
+   1cd50:	52808009 	mov	w9, #0x400                 	// #1024
+   1cd54:	5280400a 	mov	w10, #0x200                 	// #512
+   1cd58:	7100419f 	cmp	w12, #0x10
+   1cd5c:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cd60:	1b087d29 	mul	w9, w9, w8
+   1cd64:	1b087d20 	mul	w0, w9, w8
+   1cd68:	d503201f 	nop
+   1cd6c:	d503201f 	nop
+   1cd70:	d65f03c0 	ret
+   1cd74:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cd78:	9107e108 	add	x8, x8, #0x1f8
+   1cd7c:	b9495d0b 	ldr	w11, [x8, #2396]
+   1cd80:	8b204908 	add	x8, x8, w0, uxtw #2
+   1cd84:	b9496908 	ldr	w8, [x8, #2408]
+   1cd88:	11000508 	add	w8, w8, #0x1
+   1cd8c:	52808009 	mov	w9, #0x400                 	// #1024
+   1cd90:	5280400a 	mov	w10, #0x200                 	// #512
+   1cd94:	7100417f 	cmp	w11, #0x10
+   1cd98:	1a890149 	csel	w9, w10, w9, eq	// eq = none
+   1cd9c:	1b087d20 	mul	w0, w9, w8
+   1cda0:	d503201f 	nop
+   1cda4:	d503201f 	nop
+   1cda8:	d65f03c0 	ret
+
+## Scale selector 0x1cde4-0x1ce3c
+
+prototype/libdrastic_arm64_1x4x_full.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000001cde4 <JNI_OnUnload@@Base+0x2280>:
+   1cde4:	b001f888 	adrp	x8, 3f2d000 <JNI_OnUnload@@Base+0x3f1249c>
+   1cde8:	9107e108 	add	x8, x8, #0x1f8
+   1cdec:	8b204909 	add	x9, x8, w0, uxtw #2
+   1cdf0:	b949692a 	ldr	w10, [x9, #2408]
+   1cdf4:	9000098d 	adrp	x13, 14c000 <JNI_OnUnload@@Base+0x13149c>
+   1cdf8:	f94235ad 	ldr	x13, [x13, #1128]
+   1cdfc:	d373d1a1 	ubfx	x1, x13, #51, #2
+   1ce00:	6b01015f 	cmp	w10, w1
+   1ce04:	540001a0 	b.eq	1ce38 <JNI_OnUnload@@Base+0x22d4>  // b.none
+   1ce08:	2a0003ea 	mov	w10, w0
+   1ce0c:	1100042d 	add	w13, w1, #0x1
+   1ce10:	53185dab 	lsl	w11, w13, #8
+   1ce14:	0b0d05ac 	add	w12, w13, w13, lsl #1
+   1ce18:	531a658c 	lsl	w12, w12, #6
+   1ce1c:	9125a129 	add	x9, x9, #0x968
+   1ce20:	5280002f 	mov	w15, #0x1                   	// #1
+   1ce24:	8b0a0908 	add	x8, x8, x10, lsl #2
+   1ce28:	b909790b 	str	w11, [x8, #2424]
+   1ce2c:	b909810c 	str	w12, [x8, #2432]
+   1ce30:	b9000121 	str	w1, [x9]
+   1ce34:	b909710f 	str	w15, [x8, #2416]
+   1ce38:	d65f03c0 	ret
+
+## Full-slot copy 0x5f0e8-0x5f104
+
+prototype/libdrastic_arm64_1x4x_full.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000005f0e8 <JNI_OnUnload@@Base+0x44584>:
+   5f0e8:	a94457f6 	ldp	x22, x21, [sp, #64]
+   5f0ec:	a9435ff8 	ldp	x24, x23, [sp, #48]
+   5f0f0:	a94267fa 	ldp	x26, x25, [sp, #32]
+   5f0f4:	a9416ffc 	ldp	x28, x27, [sp, #16]
+   5f0f8:	52a00602 	mov	w2, #0x300000              	// #3145728
+   5f0fc:	9101c3ff 	add	sp, sp, #0x70
+   5f100:	17feda8c 	b	15b30 <memcpy@plt>
