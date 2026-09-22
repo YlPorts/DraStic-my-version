@@ -1368,11 +1368,7 @@
 
     const-string v2, "_Hires3DScale"
 
-    sget-boolean v3, Lf0/h;->D0:Z
-
-    add-int/lit8 v3, v3, 0x1
-
-    sput v3, Lf0/h;->Hires3DScale:I
+    sget v3, Lf0/h;->Hires3DScale:I
 
     invoke-interface {v0, v2, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
@@ -2053,11 +2049,7 @@
 
     move-result-object v1
 
-    sget-boolean v2, Lf0/h;->V0:Z
-
-    add-int/lit8 v2, v2, 0x1
-
-    sput v2, Lf0/h;->Hires3DScaleGame:I
+    sget v2, Lf0/h;->Hires3DScaleGame:I
 
     invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
