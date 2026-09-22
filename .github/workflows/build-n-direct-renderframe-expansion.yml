@@ -121,7 +121,7 @@ jobs:
           grep -q 'bl.*f0600' /tmp/h_patch/n_renderframe.txt
           grep -q 'mov.*#0xf00000' /tmp/h_patch/n_alloc.txt
           grep -q 'cmp.*w2, #0x3' /tmp/h_patch/n_expander.txt
-          grep -q 'cmp.*w2, #0x4' /tmp/h_patch/n_expander.txt
+          grep -q 'cmp.*w8, #0x200' /tmp/h_patch/n_expander.txt
 
       - name: Verify dynamic Java texture dimensions
         run: |
