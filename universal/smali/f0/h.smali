@@ -5508,8 +5508,38 @@
 
     move-result v0
 
+    const/4 v3, 0x1
+
+    if-ge v0, v3, :hires_global_min_ok
+
+    move v0, v3
+
+    :hires_global_min_ok
+    const/4 v3, 0x4
+
+    if-le v0, v3, :hires_global_max_ok
+
+    move v0, v3
+
+    :hires_global_max_ok
     sput v0, Lf0/h;->Hires3DScale:I
 
+    const/4 v3, 0x1
+
+    if-le v0, v3, :hires_global_legacy_off
+
+    const/4 v3, 0x1
+
+    sput-boolean v3, Lf0/h;->D0:Z
+
+    goto :hires_global_legacy_done
+
+    :hires_global_legacy_off
+    const/4 v3, 0x0
+
+    sput-boolean v3, Lf0/h;->D0:Z
+
+    :hires_global_legacy_done
     const-string v0, "_GlThreadSleep"
 
     invoke-interface {v2, v0, v4}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
@@ -6695,8 +6725,38 @@
 
     move-result v0
 
+    const/4 v2, 0x1
+
+    if-ge v0, v2, :hires_game_min_ok
+
+    move v0, v2
+
+    :hires_game_min_ok
+    const/4 v2, 0x4
+
+    if-le v0, v2, :hires_game_max_ok
+
+    move v0, v2
+
+    :hires_game_max_ok
     sput v0, Lf0/h;->Hires3DScaleGame:I
 
+    const/4 v2, 0x1
+
+    if-le v0, v2, :hires_game_legacy_off
+
+    const/4 v2, 0x1
+
+    sput-boolean v2, Lf0/h;->V0:Z
+
+    goto :hires_game_legacy_done
+
+    :hires_game_legacy_off
+    const/4 v2, 0x0
+
+    sput-boolean v2, Lf0/h;->V0:Z
+
+    :hires_game_legacy_done
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
