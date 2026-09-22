@@ -82,4 +82,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add universal/lib/arm64-v8a/libdrastic_arm64.so analysis/native_patch_installed.txt
           git commit -m "Install ARM64 1x-4x internal 3D resolution patch"
+          git pull --rebase origin feature/internal-resolution-scaling
           git push
