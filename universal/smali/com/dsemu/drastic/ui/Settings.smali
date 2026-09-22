@@ -2630,6 +2630,63 @@
     return-void
 
     :cond_0
+    const v0, 0x7f0902d1
+
+    if-eq p2, v0, :hires_scale_sv_global
+
+    const v0, 0x7f0902d3
+
+    if-ne p2, v0, :hires_scale_sv_continue
+
+    check-cast p1, Landroid/widget/SeekBar;
+
+    sget p2, Lf0/h;->Hires3DScaleGame:I
+
+    const v0, 0x7f0902d2
+
+    goto :hires_scale_sv_apply
+
+    :hires_scale_sv_global
+    check-cast p1, Landroid/widget/SeekBar;
+
+    sget p2, Lf0/h;->Hires3DScale:I
+
+    const v0, 0x7f0902d0
+
+    :hires_scale_sv_apply
+    add-int/lit8 v1, p2, -0x1
+
+    invoke-virtual {p1, v1}, Landroid/widget/ProgressBar;->setProgress(I)V
+
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, ""
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, "×"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    return-void
+
+    :hires_scale_sv_continue
     packed-switch p2, :pswitch_data_0
 
     const/4 v0, 0x1
@@ -8573,6 +8630,91 @@
 
     move-result v2
 
+    const v3, 0x7f0902d1
+
+    if-eq v2, v3, :hires_scale_progress_global
+
+    const v3, 0x7f0902d3
+
+    if-ne v2, v3, :hires_scale_progress_continue
+
+    add-int/lit8 v1, v1, 0x1
+
+    sput v1, Lf0/h;->Hires3DScaleGame:I
+
+    const/4 v3, 0x1
+
+    if-le v1, v3, :hires_scale_progress_game_off
+
+    const/4 v4, 0x1
+
+    sput-boolean v4, Lf0/h;->V0:Z
+
+    goto :hires_scale_progress_game_text
+
+    :hires_scale_progress_game_off
+    const/4 v4, 0x0
+
+    sput-boolean v4, Lf0/h;->V0:Z
+
+    :hires_scale_progress_game_text
+    const v3, 0x7f0902d2
+
+    goto :hires_scale_progress_text
+
+    :hires_scale_progress_global
+    add-int/lit8 v1, v1, 0x1
+
+    sput v1, Lf0/h;->Hires3DScale:I
+
+    const/4 v3, 0x1
+
+    if-le v1, v3, :hires_scale_progress_global_off
+
+    const/4 v4, 0x1
+
+    sput-boolean v4, Lf0/h;->D0:Z
+
+    goto :hires_scale_progress_global_text
+
+    :hires_scale_progress_global_off
+    const/4 v4, 0x0
+
+    sput-boolean v4, Lf0/h;->D0:Z
+
+    :hires_scale_progress_global_text
+    const v3, 0x7f0902d0
+
+    :hires_scale_progress_text
+    invoke-virtual {p0, v3}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/widget/TextView;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, ""
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v5, "×"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    return-void
+
+    :hires_scale_progress_continue
     const/high16 v3, 0x42c80000    # 100.0f
 
     const-string v4, "%2.2f"
