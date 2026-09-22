@@ -20,6 +20,7 @@ jobs:
       - name: Dump callers and plane storage
         run: |
           SO=universal/lib/arm64-v8a/libdrastic_arm64.so
+          aarch64-linux-gnu-objdump -d "$SO" > /tmp/full-q-plane.txt
           {
             echo '===== caller of 5fb8c 0x55200-0x55980 ====='
             aarch64-linux-gnu-objdump -d --start-address=0x55200 --stop-address=0x55980 "$SO"
@@ -29,6 +30,18 @@ jobs:
             echo
             echo '===== core row conversion entry 0x4c5c0-0x4cc70 ====='
             aarch64-linux-gnu-objdump -d --start-address=0x4c5c0 --stop-address=0x4cc70 "$SO"
+            echo
+            echo '===== xrefs to polygon/span renderer 0x55220 ====='
+            grep -nE 'bl[[:space:]]+55220|b[[:space:]]+55220' /tmp/full-q-plane.txt -B 28 -A 44 || true
+            echo
+            echo '===== xrefs to low-level span writer 0x5fb8c ====='
+            grep -nE 'bl[[:space:]]+5fb8c|b[[:space:]]+5fb8c' /tmp/full-q-plane.txt -B 28 -A 44 || true
+            echo
+            echo '===== xrefs to planar line getter 0x5f9f4 ====='
+            grep -nE 'bl[[:space:]]+5f9f4|b[[:space:]]+5f9f4' /tmp/full-q-plane.txt -B 28 -A 44 || true
+            echo
+            echo '===== likely renderer dispatch 0x52c00-0x55240 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x52c00 --stop-address=0x55240 "$SO"
           } | tee /tmp/q-plane-callers.txt
       - uses: actions/upload-artifact@v4
         with:
