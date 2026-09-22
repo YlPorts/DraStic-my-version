@@ -43,8 +43,8 @@ jobs:
             echo '===== likely renderer dispatch 0x52c00-0x55240 ====='
             aarch64-linux-gnu-objdump -d --start-address=0x52c00 --stop-address=0x55240 "$SO"
             echo
-            echo '===== plane/pass renderer 0x59000-0x59c80 ====='
-            aarch64-linux-gnu-objdump -d --start-address=0x59000 --stop-address=0x59c80 "$SO"
+            echo '===== plane/pass renderer 0x59000-0x59f40 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x59000 --stop-address=0x59f40 "$SO"
             echo
             echo '===== xrefs to pass renderer 0x590xx range ====='
             grep -nE 'bl[[:space:]]+59[0-9a-f]{3}|b[[:space:]]+59[0-9a-f]{3}' /tmp/full-q-plane.txt -B 16 -A 24 | head -n 2200 || true
