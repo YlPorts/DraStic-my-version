@@ -25,17 +25,18 @@ def bl(pc,target):
     if not (-(1<<25) <= imm < (1<<25)): raise SystemExit("BL out of range")
     return 0x94000000 | (imm & 0x03ffffff)
 
-# Find bottom_entry from the assembled helper by locating its unique prologue:
-# mov x18,x30 ; mov x0,x8 ; mov w1,w24
-words=[struct.unpack_from("<I", helper, i)[0] for i in range(0,len(helper),4)]
-sig=[0xaa1e03f2,0xaa0803e0,0x2a1803e1]
+marker=struct.pack("<I",0xfeed3001)
 hits=[]
-for i in range(len(words)-2):
-    if words[i:i+3]==sig:
-        hits.append(i*4)
+p=0
+while True:
+    p=helper.find(marker,p)
+    if p<0:
+        break
+    hits.append(p)
+    p+=4
 if len(hits)!=1:
-    raise SystemExit(f"bottom entry signature hits={hits}")
-BOTTOM=HELPER+hits[0]
+    raise SystemExit(f"bottom entry marker hits={hits}")
+BOTTOM=HELPER+hits[0]+4
 
 if u32(TOP_CALL) != 0x531a6545:
     raise SystemExit(f"unexpected top instruction 0x{u32(TOP_CALL):08x}")
