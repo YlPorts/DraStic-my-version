@@ -22,6 +22,8 @@ jobs:
             aarch64-linux-gnu-objdump -d --start-address=0x18e80 --stop-address=0x19040 universal/lib/arm64-v8a/libdrastic_arm64.so
             echo '===== renderFrame 0x1ce80-0x1d020 ====='
             aarch64-linux-gnu-objdump -d --start-address=0x1ce80 --stop-address=0x1d020 universal/lib/arm64-v8a/libdrastic_arm64.so
+            echo '===== fxSetup/fxRender internals 0x1d180-0x1d3b8 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1d180 --stop-address=0x1d3b8 universal/lib/arm64-v8a/libdrastic_arm64.so
           } | tee /tmp/fxrender-arm64.txt
       - uses: actions/upload-artifact@v4
         with:
