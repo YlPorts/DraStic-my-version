@@ -1,0 +1,91 @@
+name: Build C safe UI diagnostic
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-c-safe-ui.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Restore pristine native library
+        run: |
+          git fetch origin main
+          git show origin/main:universal/lib/arm64-v8a/libdrastic_arm64.so > universal/lib/arm64-v8a/libdrastic_arm64.so
+
+      - name: Restore safe config class and add only UI scale fields
+        run: |
+          git show origin/main:universal/smali/f0/h.smali > /tmp/h.main.smali
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/h.main.smali')
+          s=p.read_text()
+
+          a='.field public static D0:Z = false\n'
+          b=a+'\n.field public static Hires3DScale:I = 0x1\n'
+          if a not in s:
+              raise SystemExit('D0 field anchor missing')
+          s=s.replace(a,b,1)
+
+          a='.field public static V0:Z = false\n'
+          b=a+'\n.field public static Hires3DScaleGame:I = 0x1\n'
+          if a not in s:
+              raise SystemExit('V0 field anchor missing')
+          s=s.replace(a,b,1)
+
+          # Keep global/per-game initial values coherent without touching packed config.
+          old='''    sget-boolean v0, Lf0/h;->D0:Z
+
+    sput-boolean v0, Lf0/h;->V0:Z
+
+    sget v0, Lf0/h;->s1:I'''
+          new='''    sget-boolean v0, Lf0/h;->D0:Z
+
+    sput-boolean v0, Lf0/h;->V0:Z
+
+    const/4 v0, 0x1
+
+    sput v0, Lf0/h;->Hires3DScale:I
+
+    sput v0, Lf0/h;->Hires3DScaleGame:I
+
+    sget v0, Lf0/h;->s1:I'''
+          if old not in s:
+              raise SystemExit('A() anchor missing')
+          s=s.replace(old,new,1)
+
+          Path('universal/smali/f0/h.smali').write_text(s)
+          PY
+
+      - name: Build APK
+        run: |
+          java -jar apktool.jar b universal -o DraStic_C_SAFE_UI_TEST.apk
+
+      - name: Sign and verify
+        run: |
+          java -jar uber-apk-signer.jar --apks DraStic_C_SAFE_UI_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks DraStic_C_SAFE_UI_TEST.apk --onlyVerify --verbose
+          sha256sum DraStic_C_SAFE_UI_TEST.apk > DraStic_C_SAFE_UI_TEST.sha256
+
+      - name: Upload C diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-C-safe-UI-test
+          path: |
+            DraStic_C_SAFE_UI_TEST.apk
+            DraStic_C_SAFE_UI_TEST.sha256
