@@ -29,8 +29,7 @@ jobs:
 
       - name: Analyze libdrastic_arm64.so
         run: |
-          chmod +x tools/analyze_hires_arm64.sh
-          tools/analyze_hires_arm64.sh
+          bash tools/analyze_hires_arm64.sh
 
       - name: Commit analysis report
         run: |
