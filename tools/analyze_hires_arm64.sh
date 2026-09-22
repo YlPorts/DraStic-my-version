@@ -100,6 +100,56 @@ for n,i in enumerate(hits[:160],1):
         print(l)
 PY
   echo
+  echo
+  echo "## Config high-word bit 9 tests (Hires3D bit 41)"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+pat=re.compile(r'\b(tbz|tbnz)\b\s+w\d+,\s*#9\b', re.I)
+hits=[i for i,l in enumerate(lines) if pat.search(l)]
+print(f"Found {len(hits)} bit-9 tests.")
+for n,i in enumerate(hits[:120],1):
+    print(f"\n--- bit9 hit {n}, disassembly line {i+1} ---")
+    for l in lines[max(0,i-12):min(len(lines),i+17)]:
+        print(l)
+PY
+  echo
+  echo "## Writes/reads of candidate render size fields +348 / +352"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+pat=re.compile(r'\[(?:x|w)\d+,\s*#(?:348|352)\]')
+hits=[i for i,l in enumerate(lines) if pat.search(l)]
+print(f"Found {len(hits)} accesses.")
+for n,i in enumerate(hits[:180],1):
+    print(f"\n--- size-field hit {n}, disassembly line {i+1} ---")
+    for l in lines[max(0,i-14):min(len(lines),i+19)]:
+        print(l)
+PY
+  echo
+  echo "## Functions around applyConfig helper targets"
+  python3 - "$TMP_DIS" <<'PY'
+import re, sys
+lines=open(sys.argv[1], errors='replace').read().splitlines()
+targets=(0x1cbc0,0x1d728,0x1f600,0x20500)
+addr_re=re.compile(r'^\s*([0-9a-fA-F]+):')
+for target in targets:
+    nearest=None
+    for i,l in enumerate(lines):
+        m=addr_re.match(l)
+        if m:
+            a=int(m.group(1),16)
+            if a>=target:
+                nearest=i
+                break
+    print(f"\n=== around 0x{target:x} ===")
+    if nearest is None:
+        print("not found")
+        continue
+    for l in lines[max(0,nearest-30):min(len(lines),nearest+180)]:
+        print(l)
+PY
+  echo
   echo "## Calls/references near framebuffer-related imports"
   python3 - "$TMP_DIS" <<'PY'
 import re, sys
