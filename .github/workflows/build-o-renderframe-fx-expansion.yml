@@ -8,6 +8,8 @@ on:
       - '.github/workflows/build-o-renderframe-fx-expansion.yml'
       - 'patches/arm64/renderframe_source_expander.S'
       - 'tools/patch_renderframe_expander.py'
+      - 'patches/arm64/upload_source_expander.S'
+      - 'tools/patch_upload_expander.py'
   workflow_dispatch:
 
 jobs:
@@ -97,7 +99,7 @@ jobs:
           grep -q 'mov.*w1, #0x180000' /tmp/h_patch/verify.txt
           sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/native.sha256
 
-      - name: Add scratch space and direct renderFrame expander
+      - name: Add scratch space and clean four-site upload expander
         run: |
           cat > /tmp/h_patch/w2_alloc15m.S <<'ASM'
           .text
@@ -107,25 +109,24 @@ jobs:
           aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/w2_alloc15m.o /tmp/h_patch/w2_alloc15m.bin
           test "$(stat -c%s /tmp/h_patch/w2_alloc15m.bin)" = 4
 
-          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/h_patch/libdrastic_arm64_n0.so             --expected-sha256 ab4ca1c5bf814962551110fa79b29d71d8265d00c527c223efe19bb61e35a1ac             --patch 0x1cc34:/tmp/h_patch/w2_alloc15m.bin             --patch 0x1cc50:/tmp/h_patch/w2_alloc15m.bin
+          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/h_patch/libdrastic_arm64_o0.so             --expected-sha256 ab4ca1c5bf814962551110fa79b29d71d8265d00c527c223efe19bb61e35a1ac             --patch 0x1cc34:/tmp/h_patch/w2_alloc15m.bin             --patch 0x1cc50:/tmp/h_patch/w2_alloc15m.bin
 
-          aarch64-linux-gnu-as patches/arm64/renderframe_source_expander.S -o /tmp/h_patch/renderframe_expander.o
-          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/renderframe_expander.o /tmp/h_patch/renderframe_expander.bin
+          aarch64-linux-gnu-as patches/arm64/upload_source_expander.S -o /tmp/h_patch/upload_expander.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/h_patch/upload_expander.o /tmp/h_patch/upload_expander.bin
 
-          python3 tools/patch_renderframe_expander.py             /tmp/h_patch/libdrastic_arm64_n0.so             /tmp/h_patch/renderframe_expander.bin             /tmp/h_patch/libdrastic_arm64_n.so
+          python3 tools/patch_upload_expander.py             /tmp/h_patch/libdrastic_arm64_o0.so             /tmp/h_patch/upload_expander.bin             /tmp/h_patch/libdrastic_arm64_o.so
 
-          cp /tmp/h_patch/libdrastic_arm64_n.so universal/lib/arm64-v8a/libdrastic_arm64.so
+          cp /tmp/h_patch/libdrastic_arm64_o.so universal/lib/arm64-v8a/libdrastic_arm64.so
 
-          aarch64-linux-gnu-objdump -d --start-address=0x1cf40 --stop-address=0x1cfc0 universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_renderframe.txt
-          aarch64-linux-gnu-objdump -d --start-address=0x1d2b8 --stop-address=0x1d36c universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_fxrender.txt
-          aarch64-linux-gnu-objdump -d --start-address=0xf0600 --stop-address=0xf0a00 universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_expander.txt
-          aarch64-linux-gnu-objdump -d --start-address=0x1cc30 --stop-address=0x1cc5c universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_alloc.txt
+          aarch64-linux-gnu-objdump -d --start-address=0x1cf60 --stop-address=0x1d370             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_sites.txt
+          aarch64-linux-gnu-objdump -d --start-address=0xf0600 --stop-address=0xf0b00             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_expander.txt
+          aarch64-linux-gnu-objdump -d --start-address=0x1cc30 --stop-address=0x1cc5c             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/h_patch/o_alloc.txt
 
-          grep -q 'bl.*f0600' /tmp/h_patch/o_renderframe.txt
-          test "$(grep -c 'bl.*f0' /tmp/h_patch/o_fxrender.txt)" -ge 2
+          test "$(grep -c 'bl.*f0' /tmp/h_patch/o_sites.txt)" -ge 4
           grep -q 'mov.*#0xf00000' /tmp/h_patch/o_alloc.txt
-          grep -q 'cmp.*w2, #0x3' /tmp/h_patch/o_expander.txt
+          grep -q 'cmp.*w9, #0x3' /tmp/h_patch/o_expander.txt
           grep -q 'cmp.*w8, #0x200' /tmp/h_patch/o_expander.txt
+          grep -q '8363' /tmp/h_patch/o_expander.txt
 
       - name: Verify dynamic Java texture dimensions
         run: |
