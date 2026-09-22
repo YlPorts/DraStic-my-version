@@ -39,5 +39,6 @@ jobs:
             echo "No report changes."
           else
             git commit -m "Analyze DraStic ARM64 HiRes3D path"
+            git pull --rebase origin feature/internal-resolution-scaling
             git push
           fi
