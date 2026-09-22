@@ -1,0 +1,88 @@
+name: Build F synced persistent 1x-4x test
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-f-synced-persistent.yml'
+      - 'patches/arm64/screenbuffers_hires16.S'
+      - 'patches/arm64/screenbuffers_hires32.S'
+      - 'tools/append_arm64_branch.py'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Restore safe C config and minimal scale transport
+        run: |
+          git fetch origin main
+          git show origin/main:universal/smali/f0/h.smali > universal/smali/f0/h.smali
+          python3 tools/prepare_safe_hires_config.py universal/smali/f0/h.smali
+
+      - name: Assemble generic HiRes screen downsamplers
+        run: |
+          mkdir -p /tmp/e_patch
+          aarch64-linux-gnu-as patches/arm64/screenbuffers_hires16.S -o /tmp/e_patch/h16.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/e_patch/h16.o /tmp/e_patch/h16.bin
+          python3 tools/append_arm64_branch.py /tmp/e_patch/h16.bin 0x19268 0x195f0
+
+          aarch64-linux-gnu-as patches/arm64/screenbuffers_hires32.S -o /tmp/e_patch/h32.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/e_patch/h32.o /tmp/e_patch/h32.bin
+          python3 tools/append_arm64_branch.py /tmp/e_patch/h32.bin 0x19398 0x195f0
+
+          test "$(stat -c%s /tmp/e_patch/h16.bin)" -le $((0x19398-0x19268))
+          test "$(stat -c%s /tmp/e_patch/h32.bin)" -le $((0x19530-0x19398))
+          echo "h16 bytes: $(stat -c%s /tmp/e_patch/h16.bin)"
+          echo "h32 bytes: $(stat -c%s /tmp/e_patch/h32.bin)"
+
+      - name: Patch current full 1x-4x ARM64 library
+        run: |
+          test "$(sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | awk '{print $1}')" = "29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5"
+          python3 tools/apply_arm64_patches.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/e_patch/libdrastic_arm64_e.so             --expected-sha256 29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5             --patch 0x19268:/tmp/e_patch/h16.bin             --patch 0x19398:/tmp/e_patch/h32.bin
+          cp /tmp/e_patch/libdrastic_arm64_e.so universal/lib/arm64-v8a/libdrastic_arm64.so
+          sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/e_patch/native.sha256
+
+      - name: Verify patched screenbuffer paths
+        run: |
+          aarch64-linux-gnu-objdump -d --start-address=0x19268 --stop-address=0x19530 universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/e_patch/screenbuffers.txt
+          grep -q "ubfx.*x1, x25, #51, #2" /tmp/e_patch/screenbuffers.txt
+          grep -q "cmp.*w13, #0x100" /tmp/e_patch/screenbuffers.txt
+          grep -q "cmp.*w8, #0xc0" /tmp/e_patch/screenbuffers.txt
+
+      - name: Build F APK
+        run: |
+          java -jar apktool.jar b universal -o DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.apk
+
+      - name: Sign and verify APK
+        run: |
+          java -jar uber-apk-signer.jar --apks DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.apk --onlyVerify --verbose
+          sha256sum DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.apk > DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.sha256
+
+      - name: Upload F test
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-F-synced-persistent-1x4x-test
+          path: |
+            DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.apk
+            DraStic_F_SYNCED_PERSISTENT_1x4x_TEST.sha256
+            /tmp/e_patch/native.sha256
+            /tmp/e_patch/screenbuffers.txt
