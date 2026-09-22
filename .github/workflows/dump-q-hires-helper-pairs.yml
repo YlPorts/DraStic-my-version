@@ -1,0 +1,60 @@
+name: Dump Q HiRes helper pairs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-q-hires-helper-pairs.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Dump normal and HiRes helper pairs
+        run: |
+          SO=universal/lib/arm64-v8a/libdrastic_arm64.so
+          OUT=/tmp/q-hires-helper-pairs.txt
+          {
+            echo '===== normal span writer 0x5fb8c-0x6054c ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x5fb8c --stop-address=0x6054c "$SO"
+
+            echo
+            echo '===== hires span writer 0x61190-0x61b50 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x61190 --stop-address=0x61b50 "$SO"
+
+            echo
+            echo '===== normal batch helper 0x6054c-0x61190 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x6054c --stop-address=0x61190 "$SO"
+
+            echo
+            echo '===== hires batch helper 0x61b50-0x62880 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x61b50 --stop-address=0x62880 "$SO"
+
+            echo
+            echo '===== normal edge helper 0x8df08-0x8e0ac ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x8df08 --stop-address=0x8e0ac "$SO"
+
+            echo
+            echo '===== hires edge helper 0x8f2f0-0x8f4e0 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x8f2f0 --stop-address=0x8f4e0 "$SO"
+
+            echo
+            echo '===== hires row helpers 0x8f4e0-0x8f980 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x8f4e0 --stop-address=0x8f980 "$SO"
+          } | tee "$OUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q-hires-helper-pairs
+          path: /tmp/q-hires-helper-pairs.txt
