@@ -1,0 +1,83 @@
+name: Build O clean 1x2x + expanded 3x4x test
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-o-clean-upload-expander.yml'
+      - 'patches/arm64/upload_expander_clean.S'
+      - 'tools/patch_upload_expander_clean.py'
+      - 'tools/prepare_safe_hires_live_config.py'
+      - 'universal/smali/com/dsemu/drastic/DraSticGlView$j.smali'
+      - 'universal/smali/com/dsemu/drastic/DraSticExtGlView$a.smali'
+      - 'universal/smali/com/dsemu/drastic/ui/Settings.smali'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Restore pristine native core and startup-safe config
+        run: |
+          git fetch origin main
+          git show origin/main:universal/lib/arm64-v8a/libdrastic_arm64.so > universal/lib/arm64-v8a/libdrastic_arm64.so
+          git show origin/main:universal/smali/f0/h.smali > universal/smali/f0/h.smali
+          python3 tools/prepare_safe_hires_live_config.py universal/smali/f0/h.smali
+          test "$(sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | awk '{print $1}')" = "3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902"
+
+      - name: Build and install clean upload expander
+        run: |
+          mkdir -p /tmp/o_patch
+          aarch64-linux-gnu-as patches/arm64/upload_expander_clean.S -o /tmp/o_patch/upload.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/o_patch/upload.o /tmp/o_patch/upload.bin
+          python3 tools/patch_upload_expander_clean.py             universal/lib/arm64-v8a/libdrastic_arm64.so             /tmp/o_patch/upload.bin             /tmp/o_patch/libdrastic_arm64_o.so
+          cp /tmp/o_patch/libdrastic_arm64_o.so universal/lib/arm64-v8a/libdrastic_arm64.so
+
+      - name: Verify O native patch
+        run: |
+          aarch64-linux-gnu-objdump -d --start-address=0x1cf54 --stop-address=0x1cfd8             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/o_patch/renderframe.txt
+          aarch64-linux-gnu-objdump -d --start-address=0x1d2b0 --stop-address=0x1d36c             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/o_patch/fxrender.txt
+          aarch64-linux-gnu-objdump -d --start-address=0xf0600 --stop-address=0xf09e4             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/o_patch/helper.txt
+          aarch64-linux-gnu-objdump -d --start-address=0x1cc30 --stop-address=0x1cc5c             universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/o_patch/alloc.txt
+
+          test "$(grep -c 'bl.*f0' /tmp/o_patch/renderframe.txt)" -ge 2
+          test "$(grep -c 'bl.*f0' /tmp/o_patch/fxrender.txt)" -ge 2
+          grep -q 'ubfx.*#51, #2' /tmp/o_patch/helper.txt
+          grep -q 'cmp.*#0x200' /tmp/o_patch/helper.txt
+          grep -q 'mov.*#0x600000' /tmp/o_patch/alloc.txt
+          sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | tee /tmp/o_patch/native.sha256
+
+      - name: Build O APK
+        run: |
+          java -jar apktool.jar b universal -o DraStic_O_CLEAN_UPLOAD_1x4x_TEST.apk
+
+      - name: Sign and verify
+        run: |
+          java -jar uber-apk-signer.jar --apks DraStic_O_CLEAN_UPLOAD_1x4x_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks DraStic_O_CLEAN_UPLOAD_1x4x_TEST.apk --onlyVerify --verbose
+          sha256sum DraStic_O_CLEAN_UPLOAD_1x4x_TEST.apk > DraStic_O_CLEAN_UPLOAD_1x4x_TEST.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-O-clean-upload-1x4x-test
+          path: |
+            DraStic_O_CLEAN_UPLOAD_1x4x_TEST.apk
+            DraStic_O_CLEAN_UPLOAD_1x4x_TEST.sha256
+            /tmp/o_patch/native.sha256
+            /tmp/o_patch/renderframe.txt
+            /tmp/o_patch/fxrender.txt
