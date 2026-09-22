@@ -20,6 +20,8 @@
 
 .field public static D0:Z = false
 
+.field public static Hires3DScale:I = 0x1
+
 .field public static E:I = 0x0
 
 .field public static E0:Z = false
@@ -91,6 +93,8 @@
 .field public static V:Z = false
 
 .field public static V0:Z = false
+
+.field public static Hires3DScaleGame:I = 0x1
 
 .field public static W:Z = false
 
@@ -457,7 +461,7 @@
 
     sput-boolean v0, Lf0/h;->W0:Z
 
-    const/16 v5, 0xb
+    const/16 v5, 0xc
 
     new-array v5, v5, [Ljava/lang/String;
 
@@ -509,11 +513,17 @@
 
     const/16 v1, 0x9
 
-    const-string v6, "_CurrentFx"
+    const-string v6, "_Hires3DScale"
 
     aput-object v6, v5, v1
 
     const/16 v1, 0xa
+
+    const-string v6, "_CurrentFx"
+
+    aput-object v6, v5, v1
+
+    const/16 v1, 0xb
 
     const-string v6, "_Blend"
 
@@ -738,6 +748,10 @@
     sget-boolean v0, Lf0/h;->D0:Z
 
     sput-boolean v0, Lf0/h;->V0:Z
+
+    sget v0, Lf0/h;->Hires3DScale:I
+
+    sput v0, Lf0/h;->Hires3DScaleGame:I
 
     sget v0, Lf0/h;->s1:I
 
@@ -1351,6 +1365,16 @@
     sget-boolean v3, Lf0/h;->D0:Z
 
     invoke-interface {v0, v2, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    const-string v2, "_Hires3DScale"
+
+    sget-boolean v3, Lf0/h;->D0:Z
+
+    add-int/lit8 v3, v3, 0x1
+
+    sput v3, Lf0/h;->Hires3DScale:I
+
+    invoke-interface {v0, v2, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     const-string v2, "_GlThreadSleep"
 
@@ -2014,6 +2038,28 @@
     sget-boolean v2, Lf0/h;->V0:Z
 
     invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v2, "_Hires3DScale"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    sget-boolean v2, Lf0/h;->V0:Z
+
+    add-int/lit8 v2, v2, 0x1
+
+    sput v2, Lf0/h;->Hires3DScaleGame:I
+
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -5444,6 +5490,18 @@
 
     sput-boolean v0, Lf0/h;->D0:Z
 
+    const-string v0, "_Hires3DScale"
+
+    sget-boolean v3, Lf0/h;->D0:Z
+
+    add-int/lit8 v3, v3, 0x1
+
+    invoke-interface {v2, v0, v3}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result v0
+
+    sput v0, Lf0/h;->Hires3DScale:I
+
     const-string v0, "_GlThreadSleep"
 
     invoke-interface {v2, v0, v4}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
@@ -6608,6 +6666,28 @@
     move-result v0
 
     sput-boolean v0, Lf0/h;->V0:Z
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v2, "_Hires3DScale"
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    sget v2, Lf0/h;->Hires3DScale:I
+
+    invoke-interface {v1, v0, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result v0
+
+    sput v0, Lf0/h;->Hires3DScaleGame:I
 
     new-instance v0, Ljava/lang/StringBuilder;
 
