@@ -31,7 +31,12 @@ jobs:
         run: |
           bash tools/analyze_hires_arm64.sh
 
+      - name: Print HiRes caller context
+        run: |
+          awk '/## HiRes caller function context/{flag=1} flag{print} /## Calls\/references near framebuffer-related imports/{if(flag) exit}' analysis/native_hires_arm64.txt
+
       - name: Commit analysis report
+        continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
