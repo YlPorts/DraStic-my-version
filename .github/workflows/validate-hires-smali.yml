@@ -32,6 +32,7 @@ jobs:
           java -jar apktool.jar b universal -o DraStic_internal_resolution_test_unsigned.apk
 
       - name: Record successful rebuild
+        continue-on-error: true
         run: |
           mkdir -p analysis
           {
