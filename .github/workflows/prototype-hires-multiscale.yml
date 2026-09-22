@@ -25,24 +25,45 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y binutils-aarch64-linux-gnu
 
-      - name: Assemble scale math patch
+      - name: Assemble packed-config scale patch
         run: |
           cat > /tmp/hires_scale_patch.S <<'ASM'
           .text
           .global patch_start
           patch_start:
+              // Read custom 2-bit scale index from packed config bits 51-52.
+              // 0=1x, 1=2x, 2=3x, 3=4x.
+              adrp x13, 0x14c000
+              ldr x13, [x13, #1128]
+              ubfx x1, x13, #51, #2
+
+              // Preserve the original per-screen "changed?" short-circuit.
+              cmp w10, w1
+              b.eq patch_end
+              mov w10, w0
+
+              // width = 256 * (index + 1)
+              // height = 192 * (index + 1)
               add w13, w1, #1
               lsl w11, w13, #8
               add w12, w13, w13, lsl #1
               lsl w12, w12, #6
-              nop
+
+              // Preserve the original state updates.
               add x9, x9, #0x968
               mov w15, #1
-              nop
+              add x8, x8, x10, lsl #2
+              str w11, [x8, #2424]
+              str w12, [x8, #2432]
+              str w1, [x9]
+              str w15, [x8, #2416]
+          patch_end:
+              ret
           ASM
           aarch64-linux-gnu-as /tmp/hires_scale_patch.S -o /tmp/hires_scale_patch.o
-          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/hires_scale_patch.o /tmp/hires_scale_patch.bin
-          test "$(stat -c%s /tmp/hires_scale_patch.bin)" = "32"
+          aarch64-linux-gnu-ld -Ttext=0x1cdf4 -o /tmp/hires_scale_patch.elf /tmp/hires_scale_patch.o
+          aarch64-linux-gnu-objcopy -j .text -O binary /tmp/hires_scale_patch.elf /tmp/hires_scale_patch.bin
+          test "$(stat -c%s /tmp/hires_scale_patch.bin)" = "72"
 
       - name: Patch a copy of libdrastic_arm64.so
         run: |
@@ -68,9 +89,11 @@ jobs:
               prototype/libdrastic_arm64_multiscale.so
           } | tee -a analysis/multiscale_patch.txt
 
+          grep -q "ubfx.*x1, x13, #51, #2" analysis/multiscale_patch.txt
           grep -q "add.*w13, w1, #0x1" analysis/multiscale_patch.txt
           grep -q "lsl.*w11, w13, #8" analysis/multiscale_patch.txt
           grep -q "lsl.*w12, w12, #6" analysis/multiscale_patch.txt
+          grep -q "str.*w1, \[x9\]" analysis/multiscale_patch.txt
 
       - name: Commit verification report
         run: |
