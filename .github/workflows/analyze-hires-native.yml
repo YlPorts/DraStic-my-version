@@ -1,0 +1,43 @@
+name: Analyze DraStic HiRes3D native path
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/analyze-hires-native.yml'
+      - 'tools/analyze_hires_arm64.sh'
+      - 'universal/lib/arm64-v8a/libdrastic_arm64.so'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze-arm64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Analyze libdrastic_arm64.so
+        run: |
+          chmod +x tools/analyze_hires_arm64.sh
+          tools/analyze_hires_arm64.sh
+
+      - name: Commit analysis report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analysis/native_hires_arm64.txt
+          if git diff --cached --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "Analyze DraStic ARM64 HiRes3D path"
+            git push
+          fi
