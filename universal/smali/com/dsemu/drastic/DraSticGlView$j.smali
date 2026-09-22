@@ -1764,28 +1764,16 @@
 
     if-eqz v1, :cond_9
 
-    sget-boolean v1, Lf0/h;->V0:Z
+    # Reconfigure FX with the actual 1x-4x internal dimensions.
+    sget v1, Lf0/h;->Hires3DScale:I
 
-    if-eqz v1, :cond_8
+    move v7, v1
 
-    const/16 v1, 0x200
+    shl-int/lit8 v7, v7, 0x8
 
-    const/16 v7, 0x180
+    mul-int/lit8 v8, v1, 0x3
 
-    const/16 v7, 0x200
-
-    const/16 v8, 0x180
-
-    goto :goto_3
-
-    :cond_8
-    const/16 v1, 0x100
-
-    const/16 v7, 0x100
-
-    const/16 v8, 0xc0
-
-    :goto_3
+    shl-int/lit8 v8, v8, 0x6
     invoke-direct/range {p0 .. p0}, Lcom/dsemu/drastic/DraSticGlView$j;->loadFX()V
 
     const/4 v9, 0x0
@@ -3304,20 +3292,16 @@
 
     iput-boolean v7, v0, Lcom/dsemu/drastic/DraSticGlView$j;->J:Z
 
-    sget-boolean v1, Lf0/h;->V0:Z
+    # Keep FX input dimensions in sync with the real internal scale.
+    sget v1, Lf0/h;->Hires3DScale:I
 
-    if-eqz v1, :cond_3
+    move v2, v1
 
-    const/16 v1, 0x200
+    shl-int/lit8 v1, v1, 0x8
 
-    const/16 v2, 0x180
+    mul-int/lit8 v2, v2, 0x3
 
-    goto :goto_2
-
-    :cond_3
-    const/16 v1, 0x100
-
-    :goto_2
+    shl-int/lit8 v2, v2, 0x6
     const/4 v3, 0x0
 
     const/4 v4, 0x0
@@ -3336,24 +3320,18 @@
 
     move-object/from16 v0, p0
 
-    sget-boolean v1, Lf0/h;->V0:Z
+    # Internal 3D resolution: use the real 1x-4x factor for GL texture allocation.
+    sget v1, Lf0/h;->Hires3DScale:I
+
+    move v3, v1
+
+    shl-int/lit8 v1, v1, 0x8
+
+    mul-int/lit8 v3, v3, 0x3
+
+    shl-int/lit8 v3, v3, 0x6
 
     const/16 v2, 0x100
-
-    if-eqz v1, :cond_0
-
-    const/16 v1, 0x200
-
-    const/16 v3, 0x180
-
-    goto :goto_0
-
-    :cond_0
-    const/16 v3, 0xc0
-
-    const/16 v1, 0x100
-
-    :goto_0
     invoke-direct/range {p0 .. p0}, Lcom/dsemu/drastic/DraSticGlView$j;->loadFX()V
 
     new-instance v4, Lf0/n;
