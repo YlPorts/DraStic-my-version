@@ -1885,6 +1885,10 @@
     <public type="id" name="x_left" id="0x7f0902cd" />
     <public type="id" name="x_right" id="0x7f0902ce" />
     <public type="id" name="set_selection_analogrotate" id="0x7f0902cf" />
+    <public type="id" name="set_hires_scale_value" id="0x7f0902d0" />
+    <public type="id" name="sb_hires_scale" id="0x7f0902d1" />
+    <public type="id" name="set_hires_scale_value_game" id="0x7f0902d2" />
+    <public type="id" name="sb_hires_scale_game" id="0x7f0902d3" />
     <public type="integer" name="abc_config_activityDefaultDur" id="0x7f0a0000" />
     <public type="integer" name="abc_config_activityShortDur" id="0x7f0a0001" />
     <public type="integer" name="cancel_button_image_alpha" id="0x7f0a0002" />
