@@ -2,7 +2,7 @@
 
 Binary: universal/lib/arm64-v8a/libdrastic_arm64.so
 SHA-256: 3b27eee0c480df818e5adfde227f4b92ce57bc468562f7f7f079a121b8dcd902
-Generated (UTC): 2026-09-22T03:25:29Z
+Generated (UTC): 2026-09-22T03:28:59Z
 
 ## ELF header
 ELF Header:
@@ -8254,6 +8254,119 @@ Program Headers:
   [12] .rodata           PROGBITS        0000000000106cc0 106cc0 00fd15 00   A  0   0 16
   [22] .data             PROGBITS        0000000000139000 138000 0128e8 00  WA  0   0 256
   [23] .bss              NOBITS          000000000014c000 14a8e8 3deef50 00  WA  0   0 4096
+
+
+## Packed-config decoder 0x17c58
+
+universal/lib/arm64-v8a/libdrastic_arm64.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000017c58 <Java_com_dsemu_drastic_DraSticJNI_onInit@@Base-0x19c>:
+   17c58:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+   17c5c:	910003fd 	mov	x29, sp
+   17c60:	b00009a9 	adrp	x9, 14c000 <JNI_OnUnload@@Base+0x13149c>
+   17c64:	91000129 	add	x9, x9, #0x0
+   17c68:	f942352b 	ldr	x11, [x9, #1128]
+   17c6c:	52800028 	mov	w8, #0x1                   	// #1
+   17c70:	f000076a 	adrp	x10, 106000 <JNI_OnUnload@@Base+0xeb49c>
+   17c74:	f000076c 	adrp	x12, 106000 <JNI_OnUnload@@Base+0xeb49c>
+   17c78:	531e796e 	ubfx	w14, w11, #30, #1
+   17c7c:	d345196d 	ubfx	x13, x11, #5, #2
+   17c80:	b904480e 	str	w14, [x0, #1096]
+   17c84:	531b6d6e 	ubfx	w14, w11, #27, #1
+   17c88:	b904780e 	str	w14, [x0, #1144]
+   17c8c:	d372c96e 	ubfx	x14, x11, #50, #1
+   17c90:	f10009bf 	cmp	x13, #0x2
+   17c94:	3dc33140 	ldr	q0, [x10, #3264]
+   17c98:	3dc33581 	ldr	q1, [x12, #3280]
+   17c9c:	12000d6a 	and	w10, w11, #0xf
+   17ca0:	b904b80e 	str	w14, [x0, #1208]
+   17ca4:	1a88050e 	cinc	w14, w8, ne	// ne = any
+   17ca8:	f10005bf 	cmp	x13, #0x1
+   17cac:	531d756c 	ubfx	w12, w11, #29, #1
+   17cb0:	b904440a 	str	w10, [x0, #1092]
+   17cb4:	d35f7d6a 	ubfx	x10, x11, #31, #1
+   17cb8:	1a8e03ee 	csel	w14, wzr, w14, eq	// eq = none
+   17cbc:	b9045c0c 	str	w12, [x0, #1116]
+   17cc0:	b904600a 	str	w10, [x0, #1120]
+   17cc4:	b904400e 	str	w14, [x0, #1088]
+   17cc8:	3952e12e 	ldrb	w14, [x9, #1208]
+   17ccc:	4e080d62 	dup	v2.2d, x11
+   17cd0:	6ee0b821 	neg	v1.2d, v1.2d
+   17cd4:	6ee0b800 	neg	v0.2d, v0.2d
+   17cd8:	6ee14441 	ushl	v1.2d, v2.2d, v1.2d
+   17cdc:	5318616d 	ubfx	w13, w11, #24, #1
+   17ce0:	6ee04440 	ushl	v0.2d, v2.2d, v0.2d
+   17ce4:	0ea12821 	xtn	v1.2s, v1.2d
+   17ce8:	b904880d 	str	w13, [x0, #1160]
+   17cec:	4f000422 	movi	v2.4s, #0x1
+   17cf0:	b904b01f 	str	wzr, [x0, #1200]
+   17cf4:	b904840e 	str	w14, [x0, #1156]
+   17cf8:	4ea12801 	xtn2	v1.4s, v0.2d
+   17cfc:	9111300d 	add	x13, x0, #0x44c
+   17d00:	d36aa96e 	ubfx	x14, x11, #42, #1
+   17d04:	4e221c21 	and	v1.16b, v1.16b, v2.16b
+   17d08:	3c8481a1 	stur	q1, [x13, #72]
+   17d0c:	b904a80e 	str	w14, [x0, #1192]
+   17d10:	d3679d6e 	ubfx	x14, x11, #39, #1
+   17d14:	b904d00e 	str	w14, [x0, #1232]
+   17d18:	531c716e 	ubfx	w14, w11, #28, #1
+   17d1c:	0f000420 	movi	v0.2s, #0x1
+   17d20:	b904680e 	str	w14, [x0, #1128]
+   17d24:	53104d6e 	ubfx	w14, w11, #16, #4
+   17d28:	b904900e 	str	w14, [x0, #1168]
+   17d2c:	b904641f 	str	wzr, [x0, #1124]
+   17d30:	b904a41f 	str	wzr, [x0, #1188]
+   17d34:	b904541f 	str	wzr, [x0, #1108]
+   17d38:	fd0001a0 	str	d0, [x13]
+   17d3c:	fd023800 	str	d0, [x0, #1136]
+   17d40:	d36bb96e 	ubfx	x14, x11, #43, #4
+   17d44:	3952f92d 	ldrb	w13, [x9, #1214]
+   17d48:	b904bc0e 	str	w14, [x0, #1212]
+   17d4c:	5280006e 	mov	w14, #0x3                   	// #3
+   17d50:	b904c00e 	str	w14, [x0, #1216]
+   17d54:	d36fbd6e 	ubfx	x14, x11, #47, #1
+   17d58:	b904ac0e 	str	w14, [x0, #1196]
+   17d5c:	d370c16e 	ubfx	x14, x11, #48, #1
+   17d60:	b904800e 	str	w14, [x0, #1152]
+   17d64:	b9047c0d 	str	w13, [x0, #1148]
+   17d68:	f940012d 	ldr	x13, [x9]
+   17d6c:	5295638e 	mov	w14, #0xab1c                	// #43804
+   17d70:	72a0010e 	movk	w14, #0x8, lsl #16
+   17d74:	8b0e01ad 	add	x13, x13, x14
+   17d78:	b90001bf 	str	wzr, [x13]
+   17d7c:	f80041bf 	stur	xzr, [x13, #4]
+   17d80:	f9423d29 	ldr	x9, [x9, #1144]
+   17d84:	b100053f 	cmn	x9, #0x1
+   17d88:	54000140 	b.eq	17db0 <wcstol@plt+0x1280>  // b.none
+   17d8c:	b90001a8 	str	w8, [x13]
+   17d90:	d343fd28 	lsr	x8, x9, #3
+   17d94:	d29ef9e9 	mov	x9, #0xf7cf                	// #63439
+   17d98:	f2bc6a69 	movk	x9, #0xe353, lsl #16
+   17d9c:	f2d374a9 	movk	x9, #0x9ba5, lsl #32
+   17da0:	f2e41889 	movk	x9, #0x20c4, lsl #48
+   17da4:	9bc97d08 	umulh	x8, x8, x9
+   17da8:	d344fd08 	lsr	x8, x8, #4
+   17dac:	f80041a8 	stur	x8, [x13, #4]
+   17db0:	3400010c 	cbz	w12, 17dd0 <wcstol@plt+0x12a0>
+   17db4:	530c3d68 	ubfx	w8, w11, #12, #4
+   17db8:	7100151f 	cmp	w8, #0x5
+   17dbc:	540000a8 	b.hi	17dd0 <wcstol@plt+0x12a0>  // b.pmore
+   17dc0:	90000789 	adrp	x9, 107000 <JNI_OnUnload@@Base+0xec49c>
+   17dc4:	91030129 	add	x9, x9, #0xc0
+   17dc8:	b8685928 	ldr	w8, [x9, w8, uxtw #2]
+   17dcc:	14000002 	b	17dd4 <wcstol@plt+0x12a4>
+   17dd0:	2a1f03e8 	mov	w8, wzr
+   17dd4:	b9048c08 	str	w8, [x0, #1164]
+   17dd8:	52000140 	eor	w0, w10, #0x1
+   17ddc:	9400164d 	bl	1d710 <JNI_OnUnload@@Base+0x2bac>
+   17de0:	b00009a8 	adrp	x8, 14c000 <JNI_OnUnload@@Base+0x13149c>
+   17de4:	b9446908 	ldr	w8, [x8, #1128]
+   17de8:	531a6900 	ubfx	w0, w8, #26, #1
+   17dec:	a8c17bfd 	ldp	x29, x30, [sp], #16
+   17df0:	1400164b 	b	1d71c <JNI_OnUnload@@Base+0x2bb8>
 
 ## Calls/references near framebuffer-related imports
 Found 8 graphics-call references.
