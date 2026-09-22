@@ -1,0 +1,89 @@
+name: Build D minimal live 1x-4x test
+
+on:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/build-d-minimal-live.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Restore safe config class and add only scale fields
+        run: |
+          git fetch origin main
+          git show origin/main:universal/smali/f0/h.smali > universal/smali/f0/h.smali
+          python3 -c "from pathlib import Path; p=Path('universal/smali/f0/h.smali'); s=p.read_text(); s=s.replace('.field public static D0:Z = false\\n','.field public static D0:Z = false\\n\\n.field public static Hires3DScale:I = 0x1\\n',1); s=s.replace('.field public static V0:Z = false\\n','.field public static V0:Z = false\\n\\n.field public static Hires3DScaleGame:I = 0x1\\n',1); p.write_text(s)"
+
+      - name: Add minimal packed scale bits to n()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('universal/smali/f0/h.smali')
+          s=p.read_text()
+          sig='.method public static n()J'
+          start=s.index(sig)
+          end=s.index('.end method', start)
+          m=s[start:end]
+          needle='''    :cond_12
+    return-wide v0
+'''
+          repl='''    :cond_12
+    sget v2, Lf0/h;->Hires3DScale:I
+
+    add-int/lit8 v2, v2, -0x1
+
+    and-int/lit8 v2, v2, 0x3
+
+    int-to-long v2, v2
+
+    const/16 v4, 0x33
+
+    shl-long/2addr v2, v4
+
+    or-long/2addr v0, v2
+
+    return-wide v0
+'''
+          if needle not in m:
+              raise SystemExit('n() return anchor missing')
+          m=m.replace(needle,repl,1)
+          s=s[:start]+m+s[end:]
+          p.write_text(s)
+          PY
+
+      - name: Verify full patched ARM64 library is present
+        run: |
+          test "$(sha256sum universal/lib/arm64-v8a/libdrastic_arm64.so | awk '{print $1}')" = "29b8cd4a17106036d236f3b1c098e44639118ec616ac3a0d033899150e8c53d5"
+
+      - name: Build APK
+        run: |
+          java -jar apktool.jar b universal -o DraStic_D_MINIMAL_LIVE_1x4x_TEST.apk
+
+      - name: Sign and verify
+        run: |
+          java -jar uber-apk-signer.jar --apks DraStic_D_MINIMAL_LIVE_1x4x_TEST.apk --overwrite --verbose
+          java -jar uber-apk-signer.jar --apks DraStic_D_MINIMAL_LIVE_1x4x_TEST.apk --onlyVerify --verbose
+          sha256sum DraStic_D_MINIMAL_LIVE_1x4x_TEST.apk > DraStic_D_MINIMAL_LIVE_1x4x_TEST.sha256
+
+      - name: Upload D test
+        uses: actions/upload-artifact@v4
+        with:
+          name: DraStic-D-minimal-live-1x4x-test
+          path: |
+            DraStic_D_MINIMAL_LIVE_1x4x_TEST.apk
+            DraStic_D_MINIMAL_LIVE_1x4x_TEST.sha256
