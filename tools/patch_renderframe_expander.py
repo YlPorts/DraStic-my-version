@@ -25,18 +25,41 @@ def bl(pc,target):
     if not (-(1<<25) <= imm < (1<<25)): raise SystemExit("BL out of range")
     return 0x94000000 | (imm & 0x03ffffff)
 
-marker=struct.pack("<I",0xfeed3001)
-hits=[]
-p=0
-while True:
-    p=helper.find(marker,p)
-    if p<0:
-        break
-    hits.append(p)
-    p+=4
-if len(hits)!=1:
-    raise SystemExit(f"bottom entry marker hits={hits}")
-BOTTOM=HELPER+hits[0]+4
+def one_marker(value):
+    raw=struct.pack("<I",value)
+    hits=[]
+    p=0
+    while True:
+        p=helper.find(raw,p)
+        if p<0:
+            break
+        hits.append(p)
+        p+=4
+    if len(hits)!=1:
+        raise SystemExit(f"marker 0x{value:08x} hits={hits}")
+    return hits[0]
+
+bottom_off=one_marker(0xfeed3001)
+fx_top_off=one_marker(0xfeed3002)
+fx_bottom_off=one_marker(0xfeed3003)
+adrp_fx_top=one_marker(0xfeed3101)
+adrp_fx_bottom=one_marker(0xfeed3102)
+
+BOTTOM=HELPER+bottom_off+4
+FX_TOP=HELPER+fx_top_off+4
+FX_BOTTOM=HELPER+fx_bottom_off+4
+
+def adrp(rd, pc, target):
+    imm=((target & ~0xfff) - (pc & ~0xfff)) >> 12
+    if not (-(1<<20) <= imm < (1<<20)):
+        raise SystemExit("ADRP out of range")
+    v=imm & ((1<<21)-1)
+    return 0x90000000 | ((v & 3)<<29) | (((v>>2)&0x7ffff)<<5) | rd
+
+helper_mut=bytearray(helper)
+struct.pack_into("<I", helper_mut, adrp_fx_top, adrp(27, HELPER+adrp_fx_top, CFG_PAGE))
+struct.pack_into("<I", helper_mut, adrp_fx_bottom, adrp(27, HELPER+adrp_fx_bottom, CFG_PAGE))
+helper=bytes(helper_mut)
 
 if u32(TOP_CALL) != 0x531a6545:
     raise SystemExit(f"unexpected top instruction 0x{u32(TOP_CALL):08x}")
@@ -48,6 +71,8 @@ if any(data[HELPER:HELPER+len(helper)]):
 data[HELPER:HELPER+len(helper)]=helper
 w32(TOP_CALL,bl(TOP_CALL,TOP))
 w32(BOTTOM_CALL,bl(BOTTOM_CALL,BOTTOM))
+w32(FX_TOP_CALL,bl(FX_TOP_CALL,FX_TOP))
+w32(FX_BOTTOM_CALL,bl(FX_BOTTOM_CALL,FX_BOTTOM))
 
 dst.write_bytes(data)
-print(f"renderFrame expander installed at 0x{HELPER:x}, bottom=0x{BOTTOM:x}, size={len(helper)}")
+print(f"expander installed at 0x{HELPER:x}, render bottom=0x{BOTTOM:x}, fx top=0x{FX_TOP:x}, fx bottom=0x{FX_BOTTOM:x}, size={len(helper)}")
