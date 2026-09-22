@@ -33,7 +33,8 @@ mov x13, x10             // src row A
 add x14, x10, #0x800     // src row B
 mov x15, x11             // dst row A0
 add x16, x11, #0xc00     // dst row A1
-add x17, x11, #0x1800    // dst row B
+add x17, x11, #0x1, lsl #12
+add x17, x17, #0x800     // dst row B
 mov w8, #0               // 256 source pixel pairs
 
 s3_pixel:
@@ -58,8 +59,9 @@ add w8, w8, #1
 cmp w8, #0x100
 b.ne s3_pixel
 
-add x10, x10, #0x1000    // two source rows
-add x11, x11, #0x2400    // three 768px RGBA rows
+add x10, x10, #0x1, lsl #12    // two source rows
+add x11, x11, #0x2, lsl #12
+add x11, x11, #0x400             // three 768px RGBA rows
 add w12, w12, #1
 cmp w12, #0xc0
 b.ne s3_row
@@ -74,9 +76,9 @@ s4_row:
 mov x13, x10
 add x14, x10, #0x800
 mov x15, x11
-add x16, x11, #0x1000
-add x17, x11, #0x2000
-add x6,  x11, #0x3000
+add x16, x11, #0x1, lsl #12
+add x17, x11, #0x2, lsl #12
+add x6,  x11, #0x3, lsl #12
 mov w8, #0
 
 s4_pixel:
@@ -98,8 +100,8 @@ add w8, w8, #1
 cmp w8, #0x200
 b.ne s4_pixel
 
-add x10, x10, #0x1000
-add x11, x11, #0x4000
+add x10, x10, #0x1, lsl #12
+add x11, x11, #0x4, lsl #12
 add w12, w12, #1
 cmp w12, #0xc0
 b.ne s4_row
