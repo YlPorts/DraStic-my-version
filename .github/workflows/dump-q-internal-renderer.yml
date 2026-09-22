@@ -1,0 +1,72 @@
+name: Dump Q internal renderer paths
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/internal-resolution-scaling
+    paths:
+      - '.github/workflows/dump-q-internal-renderer.yml'
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install AArch64 binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-aarch64-linux-gnu
+
+      - name: Dump renderer internals
+        run: |
+          OUT=/tmp/q-internal-renderer.txt
+          SO=universal/lib/arm64-v8a/libdrastic_arm64.so
+          : > "$OUT"
+
+          {
+            echo '===== ELF / symbols ====='
+            sha256sum "$SO"
+            aarch64-linux-gnu-nm -D "$SO" | grep -E 'renderFrame|fxRender|extfxRender|getScreenBuffers|applyConfig|glTex|glViewport|glBindFramebuffer' || true
+
+            echo
+            echo '===== renderer allocation + scale helpers 0x1cb80-0x1ceb0 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1cb80 --stop-address=0x1ceb0 "$SO"
+
+            echo
+            echo '===== renderFrame + texture paths 0x1ceac-0x1d1b0 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1ceac --stop-address=0x1d1b0 "$SO"
+
+            echo
+            echo '===== fxLoad/fxSetup/fxRender internals 0x1d198-0x1d3b8 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1d198 --stop-address=0x1d3b8 "$SO"
+
+            echo
+            echo '===== extfx internals 0x1d3b8-0x1d52c ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x1d3b8 --stop-address=0x1d52c "$SO"
+
+            echo
+            echo '===== renderer core candidate 0x3c600-0x3d100 ====='
+            aarch64-linux-gnu-objdump -d --start-address=0x3c600 --stop-address=0x3d100 "$SO"
+
+            echo
+            echo '===== callers of screen/scale helpers ====='
+            aarch64-linux-gnu-objdump -d "$SO" > /tmp/q-full-disasm.txt
+            grep -nE 'bl[[:space:]]+1cd18|bl[[:space:]]+1cd38|bl[[:space:]]+1cd74|bl[[:space:]]+1cde4|b[[:space:]]+1cd18|b[[:space:]]+1cd38|b[[:space:]]+1cd74|b[[:space:]]+1cde4' /tmp/q-full-disasm.txt -B 8 -A 16 || true
+
+            echo
+            echo '===== exact framebuffer-size immediates / row constants ====='
+            grep -nE '#0x300000|#0x180000|#0xc0000|#0x60000|#0x400000|#0x800000|#0x1000000|#0x100([[:space:]]|$)|#0xc0([[:space:]]|$)|#0x200([[:space:]]|$)|#0x180([[:space:]]|$)|#0x300([[:space:]]|$)|#0x400([[:space:]]|$)' /tmp/q-full-disasm.txt | head -n 1600 || true
+
+            echo
+            echo '===== refs near renderer globals 0x3f2d000 ====='
+            grep -nE '3f2d000|#2392|#2396|#2408|#2416|#2424|#2432|#0x958|#0x95c|#0x968|#0x970|#0x980' /tmp/q-full-disasm.txt | head -n 1600 || true
+          } | tee "$OUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q-internal-renderer-dump
+          path: /tmp/q-internal-renderer.txt
